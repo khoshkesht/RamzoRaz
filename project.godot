@@ -28,13 +28,13 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
-[gui]
-
-theme/custom="res://PuzzleEngine/UI/PuzzleTheme.tres"
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/adivery/plugin.cfg")
+
+[gui]
+
+theme/custom="res://PuzzleEngine/UI/PuzzleTheme.tres"
 
 [importer_defaults]
 
