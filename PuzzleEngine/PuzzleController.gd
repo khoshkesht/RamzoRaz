@@ -60,6 +60,7 @@ func _ready() -> void:
 	hud.hint_button.pressed.connect(request_hint)
 	hud.menu_requested.connect(func() -> void: menu_requested.emit())
 	ad_adapter.event_received.connect(_on_ad_event)
+	ad_adapter.show_guard = can_process_gameplay
 	action_runner.event_generated.connect(_on_interaction_event)
 	interaction_manager.input_guard = can_process_gameplay
 	rule_evaluator.execution_guard = can_process_gameplay
@@ -503,7 +504,8 @@ func _hint_action() -> void:
 	_requests[id] = {"id": id, "level": state.level_id, "run": state.run_id, "opened": false, "closed": false, "rewarded": false, "saved": false}
 	hud.hint_button.disabled = true
 	overlay.hide()
-	ad_adapter.request(id, state.level_id)
+	if not ad_adapter.request(id, state.level_id):
+		_on_ad_event("unavailable", id, state.level_id)
 
 func _dismiss_hint() -> void:
 	if overlay.mode == "ad":
@@ -555,6 +557,9 @@ func _show_reward_hint(request: Dictionary) -> void:
 		overlay.show_hint(current_definition["hint"])
 
 func _exit_tree() -> void:
+	if ad_adapter.event_received.is_connected(_on_ad_event):
+		ad_adapter.event_received.disconnect(_on_ad_event)
+	ad_adapter.show_guard = Callable()
 	_clear_success_sound()
 	clock.stop()
 	if is_instance_valid(interaction_manager):

@@ -32,6 +32,10 @@ window/stretch/mode="canvas_items"
 
 theme/custom="res://PuzzleEngine/UI/PuzzleTheme.tres"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/adivery/plugin.cfg")
+
 [importer_defaults]
 
 texture={

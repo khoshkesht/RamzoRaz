@@ -24,6 +24,7 @@
 | `LevelClock / ResultCalculator` | زمان دقیق اجرا و محاسبهٔ نتیجه |
 | `ProgressStore` | ذخیره/بازیابی مرحله، نتایج و هینت‌ها |
 | `RewardedAdAdapter` | مرز مستقل شبکهٔ تبلیغاتی و منطق بازی |
+| `addons/adivery` و پل Java | اتصال v2 اندروید به SDK ادیوری؛ Adapter مشترک با عمر Application به Controller جاری تحویل می‌شود؛ شناسه‌های پنل در `AdiveryConfig.gd` هستند |
 | `PuzzleCustomHandler / Context` | منطق استثنایی با API محدود و وابسته به اجرا |
 | `DebugOverlay` | مشاهدهٔ وضعیت، رویداد و قانون در توسعه؛ بدون Editor |
 | `PuzzleData/manifest.json` و JSONها | ترتیب محتوا و تعریف مراحل؛ مستقل از کد موتور |

@@ -10,6 +10,7 @@ var controller: PuzzleController
 var manifest: Dictionary = {}
 var loader := PuzzleLoader.new()
 var progress := PuzzleProgressStore.new()
+var ad_adapter := PuzzleRewardedAdAdapter.new()
 var test_enabled: bool = OS.is_debug_build()
 @onready var home: PuzzleHomeScreen = $HomeLayer/Home
 @onready var main_menu: PuzzleMainMenu = $MainMenuLayer/MainMenu
@@ -21,6 +22,7 @@ var test_enabled: bool = OS.is_debug_build()
 @onready var build_label: Label = $NavigationLayer/Root/SafeMargin/Layout/BuildRow/Build
 
 func _ready() -> void:
+	ad_adapter.initialize()
 	home.play_requested.connect(play)
 	home.reload_requested.connect(show_home)
 	main_menu.home_requested.connect(_menu_home)
@@ -102,6 +104,7 @@ func _reset_pending() -> bool:
 
 func _start(test_index: int) -> void:
 	controller = PUZZLE_SCENE.instantiate() as PuzzleController
+	controller.ad_adapter = ad_adapter
 	controller.loader.manifest_path = loader.manifest_path
 	controller.progress_store.path = progress_path
 	controller.return_to_home_after_advance = true
@@ -120,6 +123,7 @@ func _start(test_index: int) -> void:
 	add_child(controller)
 
 func _process(_delta: float) -> void:
+	ad_adapter.poll()
 	_sync_music()
 	if is_instance_valid(controller):
 		back_button.disabled = _navigation_blocked() or settings_dialog.visible or message_dialog.visible
@@ -220,3 +224,6 @@ func _notification(what: int) -> void:
 			_music_pauses.erase("window_focus")
 	if is_node_ready():
 		_sync_music()
+
+func _exit_tree() -> void:
+	ad_adapter.shutdown()

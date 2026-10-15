@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.mokho.ramzoraz.adivery">
+    <uses-sdk android:minSdkVersion="24" />
+    <application>
+        <meta-data android:name="org.godotengine.plugin.v2.RamzoRazAdivery"
+            android:value="com.mokho.ramzoraz.adivery.AdiveryPlugin" />
+    </application>
+</manifest>
