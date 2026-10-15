@@ -3,7 +3,7 @@
   "id": 35,
   "question": "توی سفرهٔ هفت‌سین، کدوم با بقیه فرق داره؟",
   "hint": "نام چیزهای سفره را در نظر بگیر؛ همهٔ آن‌ها جزو هفت سین نیستند.",
-  "answer": "ماهی قرمز",
+  "answer": "ماهی قرمز سین نداره!",
   "time_limit_seconds": 80,
   "base_score": 115,
   "background": "res://assets/samples/bright_room.svg",
