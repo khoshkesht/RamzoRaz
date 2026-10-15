@@ -56,6 +56,10 @@ func _drop(c: PuzzleController, id: String, zone: String) -> void:
 func _feedback(c: PuzzleController) -> void:
 	c.action_runner._process(0.4)
 
+func _set_wheel(c: PuzzleController, name: String, target: int, size: int, increment: String) -> void:
+	var steps := (target - int(c.state.variables[name]) + size) % size
+	for step in range(steps): _tap(c, increment)
+
 func _solve(c: PuzzleController, id: int) -> void:
 	match id:
 		31: _swipe(c, "match")
@@ -103,13 +107,17 @@ func _solve(c: PuzzleController, id: int) -> void:
 			_tap(c, "back_counter")
 			_tap(c, "answer24")
 		45:
-			_drop(c, "sun", "yesterday")
-			_drop(c, "mon", "today")
+			_set_wheel(c, "yesterday", 1, 7, "yesterday_next")
+			_set_wheel(c, "today", 2, 7, "today_next")
 			_tap(c, "confirm")
-		46, 47: _drop(c, "right", "answer")
+		46: _drop(c, "right", "answer")
+		47:
+			_set_wheel(c, "tens", 3, 10, "tens_plus")
+			_set_wheel(c, "units", 8, 10, "units_plus")
+			_tap(c, "confirm")
 		48:
-			for dead in range(9, 17): _tap(c, "sheep_%d" % dead)
-			_drop(c, "nine", "answer")
+			for living in range(9): _tap(c, "sheep_%d" % living)
+			_tap(c, "confirm")
 		49:
 			_drop(c, "six", "tens")
 			_drop(c, "three", "units")
@@ -164,16 +172,22 @@ func _trap(c: PuzzleController, id: int, second: bool) -> void:
 			else: _tap(c, "answer25")
 		45:
 			if second: _tap(c, "clock")
-			else: _drop(c, "sun", "today")
+			else:
+				_set_wheel(c, "yesterday", 1, 7, "yesterday_next")
+				_set_wheel(c, "today", 1, 7, "today_next")
+				_tap(c, "confirm")
 		46:
 			if second: _hold(c, "decoy")
 			else: _drop(c, "wrong", "answer")
 		47:
 			if second: _swipe(c, "double")
-			else: _drop(c, "wrong", "answer")
+			else:
+				_set_wheel(c, "tens", 3, 10, "tens_plus")
+				_set_wheel(c, "units", 6, 10, "units_plus")
+				_tap(c, "confirm")
 		48:
 			if second: _swipe(c, "gate", Vector2(-100, 0))
-			else: _drop(c, "eight", "answer")
+			else: _tap(c, "eight")
 		49:
 			if second: _tap(c, "mirror")
 			else:
@@ -260,8 +274,8 @@ func _run() -> void:
 	c.load_level_index(47)
 	_tap(c, "sheep_9")
 	check(c.state.variables["removed"] == 1, "One distinct dead sheep is counted")
-	_drop(c, "nine", "answer")
-	check(c.run_status == "PLAYING", "Nine is confirmed after clearing all eight dead sheep")
+	_tap(c, "confirm")
+	check(c.run_status == "PLAYING", "Removing a dead sheep does not count any living sheep")
 	c.load_level_index(48)
 	_drop(c, "three", "tens")
 	_drop(c, "six", "units")
@@ -271,6 +285,7 @@ func _run() -> void:
 	_swipe(c, "trail_3")
 	check(c.state.variables["trail"] == 0, "Following a disconnected last segment does not count")
 	_queue_controls(c)
+	_redesigned_controls(c)
 	_water_transitions(c)
 	_result_delay_and_hint_price(c)
 	c.free()
@@ -304,6 +319,73 @@ func _result_delay_and_hint_price(c: PuzzleController) -> void:
 			check(store.buy_hint(3) and store.data["hint_points_spent"] == 350, "New purchase charges 250 after a legacy purchase")
 			check(store.buy_hint(3) and store.data["hint_points_spent"] == 350, "An unlocked hint is never charged again")
 			check(store.valid(JSON.parse_string(JSON.stringify(store.data))), "Mixed old and new spending survives serialization")
+
+func _redesigned_controls(c: PuzzleController) -> void:
+	for id in [45, 47, 48]:
+		c.load_level_index(id - 1)
+		for item: PuzzleObject in c.object_nodes.values():
+			check(not item.has_interaction("drag") and not item.has_interaction("drop_on"), "Stage %d has no draggable cards or hidden drop operations" % id)
+	c.load_level_index(44)
+	_tap(c, "confirm")
+	check(c.run_status == "PLAYING" and c.object_nodes["yesterday_error"].visible, "Weekday feedback identifies the first unsatisfied relation")
+	_tap(c, "yesterday_previous")
+	check(c.state.variables["yesterday"] == 6 and c.object_nodes["yesterday_day_6"].visible, "Previous weekday wraps to Friday")
+	_tap(c, "yesterday_next")
+	_tap(c, "yesterday_next")
+	check(c.state.variables["yesterday"] == 1, "Each weekday tap advances exactly one step")
+	_tap(c, "today_next")
+	_tap(c, "confirm")
+	check(c.run_status == "PLAYING" and c.object_nodes["today_error"].visible, "Sunday today does not satisfy the second relation")
+	_tap(c, "clock")
+	check(c.state.variables["yesterday"] == 1 and c.state.variables["today"] == 1, "The clock cannot change either day display")
+	_tap(c, "today_next")
+	_tap(c, "confirm")
+	check(c.run_status == "COMPLETED", "Correcting the second relation solves the timeline")
+	c.load_level_index(46)
+	_tap(c, "units_minus")
+	check(c.state.variables["units"] == 9 and c.object_nodes["units_digit_9"].visible, "Digit decrement wraps once")
+	_tap(c, "units_plus")
+	check(c.state.variables["units"] == 0, "Digit increment wraps once")
+	for i in range(4):
+		_tap(c, "difference_%d" % i)
+		check(c.object_nodes["diff_value_%d" % i].visible and not c.object_nodes["difference_%d" % i].visible, "Each gap reveals its own difference")
+	_set_wheel(c, "tens", 3, 10, "tens_plus")
+	_set_wheel(c, "units", 6, 10, "units_plus")
+	_tap(c, "confirm")
+	check(c.run_status == "PLAYING" and c.object_nodes["wrong_difference"].visible, "Thirty-six explains the repeated difference")
+	_tap(c, "units_plus")
+	_tap(c, "units_plus")
+	_tap(c, "confirm")
+	check(c.run_status == "COMPLETED", "A numeric correction solves the sequence")
+	c.load_level_index(47)
+	_tap(c, "confirm")
+	check(c.run_status == "PLAYING" and c.object_nodes["incomplete"].visible, "The animal count needs living animals to be marked")
+	_tap(c, "sheep_0")
+	_tap(c, "sheep_0")
+	check(c.state.variables["living"] == 1 and c.object_nodes["marked_0"].visible and c.object_nodes["already_counted"].visible, "Repeated taps never count a living animal twice")
+	_tap(c, "sheep_9")
+	check(c.state.variables["living"] == 1 and c.state.variables["removed"] == 1 and c.object_nodes["dead_feedback"].visible, "Dead animals cannot inflate the living count")
+	for i in range(8, 0, -1): _tap(c, "sheep_%d" % i)
+	_tap(c, "eight")
+	check(c.run_status == "PLAYING" and c.state.variables["living"] == 9, "The wrong remaining count cannot win or erase marked animals")
+	_tap(c, "confirm")
+	check(c.run_status == "COMPLETED", "Living animals may be counted in any order")
+	for id in [45, 47, 48]:
+		c.load_level_index(id - 1)
+		match id:
+			45: _tap(c, "today_next")
+			47: _tap(c, "units_plus")
+			48:
+				_tap(c, "sheep_0")
+				_tap(c, "sheep_9")
+		c.clock.elapsed_usec = c.clock.limit_usec
+		c._process(0.0)
+		c.retry_level()
+		check(c.run_status == "PLAYING" and c.clock.elapsed_usec == 0, "Retry restores stage %d and its clock" % id)
+		match id:
+			45: check(c.state.variables["today"] == 0 and c.state.variables["yesterday"] == 0, "Retry resets both day displays")
+			47: check(c.state.variables["units"] == 0 and c.state.variables["tens"] == 0 and c.object_nodes["difference_0"].visible, "Retry resets the number and hidden differences")
+			48: check(c.state.variables["living"] == 0 and c.state.variables["removed"] == 0 and c.object_nodes["sheep_9"].visible and not c.object_nodes["marked_0"].visible, "Retry restores every animal and clears marks")
 
 func _queue_controls(c: PuzzleController) -> void:
 	for reverse: bool in [false, true]:

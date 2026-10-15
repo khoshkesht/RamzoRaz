@@ -2,178 +2,682 @@
   "schema_version": 1,
   "id": 47,
   "question": "عدد بعدی: 3, 6, 11, 18, 27, ؟",
-  "hint": "اختلاف جمله‌های پشت سر هم را ببین؛ اختلاف بعدی دو واحد بیشتر است.",
+  "hint": "اختلاف جمله‌های پشت سر هم ۳، ۵، ۷ و ۹ است؛ اختلاف بعدی دو واحد بیشتر می‌شود.",
   "answer": "38",
   "time_limit_seconds": 110,
   "base_score": 140,
   "background": "res://assets/samples/grid_notebook_background.svg",
   "success": {
-    "result_delay_seconds": 1.0
+    "result_delay_seconds": 1
   },
   "variables": {
-    "solved": false
+    "solved": false,
+    "tens": 0,
+    "units": 0,
+    "adjusted": false
   },
   "objects": [
+    {
+      "id": "instructions",
+      "scene": "TextObject",
+      "text": "فاصله‌های بین عددها را لمس کن؛ پاسخ را با دکمه‌های + و − بساز و تأیید کن.",
+      "position": [
+        960,
+        350
+      ],
+      "hit_size": [
+        1500,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
     {
       "id": "sequence",
       "scene": "TextObject",
       "text": "۳، ۶، ۱۱، ۱۸، ۲۷، ؟",
       "position": [
         960,
-        470
+        440
       ],
       "hit_size": [
-        1100,
+        1250,
         80
       ],
       "text_color": "#354f54",
-      "interactions": []
+      "interactions": [],
+      "visible": true
     },
     {
-      "id": "answer",
-      "scene": "DropZone",
-      "position": [
-        1320,
-        620
-      ],
-      "hit_size": [
-        260,
-        150
-      ],
-      "accepted_sources": [
-        "right",
-        "wrong",
-        "other"
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "blank",
+      "id": "difference_0",
       "scene": "TextObject",
-      "text": "؟",
+      "text": "+ ؟",
       "position": [
-        1320,
-        620
+        540,
+        550
       ],
       "hit_size": [
-        300,
-        70
-      ],
-      "text_color": "#354f54",
-      "interactions": []
-    },
-    {
-      "id": "right",
-      "scene": "TextObject",
-      "text": "۳۸",
-      "position": [
-        650,
-        820
-      ],
-      "hit_size": [
-        300,
+        160,
         110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "wrong",
-      "scene": "TextObject",
-      "text": "۳۶",
-      "position": [
-        960,
-        820
-      ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "other",
-      "scene": "TextObject",
-      "text": "۵۴",
-      "position": [
-        1270,
-        820
-      ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "differences",
-      "scene": "TextObject",
-      "text": "نمایش اختلاف‌ها",
-      "position": [
-        700,
-        620
-      ],
-      "hit_size": [
-        300,
-        70
       ],
       "text_color": "#354f54",
       "interactions": [
         "tap"
-      ]
+      ],
+      "visible": true,
+      "sprite": "res://assets/samples/stepper_button.svg"
     },
     {
-      "id": "diff_result",
+      "id": "diff_value_0",
       "scene": "TextObject",
-      "text": "۳، ۵، ۷، ۹، ؟",
+      "text": "+۳",
+      "position": [
+        540,
+        550
+      ],
+      "hit_size": [
+        160,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "difference_1",
+      "scene": "TextObject",
+      "text": "+ ؟",
+      "position": [
+        800,
+        550
+      ],
+      "hit_size": [
+        160,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "sprite": "res://assets/samples/stepper_button.svg"
+    },
+    {
+      "id": "diff_value_1",
+      "scene": "TextObject",
+      "text": "+۵",
+      "position": [
+        800,
+        550
+      ],
+      "hit_size": [
+        160,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "difference_2",
+      "scene": "TextObject",
+      "text": "+ ؟",
+      "position": [
+        1060,
+        550
+      ],
+      "hit_size": [
+        160,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "sprite": "res://assets/samples/stepper_button.svg"
+    },
+    {
+      "id": "diff_value_2",
+      "scene": "TextObject",
+      "text": "+۷",
+      "position": [
+        1060,
+        550
+      ],
+      "hit_size": [
+        160,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "difference_3",
+      "scene": "TextObject",
+      "text": "+ ؟",
+      "position": [
+        1320,
+        550
+      ],
+      "hit_size": [
+        160,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "sprite": "res://assets/samples/stepper_button.svg"
+    },
+    {
+      "id": "diff_value_3",
+      "scene": "TextObject",
+      "text": "+۹",
+      "position": [
+        1320,
+        550
+      ],
+      "hit_size": [
+        160,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "entry_label",
+      "scene": "TextObject",
+      "text": "عدد بعدی را وارد کن",
+      "position": [
+        960,
+        665
+      ],
+      "hit_size": [
+        700,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "tens_label",
+      "scene": "TextObject",
+      "text": "دهگان",
       "position": [
         700,
-        710
+        720
+      ],
+      "hit_size": [
+        250,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "tens_digit_0",
+      "scene": "TextObject",
+      "text": "۰",
+      "position": [
+        700,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "tens_digit_1",
+      "scene": "TextObject",
+      "text": "۱",
+      "position": [
+        700,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_digit_2",
+      "scene": "TextObject",
+      "text": "۲",
+      "position": [
+        700,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_digit_3",
+      "scene": "TextObject",
+      "text": "۳",
+      "position": [
+        700,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_digit_4",
+      "scene": "TextObject",
+      "text": "۴",
+      "position": [
+        700,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_digit_5",
+      "scene": "TextObject",
+      "text": "۵",
+      "position": [
+        700,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_digit_6",
+      "scene": "TextObject",
+      "text": "۶",
+      "position": [
+        700,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_digit_7",
+      "scene": "TextObject",
+      "text": "۷",
+      "position": [
+        700,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_digit_8",
+      "scene": "TextObject",
+      "text": "۸",
+      "position": [
+        700,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_digit_9",
+      "scene": "TextObject",
+      "text": "۹",
+      "position": [
+        700,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_minus",
+      "scene": "TextObject",
+      "text": "−",
+      "position": [
+        520,
+        810
+      ],
+      "hit_size": [
+        160,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "sprite": "res://assets/samples/stepper_button.svg"
+    },
+    {
+      "id": "tens_plus",
+      "scene": "TextObject",
+      "text": "+",
+      "position": [
+        880,
+        810
+      ],
+      "hit_size": [
+        160,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "sprite": "res://assets/samples/stepper_button.svg"
+    },
+    {
+      "id": "units_label",
+      "scene": "TextObject",
+      "text": "یکان",
+      "position": [
+        1250,
+        720
+      ],
+      "hit_size": [
+        250,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "units_digit_0",
+      "scene": "TextObject",
+      "text": "۰",
+      "position": [
+        1250,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "units_digit_1",
+      "scene": "TextObject",
+      "text": "۱",
+      "position": [
+        1250,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_digit_2",
+      "scene": "TextObject",
+      "text": "۲",
+      "position": [
+        1250,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_digit_3",
+      "scene": "TextObject",
+      "text": "۳",
+      "position": [
+        1250,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_digit_4",
+      "scene": "TextObject",
+      "text": "۴",
+      "position": [
+        1250,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_digit_5",
+      "scene": "TextObject",
+      "text": "۵",
+      "position": [
+        1250,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_digit_6",
+      "scene": "TextObject",
+      "text": "۶",
+      "position": [
+        1250,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_digit_7",
+      "scene": "TextObject",
+      "text": "۷",
+      "position": [
+        1250,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_digit_8",
+      "scene": "TextObject",
+      "text": "۸",
+      "position": [
+        1250,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_digit_9",
+      "scene": "TextObject",
+      "text": "۹",
+      "position": [
+        1250,
+        810
+      ],
+      "hit_size": [
+        120,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_minus",
+      "scene": "TextObject",
+      "text": "−",
+      "position": [
+        1070,
+        810
+      ],
+      "hit_size": [
+        160,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "sprite": "res://assets/samples/stepper_button.svg"
+    },
+    {
+      "id": "units_plus",
+      "scene": "TextObject",
+      "text": "+",
+      "position": [
+        1430,
+        810
+      ],
+      "hit_size": [
+        160,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "sprite": "res://assets/samples/stepper_button.svg"
+    },
+    {
+      "id": "confirm",
+      "scene": "TextObject",
+      "text": "تأیید عدد",
+      "position": [
+        960,
+        940
       ],
       "hit_size": [
         300,
-        70
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "wrong_difference",
+      "scene": "TextObject",
+      "text": "اختلاف قبلی را تکرار نکن؛ اختلاف‌ها هر بار دو واحد بیشتر می‌شوند.",
+      "position": [
+        960,
+        1030
+      ],
+      "hit_size": [
+        1450,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "wrong_rule",
+      "scene": "TextObject",
+      "text": "این عدد با اختلاف‌های دنباله سازگار نیست؛ فاصله‌ها را بررسی کن.",
+      "position": [
+        960,
+        1030
+      ],
+      "hit_size": [
+        1450,
+        65
       ],
       "text_color": "#354f54",
       "interactions": [],
@@ -182,14 +686,14 @@
     {
       "id": "double",
       "scene": "TextObject",
-      "text": "نوار دوبرابر",
+      "text": "دوبرابرکردن",
       "position": [
-        1550,
-        800
+        1650,
+        860
       ],
       "hit_size": [
-        300,
-        70
+        250,
+        110
       ],
       "text_color": "#354f54",
       "interactions": [
@@ -197,19 +701,20 @@
           "type": "swipe",
           "direction": "right"
         }
-      ]
+      ],
+      "visible": true
     },
     {
       "id": "double_result",
       "scene": "TextObject",
       "text": "۲۷ × ۲ = ۵۴",
       "position": [
-        1550,
-        900
+        1650,
+        965
       ],
       "hit_size": [
-        300,
-        70
+        260,
+        80
       ],
       "text_color": "#354f54",
       "interactions": [],
@@ -219,21 +724,2976 @@
   "rules": [
     {
       "id": "r0000",
-      "event": "drop_on",
-      "source": "right",
+      "event": "tap",
+      "source": "difference_0",
       "conditions": [],
       "actions": [
         {
-          "type": "move",
-          "target": "right",
-          "position": [
-            1320,
-            620
-          ]
+          "type": "hide",
+          "target": "difference_0"
+        },
+        {
+          "type": "show",
+          "target": "diff_value_0"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "tap",
+      "source": "difference_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "difference_1"
+        },
+        {
+          "type": "show",
+          "target": "diff_value_1"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "difference_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "difference_2"
+        },
+        {
+          "type": "show",
+          "target": "diff_value_2"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "tap",
+      "source": "difference_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "difference_3"
+        },
+        {
+          "type": "show",
+          "target": "diff_value_3"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_digit_0"
         },
         {
           "type": "hide",
-          "target": "blank"
+          "target": "tens_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 3
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 4
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0009",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 5
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0010",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 6
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0011",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 7
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0012",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 8
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0013",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 9
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_digit_9"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0014",
+      "event": "tap",
+      "source": "tens_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 9,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0015",
+      "event": "tap",
+      "source": "tens_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0016",
+      "event": "tap",
+      "source": "tens_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0017",
+      "event": "tap",
+      "source": "tens_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0018",
+      "event": "tap",
+      "source": "tens_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0019",
+      "event": "tap",
+      "source": "tens_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0020",
+      "event": "tap",
+      "source": "tens_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0021",
+      "event": "tap",
+      "source": "tens_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0022",
+      "event": "tap",
+      "source": "tens_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 8
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0023",
+      "event": "tap",
+      "source": "tens_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 9
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 8,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0024",
+      "event": "tap",
+      "source": "tens_minus",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0025",
+      "event": "tap",
+      "source": "tens_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0026",
+      "event": "tap",
+      "source": "tens_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0027",
+      "event": "tap",
+      "source": "tens_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0028",
+      "event": "tap",
+      "source": "tens_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0029",
+      "event": "tap",
+      "source": "tens_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0030",
+      "event": "tap",
+      "source": "tens_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0031",
+      "event": "tap",
+      "source": "tens_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0032",
+      "event": "tap",
+      "source": "tens_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 8,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0033",
+      "event": "tap",
+      "source": "tens_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 8
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 9,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0034",
+      "event": "tap",
+      "source": "tens_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 9
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0035",
+      "event": "tap",
+      "source": "tens_plus",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0036",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "units_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "units_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0037",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "units_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "units_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0038",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "units_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "units_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0039",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 3
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "units_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "units_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0040",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 4
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "units_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "units_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0041",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 5
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "units_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "units_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0042",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 6
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "units_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "units_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0043",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 7
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "units_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "units_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0044",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 8
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "units_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "units_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0045",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 9
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "units_digit_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_digit_9"
+        },
+        {
+          "type": "show",
+          "target": "units_digit_9"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0046",
+      "event": "tap",
+      "source": "units_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 9,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0047",
+      "event": "tap",
+      "source": "units_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0048",
+      "event": "tap",
+      "source": "units_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0049",
+      "event": "tap",
+      "source": "units_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0050",
+      "event": "tap",
+      "source": "units_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0051",
+      "event": "tap",
+      "source": "units_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0052",
+      "event": "tap",
+      "source": "units_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0053",
+      "event": "tap",
+      "source": "units_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0054",
+      "event": "tap",
+      "source": "units_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 8
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0055",
+      "event": "tap",
+      "source": "units_minus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 9
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 8,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0056",
+      "event": "tap",
+      "source": "units_minus",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0057",
+      "event": "tap",
+      "source": "units_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0058",
+      "event": "tap",
+      "source": "units_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0059",
+      "event": "tap",
+      "source": "units_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0060",
+      "event": "tap",
+      "source": "units_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0061",
+      "event": "tap",
+      "source": "units_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0062",
+      "event": "tap",
+      "source": "units_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0063",
+      "event": "tap",
+      "source": "units_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0064",
+      "event": "tap",
+      "source": "units_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 8,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0065",
+      "event": "tap",
+      "source": "units_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 8
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 9,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0066",
+      "event": "tap",
+      "source": "units_plus",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "units",
+          "operator": "eq",
+          "value": 9
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0067",
+      "event": "tap",
+      "source": "units_plus",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0068",
+      "event": "tap",
+      "source": "confirm",
+      "conditions": [
+        {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "variable",
+              "name": "tens",
+              "operator": "eq",
+              "value": 3
+            },
+            {
+              "type": "variable",
+              "name": "units",
+              "operator": "eq",
+              "value": 6
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "wrong_difference"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0069",
+      "event": "tap",
+      "source": "confirm",
+      "conditions": [
+        {
+          "type": "not",
+          "condition": {
+            "type": "all",
+            "conditions": [
+              {
+                "type": "variable",
+                "name": "tens",
+                "operator": "eq",
+                "value": 3
+              },
+              {
+                "type": "variable",
+                "name": "units",
+                "operator": "eq",
+                "value": 6
+              }
+            ]
+          }
+        },
+        {
+          "type": "not",
+          "condition": {
+            "type": "all",
+            "conditions": [
+              {
+                "type": "variable",
+                "name": "tens",
+                "operator": "eq",
+                "value": 3
+              },
+              {
+                "type": "variable",
+                "name": "units",
+                "operator": "eq",
+                "value": 8
+              }
+            ]
+          }
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "wrong_rule"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0070",
+      "event": "tap",
+      "source": "confirm",
+      "conditions": [
+        {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "variable",
+              "name": "tens",
+              "operator": "eq",
+              "value": 3
+            },
+            {
+              "type": "variable",
+              "name": "units",
+              "operator": "eq",
+              "value": 8
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "wrong_rule"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_difference"
         },
         {
           "type": "set_variable",
@@ -242,72 +3702,10 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "answer"
-    },
-    {
-      "id": "r0001",
-      "event": "drop_on",
-      "source": "wrong",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "move",
-          "target": "wrong",
-          "position": [
-            960,
-            820
-          ]
-        },
-        {
-          "type": "play_animation",
-          "target": "wrong",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false,
-      "target": "answer"
-    },
-    {
-      "id": "r0002",
-      "event": "drop_on",
-      "source": "other",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "move",
-          "target": "other",
-          "position": [
-            1270,
-            820
-          ]
-        },
-        {
-          "type": "play_animation",
-          "target": "other",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false,
-      "target": "answer"
-    },
-    {
-      "id": "r0003",
-      "event": "tap",
-      "source": "differences",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "show",
-          "target": "diff_result"
-        }
-      ],
       "once": false
     },
     {
-      "id": "r0004",
+      "id": "r0071",
       "event": "swipe",
       "source": "double",
       "conditions": [],

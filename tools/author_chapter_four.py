@@ -467,24 +467,54 @@ l.drag('flag','queue_flag',1670,930,bounds=(1550,820,220,170),scale=[.5,.5])
 l.rule('drag_end','flag',[move('flag',1670,930),hide('count_first'),hide('wrong_answer'),show('flag_feedback')])
 l.save()
 
-l=Level(45,'فردای شنبه یکشنبه است؛ دیروز و امروز را در دو جای مستقل بچین.')
-l.variable(yesterday=False,today=False)
-l.note('فردای شنبه = دیروز؛ یک روز بعد از دیروز = امروز')
-l.text('saturday','شنبه',480,520)
-for id,x,label in [('yesterday',960,'دیروز'),('today',1440,'امروز')]:
-    l.zone(id,x,550,['sun','mon','tue']); l.text(id+'_label',label,x,470)
-for id,text,x in [('sun','یکشنبه',550),('mon','دوشنبه',960),('tue','سه‌شنبه',1370)]:
-    l.card(id,text,x,800)
-    for zone in ['yesterday','today']:
-        right=(id=='sun' and zone=='yesterday') or (id=='mon' and zone=='today')
-        l.drop(id,zone,[move(id,x,800),setv(zone,right),feedback(id)])
-l.text('yesterday_ok','یکشنبه',960,610,visible=False); l.text('today_ok','دوشنبه',1440,610,visible=False)
-for id in ['yesterday','today']:
-    l.rule('variable_changed','$level',[show(id+'_ok')],[var(id)]); l.rule('variable_changed','$level',[hide(id+'_ok')],[var(id,False)])
-l.text('confirm','تأیید',960,920,['tap']); l.win('tap','confirm',conditions=[var('yesterday'),var('today')])
-l.image('clock','clock_face',300,820,['tap'],scale=[.6,.6]); l.rule('tap','clock',[act('rotate','clock',degrees=90)]); l.save()
+# 45: fixed day displays with previous/next controls, rather than movable cards.
+def fixed_text(id,text,x,y,width=300,height=70,visible=True,inputs=()):
+    l.text(id,text,x,y,inputs,visible=visible)
+    l.d['objects'][-1]['hit_size']=[width,height]
 
-for number,sequence,correct,wrong,hint in [(46,'۲، ۶، ۱۲، ۲۰، ۳۰، ؟','۴۲','۴۰','هر جمله حاصل ضرب دو عدد پیاپی است.'),(47,'۳، ۶، ۱۱، ۱۸، ۲۷، ؟','۳۸','۳۶','اختلاف جمله‌های پشت سر هم را ببین؛ اختلاف بعدی دو واحد بیشتر است.')]:
+def fixed_button(id,text,x,y,small=False):
+    fixed_text(id,text,x,y,160 if small else 300,110,True,['tap'])
+    l.d['objects'][-1]['sprite']=P+('stepper_button.svg' if small else 'puzzle_tile.svg')
+
+def cycle_control(source,name,amount,size):
+    # The latch prevents a changed value matching another rule on this same tap.
+    for old in range(size):
+        l.rule('tap',source,[setv(name,(old+amount)%size),setv('adjusted')],[var(name,old),var('adjusted',False)])
+    l.rule('tap',source,[setv('adjusted',False)])
+
+l=Level(45,'فردای شنبه، یکشنبه است؛ دیروز را یکشنبه بگذار و امروز را یک روز جلوتر تنظیم کن.')
+l.variable(yesterday=0,today=0,adjusted=False)
+l.note('با فلش‌های روز قبل و روز بعد، «دیروز» و «امروز» را تنظیم کن؛ سپس تأیید کن.')
+days=['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه']
+fixed_text('reference_label','روز مرجع',520,435,300,60)
+l.image('reference_page','calendar_page',520,580,scale=[.5,.5])
+fixed_text('saturday','شنبه',520,590)
+for name,x,label in [('yesterday',960,'دیروز'),('today',1400,'امروز')]:
+    fixed_text(name+'_label',label,x,435,300,60)
+    l.image(name+'_page','calendar_page',x,580,scale=[.5,.5])
+    for i,day in enumerate(days):
+        fixed_text(name+'_day_'+str(i),day,x,590,240,70,i==0)
+        l.rule('variable_changed','$level',[*[hide(name+'_day_'+str(n)) for n in range(7)],show(name+'_day_'+str(i)),hide('yesterday_error'),hide('today_error'),hide('clock_feedback')],[var(name,i)])
+    for suffix,amount,dx,rotation in [('previous',-1,-110,0),('next',1,110,180)]:
+        source=name+'_'+suffix
+        l.image(source,'left_arrow',x+dx,755,['tap'],rotation_degrees=rotation,hit_size=[180,110])
+        fixed_text(source+'_label','روز قبل' if amount<0 else 'روز بعد',x+dx,845,180,55)
+        cycle_control(source,name,amount,7)
+l.image('relation_arrow','left_arrow',740,580,scale=[.5,.5],rotation_degrees=180)
+l.image('next_day_arrow','left_arrow',1180,580,scale=[.5,.5],rotation_degrees=180)
+fixed_text('yesterday_error','دیروز باید فردای شنبه باشد؛ روزِ دیروز را اصلاح کن.',960,1030,1450,65,False)
+fixed_text('today_error','امروز باید یک روز بعد از دیروز باشد.',960,1030,1450,65,False)
+fixed_text('clock_feedback','چرخاندن ساعت، روز هفته را تغییر نمی‌دهد.',960,1030,1450,65,False)
+fixed_button('confirm','تأیید روزها',960,945)
+l.rule('tap','confirm',[show('yesterday_error'),hide('today_error'),hide('clock_feedback')],[var('yesterday',1,'ne')])
+l.rule('tap','confirm',[show('today_error'),hide('yesterday_error'),hide('clock_feedback')],[var('yesterday',1),var('today',2,'ne')])
+l.win('tap','confirm',[hide('yesterday_error'),hide('today_error'),hide('clock_feedback')],[var('yesterday',1),var('today',2)])
+l.image('clock','clock_face',300,825,['tap'],scale=[.6,.6])
+l.rule('tap','clock',[act('rotate','clock',degrees=90),show('clock_feedback'),hide('yesterday_error'),hide('today_error')])
+l.save()
+
+# 46 retains its existing authored drag interaction.
+for number,sequence,correct,wrong,hint in [(46,'۲، ۶، ۱۲، ۲۰، ۳۰، ؟','۴۲','۴۰','هر جمله حاصل ضرب دو عدد پیاپی است.')]:
     l=Level(number,hint); l.text('sequence',sequence,960,470); l.d['objects'][-1]['hit_size']=[1100,80]
     l.zone('answer',1320,620,['right','wrong','other']); l.text('blank','؟',1320,620)
     l.card('right',correct,650,820); l.card('wrong',wrong,960,820); l.card('other','۵۴' if number==47 else '۴۴',1270,820)
@@ -492,20 +522,77 @@ for number,sequence,correct,wrong,hint in [(46,'۲، ۶، ۱۲، ۲۰، ۳۰، �
     for id,x in [('wrong',960),('other',1270)]: l.drop(id,'answer',[move(id,x,820),feedback(id)])
     if number==46:
         l.text('decoy','جدول جمع ۱۰',400,660,['hold']); l.text('decoy_result','۳۰ + ۱۰ = ۴۰',400,750,visible=False); l.rule('hold','decoy',[show('decoy_result')])
-    else:
-        l.text('differences','نمایش اختلاف‌ها',700,620,['tap']); l.text('diff_result','۳، ۵، ۷، ۹، ؟',700,710,visible=False); l.rule('tap','differences',[show('diff_result')])
-        l.text('double','نوار دوبرابر',1550,800,[dict(type='swipe',direction='right')]); l.text('double_result','۲۷ × ۲ = ۵۴',1550,900,visible=False); l.rule('swipe','double',[show('double_result')])
     l.save()
 
-l=Level(48,'همه به‌جز ۹ تا؛ مرده‌ها را کنار بزن و تعداد زنده‌ها را تأیید کن.')
-l.variable(removed=0)
-for i in range(17):
-    x=370+(i%9)*145; y=520+(i//9)*210
-    l.image('sheep_'+str(i),'sheep_alive' if i<9 else 'sheep_dead',x,y,['tap'] if i>=9 else [],scale=[.6,.6])
-    if i>=9: l.rule('tap','sheep_'+str(i),[hide('sheep_'+str(i)),setv('removed',1,'increment')],once=True)
-l.card('nine','۹',700,920); l.card('eight','۸',1180,920); l.zone('answer',960,820,['nine','eight']); l.text('answer_label','تعداد زنده‌ها',960,820)
-l.drop('eight','answer',[move('eight',1180,920),feedback('eight')]); l.win('drop_on','nine',[move('nine',960,820)],conditions=[var('removed',8)],target='answer')
-l.image('gate','stream_gate',1650,800,[dict(type='swipe',direction='left')],scale=[.6,.6]); l.rule('swipe','gate',[feedback('gate')]); l.save()
+# 47: reveal differences and enter the answer with two digit steppers.
+svg('stepper_button','<rect x="6" y="6" width="138" height="98" rx="18" fill="#f5e9cc"/><path d="M22 24H128" stroke="#d1b078"/>',150,110)
+l=Level(47,'اختلاف جمله‌های پشت سر هم ۳، ۵، ۷ و ۹ است؛ اختلاف بعدی دو واحد بیشتر می‌شود.')
+l.variable(tens=0,units=0,adjusted=False)
+l.note('فاصله‌های بین عددها را لمس کن؛ پاسخ را با دکمه‌های + و − بساز و تأیید کن.')
+fixed_text('sequence','۳، ۶، ۱۱، ۱۸، ۲۷، ؟',960,440,1250,80)
+for i,(x,difference) in enumerate([(540,3),(800,5),(1060,7),(1320,9)]):
+    fixed_button('difference_'+str(i),'+ ؟',x,550,True)
+    fixed_text('diff_value_'+str(i),'+'+str(difference),x,550,160,110,False)
+    l.rule('tap','difference_'+str(i),[hide('difference_'+str(i)),show('diff_value_'+str(i))])
+fixed_text('entry_label','عدد بعدی را وارد کن',960,665,700,60)
+for name,x,label in [('tens',700,'دهگان'),('units',1250,'یکان')]:
+    fixed_text(name+'_label',label,x,720,250,50)
+    for n in range(10):
+        fixed_text(name+'_digit_'+str(n),str(n),x,810,120,80,n==0)
+        l.rule('variable_changed','$level',[*[hide(name+'_digit_'+str(k)) for k in range(10)],show(name+'_digit_'+str(n)),hide('wrong_difference'),hide('wrong_rule')],[var(name,n)])
+    for suffix,amount,dx in [('minus',-1,-180),('plus',1,180)]:
+        source=name+'_'+suffix
+        fixed_button(source,'−' if amount<0 else '+',x+dx,810,True)
+        cycle_control(source,name,amount,10)
+fixed_button('confirm','تأیید عدد',960,940)
+fixed_text('wrong_difference','اختلاف قبلی را تکرار نکن؛ اختلاف‌ها هر بار دو واحد بیشتر می‌شوند.',960,1030,1450,65,False)
+fixed_text('wrong_rule','این عدد با اختلاف‌های دنباله سازگار نیست؛ فاصله‌ها را بررسی کن.',960,1030,1450,65,False)
+is_36=dict(type='all',conditions=[var('tens',3),var('units',6)])
+is_38=dict(type='all',conditions=[var('tens',3),var('units',8)])
+l.rule('tap','confirm',[show('wrong_difference'),hide('wrong_rule')],[is_36])
+l.rule('tap','confirm',[show('wrong_rule'),hide('wrong_difference')],[dict(type='not',condition=is_36),dict(type='not',condition=is_38)])
+l.win('tap','confirm',[hide('wrong_rule'),hide('wrong_difference')],[is_38])
+fixed_text('double','دوبرابرکردن',1650,860,250,110,True,[dict(type='swipe',direction='right')])
+fixed_text('double_result','۲۷ × ۲ = ۵۴',1650,965,260,80,False)
+l.rule('swipe','double',[show('double_result')])
+l.save()
+
+# 48: count the living animals directly; each animal contributes at most once.
+l=Level(48,'«همه به‌جز ۹ تا» یعنی ۹ گوسفند زنده‌اند؛ فقط گوسفندهای ایستاده را بشمار.')
+l.variable(removed=0,living=0,**{'counted_'+str(i):False for i in range(9)})
+l.note('هر گوسفند زنده را یک‌بار لمس کن تا علامت بخورد؛ سپس شمارش را تأیید کن.')
+messages48={
+    'incomplete':'هنوز همهٔ گوسفندهای زنده را علامت نزده‌ای.',
+    'already_counted':'این گوسفند قبلاً شمرده شده است.',
+    'dead_feedback':'این گوسفند زنده نیست؛ به شمارش زنده‌ها اضافه نمی‌شود.',
+    'wrong_eight':'۸ تعداد گوسفندهای مرده است؛ گوسفندهای زنده را بشمار.',
+    'gate_feedback':'باز و بسته‌شدن در، تعداد گوسفندها را تغییر نمی‌دهد.',
+}
+for id,text in messages48.items(): fixed_text(id,text,960,1030,1450,65,False)
+
+def stage48_message(id):
+    return [*[hide(other) for other in messages48],show(id)]
+
+for slot,i in enumerate([9,0,1,10,2,11,3,4,12,5,13,6,7,14,8,15,16]):
+    x=370+(slot%9)*145; y=520+(slot//9)*210
+    l.image('sheep_'+str(i),'sheep_alive' if i<9 else 'sheep_dead',x,y,['tap'],scale=[.6,.6])
+    if i<9:
+        l.image('marked_'+str(i),'selection_check',x,y-65,visible=False,scale=[.55,.55])
+        l.rule('tap','sheep_'+str(i),stage48_message('already_counted'),[var('counted_'+str(i))])
+        l.rule('tap','sheep_'+str(i),[setv('counted_'+str(i)),setv('living',1,'increment'),show('marked_'+str(i)),*[hide(id) for id in messages48]],[var('counted_'+str(i),False)])
+    else:
+        l.rule('tap','sheep_'+str(i),[hide('sheep_'+str(i)),setv('removed',1,'increment'),*stage48_message('dead_feedback')],once=True)
+for n in range(10):
+    fixed_text('living_reading_'+str(n),'زنده‌های شمرده‌شده: '+str(n),960,845,750,70,n==0)
+    l.rule('variable_changed','$level',[*[hide('living_reading_'+str(k)) for k in range(10)],show('living_reading_'+str(n))],[var('living',n)])
+fixed_button('confirm','تأیید شمارش',1050,950)
+fixed_button('eight','۸ تا مانده',470,950)
+l.rule('tap','eight',stage48_message('wrong_eight'))
+l.rule('tap','confirm',stage48_message('incomplete'),[var('living',9,'lt')])
+l.win('tap','confirm',[*[hide(id) for id in messages48]],[var('living',9)])
+l.image('gate','stream_gate',1650,800,[dict(type='swipe',direction='left')],scale=[.6,.6])
+l.rule('swipe','gate',[feedback('gate'),*stage48_message('gate_feedback')])
+l.save()
 
 l=Level(49,'هر دو شرط را بررسی کن: مجموع رقم‌ها و اختلاف عدد با وارونهٔ آن.')
 l.variable(tens=0,units=0)
@@ -534,8 +621,11 @@ for i,(x,y,angle) in enumerate([(1400,850,-155),(1120,800,-160),(850,710,-150),(
     l.image('trail_check_'+str(i),'selection_check',x,y,visible=False,scale=[.3,.3])
     l.rule('swipe','trail_'+str(i),[show('trail_check_'+str(i)),setv('trail',i+1)],[var('trail',i)],once=True)
 l.text('trail_start','شروع رد',1570,900)
+l.image('swipe_left_arrow','left_arrow',960,990)
+l.text('swipe_left_label','روی ردپا به چپ بکش',1260,990)
+l.d['objects'][-1]['hit_size']=[400,70]
 # Reuse the existing coin texture by explicit path (outside samples).
-l.d['objects'].append(dict(id='coin',scene='DraggableObject',sprite='res://assets/ui/score_icon.tres',position=[300,840],scale=[2,2],interactions=[dict(type='drag',bounds=[200,460,1500,450],return_on_invalid=True),'drop_on']))
+l.d['objects'].append(dict(id='coin',scene='DraggableObject',sprite='res://assets/ui/score.png',position=[300,840],scale=[1.25,1.25],interactions=[dict(type='drag',bounds=[200,460,1500,450],return_on_invalid=True),'drop_on']))
 l.zone('right_chest',1400,530,['coin']); l.drop('coin','right_chest',[move('coin',300,840),feedback('chest_2')])
 l.drag('stamp','shoe_stamp',1650,530,scale=[.6,.6]); l.image('paper','paper',1650,760,scale=[.5,.5]); l.zone('paper_zone',1650,760,['stamp']); l.image('false_print','footprints_right',1650,760,visible=False,rotation_degrees=180,scale=[.4,.4])
 l.drop('stamp','paper_zone',[move('stamp',1650,530),show('false_print')]); l.win('tap','chest_0',[replace('chest_0','chest_open')],conditions=[var('trail',4)]); l.save()

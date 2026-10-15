@@ -206,16 +206,32 @@
       "interactions": []
     },
     {
+      "id": "swipe_left_arrow",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/left_arrow.svg",
+      "position": [960, 990],
+      "interactions": []
+    },
+    {
+      "id": "swipe_left_label",
+      "scene": "TextObject",
+      "text": " به چپ بکش",
+      "position": [1260, 990],
+      "hit_size": [400, 70],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
       "id": "coin",
       "scene": "DraggableObject",
-      "sprite": "res://assets/ui/score_icon.tres",
+      "sprite": "res://assets/ui/score.png",
       "position": [
         300,
         840
       ],
       "scale": [
-        2,
-        2
+        1.25,
+        1.25
       ],
       "interactions": [
         {

@@ -2,24 +2,25 @@
   "schema_version": 1,
   "id": 45,
   "question": "اگر دیروز فردای شنبه بود، امروز چه روزی است؟",
-  "hint": "فردای شنبه یکشنبه است؛ دیروز و امروز را در دو جای مستقل بچین.",
+  "hint": "فردای شنبه، یکشنبه است؛ دیروز را یکشنبه بگذار و امروز را یک روز جلوتر تنظیم کن.",
   "answer": "دوشنبه",
   "time_limit_seconds": 105,
   "base_score": 140,
   "background": "res://assets/samples/calendar_desk_background_light.svg",
   "success": {
-    "result_delay_seconds": 1.0
+    "result_delay_seconds": 1
   },
   "variables": {
     "solved": false,
-    "yesterday": false,
-    "today": false
+    "yesterday": 0,
+    "today": 0,
+    "adjusted": false
   },
   "objects": [
     {
       "id": "instructions",
       "scene": "TextObject",
-      "text": "فردای شنبه = دیروز؛ یک روز بعد از دیروز = امروز",
+      "text": "با فلش‌های روز قبل و روز بعد، «دیروز» و «امروز» را تنظیم کن؛ سپس تأیید کن.",
       "position": [
         960,
         350
@@ -32,177 +33,42 @@
       "interactions": []
     },
     {
+      "id": "reference_label",
+      "scene": "TextObject",
+      "text": "روز مرجع",
+      "position": [
+        520,
+        435
+      ],
+      "hit_size": [
+        300,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "reference_page",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/calendar_page.svg",
+      "position": [
+        520,
+        580
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
       "id": "saturday",
       "scene": "TextObject",
       "text": "شنبه",
       "position": [
-        480,
-        520
-      ],
-      "hit_size": [
-        300,
-        70
-      ],
-      "text_color": "#354f54",
-      "interactions": []
-    },
-    {
-      "id": "yesterday",
-      "scene": "DropZone",
-      "position": [
-        960,
-        550
-      ],
-      "hit_size": [
-        260,
-        150
-      ],
-      "accepted_sources": [
-        "sun",
-        "mon",
-        "tue"
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "yesterday_label",
-      "scene": "TextObject",
-      "text": "دیروز",
-      "position": [
-        960,
-        470
-      ],
-      "hit_size": [
-        300,
-        70
-      ],
-      "text_color": "#354f54",
-      "interactions": []
-    },
-    {
-      "id": "today",
-      "scene": "DropZone",
-      "position": [
-        1440,
-        550
-      ],
-      "hit_size": [
-        260,
-        150
-      ],
-      "accepted_sources": [
-        "sun",
-        "mon",
-        "tue"
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "today_label",
-      "scene": "TextObject",
-      "text": "امروز",
-      "position": [
-        1440,
-        470
-      ],
-      "hit_size": [
-        300,
-        70
-      ],
-      "text_color": "#354f54",
-      "interactions": []
-    },
-    {
-      "id": "sun",
-      "scene": "TextObject",
-      "text": "یکشنبه",
-      "position": [
-        550,
-        800
-      ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "mon",
-      "scene": "TextObject",
-      "text": "دوشنبه",
-      "position": [
-        960,
-        800
-      ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "tue",
-      "scene": "TextObject",
-      "text": "سه‌شنبه",
-      "position": [
-        1370,
-        800
-      ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "yesterday_ok",
-      "scene": "TextObject",
-      "text": "یکشنبه",
-      "position": [
-        960,
-        610
+        520,
+        590
       ],
       "hit_size": [
         300,
@@ -210,19 +76,497 @@
       ],
       "text_color": "#354f54",
       "interactions": [],
-      "visible": false
+      "visible": true
     },
     {
-      "id": "today_ok",
+      "id": "yesterday_label",
       "scene": "TextObject",
-      "text": "دوشنبه",
+      "text": "دیروز",
       "position": [
-        1440,
-        610
+        960,
+        435
       ],
       "hit_size": [
         300,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "yesterday_page",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/calendar_page.svg",
+      "position": [
+        960,
+        580
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "yesterday_day_0",
+      "scene": "TextObject",
+      "text": "شنبه",
+      "position": [
+        960,
+        590
+      ],
+      "hit_size": [
+        240,
         70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "yesterday_day_1",
+      "scene": "TextObject",
+      "text": "یکشنبه",
+      "position": [
+        960,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "yesterday_day_2",
+      "scene": "TextObject",
+      "text": "دوشنبه",
+      "position": [
+        960,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "yesterday_day_3",
+      "scene": "TextObject",
+      "text": "سه‌شنبه",
+      "position": [
+        960,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "yesterday_day_4",
+      "scene": "TextObject",
+      "text": "چهارشنبه",
+      "position": [
+        960,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "yesterday_day_5",
+      "scene": "TextObject",
+      "text": "پنجشنبه",
+      "position": [
+        960,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "yesterday_day_6",
+      "scene": "TextObject",
+      "text": "جمعه",
+      "position": [
+        960,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "yesterday_previous",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/left_arrow.svg",
+      "position": [
+        850,
+        755
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 0,
+      "hit_size": [
+        180,
+        110
+      ]
+    },
+    {
+      "id": "yesterday_previous_label",
+      "scene": "TextObject",
+      "text": "روز قبل",
+      "position": [
+        850,
+        845
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "yesterday_next",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/left_arrow.svg",
+      "position": [
+        1070,
+        755
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 180,
+      "hit_size": [
+        180,
+        110
+      ]
+    },
+    {
+      "id": "yesterday_next_label",
+      "scene": "TextObject",
+      "text": "روز بعد",
+      "position": [
+        1070,
+        845
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "today_label",
+      "scene": "TextObject",
+      "text": "امروز",
+      "position": [
+        1400,
+        435
+      ],
+      "hit_size": [
+        300,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "today_page",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/calendar_page.svg",
+      "position": [
+        1400,
+        580
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "today_day_0",
+      "scene": "TextObject",
+      "text": "شنبه",
+      "position": [
+        1400,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "today_day_1",
+      "scene": "TextObject",
+      "text": "یکشنبه",
+      "position": [
+        1400,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "today_day_2",
+      "scene": "TextObject",
+      "text": "دوشنبه",
+      "position": [
+        1400,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "today_day_3",
+      "scene": "TextObject",
+      "text": "سه‌شنبه",
+      "position": [
+        1400,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "today_day_4",
+      "scene": "TextObject",
+      "text": "چهارشنبه",
+      "position": [
+        1400,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "today_day_5",
+      "scene": "TextObject",
+      "text": "پنجشنبه",
+      "position": [
+        1400,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "today_day_6",
+      "scene": "TextObject",
+      "text": "جمعه",
+      "position": [
+        1400,
+        590
+      ],
+      "hit_size": [
+        240,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "today_previous",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/left_arrow.svg",
+      "position": [
+        1290,
+        755
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 0,
+      "hit_size": [
+        180,
+        110
+      ]
+    },
+    {
+      "id": "today_previous_label",
+      "scene": "TextObject",
+      "text": "روز قبل",
+      "position": [
+        1290,
+        845
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "today_next",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/left_arrow.svg",
+      "position": [
+        1510,
+        755
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 180,
+      "hit_size": [
+        180,
+        110
+      ]
+    },
+    {
+      "id": "today_next_label",
+      "scene": "TextObject",
+      "text": "روز بعد",
+      "position": [
+        1510,
+        845
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "relation_arrow",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/left_arrow.svg",
+      "position": [
+        740,
+        580
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ],
+      "rotation_degrees": 180
+    },
+    {
+      "id": "next_day_arrow",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/left_arrow.svg",
+      "position": [
+        1180,
+        580
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ],
+      "rotation_degrees": 180
+    },
+    {
+      "id": "yesterday_error",
+      "scene": "TextObject",
+      "text": "دیروز باید فردای شنبه باشد؛ روزِ دیروز را اصلاح کن.",
+      "position": [
+        960,
+        1030
+      ],
+      "hit_size": [
+        1450,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "today_error",
+      "scene": "TextObject",
+      "text": "امروز باید یک روز بعد از دیروز باشد.",
+      "position": [
+        960,
+        1030
+      ],
+      "hit_size": [
+        1450,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "clock_feedback",
+      "scene": "TextObject",
+      "text": "چرخاندن ساعت، روز هفته را تغییر نمی‌دهد.",
+      "position": [
+        960,
+        1030
+      ],
+      "hit_size": [
+        1450,
+        65
       ],
       "text_color": "#354f54",
       "interactions": [],
@@ -231,19 +575,21 @@
     {
       "id": "confirm",
       "scene": "TextObject",
-      "text": "تأیید",
+      "text": "تأیید روزها",
       "position": [
         960,
-        920
+        945
       ],
       "hit_size": [
         300,
-        70
+        110
       ],
       "text_color": "#354f54",
       "interactions": [
         "tap"
-      ]
+      ],
+      "visible": true,
+      "sprite": "res://assets/samples/puzzle_tile.svg"
     },
     {
       "id": "clock",
@@ -251,7 +597,7 @@
       "sprite": "res://assets/samples/clock_face.svg",
       "position": [
         300,
-        820
+        825
       ],
       "interactions": [
         "tap"
@@ -265,183 +611,363 @@
   "rules": [
     {
       "id": "r0000",
-      "event": "drop_on",
-      "source": "sun",
-      "conditions": [],
-      "actions": [
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
         {
-          "type": "move",
-          "target": "sun",
-          "position": [
-            550,
-            800
-          ]
-        },
-        {
-          "type": "set_variable",
+          "type": "variable",
           "name": "yesterday",
-          "value": true,
-          "operation": "assign"
-        },
-        {
-          "type": "play_animation",
-          "target": "sun",
-          "animation": "chapter_two/rattle",
-          "wait": false
+          "operator": "eq",
+          "value": 0
         }
       ],
-      "once": false,
-      "target": "yesterday"
+      "actions": [
+        {
+          "type": "hide",
+          "target": "yesterday_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_6"
+        },
+        {
+          "type": "show",
+          "target": "yesterday_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
     },
     {
       "id": "r0001",
-      "event": "drop_on",
-      "source": "sun",
-      "conditions": [],
-      "actions": [
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
         {
-          "type": "move",
-          "target": "sun",
-          "position": [
-            550,
-            800
-          ]
-        },
-        {
-          "type": "set_variable",
-          "name": "today",
-          "value": false,
-          "operation": "assign"
-        },
-        {
-          "type": "play_animation",
-          "target": "sun",
-          "animation": "chapter_two/rattle",
-          "wait": false
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 1
         }
       ],
-      "once": false,
-      "target": "today"
+      "actions": [
+        {
+          "type": "hide",
+          "target": "yesterday_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_6"
+        },
+        {
+          "type": "show",
+          "target": "yesterday_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
     },
     {
       "id": "r0002",
-      "event": "drop_on",
-      "source": "mon",
-      "conditions": [],
-      "actions": [
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
         {
-          "type": "move",
-          "target": "mon",
-          "position": [
-            960,
-            800
-          ]
-        },
-        {
-          "type": "set_variable",
+          "type": "variable",
           "name": "yesterday",
-          "value": false,
-          "operation": "assign"
-        },
-        {
-          "type": "play_animation",
-          "target": "mon",
-          "animation": "chapter_two/rattle",
-          "wait": false
+          "operator": "eq",
+          "value": 2
         }
       ],
-      "once": false,
-      "target": "yesterday"
+      "actions": [
+        {
+          "type": "hide",
+          "target": "yesterday_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_6"
+        },
+        {
+          "type": "show",
+          "target": "yesterday_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
     },
     {
       "id": "r0003",
-      "event": "drop_on",
-      "source": "mon",
-      "conditions": [],
-      "actions": [
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
         {
-          "type": "move",
-          "target": "mon",
-          "position": [
-            960,
-            800
-          ]
-        },
-        {
-          "type": "set_variable",
-          "name": "today",
-          "value": true,
-          "operation": "assign"
-        },
-        {
-          "type": "play_animation",
-          "target": "mon",
-          "animation": "chapter_two/rattle",
-          "wait": false
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 3
         }
       ],
-      "once": false,
-      "target": "today"
+      "actions": [
+        {
+          "type": "hide",
+          "target": "yesterday_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_6"
+        },
+        {
+          "type": "show",
+          "target": "yesterday_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
     },
     {
       "id": "r0004",
-      "event": "drop_on",
-      "source": "tue",
-      "conditions": [],
-      "actions": [
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
         {
-          "type": "move",
-          "target": "tue",
-          "position": [
-            1370,
-            800
-          ]
-        },
-        {
-          "type": "set_variable",
+          "type": "variable",
           "name": "yesterday",
-          "value": false,
-          "operation": "assign"
-        },
-        {
-          "type": "play_animation",
-          "target": "tue",
-          "animation": "chapter_two/rattle",
-          "wait": false
+          "operator": "eq",
+          "value": 4
         }
       ],
-      "once": false,
-      "target": "yesterday"
+      "actions": [
+        {
+          "type": "hide",
+          "target": "yesterday_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_6"
+        },
+        {
+          "type": "show",
+          "target": "yesterday_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
     },
     {
       "id": "r0005",
-      "event": "drop_on",
-      "source": "tue",
-      "conditions": [],
-      "actions": [
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
         {
-          "type": "move",
-          "target": "tue",
-          "position": [
-            1370,
-            800
-          ]
-        },
-        {
-          "type": "set_variable",
-          "name": "today",
-          "value": false,
-          "operation": "assign"
-        },
-        {
-          "type": "play_animation",
-          "target": "tue",
-          "animation": "chapter_two/rattle",
-          "wait": false
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 5
         }
       ],
-      "once": false,
-      "target": "today"
+      "actions": [
+        {
+          "type": "hide",
+          "target": "yesterday_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_6"
+        },
+        {
+          "type": "show",
+          "target": "yesterday_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
     },
     {
       "id": "r0006",
@@ -452,73 +978,155 @@
           "type": "variable",
           "name": "yesterday",
           "operator": "eq",
-          "value": true
+          "value": 6
         }
       ],
       "actions": [
         {
+          "type": "hide",
+          "target": "yesterday_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_day_6"
+        },
+        {
           "type": "show",
-          "target": "yesterday_ok"
+          "target": "yesterday_day_6"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
         }
       ],
       "once": false
     },
     {
       "id": "r0007",
-      "event": "variable_changed",
-      "source": "$level",
+      "event": "tap",
+      "source": "yesterday_previous",
       "conditions": [
         {
           "type": "variable",
           "name": "yesterday",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
           "operator": "eq",
           "value": false
         }
       ],
       "actions": [
         {
-          "type": "hide",
-          "target": "yesterday_ok"
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
         }
       ],
       "once": false
     },
     {
       "id": "r0008",
-      "event": "variable_changed",
-      "source": "$level",
+      "event": "tap",
+      "source": "yesterday_previous",
       "conditions": [
         {
           "type": "variable",
-          "name": "today",
+          "name": "yesterday",
           "operator": "eq",
-          "value": true
-        }
-      ],
-      "actions": [
-        {
-          "type": "show",
-          "target": "today_ok"
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0009",
-      "event": "variable_changed",
-      "source": "$level",
-      "conditions": [
+          "value": 1
+        },
         {
           "type": "variable",
-          "name": "today",
+          "name": "adjusted",
           "operator": "eq",
           "value": false
         }
       ],
       "actions": [
         {
-          "type": "hide",
-          "target": "today_ok"
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0009",
+      "event": "tap",
+      "source": "yesterday_previous",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
         }
       ],
       "once": false
@@ -526,22 +1134,1426 @@
     {
       "id": "r0010",
       "event": "tap",
+      "source": "yesterday_previous",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0011",
+      "event": "tap",
+      "source": "yesterday_previous",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0012",
+      "event": "tap",
+      "source": "yesterday_previous",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0013",
+      "event": "tap",
+      "source": "yesterday_previous",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0014",
+      "event": "tap",
+      "source": "yesterday_previous",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0015",
+      "event": "tap",
+      "source": "yesterday_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0016",
+      "event": "tap",
+      "source": "yesterday_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0017",
+      "event": "tap",
+      "source": "yesterday_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0018",
+      "event": "tap",
+      "source": "yesterday_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0019",
+      "event": "tap",
+      "source": "yesterday_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0020",
+      "event": "tap",
+      "source": "yesterday_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0021",
+      "event": "tap",
+      "source": "yesterday_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0022",
+      "event": "tap",
+      "source": "yesterday_next",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0023",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "today_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_6"
+        },
+        {
+          "type": "show",
+          "target": "today_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0024",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "today_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_6"
+        },
+        {
+          "type": "show",
+          "target": "today_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0025",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "today_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_6"
+        },
+        {
+          "type": "show",
+          "target": "today_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0026",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 3
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "today_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_6"
+        },
+        {
+          "type": "show",
+          "target": "today_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0027",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 4
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "today_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_6"
+        },
+        {
+          "type": "show",
+          "target": "today_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0028",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 5
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "today_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_6"
+        },
+        {
+          "type": "show",
+          "target": "today_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0029",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 6
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "today_day_0"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_1"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_2"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_3"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_4"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_5"
+        },
+        {
+          "type": "hide",
+          "target": "today_day_6"
+        },
+        {
+          "type": "show",
+          "target": "today_day_6"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0030",
+      "event": "tap",
+      "source": "today_previous",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0031",
+      "event": "tap",
+      "source": "today_previous",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0032",
+      "event": "tap",
+      "source": "today_previous",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0033",
+      "event": "tap",
+      "source": "today_previous",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0034",
+      "event": "tap",
+      "source": "today_previous",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0035",
+      "event": "tap",
+      "source": "today_previous",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0036",
+      "event": "tap",
+      "source": "today_previous",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0037",
+      "event": "tap",
+      "source": "today_previous",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0038",
+      "event": "tap",
+      "source": "today_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0039",
+      "event": "tap",
+      "source": "today_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0040",
+      "event": "tap",
+      "source": "today_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0041",
+      "event": "tap",
+      "source": "today_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0042",
+      "event": "tap",
+      "source": "today_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0043",
+      "event": "tap",
+      "source": "today_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0044",
+      "event": "tap",
+      "source": "today_next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "adjusted",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0045",
+      "event": "tap",
+      "source": "today_next",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "adjusted",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0046",
+      "event": "tap",
+      "source": "confirm",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "ne",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0047",
+      "event": "tap",
       "source": "confirm",
       "conditions": [
         {
           "type": "variable",
           "name": "yesterday",
           "operator": "eq",
-          "value": true
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "ne",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0048",
+      "event": "tap",
+      "source": "confirm",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": 1
         },
         {
           "type": "variable",
           "name": "today",
           "operator": "eq",
-          "value": true
+          "value": 2
         }
       ],
       "actions": [
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
+        },
+        {
+          "type": "hide",
+          "target": "clock_feedback"
+        },
         {
           "type": "set_variable",
           "name": "solved",
@@ -552,7 +2564,7 @@
       "once": false
     },
     {
-      "id": "r0011",
+      "id": "r0049",
       "event": "tap",
       "source": "clock",
       "conditions": [],
@@ -561,6 +2573,18 @@
           "type": "rotate",
           "target": "clock",
           "degrees": 90
+        },
+        {
+          "type": "show",
+          "target": "clock_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "yesterday_error"
+        },
+        {
+          "type": "hide",
+          "target": "today_error"
         }
       ],
       "once": false

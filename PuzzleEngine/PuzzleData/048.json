@@ -2,144 +2,123 @@
   "schema_version": 1,
   "id": 48,
   "question": "۱۷ گوسفند داری، همه به جز ۹ تا می‌میرند. چند تا می‌ماند؟",
-  "hint": "همه به‌جز ۹ تا؛ مرده‌ها را کنار بزن و تعداد زنده‌ها را تأیید کن.",
+  "hint": "«همه به‌جز ۹ تا» یعنی ۹ گوسفند زنده‌اند؛ فقط گوسفندهای ایستاده را بشمار.",
   "answer": "۹",
   "time_limit_seconds": 120,
   "base_score": 145,
   "background": "res://assets/samples/sheepfold_day.svg",
   "success": {
-    "result_delay_seconds": 1.0
+    "result_delay_seconds": 1
   },
   "variables": {
     "solved": false,
-    "removed": 0
+    "removed": 0,
+    "living": 0,
+    "counted_0": false,
+    "counted_1": false,
+    "counted_2": false,
+    "counted_3": false,
+    "counted_4": false,
+    "counted_5": false,
+    "counted_6": false,
+    "counted_7": false,
+    "counted_8": false
   },
   "objects": [
     {
-      "id": "sheep_0",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/sheep_alive.svg",
+      "id": "instructions",
+      "scene": "TextObject",
+      "text": "هر گوسفند زنده را یک‌بار لمس کن تا علامت بخورد؛ سپس شمارش را تأیید کن.",
       "position": [
-        370,
-        520
+        960,
+        350
       ],
-      "interactions": [],
-      "scale": [
-        0.6,
-        0.6
-      ]
+      "hit_size": [
+        1500,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": []
     },
     {
-      "id": "sheep_1",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/sheep_alive.svg",
+      "id": "incomplete",
+      "scene": "TextObject",
+      "text": "هنوز همهٔ گوسفندهای زنده را علامت نزده‌ای.",
       "position": [
-        515,
-        520
+        960,
+        1030
       ],
+      "hit_size": [
+        1450,
+        65
+      ],
+      "text_color": "#354f54",
       "interactions": [],
-      "scale": [
-        0.6,
-        0.6
-      ]
+      "visible": false
     },
     {
-      "id": "sheep_2",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/sheep_alive.svg",
+      "id": "already_counted",
+      "scene": "TextObject",
+      "text": "این گوسفند قبلاً شمرده شده است.",
       "position": [
-        660,
-        520
+        960,
+        1030
       ],
+      "hit_size": [
+        1450,
+        65
+      ],
+      "text_color": "#354f54",
       "interactions": [],
-      "scale": [
-        0.6,
-        0.6
-      ]
+      "visible": false
     },
     {
-      "id": "sheep_3",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/sheep_alive.svg",
+      "id": "dead_feedback",
+      "scene": "TextObject",
+      "text": "این گوسفند زنده نیست؛ به شمارش زنده‌ها اضافه نمی‌شود.",
       "position": [
-        805,
-        520
+        960,
+        1030
       ],
+      "hit_size": [
+        1450,
+        65
+      ],
+      "text_color": "#354f54",
       "interactions": [],
-      "scale": [
-        0.6,
-        0.6
-      ]
+      "visible": false
     },
     {
-      "id": "sheep_4",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/sheep_alive.svg",
+      "id": "wrong_eight",
+      "scene": "TextObject",
+      "text": "۸ تعداد گوسفندهای مرده است؛ گوسفندهای زنده را بشمار.",
       "position": [
-        950,
-        520
+        960,
+        1030
       ],
+      "hit_size": [
+        1450,
+        65
+      ],
+      "text_color": "#354f54",
       "interactions": [],
-      "scale": [
-        0.6,
-        0.6
-      ]
+      "visible": false
     },
     {
-      "id": "sheep_5",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/sheep_alive.svg",
+      "id": "gate_feedback",
+      "scene": "TextObject",
+      "text": "باز و بسته‌شدن در، تعداد گوسفندها را تغییر نمی‌دهد.",
       "position": [
-        1095,
-        520
+        960,
+        1030
       ],
-      "interactions": [],
-      "scale": [
-        0.6,
-        0.6
-      ]
-    },
-    {
-      "id": "sheep_6",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/sheep_alive.svg",
-      "position": [
-        1240,
-        520
+      "hit_size": [
+        1450,
+        65
       ],
+      "text_color": "#354f54",
       "interactions": [],
-      "scale": [
-        0.6,
-        0.6
-      ]
-    },
-    {
-      "id": "sheep_7",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/sheep_alive.svg",
-      "position": [
-        1385,
-        520
-      ],
-      "interactions": [],
-      "scale": [
-        0.6,
-        0.6
-      ]
-    },
-    {
-      "id": "sheep_8",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/sheep_alive.svg",
-      "position": [
-        1530,
-        520
-      ],
-      "interactions": [],
-      "scale": [
-        0.6,
-        0.6
-      ]
+      "visible": false
     },
     {
       "id": "sheep_9",
@@ -147,6 +126,225 @@
       "sprite": "res://assets/samples/sheep_dead.svg",
       "position": [
         370,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "sheep_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/sheep_alive.svg",
+      "position": [
+        515,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "marked_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        515,
+        455
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "sheep_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/sheep_alive.svg",
+      "position": [
+        660,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "marked_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        660,
+        455
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "sheep_10",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/sheep_dead.svg",
+      "position": [
+        805,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "sheep_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/sheep_alive.svg",
+      "position": [
+        950,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "marked_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        950,
+        455
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "sheep_11",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/sheep_dead.svg",
+      "position": [
+        1095,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "sheep_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/sheep_alive.svg",
+      "position": [
+        1240,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "marked_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        1240,
+        455
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "sheep_4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/sheep_alive.svg",
+      "position": [
+        1385,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "marked_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        1385,
+        455
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "sheep_12",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/sheep_dead.svg",
+      "position": [
+        1530,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "sheep_5",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/sheep_alive.svg",
+      "position": [
+        370,
         730
       ],
       "interactions": [
@@ -158,7 +356,22 @@
       ]
     },
     {
-      "id": "sheep_10",
+      "id": "marked_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        370,
+        665
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "sheep_13",
       "scene": "ClickableObject",
       "sprite": "res://assets/samples/sheep_dead.svg",
       "position": [
@@ -174,9 +387,9 @@
       ]
     },
     {
-      "id": "sheep_11",
+      "id": "sheep_6",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/sheep_dead.svg",
+      "sprite": "res://assets/samples/sheep_alive.svg",
       "position": [
         660,
         730
@@ -190,9 +403,24 @@
       ]
     },
     {
-      "id": "sheep_12",
+      "id": "marked_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        660,
+        665
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "sheep_7",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/sheep_dead.svg",
+      "sprite": "res://assets/samples/sheep_alive.svg",
       "position": [
         805,
         730
@@ -206,7 +434,22 @@
       ]
     },
     {
-      "id": "sheep_13",
+      "id": "marked_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        805,
+        665
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "sheep_14",
       "scene": "ClickableObject",
       "sprite": "res://assets/samples/sheep_dead.svg",
       "position": [
@@ -222,9 +465,9 @@
       ]
     },
     {
-      "id": "sheep_14",
+      "id": "sheep_8",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/sheep_dead.svg",
+      "sprite": "res://assets/samples/sheep_alive.svg",
       "position": [
         1095,
         730
@@ -235,6 +478,21 @@
       "scale": [
         0.6,
         0.6
+      ]
+    },
+    {
+      "id": "marked_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        1095,
+        665
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.55,
+        0.55
       ]
     },
     {
@@ -270,12 +528,172 @@
       ]
     },
     {
-      "id": "nine",
+      "id": "living_reading_0",
       "scene": "TextObject",
-      "text": "۹",
+      "text": "زنده‌های شمرده‌شده: ۰",
       "position": [
-        700,
-        920
+        960,
+        845
+      ],
+      "hit_size": [
+        750,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "living_reading_1",
+      "scene": "TextObject",
+      "text": "زنده‌های شمرده‌شده: ۱",
+      "position": [
+        960,
+        845
+      ],
+      "hit_size": [
+        750,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "living_reading_2",
+      "scene": "TextObject",
+      "text": "زنده‌های شمرده‌شده: ۲",
+      "position": [
+        960,
+        845
+      ],
+      "hit_size": [
+        750,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "living_reading_3",
+      "scene": "TextObject",
+      "text": "زنده‌های شمرده‌شده: ۳",
+      "position": [
+        960,
+        845
+      ],
+      "hit_size": [
+        750,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "living_reading_4",
+      "scene": "TextObject",
+      "text": "زنده‌های شمرده‌شده: ۴",
+      "position": [
+        960,
+        845
+      ],
+      "hit_size": [
+        750,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "living_reading_5",
+      "scene": "TextObject",
+      "text": "زنده‌های شمرده‌شده: ۵",
+      "position": [
+        960,
+        845
+      ],
+      "hit_size": [
+        750,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "living_reading_6",
+      "scene": "TextObject",
+      "text": "زنده‌های شمرده‌شده: ۶",
+      "position": [
+        960,
+        845
+      ],
+      "hit_size": [
+        750,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "living_reading_7",
+      "scene": "TextObject",
+      "text": "زنده‌های شمرده‌شده: ۷",
+      "position": [
+        960,
+        845
+      ],
+      "hit_size": [
+        750,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "living_reading_8",
+      "scene": "TextObject",
+      "text": "زنده‌های شمرده‌شده: ۸",
+      "position": [
+        960,
+        845
+      ],
+      "hit_size": [
+        750,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "living_reading_9",
+      "scene": "TextObject",
+      "text": "زنده‌های شمرده‌شده: ۹",
+      "position": [
+        960,
+        845
+      ],
+      "hit_size": [
+        750,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "confirm",
+      "scene": "TextObject",
+      "text": "تأیید شمارش",
+      "position": [
+        1050,
+        950
       ],
       "hit_size": [
         300,
@@ -283,27 +701,18 @@
       ],
       "text_color": "#354f54",
       "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
+        "tap"
       ],
+      "visible": true,
       "sprite": "res://assets/samples/puzzle_tile.svg"
     },
     {
       "id": "eight",
       "scene": "TextObject",
-      "text": "۸",
+      "text": "۸ تا مانده",
       "position": [
-        1180,
-        920
+        470,
+        950
       ],
       "hit_size": [
         300,
@@ -311,51 +720,10 @@
       ],
       "text_color": "#354f54",
       "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
+        "tap"
       ],
+      "visible": true,
       "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "answer",
-      "scene": "DropZone",
-      "position": [
-        960,
-        820
-      ],
-      "hit_size": [
-        260,
-        150
-      ],
-      "accepted_sources": [
-        "nine",
-        "eight"
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "answer_label",
-      "scene": "TextObject",
-      "text": "تعداد زنده‌ها",
-      "position": [
-        960,
-        820
-      ],
-      "hit_size": [
-        300,
-        70
-      ],
-      "text_color": "#354f54",
-      "interactions": []
     },
     {
       "id": "gate",
@@ -393,12 +761,220 @@
           "name": "removed",
           "value": 1,
           "operation": "increment"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "dead_feedback"
         }
       ],
       "once": true
     },
     {
       "id": "r0001",
+      "event": "tap",
+      "source": "sheep_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "already_counted"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "sheep_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_0",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "counted_0",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "living",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "show",
+          "target": "marked_0"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "tap",
+      "source": "sheep_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "already_counted"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "tap",
+      "source": "sheep_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_1",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "counted_1",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "living",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "show",
+          "target": "marked_1"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
       "event": "tap",
       "source": "sheep_10",
       "conditions": [],
@@ -412,12 +988,128 @@
           "name": "removed",
           "value": 1,
           "operation": "increment"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "dead_feedback"
         }
       ],
       "once": true
     },
     {
-      "id": "r0002",
+      "id": "r0006",
+      "event": "tap",
+      "source": "sheep_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "already_counted"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "tap",
+      "source": "sheep_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_2",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "counted_2",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "living",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "show",
+          "target": "marked_2"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
       "event": "tap",
       "source": "sheep_11",
       "conditions": [],
@@ -431,12 +1123,220 @@
           "name": "removed",
           "value": 1,
           "operation": "increment"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "dead_feedback"
         }
       ],
       "once": true
     },
     {
-      "id": "r0003",
+      "id": "r0009",
+      "event": "tap",
+      "source": "sheep_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "already_counted"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0010",
+      "event": "tap",
+      "source": "sheep_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_3",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "counted_3",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "living",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "show",
+          "target": "marked_3"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0011",
+      "event": "tap",
+      "source": "sheep_4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_4",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "already_counted"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0012",
+      "event": "tap",
+      "source": "sheep_4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_4",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "counted_4",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "living",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "show",
+          "target": "marked_4"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0013",
       "event": "tap",
       "source": "sheep_12",
       "conditions": [],
@@ -450,12 +1350,128 @@
           "name": "removed",
           "value": 1,
           "operation": "increment"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "dead_feedback"
         }
       ],
       "once": true
     },
     {
-      "id": "r0004",
+      "id": "r0014",
+      "event": "tap",
+      "source": "sheep_5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "already_counted"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0015",
+      "event": "tap",
+      "source": "sheep_5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_5",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "counted_5",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "living",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "show",
+          "target": "marked_5"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0016",
       "event": "tap",
       "source": "sheep_13",
       "conditions": [],
@@ -469,12 +1485,220 @@
           "name": "removed",
           "value": 1,
           "operation": "increment"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "dead_feedback"
         }
       ],
       "once": true
     },
     {
-      "id": "r0005",
+      "id": "r0017",
+      "event": "tap",
+      "source": "sheep_6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_6",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "already_counted"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0018",
+      "event": "tap",
+      "source": "sheep_6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_6",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "counted_6",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "living",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "show",
+          "target": "marked_6"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0019",
+      "event": "tap",
+      "source": "sheep_7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_7",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "already_counted"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0020",
+      "event": "tap",
+      "source": "sheep_7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_7",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "counted_7",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "living",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "show",
+          "target": "marked_7"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0021",
       "event": "tap",
       "source": "sheep_14",
       "conditions": [],
@@ -488,12 +1712,128 @@
           "name": "removed",
           "value": 1,
           "operation": "increment"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "dead_feedback"
         }
       ],
       "once": true
     },
     {
-      "id": "r0006",
+      "id": "r0022",
+      "event": "tap",
+      "source": "sheep_8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_8",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "already_counted"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0023",
+      "event": "tap",
+      "source": "sheep_8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "counted_8",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "counted_8",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "living",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "show",
+          "target": "marked_8"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0024",
       "event": "tap",
       "source": "sheep_15",
       "conditions": [],
@@ -507,12 +1847,36 @@
           "name": "removed",
           "value": 1,
           "operation": "increment"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "dead_feedback"
         }
       ],
       "once": true
     },
     {
-      "id": "r0007",
+      "id": "r0025",
       "event": "tap",
       "source": "sheep_16",
       "conditions": [],
@@ -526,54 +1890,739 @@
           "name": "removed",
           "value": 1,
           "operation": "increment"
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "dead_feedback"
         }
       ],
       "once": true
     },
     {
-      "id": "r0008",
-      "event": "drop_on",
-      "source": "eight",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "move",
-          "target": "eight",
-          "position": [
-            1180,
-            920
-          ]
-        },
-        {
-          "type": "play_animation",
-          "target": "eight",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false,
-      "target": "answer"
-    },
-    {
-      "id": "r0009",
-      "event": "drop_on",
-      "source": "nine",
+      "id": "r0026",
+      "event": "variable_changed",
+      "source": "$level",
       "conditions": [
         {
           "type": "variable",
-          "name": "removed",
+          "name": "living",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "living_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_3"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_4"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_5"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_6"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_7"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_8"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_9"
+        },
+        {
+          "type": "show",
+          "target": "living_reading_0"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0027",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "living",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "living_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_3"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_4"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_5"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_6"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_7"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_8"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_9"
+        },
+        {
+          "type": "show",
+          "target": "living_reading_1"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0028",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "living",
+          "operator": "eq",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "living_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_3"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_4"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_5"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_6"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_7"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_8"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_9"
+        },
+        {
+          "type": "show",
+          "target": "living_reading_2"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0029",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "living",
+          "operator": "eq",
+          "value": 3
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "living_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_3"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_4"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_5"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_6"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_7"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_8"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_9"
+        },
+        {
+          "type": "show",
+          "target": "living_reading_3"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0030",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "living",
+          "operator": "eq",
+          "value": 4
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "living_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_3"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_4"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_5"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_6"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_7"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_8"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_9"
+        },
+        {
+          "type": "show",
+          "target": "living_reading_4"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0031",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "living",
+          "operator": "eq",
+          "value": 5
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "living_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_3"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_4"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_5"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_6"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_7"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_8"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_9"
+        },
+        {
+          "type": "show",
+          "target": "living_reading_5"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0032",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "living",
+          "operator": "eq",
+          "value": 6
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "living_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_3"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_4"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_5"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_6"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_7"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_8"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_9"
+        },
+        {
+          "type": "show",
+          "target": "living_reading_6"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0033",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "living",
+          "operator": "eq",
+          "value": 7
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "living_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_3"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_4"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_5"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_6"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_7"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_8"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_9"
+        },
+        {
+          "type": "show",
+          "target": "living_reading_7"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0034",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "living",
           "operator": "eq",
           "value": 8
         }
       ],
       "actions": [
         {
-          "type": "move",
-          "target": "nine",
-          "position": [
-            960,
-            820
-          ]
+          "type": "hide",
+          "target": "living_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_3"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_4"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_5"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_6"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_7"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_8"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_9"
+        },
+        {
+          "type": "show",
+          "target": "living_reading_8"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0035",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "living",
+          "operator": "eq",
+          "value": 9
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "living_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_3"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_4"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_5"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_6"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_7"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_8"
+        },
+        {
+          "type": "hide",
+          "target": "living_reading_9"
+        },
+        {
+          "type": "show",
+          "target": "living_reading_9"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0036",
+      "event": "tap",
+      "source": "eight",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "wrong_eight"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0037",
+      "event": "tap",
+      "source": "confirm",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "living",
+          "operator": "lt",
+          "value": 9
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "incomplete"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0038",
+      "event": "tap",
+      "source": "confirm",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "living",
+          "operator": "eq",
+          "value": 9
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
         },
         {
           "type": "set_variable",
@@ -582,11 +2631,10 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "answer"
+      "once": false
     },
     {
-      "id": "r0010",
+      "id": "r0039",
       "event": "swipe",
       "source": "gate",
       "conditions": [],
@@ -596,6 +2644,30 @@
           "target": "gate",
           "animation": "chapter_two/rattle",
           "wait": false
+        },
+        {
+          "type": "hide",
+          "target": "incomplete"
+        },
+        {
+          "type": "hide",
+          "target": "already_counted"
+        },
+        {
+          "type": "hide",
+          "target": "dead_feedback"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_eight"
+        },
+        {
+          "type": "hide",
+          "target": "gate_feedback"
+        },
+        {
+          "type": "show",
+          "target": "gate_feedback"
         }
       ],
       "once": false
