@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=9 format=3]
 [ext_resource type="Script" path="res://PuzzleEngine/PuzzleController.gd" id="1"]
 [ext_resource type="PackedScene" path="res://PuzzleEngine/UI/PuzzleHUD.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://PuzzleEngine/UI/PuzzleOverlay.tscn" id="3"]
 [ext_resource type="Script" path="res://PuzzleEngine/InteractionManager.gd" id="4"]
 [ext_resource type="Script" path="res://PuzzleEngine/ActionRunner.gd" id="5"]
 [ext_resource type="Script" path="res://PuzzleEngine/RuleEvaluator.gd" id="6"]
+[ext_resource type="Script" path="res://PuzzleEngine/UI/SuccessFeedback.gd" id="7"]
+[ext_resource type="Script" path="res://PuzzleEngine/UI/SafeMargin.gd" id="8"]
 
 [node name="PuzzleScene" type="Node"]
 script = ExtResource("1")
@@ -30,6 +32,36 @@ script = ExtResource("6")
 layer = 10
 
 [node name="HUD" parent="HUDLayer" instance=ExtResource("2")]
+
+[node name="SuccessLayer" type="CanvasLayer" parent="."]
+layer = 15
+
+[node name="Root" type="Control" parent="SuccessLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+layout_direction = 2
+
+[node name="SafeMargin" type="MarginContainer" parent="SuccessLayer/Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8")
+
+[node name="Feedback" type="Control" parent="SuccessLayer/Root/SafeMargin"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+clip_contents = true
+script = ExtResource("7")
 
 [node name="OverlayLayer" type="CanvasLayer" parent="."]
 layer = 20

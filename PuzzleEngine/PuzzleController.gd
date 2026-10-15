@@ -17,6 +17,7 @@ const STATUS_COMPLETED := "COMPLETED"
 const STATUS_ERROR := "ERROR"
 const STATUS_FAILED := "FAILED"
 const STATUS_TRANSITIONING := "TRANSITIONING"
+const SUCCESS_SOUND := preload("res://assets/samples/radio_chime.wav")
 
 var loader := PuzzleLoader.new()
 var state := PuzzleState.new()
@@ -51,6 +52,7 @@ var _timer_warning_played: bool = false
 @onready var action_runner: PuzzleActionRunner = $ActionRunner
 @onready var rule_evaluator: PuzzleRuleEvaluator = $RuleEvaluator
 @onready var overlay: PuzzleOverlay = $OverlayLayer/OverlayRoot
+@onready var success_feedback: PuzzleSuccessFeedback = $SuccessLayer/Root/SafeMargin/Feedback
 
 func _ready() -> void:
 	overlay.continue_requested.connect(continue_to_next_level)
@@ -135,6 +137,7 @@ func load_level_index(index: int) -> bool:
 
 func _clear_stage() -> void:
 	_clear_success_sound()
+	success_feedback.stop()
 	GameAudio.stop_timer_warning()
 	_timer_warning_played = false
 	_result_delay_remaining = 0.0
@@ -205,6 +208,8 @@ func _report_failure(errors: Array) -> void:
 func _process(delta: float) -> void:
 	if is_instance_valid(_success_player):
 		_success_player.stream_paused = not _environment_pauses.is_empty()
+	if _environment_pauses.is_empty():
+		success_feedback.advance(delta)
 	ad_adapter.poll()
 	if run_status == STATUS_PLAYING:
 		_update_clock()
@@ -332,12 +337,15 @@ func _sync_results() -> void:
 
 func _show_current_result(present_success: bool = false) -> void:
 	if present_success and not current_definition.is_empty():
+		GameAudio.stop_timer_warning()
 		_play_success_sound()
-		_result_delay_remaining = float(current_definition.get("success", {}).get("result_delay_seconds", 1.5))
+		success_feedback.play()
+		_result_delay_remaining = maxf(PuzzleSuccessFeedback.DURATION, float(current_definition.get("success", {}).get("result_delay_seconds", 1.5)))
 		if _result_delay_remaining > 0.0:
 			# The result is already recorded; leave the solved scene visible first.
 			overlay.hide()
 			return
+	success_feedback.stop()
 	var definition := current_definition
 	if definition.is_empty():
 		# A restored pending result needs its answer, without creating solved objects.
@@ -354,11 +362,9 @@ func _show_current_result(present_success: bool = false) -> void:
 func _play_success_sound() -> void:
 	_clear_success_sound()
 	var sound: String = current_definition.get("success", {}).get("sound", "")
-	if sound.is_empty():
-		return
-	var stream := load(sound) as AudioStream
+	var stream: AudioStream = SUCCESS_SOUND if sound.is_empty() else load(sound) as AudioStream
 	if stream == null:
-		return # A presentation failure must not undo the recorded result.
+		stream = SUCCESS_SOUND # A presentation failure must not undo the recorded result.
 	var player := AudioStreamPlayer.new()
 	player.stream = stream
 	add_child(player)
