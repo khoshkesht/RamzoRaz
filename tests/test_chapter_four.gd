@@ -99,9 +99,9 @@ func _solve(c: PuzzleController, id: int) -> void:
 			_tap(c, "fill")
 			_tap(c, "pour")
 		44:
-			_drop(c, "front_counter", "target_front")
-			_drop(c, "back_counter", "target_back")
-			_drop(c, "answer24", "answer")
+			_tap(c, "front_counter")
+			_tap(c, "back_counter")
+			_tap(c, "answer24")
 		45:
 			_drop(c, "sun", "yesterday")
 			_drop(c, "mon", "today")
@@ -161,7 +161,7 @@ func _trap(c: PuzzleController, id: int, second: bool) -> void:
 			else: _drop(c, "measure", "tap_zone")
 		44:
 			if second: _drag(c, "flag", Vector2(1350, 880))
-			else: _drop(c, "answer25", "answer")
+			else: _tap(c, "answer25")
 		45:
 			if second: _tap(c, "clock")
 			else: _drop(c, "sun", "today")
@@ -270,6 +270,7 @@ func _run() -> void:
 	c.load_level_index(49)
 	_swipe(c, "trail_3")
 	check(c.state.variables["trail"] == 0, "Following a disconnected last segment does not count")
+	_queue_controls(c)
 	_water_transitions(c)
 	_result_delay_and_hint_price(c)
 	c.free()
@@ -303,6 +304,33 @@ func _result_delay_and_hint_price(c: PuzzleController) -> void:
 			check(store.buy_hint(3) and store.data["hint_points_spent"] == 350, "New purchase charges 250 after a legacy purchase")
 			check(store.buy_hint(3) and store.data["hint_points_spent"] == 350, "An unlocked hint is never charged again")
 			check(store.valid(JSON.parse_string(JSON.stringify(store.data))), "Mixed old and new spending survives serialization")
+
+func _queue_controls(c: PuzzleController) -> void:
+	for reverse: bool in [false, true]:
+		c.load_level_index(43)
+		_tap(c, "answer24")
+		check(c.run_status == "PLAYING" and c.object_nodes["count_first"].visible, "The answer requires both visible counts")
+		var first := "back_counter" if reverse else "front_counter"
+		var second := "front_counter" if reverse else "back_counter"
+		_tap(c, first)
+		_tap(c, first)
+		check(c.state.variables["back"] == reverse and c.state.variables["front"] == (not reverse), "Repeated count does not complete the other side")
+		_tap(c, "answer24")
+		check(c.run_status == "PLAYING", "One side alone cannot confirm the total")
+		_tap(c, second)
+		_tap(c, second)
+		check(c.object_nodes["front_number_9"].visible and c.object_nodes["back_number_9"].visible and c.object_nodes["shared_note"].visible, "The same target is visibly counted as ten and fifteen")
+		check(c.object_nodes["front_number_0"].visible and c.object_nodes["back_number_23"].visible, "Both ends of the queue are included")
+		_tap(c, "answer25")
+		check(c.run_status == "PLAYING" and c.object_nodes["wrong_answer"].visible, "Double-counting has explicit feedback and preserves the correct route")
+		_tap(c, "answer24")
+		check(c.run_status == "COMPLETED", "Either count order can solve the queue")
+	c.load_level_index(43)
+	_tap(c, "front_counter")
+	c.clock.elapsed_usec = c.clock.limit_usec
+	c._process(0.0)
+	c.retry_level()
+	check(not c.state.variables["front"] and not c.state.variables["back"] and not c.object_nodes["front_number_9"].visible and not c.object_nodes["shared_note"].visible, "Retry clears counts, highlights and feedback")
 
 func _water_transitions(c: PuzzleController) -> void:
 	c.load_level_index(42)

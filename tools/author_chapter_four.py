@@ -407,19 +407,65 @@ l.rule('hold','ruler',[feedback('ruler'),*stage43_message('height_only')])
 l.win('variable_changed','$level',conditions=[var('five',4)])
 l.save()
 
-l=Level(44,'از دو طرف تا خودت بشمار؛ فرد هدف را دوبار حساب نکن.')
+# 44: explicit count buttons reveal both inclusive ranges; no hidden Drop targets.
+svg('queue_count_front','<rect x="4" y="4" width="54" height="122" rx="14" fill="#b1d9ca" fill-opacity=".6" stroke="#66998c" stroke-width="3"/>',62,130)
+svg('queue_count_back','<rect x="4" y="4" width="54" height="122" rx="14" fill="#ead2ab" fill-opacity=".6" stroke="#b69a70" stroke-width="3"/>',62,130)
+svg('queue_target','<rect x="4" y="4" width="70" height="138" rx="18" fill="#f5e2ad" stroke="#a98242" stroke-width="5"/>',78,146)
+svg('queue_flag','<path d="M30 22v166m0-153q64-27 116 4v75q-52-31-116-4" fill="#d2a165"/><path d="M12 190h52" fill="none"/>',170,200)
+l=Level(44,'خودت در هر دو شمارش آمده‌ای؛ ۱۰ و ۱۵ را جمع کن و یک نفر مشترک را کم کن.','stream_garden_background_light')
 l.variable(front=False,back=False)
-l.note('صف از چپ شروع می‌شود. دو مهره را از دو سمت روی فرد هدف قرار بده.')
+l.note('۱. دو دکمهٔ شمارش را لمس کن. ۲. تعداد کل افراد صف را از پایین انتخاب کن.')
+
+def stage44_text(id,text,x,y,width=300,height=60,visible=True,inputs=()):
+    l.text(id,text,x,y,inputs,visible=visible)
+    l.d['objects'][-1]['hit_size']=[width,height]
+
+def stage44_button(id,text,x,y):
+    stage44_text(id,text,x,y,300,110,True,['tap'])
+    l.d['objects'][-1]['sprite']=P+'puzzle_tile.svg'
+
+stage44_text('front_label','جلوی صف',270,460,180)
+stage44_text('back_label','پشت صف',1650,460,180)
+stage44_text('you_label','شما',810,460,130)
+l.image('front_arrow','left_arrow',180,620,scale=[.5,.5],rotation_degrees=180)
+l.image('back_arrow','left_arrow',1740,620,scale=[.5,.5])
 for i in range(24):
-    x=270+60*i; l.image('person_'+str(i),'walking_person',x,600,scale=[.14,.3])
-    if i==9: l.image('target_mark','selection_check',x,480,scale=[.5,.5])
-l.card('front_counter','از جلو: ۱۰',420,790); l.card('back_counter','از عقب: ۱۵',1470,790)
-l.zone('target_front',810,550,['front_counter'],size=(100,100)); l.zone('target_back',810,650,['back_counter'],size=(100,100))
-l.drop('front_counter','target_front',[setv('front'),move('front_counter',420,790),show('front_check')]); l.drop('back_counter','target_back',[setv('back'),move('back_counter',1470,790),show('back_check')])
-l.text('front_check','از جلو: ۱۰ نفر',600,440,visible=False); l.text('back_check','از عقب: ۱۵ نفر',1160,440,visible=False)
-l.card('answer24','۲۴',820,880); l.card('answer25','۲۵',1170,880); l.zone('answer',960,730,['answer24','answer25']); l.text('answer_label','پاسخ',960,730)
-l.drop('answer25','answer',[move('answer25',1170,880),feedback('answer25')]); l.win('drop_on','answer24',[move('answer24',960,730)],conditions=[var('front'),var('back')],target='answer')
-l.drag('flag','left_arrow',1600,880,scale=[.5,.5]); l.rule('drag_end','flag',[move('flag',1600,880)]); l.save()
+    x=270+60*i
+    if i<=9:
+        l.image('front_mark_'+str(i),'queue_count_front',x,620,visible=False,z_index=-3)
+        stage44_text('front_number_'+str(i),str(i+1),x,540,60,50,False)
+    if i>=9:
+        l.image('back_mark_'+str(i),'queue_count_back',x,620,visible=False,z_index=-2)
+        stage44_text('back_number_'+str(i),str(24-i),x,700,60,50,False)
+    if i==9:
+        l.image('target_mark','queue_target',x,620,z_index=-1)
+    l.image('person_'+str(i),'walking_person',x,620,scale=[.28,.28])
+stage44_text('front_check','با شما: ۱۰ نفر',550,460,340,60,False)
+stage44_text('back_check','با شما: ۱۵ نفر',1370,460,340,60,False)
+stage44_text('answer_label','تعداد کل افراد صف؟',960,850,450)
+stage44_text('shared_note','نشان «شما» در هر دو شمارش حضور دارد.',960,760,1000,50,False)
+stage44_text('count_first','ابتدا هر دو دکمهٔ شمارش را لمس کن.',960,1030,1400,65,False)
+stage44_text('wrong_answer','فرد مشترک را دوبار شمرده‌ای؛ نشان «شما» را در دو شمارش ببین.',960,1030,1400,65,False)
+stage44_text('flag_feedback','جابه‌جایی پرچم، جای افراد صف را عوض نمی‌کند.',960,1030,1400,65,False)
+for id,text,x in [('front_counter','شمارش از جلو',550),('back_counter','شمارش از عقب',1370)]:
+    stage44_button(id,text,x,840)
+front_actions=[setv('front'),show('front_check'),hide('count_first'),hide('wrong_answer'),hide('flag_feedback')]
+back_actions=[setv('back'),show('back_check'),hide('count_first'),hide('wrong_answer'),hide('flag_feedback')]
+for i in range(10): front_actions += [show('front_mark_'+str(i)),show('front_number_'+str(i))]
+for i in range(9,24): back_actions += [show('back_mark_'+str(i)),show('back_number_'+str(i))]
+l.rule('tap','front_counter',front_actions)
+l.rule('tap','back_counter',back_actions)
+counted=dict(type='all',conditions=[var('front'),var('back')])
+for id in ['front_counter','back_counter']:
+    l.rule('tap',id,[show('shared_note')],[counted])
+stage44_button('answer24','۲۴ نفر',750,950)
+stage44_button('answer25','۲۵ نفر',1170,950)
+l.rule('tap','answer24',[show('count_first'),hide('wrong_answer'),hide('flag_feedback')],[dict(type='not',condition=counted)])
+l.rule('tap','answer25',[show('wrong_answer'),hide('count_first'),hide('flag_feedback')])
+l.win('tap','answer24',[hide('count_first'),hide('wrong_answer'),hide('flag_feedback')],[counted])
+l.drag('flag','queue_flag',1670,930,bounds=(1550,820,220,170),scale=[.5,.5])
+l.rule('drag_end','flag',[move('flag',1670,930),hide('count_first'),hide('wrong_answer'),show('flag_feedback')])
+l.save()
 
 l=Level(45,'فردای شنبه یکشنبه است؛ دیروز و امروز را در دو جای مستقل بچین.')
 l.variable(yesterday=False,today=False)

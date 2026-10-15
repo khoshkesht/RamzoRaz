@@ -2,13 +2,13 @@
   "schema_version": 1,
   "id": 44,
   "question": "در یک صف از جلو دهم و از عقب پانزدهمی. چند نفرند؟",
-  "hint": "از دو طرف تا خودت بشمار؛ فرد هدف را دوبار حساب نکن.",
+  "hint": "خودت در هر دو شمارش آمده‌ای؛ ۱۰ و ۱۵ را جمع کن و یک نفر مشترک را کم کن.",
   "answer": "۲۴ نفر",
   "time_limit_seconds": 115,
   "base_score": 145,
-  "background": "res://assets/samples/bright_room.svg",
+  "background": "res://assets/samples/stream_garden_background_light.svg",
   "success": {
-    "result_delay_seconds": 1.0
+    "result_delay_seconds": 1
   },
   "variables": {
     "solved": false,
@@ -19,7 +19,7 @@
     {
       "id": "instructions",
       "scene": "TextObject",
-      "text": "صف از چپ شروع می‌شود. دو مهره را از دو سمت روی فرد هدف قرار بده.",
+      "text": "۱. دو دکمهٔ شمارش را لمس کن. ۲. تعداد کل افراد صف را از پایین انتخاب کن.",
       "position": [
         960,
         350
@@ -32,152 +32,75 @@
       "interactions": []
     },
     {
-      "id": "person_0",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/walking_person.svg",
+      "id": "front_label",
+      "scene": "TextObject",
+      "text": "جلوی صف",
       "position": [
         270,
-        600
+        460
       ],
+      "hit_size": [
+        180,
+        60
+      ],
+      "text_color": "#354f54",
       "interactions": [],
-      "scale": [
-        0.14,
-        0.3
-      ]
+      "visible": true
     },
     {
-      "id": "person_1",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/walking_person.svg",
+      "id": "back_label",
+      "scene": "TextObject",
+      "text": "پشت صف",
       "position": [
-        330,
-        600
+        1650,
+        460
       ],
+      "hit_size": [
+        180,
+        60
+      ],
+      "text_color": "#354f54",
       "interactions": [],
-      "scale": [
-        0.14,
-        0.3
-      ]
+      "visible": true
     },
     {
-      "id": "person_2",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/walking_person.svg",
-      "position": [
-        390,
-        600
-      ],
-      "interactions": [],
-      "scale": [
-        0.14,
-        0.3
-      ]
-    },
-    {
-      "id": "person_3",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/walking_person.svg",
-      "position": [
-        450,
-        600
-      ],
-      "interactions": [],
-      "scale": [
-        0.14,
-        0.3
-      ]
-    },
-    {
-      "id": "person_4",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/walking_person.svg",
-      "position": [
-        510,
-        600
-      ],
-      "interactions": [],
-      "scale": [
-        0.14,
-        0.3
-      ]
-    },
-    {
-      "id": "person_5",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/walking_person.svg",
-      "position": [
-        570,
-        600
-      ],
-      "interactions": [],
-      "scale": [
-        0.14,
-        0.3
-      ]
-    },
-    {
-      "id": "person_6",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/walking_person.svg",
-      "position": [
-        630,
-        600
-      ],
-      "interactions": [],
-      "scale": [
-        0.14,
-        0.3
-      ]
-    },
-    {
-      "id": "person_7",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/walking_person.svg",
-      "position": [
-        690,
-        600
-      ],
-      "interactions": [],
-      "scale": [
-        0.14,
-        0.3
-      ]
-    },
-    {
-      "id": "person_8",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/walking_person.svg",
-      "position": [
-        750,
-        600
-      ],
-      "interactions": [],
-      "scale": [
-        0.14,
-        0.3
-      ]
-    },
-    {
-      "id": "person_9",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/walking_person.svg",
+      "id": "you_label",
+      "scene": "TextObject",
+      "text": "شما",
       "position": [
         810,
-        600
+        460
+      ],
+      "hit_size": [
+        130,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "front_arrow",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/left_arrow.svg",
+      "position": [
+        180,
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
-      ]
+        0.5,
+        0.5
+      ],
+      "rotation_degrees": 180
     },
     {
-      "id": "target_mark",
+      "id": "back_arrow",
       "scene": "ImageObject",
-      "sprite": "res://assets/samples/selection_check.svg",
+      "sprite": "res://assets/samples/left_arrow.svg",
       "position": [
-        810,
-        480
+        1740,
+        620
       ],
       "interactions": [],
       "scale": [
@@ -186,18 +109,533 @@
       ]
     },
     {
+      "id": "front_mark_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_front.svg",
+      "position": [
+        270,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -3
+    },
+    {
+      "id": "front_number_0",
+      "scene": "TextObject",
+      "text": "۱",
+      "position": [
+        270,
+        540
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "person_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        270,
+        620
+      ],
+      "interactions": [],
+      "scale": [
+        0.28,
+        0.28
+      ]
+    },
+    {
+      "id": "front_mark_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_front.svg",
+      "position": [
+        330,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -3
+    },
+    {
+      "id": "front_number_1",
+      "scene": "TextObject",
+      "text": "۲",
+      "position": [
+        330,
+        540
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "person_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        330,
+        620
+      ],
+      "interactions": [],
+      "scale": [
+        0.28,
+        0.28
+      ]
+    },
+    {
+      "id": "front_mark_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_front.svg",
+      "position": [
+        390,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -3
+    },
+    {
+      "id": "front_number_2",
+      "scene": "TextObject",
+      "text": "۳",
+      "position": [
+        390,
+        540
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "person_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        390,
+        620
+      ],
+      "interactions": [],
+      "scale": [
+        0.28,
+        0.28
+      ]
+    },
+    {
+      "id": "front_mark_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_front.svg",
+      "position": [
+        450,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -3
+    },
+    {
+      "id": "front_number_3",
+      "scene": "TextObject",
+      "text": "۴",
+      "position": [
+        450,
+        540
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "person_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        450,
+        620
+      ],
+      "interactions": [],
+      "scale": [
+        0.28,
+        0.28
+      ]
+    },
+    {
+      "id": "front_mark_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_front.svg",
+      "position": [
+        510,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -3
+    },
+    {
+      "id": "front_number_4",
+      "scene": "TextObject",
+      "text": "۵",
+      "position": [
+        510,
+        540
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "person_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        510,
+        620
+      ],
+      "interactions": [],
+      "scale": [
+        0.28,
+        0.28
+      ]
+    },
+    {
+      "id": "front_mark_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_front.svg",
+      "position": [
+        570,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -3
+    },
+    {
+      "id": "front_number_5",
+      "scene": "TextObject",
+      "text": "۶",
+      "position": [
+        570,
+        540
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "person_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        570,
+        620
+      ],
+      "interactions": [],
+      "scale": [
+        0.28,
+        0.28
+      ]
+    },
+    {
+      "id": "front_mark_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_front.svg",
+      "position": [
+        630,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -3
+    },
+    {
+      "id": "front_number_6",
+      "scene": "TextObject",
+      "text": "۷",
+      "position": [
+        630,
+        540
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "person_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        630,
+        620
+      ],
+      "interactions": [],
+      "scale": [
+        0.28,
+        0.28
+      ]
+    },
+    {
+      "id": "front_mark_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_front.svg",
+      "position": [
+        690,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -3
+    },
+    {
+      "id": "front_number_7",
+      "scene": "TextObject",
+      "text": "۸",
+      "position": [
+        690,
+        540
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "person_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        690,
+        620
+      ],
+      "interactions": [],
+      "scale": [
+        0.28,
+        0.28
+      ]
+    },
+    {
+      "id": "front_mark_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_front.svg",
+      "position": [
+        750,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -3
+    },
+    {
+      "id": "front_number_8",
+      "scene": "TextObject",
+      "text": "۹",
+      "position": [
+        750,
+        540
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "person_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        750,
+        620
+      ],
+      "interactions": [],
+      "scale": [
+        0.28,
+        0.28
+      ]
+    },
+    {
+      "id": "front_mark_9",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_front.svg",
+      "position": [
+        810,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -3
+    },
+    {
+      "id": "front_number_9",
+      "scene": "TextObject",
+      "text": "۱۰",
+      "position": [
+        810,
+        540
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "back_mark_9",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        810,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_9",
+      "scene": "TextObject",
+      "text": "۱۵",
+      "position": [
+        810,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "target_mark",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_target.svg",
+      "position": [
+        810,
+        620
+      ],
+      "interactions": [],
+      "z_index": -1
+    },
+    {
+      "id": "person_9",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        810,
+        620
+      ],
+      "interactions": [],
+      "scale": [
+        0.28,
+        0.28
+      ]
+    },
+    {
+      "id": "back_mark_10",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        870,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_10",
+      "scene": "TextObject",
+      "text": "۱۴",
+      "position": [
+        870,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
       "id": "person_10",
       "scene": "ImageObject",
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         870,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_11",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        930,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_11",
+      "scene": "TextObject",
+      "text": "۱۳",
+      "position": [
+        930,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_11",
@@ -205,13 +643,41 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         930,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_12",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        990,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_12",
+      "scene": "TextObject",
+      "text": "۱۲",
+      "position": [
+        990,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_12",
@@ -219,13 +685,41 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         990,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_13",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        1050,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_13",
+      "scene": "TextObject",
+      "text": "۱۱",
+      "position": [
+        1050,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_13",
@@ -233,13 +727,41 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         1050,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_14",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        1110,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_14",
+      "scene": "TextObject",
+      "text": "۱۰",
+      "position": [
+        1110,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_14",
@@ -247,13 +769,41 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         1110,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_15",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        1170,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_15",
+      "scene": "TextObject",
+      "text": "۹",
+      "position": [
+        1170,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_15",
@@ -261,13 +811,41 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         1170,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_16",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        1230,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_16",
+      "scene": "TextObject",
+      "text": "۸",
+      "position": [
+        1230,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_16",
@@ -275,13 +853,41 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         1230,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_17",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        1290,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_17",
+      "scene": "TextObject",
+      "text": "۷",
+      "position": [
+        1290,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_17",
@@ -289,13 +895,41 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         1290,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_18",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        1350,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_18",
+      "scene": "TextObject",
+      "text": "۶",
+      "position": [
+        1350,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_18",
@@ -303,13 +937,41 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         1350,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_19",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        1410,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_19",
+      "scene": "TextObject",
+      "text": "۵",
+      "position": [
+        1410,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_19",
@@ -317,13 +979,41 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         1410,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_20",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        1470,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_20",
+      "scene": "TextObject",
+      "text": "۴",
+      "position": [
+        1470,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_20",
@@ -331,13 +1021,41 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         1470,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_21",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        1530,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_21",
+      "scene": "TextObject",
+      "text": "۳",
+      "position": [
+        1530,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_21",
@@ -345,13 +1063,41 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         1530,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_22",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        1590,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_22",
+      "scene": "TextObject",
+      "text": "۲",
+      "position": [
+        1590,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_22",
@@ -359,13 +1105,41 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         1590,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
+    },
+    {
+      "id": "back_mark_23",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/queue_count_back.svg",
+      "position": [
+        1650,
+        620
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -2
+    },
+    {
+      "id": "back_number_23",
+      "scene": "TextObject",
+      "text": "۱",
+      "position": [
+        1650,
+        700
+      ],
+      "hit_size": [
+        60,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "person_23",
@@ -373,113 +1147,25 @@
       "sprite": "res://assets/samples/walking_person.svg",
       "position": [
         1650,
-        600
+        620
       ],
       "interactions": [],
       "scale": [
-        0.14,
-        0.3
+        0.28,
+        0.28
       ]
-    },
-    {
-      "id": "front_counter",
-      "scene": "TextObject",
-      "text": "از جلو: ۱۰",
-      "position": [
-        420,
-        790
-      ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "back_counter",
-      "scene": "TextObject",
-      "text": "از عقب: ۱۵",
-      "position": [
-        1470,
-        790
-      ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "target_front",
-      "scene": "DropZone",
-      "position": [
-        810,
-        550
-      ],
-      "hit_size": [
-        100,
-        100
-      ],
-      "accepted_sources": [
-        "front_counter"
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "target_back",
-      "scene": "DropZone",
-      "position": [
-        810,
-        650
-      ],
-      "hit_size": [
-        100,
-        100
-      ],
-      "accepted_sources": [
-        "back_counter"
-      ],
-      "z_index": -1
     },
     {
       "id": "front_check",
       "scene": "TextObject",
-      "text": "از جلو: ۱۰ نفر",
+      "text": "با شما: ۱۰ نفر",
       "position": [
-        600,
-        440
+        550,
+        460
       ],
       "hit_size": [
-        300,
-        70
+        340,
+        60
       ],
       "text_color": "#354f54",
       "interactions": [],
@@ -488,26 +1174,106 @@
     {
       "id": "back_check",
       "scene": "TextObject",
-      "text": "از عقب: ۱۵ نفر",
+      "text": "با شما: ۱۵ نفر",
       "position": [
-        1160,
-        440
+        1370,
+        460
       ],
       "hit_size": [
-        300,
-        70
+        340,
+        60
       ],
       "text_color": "#354f54",
       "interactions": [],
       "visible": false
     },
     {
-      "id": "answer24",
+      "id": "answer_label",
       "scene": "TextObject",
-      "text": "۲۴",
+      "text": "تعداد کل افراد صف؟",
       "position": [
-        820,
-        880
+        960,
+        850
+      ],
+      "hit_size": [
+        450,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "shared_note",
+      "scene": "TextObject",
+      "text": "نشان «شما» در هر دو شمارش حضور دارد.",
+      "position": [
+        960,
+        760
+      ],
+      "hit_size": [
+        1000,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "count_first",
+      "scene": "TextObject",
+      "text": "ابتدا هر دو دکمهٔ شمارش را لمس کن.",
+      "position": [
+        960,
+        1030
+      ],
+      "hit_size": [
+        1400,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "wrong_answer",
+      "scene": "TextObject",
+      "text": "فرد مشترک را دوبار شمرده‌ای؛ نشان «شما» را در دو شمارش ببین.",
+      "position": [
+        960,
+        1030
+      ],
+      "hit_size": [
+        1400,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "flag_feedback",
+      "scene": "TextObject",
+      "text": "جابه‌جایی پرچم، جای افراد صف را عوض نمی‌کند.",
+      "position": [
+        960,
+        1030
+      ],
+      "hit_size": [
+        1400,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "front_counter",
+      "scene": "TextObject",
+      "text": "شمارش از جلو",
+      "position": [
+        550,
+        840
       ],
       "hit_size": [
         300,
@@ -515,27 +1281,56 @@
       ],
       "text_color": "#354f54",
       "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
+        "tap"
       ],
+      "visible": true,
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "back_counter",
+      "scene": "TextObject",
+      "text": "شمارش از عقب",
+      "position": [
+        1370,
+        840
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "answer24",
+      "scene": "TextObject",
+      "text": "۲۴ نفر",
+      "position": [
+        750,
+        950
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
       "sprite": "res://assets/samples/puzzle_tile.svg"
     },
     {
       "id": "answer25",
       "scene": "TextObject",
-      "text": "۲۵",
+      "text": "۲۵ نفر",
       "position": [
         1170,
-        880
+        950
       ],
       "hit_size": [
         300,
@@ -543,68 +1338,27 @@
       ],
       "text_color": "#354f54",
       "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
+        "tap"
       ],
+      "visible": true,
       "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "answer",
-      "scene": "DropZone",
-      "position": [
-        960,
-        730
-      ],
-      "hit_size": [
-        260,
-        150
-      ],
-      "accepted_sources": [
-        "answer24",
-        "answer25"
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "answer_label",
-      "scene": "TextObject",
-      "text": "پاسخ",
-      "position": [
-        960,
-        730
-      ],
-      "hit_size": [
-        300,
-        70
-      ],
-      "text_color": "#354f54",
-      "interactions": []
     },
     {
       "id": "flag",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/left_arrow.svg",
+      "sprite": "res://assets/samples/queue_flag.svg",
       "position": [
-        1600,
-        880
+        1670,
+        930
       ],
       "interactions": [
         {
           "type": "drag",
           "bounds": [
-            200,
-            460,
-            1500,
-            450
+            1550,
+            820,
+            220,
+            170
           ],
           "return_on_invalid": true
         },
@@ -620,7 +1374,7 @@
   "rules": [
     {
       "id": "r0000",
-      "event": "drop_on",
+      "event": "tap",
       "source": "front_counter",
       "conditions": [],
       "actions": [
@@ -631,24 +1385,107 @@
           "operation": "assign"
         },
         {
-          "type": "move",
-          "target": "front_counter",
-          "position": [
-            420,
-            790
-          ]
+          "type": "show",
+          "target": "front_check"
+        },
+        {
+          "type": "hide",
+          "target": "count_first"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_answer"
+        },
+        {
+          "type": "hide",
+          "target": "flag_feedback"
         },
         {
           "type": "show",
-          "target": "front_check"
+          "target": "front_mark_0"
+        },
+        {
+          "type": "show",
+          "target": "front_number_0"
+        },
+        {
+          "type": "show",
+          "target": "front_mark_1"
+        },
+        {
+          "type": "show",
+          "target": "front_number_1"
+        },
+        {
+          "type": "show",
+          "target": "front_mark_2"
+        },
+        {
+          "type": "show",
+          "target": "front_number_2"
+        },
+        {
+          "type": "show",
+          "target": "front_mark_3"
+        },
+        {
+          "type": "show",
+          "target": "front_number_3"
+        },
+        {
+          "type": "show",
+          "target": "front_mark_4"
+        },
+        {
+          "type": "show",
+          "target": "front_number_4"
+        },
+        {
+          "type": "show",
+          "target": "front_mark_5"
+        },
+        {
+          "type": "show",
+          "target": "front_number_5"
+        },
+        {
+          "type": "show",
+          "target": "front_mark_6"
+        },
+        {
+          "type": "show",
+          "target": "front_number_6"
+        },
+        {
+          "type": "show",
+          "target": "front_mark_7"
+        },
+        {
+          "type": "show",
+          "target": "front_number_7"
+        },
+        {
+          "type": "show",
+          "target": "front_mark_8"
+        },
+        {
+          "type": "show",
+          "target": "front_number_8"
+        },
+        {
+          "type": "show",
+          "target": "front_mark_9"
+        },
+        {
+          "type": "show",
+          "target": "front_number_9"
         }
       ],
-      "once": false,
-      "target": "target_front"
+      "once": false
     },
     {
       "id": "r0001",
-      "event": "drop_on",
+      "event": "tap",
       "source": "back_counter",
       "conditions": [],
       "actions": [
@@ -659,71 +1496,304 @@
           "operation": "assign"
         },
         {
-          "type": "move",
-          "target": "back_counter",
-          "position": [
-            1470,
-            790
-          ]
+          "type": "show",
+          "target": "back_check"
+        },
+        {
+          "type": "hide",
+          "target": "count_first"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_answer"
+        },
+        {
+          "type": "hide",
+          "target": "flag_feedback"
         },
         {
           "type": "show",
-          "target": "back_check"
+          "target": "back_mark_9"
+        },
+        {
+          "type": "show",
+          "target": "back_number_9"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_10"
+        },
+        {
+          "type": "show",
+          "target": "back_number_10"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_11"
+        },
+        {
+          "type": "show",
+          "target": "back_number_11"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_12"
+        },
+        {
+          "type": "show",
+          "target": "back_number_12"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_13"
+        },
+        {
+          "type": "show",
+          "target": "back_number_13"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_14"
+        },
+        {
+          "type": "show",
+          "target": "back_number_14"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_15"
+        },
+        {
+          "type": "show",
+          "target": "back_number_15"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_16"
+        },
+        {
+          "type": "show",
+          "target": "back_number_16"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_17"
+        },
+        {
+          "type": "show",
+          "target": "back_number_17"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_18"
+        },
+        {
+          "type": "show",
+          "target": "back_number_18"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_19"
+        },
+        {
+          "type": "show",
+          "target": "back_number_19"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_20"
+        },
+        {
+          "type": "show",
+          "target": "back_number_20"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_21"
+        },
+        {
+          "type": "show",
+          "target": "back_number_21"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_22"
+        },
+        {
+          "type": "show",
+          "target": "back_number_22"
+        },
+        {
+          "type": "show",
+          "target": "back_mark_23"
+        },
+        {
+          "type": "show",
+          "target": "back_number_23"
         }
       ],
-      "once": false,
-      "target": "target_back"
+      "once": false
     },
     {
       "id": "r0002",
-      "event": "drop_on",
+      "event": "tap",
+      "source": "front_counter",
+      "conditions": [
+        {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "variable",
+              "name": "front",
+              "operator": "eq",
+              "value": true
+            },
+            {
+              "type": "variable",
+              "name": "back",
+              "operator": "eq",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "shared_note"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "tap",
+      "source": "back_counter",
+      "conditions": [
+        {
+          "type": "all",
+          "conditions": [
+            {
+              "type": "variable",
+              "name": "front",
+              "operator": "eq",
+              "value": true
+            },
+            {
+              "type": "variable",
+              "name": "back",
+              "operator": "eq",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "shared_note"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "tap",
+      "source": "answer24",
+      "conditions": [
+        {
+          "type": "not",
+          "condition": {
+            "type": "all",
+            "conditions": [
+              {
+                "type": "variable",
+                "name": "front",
+                "operator": "eq",
+                "value": true
+              },
+              {
+                "type": "variable",
+                "name": "back",
+                "operator": "eq",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "count_first"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_answer"
+        },
+        {
+          "type": "hide",
+          "target": "flag_feedback"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
       "source": "answer25",
       "conditions": [],
       "actions": [
         {
-          "type": "move",
-          "target": "answer25",
-          "position": [
-            1170,
-            880
-          ]
+          "type": "show",
+          "target": "wrong_answer"
         },
         {
-          "type": "play_animation",
-          "target": "answer25",
-          "animation": "chapter_two/rattle",
-          "wait": false
+          "type": "hide",
+          "target": "count_first"
+        },
+        {
+          "type": "hide",
+          "target": "flag_feedback"
         }
       ],
-      "once": false,
-      "target": "answer"
+      "once": false
     },
     {
-      "id": "r0003",
-      "event": "drop_on",
+      "id": "r0006",
+      "event": "tap",
       "source": "answer24",
       "conditions": [
         {
-          "type": "variable",
-          "name": "front",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "back",
-          "operator": "eq",
-          "value": true
+          "type": "all",
+          "conditions": [
+            {
+              "type": "variable",
+              "name": "front",
+              "operator": "eq",
+              "value": true
+            },
+            {
+              "type": "variable",
+              "name": "back",
+              "operator": "eq",
+              "value": true
+            }
+          ]
         }
       ],
       "actions": [
         {
-          "type": "move",
-          "target": "answer24",
-          "position": [
-            960,
-            730
-          ]
+          "type": "hide",
+          "target": "count_first"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_answer"
+        },
+        {
+          "type": "hide",
+          "target": "flag_feedback"
         },
         {
           "type": "set_variable",
@@ -732,11 +1802,10 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "answer"
+      "once": false
     },
     {
-      "id": "r0004",
+      "id": "r0007",
       "event": "drag_end",
       "source": "flag",
       "conditions": [],
@@ -745,9 +1814,21 @@
           "type": "move",
           "target": "flag",
           "position": [
-            1600,
-            880
+            1670,
+            930
           ]
+        },
+        {
+          "type": "hide",
+          "target": "count_first"
+        },
+        {
+          "type": "hide",
+          "target": "wrong_answer"
+        },
+        {
+          "type": "show",
+          "target": "flag_feedback"
         }
       ],
       "once": false
