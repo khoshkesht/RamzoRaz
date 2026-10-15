@@ -140,8 +140,8 @@ func display_progress(data: Dictionary, manifest: Dictionary) -> void:
 		message_label.text = "هنوز مرحله‌ای برای بازی آماده نیست."
 		play_button.text = "مراحل در حال آماده‌سازی"
 	elif current == null:
-		message_label.text = "همهٔ مراحل موجود را حل کرده‌اید!"
-		play_button.text = "بازی به پایان رسیده"
+		message_label.text = "آفرین! همهٔ %s مرحلهٔ این نسخه را حل کرده‌ای.\nمنتظر معماهای تازه در به‌روزرسانی‌های بعدی باش." % PuzzleHUD._persian(str(levels.size()))
+		play_button.text = "مراحل تازه در راه‌اند"
 	elif pending:
 		message_label.text = "نتیجهٔ مرحله آماده است؛ برای دیدن نتیجه و ادامه، شروع را بزنید."
 		play_button.text = "دیدن نتیجه و ادامه"

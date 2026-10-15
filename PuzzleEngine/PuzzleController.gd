@@ -376,7 +376,7 @@ func _show_finished() -> void:
 	_clear_stage()
 	run_status = STATUS_COMPLETED
 	hud.hint_button.disabled = true
-	overlay.show_game_finished(score, stars)
+	overlay.show_game_finished(score, stars, manifest["levels"].size())
 
 func _retry_save() -> void:
 	# Explicit sandbox used by engine tests that visit levels out of manifest order.
@@ -434,10 +434,10 @@ func _retry_save() -> void:
 			_show_current_result(true)
 			result_ready.emit(current_result.duplicate(true))
 		"advance":
-			if return_to_home_after_advance:
-				home_requested.emit()
-			elif progress_store.data["current_level_id"] == null:
+			if progress_store.data["current_level_id"] == null:
 				_show_finished()
+			elif return_to_home_after_advance:
+				home_requested.emit()
 			elif not load_level_index(level_index + 1):
 				run_status = STATUS_ERROR
 				level_index += 1
@@ -508,7 +508,10 @@ func _hint_action() -> void:
 		_on_ad_event("unavailable", id, state.level_id)
 
 func _dismiss_hint() -> void:
-	if overlay.mode == "ad":
+	if overlay.mode == "finished":
+		if run_status == STATUS_COMPLETED and current_result.is_empty() and _save_operation.is_empty() and ad_adapter.active.is_empty():
+			home_requested.emit()
+	elif overlay.mode == "ad":
 		ad_adapter.finish_simulation(false)
 	else:
 		overlay.hide()

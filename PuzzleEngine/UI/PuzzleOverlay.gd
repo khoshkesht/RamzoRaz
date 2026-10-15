@@ -36,7 +36,7 @@ func show_result(result: Dictionary, last_level: bool, answer: String = "") -> v
 	details.text = "امتیاز: %s\nستاره‌ها: %s از ۳" % [PuzzleHUD._persian(str(result["score"])), PuzzleHUD._persian(str(result["stars"]))]
 	if not answer.is_empty():
 		details.text = "پاسخ: %s\n\n%s" % [answer, details.text]
-	continue_button.text = "پایان بازی" if last_level else "مرحلهٔ بعد"
+	continue_button.text = "پایان این نسخه" if last_level else "مرحلهٔ بعد"
 	continue_button.disabled = false
 	continue_button.show()
 	retry_button.hide()
@@ -58,12 +58,16 @@ func show_error() -> void:
 	retry_button.show()
 	show()
 
-func show_game_finished(score: int, stars: int) -> void:
+func show_game_finished(score: int, stars: int, completed_levels: int = 0) -> void:
 	_reset_buttons()
-	title.text = "همهٔ معماها حل شدند!"
-	details.text = "مجموع امتیاز: %s\nمجموع ستاره‌ها: %s" % [PuzzleHUD._persian(str(score)), PuzzleHUD._persian(str(stars))]
-	continue_button.hide()
-	retry_button.hide()
+	mode = "finished"
+	title.text = "آفرین، رازگشای ماهر!"
+	var completion := "همهٔ معماهای این نسخه را حل کردی."
+	if completed_levels > 0:
+		completion = "همهٔ %s مرحلهٔ این نسخه را حل کردی." % PuzzleHUD._persian(str(completed_levels))
+	details.text = "%s\nممنون که با «رمز و راز» همراه بودی!\nماجراجویی در به‌روزرسانی‌های بعدی ادامه دارد.\n\nمجموع امتیاز: %s\nمجموع ستاره‌ها: %s" % [completion, PuzzleHUD._persian(str(score)), PuzzleHUD._persian(str(stars))]
+	dismiss_button.text = "بازگشت به خانه"
+	dismiss_button.show()
 	show()
 
 func _reset_buttons() -> void:
