@@ -17,7 +17,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="رمز و راز"
 run/main_scene="res://PuzzleEngine/Application.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://assets/icon.svg"
+boot_splash/show_image=false
+config/icon="res://assets/app_icon_1024.png"
 
 [display]
 

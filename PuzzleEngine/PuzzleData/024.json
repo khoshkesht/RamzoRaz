@@ -6,7 +6,7 @@
   "answer": "آب؛ با کنارزدن دریچه در جوی جاری می‌شود.",
   "time_limit_seconds": 65,
   "base_score": 95,
-  "background": "res://assets/samples/bright_room.svg",
+  "background": "res://assets/samples/stream_garden_background_light.svg",
   "success": {
     "result_delay_seconds": 2
   },

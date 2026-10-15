@@ -2,8 +2,8 @@
   "schema_version": 1,
   "id": 30,
   "question": "سه سیب را بین سه نفر تقسیم کن و یک سیب هم داخل سبد بماند.",
-  "hint": "دو سیب را جدا بده؛ برای نفر سوم، سبد و سیب داخلش را با هم ببر.",
-  "answer": "سیب سوم همراه سبد به نفر سوم می‌رسد؛ هر سه نفر سیب دارند و یک سیب همچنان در سبد است.",
+  "hint": "هر سه سیب را به نفرها بده؛ سپس سبد را به نفر سوم بده تا سیبش را داخل آن بگذارد.",
+  "answer": "هر نفر یک سیب می‌گیرد؛ نفر سوم سبد را هم می‌گیرد و سیب خودش را داخل آن می‌گذارد.",
   "time_limit_seconds": 85,
   "base_score": 110,
   "background": "res://assets/samples/apple_orchard_background.svg",
@@ -15,13 +15,14 @@
     "apples": 0,
     "has_0": false,
     "has_1": false,
+    "has_2": false,
     "basket_given": false
   },
   "objects": [
     {
       "id": "basket",
       "scene": "DraggableObject",
-      "sprite": "res://assets/samples/basket_apple.svg",
+      "sprite": "res://assets/samples/basket_empty.svg",
       "position": [
         980,
         750
@@ -81,6 +82,21 @@
             1600,
             480
           ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 4
+    },
+    {
+      "id": "apple_c",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/apple.svg",
+      "position": [980, 850],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [160, 490, 1600, 480],
           "return_on_invalid": true
         },
         "drop_on"
@@ -309,6 +325,7 @@
         230
       ],
       "accepted_sources": [
+        "apple_c",
         "basket"
       ],
       "z_index": -1
@@ -490,6 +507,22 @@
       ]
     },
     {
+      "id": "give_apple_c_2",
+      "event": "drop_on",
+      "source": "apple_c",
+      "target": "receive_2",
+      "conditions": [
+        {"type": "variable", "name": "has_2", "operator": "eq", "value": false},
+        {"type": "visible", "target": "apple_c"}
+      ],
+      "actions": [
+        {"type": "hide", "target": "apple_c"},
+        {"type": "show", "target": "given_2"},
+        {"type": "set_variable", "name": "has_2", "operation": "assign", "value": true},
+        {"type": "set_variable", "name": "apples", "operation": "increment", "value": 1}
+      ]
+    },
+    {
       "id": "deliver_basket",
       "event": "drop_on",
       "source": "basket",
@@ -509,6 +542,15 @@
           "value": true
         },
         {
+          "type": "hide",
+          "target": "given_2"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "basket",
+          "sprite": "res://assets/samples/basket_apple.svg"
+        },
+        {
           "type": "set_variable",
           "name": "solved",
           "operation": "assign",
@@ -521,7 +563,7 @@
           "type": "variable",
           "name": "apples",
           "operator": "eq",
-          "value": 2
+          "value": 3
         }
       ]
     },
