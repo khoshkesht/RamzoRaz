@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/music_on.svg-0c709aa416a96e6ca041e19b41656492
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

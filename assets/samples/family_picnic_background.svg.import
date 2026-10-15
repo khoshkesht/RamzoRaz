@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/family_picnic_background.svg-79dd51eed849ce69
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

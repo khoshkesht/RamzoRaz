@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/horn.svg-9a66583486739d9d6d6de99cb59485f6.cte
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

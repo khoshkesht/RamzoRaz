@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/future_veil.svg-830772972b6e00a2e1d27a9c3dfae
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

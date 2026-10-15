@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/room_four_corners.svg-243b7389b132314be19c5aa
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

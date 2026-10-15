@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/alarm_clock.svg-e639681465985db026c48616c4c0b
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

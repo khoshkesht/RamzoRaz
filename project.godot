@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="رمز و راز"
-run/main_scene="res://PuzzleEngine/Application.tscn"
+run/main_scene="res://PuzzleEngine/UI/StartupSplash.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://assets/app_icon_1024.png"
@@ -31,6 +31,13 @@ window/stretch/mode="canvas_items"
 [gui]
 
 theme/custom="res://PuzzleEngine/UI/PuzzleTheme.tres"
+
+[importer_defaults]
+
+texture={
+"compress/lossy_quality": 0.7,
+"compress/mode": 1
+}
 
 [internationalization]
 

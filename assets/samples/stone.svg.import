@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/stone.svg-337e4cefddcbabfa565ebe1dc6aaecba.ct
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

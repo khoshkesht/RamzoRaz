@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/toothpaste.svg-95d5e3d0ef014b6b1b11c4df4b9d1a
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/corner_cover.svg-642548e12bebee4d8275de338005
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

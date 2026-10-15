@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/water_bowl.svg-9a8bb20c758f4525498d0834ed2213
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/traffic_light.svg-f60f0e090d92897ea343a908301
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

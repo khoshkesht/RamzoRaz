@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/room_lighting.svg-8dccf5cfaf5a2041d86c66f8b1d
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

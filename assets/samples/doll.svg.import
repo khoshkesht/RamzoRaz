@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/doll.svg-5d91d7d4736545dac09d01d2c908b3b3.cte
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

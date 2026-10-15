@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/bell.svg-18d3d018d0c736457e0ad4ea87f847a1.cte
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

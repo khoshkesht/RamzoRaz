@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/boy_blue.svg-790a14b8e1c5fe4b552fb2fc7a828da5
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/comb.svg-99ff368dff5ba0418a31e341d0508bcc.cte
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

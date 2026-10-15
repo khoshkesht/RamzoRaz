@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/stream_gate.svg-216f5fde1354bc6377a7069d18bbc
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

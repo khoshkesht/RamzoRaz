@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/hand_five_wet.svg-99c032ac232ff232ff258e64d4d
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/man.svg-4a7728af7068f065f7c38e6fe170999d.ctex
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

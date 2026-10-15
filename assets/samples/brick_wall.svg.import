@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/brick_wall.svg-15c5c5bbdf40cdca7fe9b30d4ce657
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

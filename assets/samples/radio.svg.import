@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/radio.svg-ffeca088169125ffeaefe6731fc82000.ct
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

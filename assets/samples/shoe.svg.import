@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/shoe.svg-16761c444909d35ae89e94644c2a3d64.cte
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

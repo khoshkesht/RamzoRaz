@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/piano.svg-32261723e362d1bc20dc68b42b006342.ct
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

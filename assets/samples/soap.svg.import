@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/soap.svg-f0ddbe74a5082d3efe8a85547a3f9842.cte
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

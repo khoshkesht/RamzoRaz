@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/bald_head.svg-4790430f65ec14af9d1a802b7d120fe
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

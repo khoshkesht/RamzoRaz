@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/girl_maryam.svg-856c35e1e77066996ce39c5d1f089
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

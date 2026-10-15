@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/fruit_knife.svg-b22d509855b7deff12d5d7d6f2a83
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

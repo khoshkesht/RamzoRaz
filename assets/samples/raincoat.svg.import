@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/raincoat.svg-4b6c08cad6d5259c8afd59a5035db70a
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

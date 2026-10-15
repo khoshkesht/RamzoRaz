@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/app_icon_72.png-7a83ae78f5cd04af7f9f7a83c967d
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

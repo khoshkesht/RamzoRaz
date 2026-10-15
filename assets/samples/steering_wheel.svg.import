@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/steering_wheel.svg-7b28d149a8671d2c4c444d2d95
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

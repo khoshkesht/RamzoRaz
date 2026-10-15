@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/pencil_2.svg-5a3a9e534e89d9bfe005220d10a13781
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

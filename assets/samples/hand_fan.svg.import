@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/hand_fan.svg-890fa525ed8ea0572bb2c6e09f29e297
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

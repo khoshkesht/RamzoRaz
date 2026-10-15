@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/thread_spool.svg-9a5ff14a71579321708ec76e1d3b
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

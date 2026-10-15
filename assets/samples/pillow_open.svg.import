@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/pillow_open.svg-c65ace8a7d0fa88f4f432a9d3cc05
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

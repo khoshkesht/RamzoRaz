@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/box-back.png-7249cbd3c2a637e00c64fb0e46680c96
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

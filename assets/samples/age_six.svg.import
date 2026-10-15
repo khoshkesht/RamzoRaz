@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/age_six.svg-ea6d6ca5876f89b589cd5ad22ff36864.
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/paper.svg-e8aa48db0f15b8e04839014ba4568f44.ct
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

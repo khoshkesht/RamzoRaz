@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/birthday_cake.svg-414afe3d8e3551f628850728861
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

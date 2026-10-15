@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/glass_wind_guard.svg-4a1156b1a0c58186b66e8c09
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

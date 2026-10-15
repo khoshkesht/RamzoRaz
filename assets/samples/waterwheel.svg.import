@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/waterwheel.svg-09d1ad62fe5fc90a0fb200d38923d5
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

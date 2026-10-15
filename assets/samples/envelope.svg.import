@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/envelope.svg-73d67bb95e436a7b07af454db6551d51
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

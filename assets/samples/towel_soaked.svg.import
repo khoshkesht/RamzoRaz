@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/towel_soaked.svg-03d5a2da857b9b22b6b4484d5436
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

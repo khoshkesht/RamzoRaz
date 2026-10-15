@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/walking_person.svg-91cec0393b1a1999dead6e7d20
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

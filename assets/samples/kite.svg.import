@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/kite.svg-4ff0e14085e265f8646ddd3b49f19663.cte
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

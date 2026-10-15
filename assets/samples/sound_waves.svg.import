@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/sound_waves.svg-8f39ec6c4350be2165b38e69f9567
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

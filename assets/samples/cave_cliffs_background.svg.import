@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/cave_cliffs_background.svg-aa95e5df0f7427c3b9
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

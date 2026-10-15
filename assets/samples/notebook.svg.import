@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/notebook.svg-a4442ed728a378e3ba19587eb1430316
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

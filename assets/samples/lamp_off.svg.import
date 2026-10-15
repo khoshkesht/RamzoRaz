@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/lamp_off.svg-24eafc2259977a3a0cd0d597df3c216b
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
