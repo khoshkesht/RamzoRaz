@@ -19,7 +19,6 @@ var test_enabled: bool = OS.is_debug_build()
 @onready var music_player: AudioStreamPlayer = $Music
 @onready var development_tools: PuzzleDevelopmentTools = get_node_or_null("DevelopmentLayer/DevelopmentTools")
 @onready var back_button: Button = $NavigationLayer/Root/SafeMargin/Layout/Footer/Back
-@onready var build_label: Label = $NavigationLayer/Root/SafeMargin/Layout/BuildRow/Build
 
 func _ready() -> void:
 	ad_adapter.initialize()
@@ -37,8 +36,6 @@ func _ready() -> void:
 		development_tools.test_requested.connect(play_test)
 		development_tools.reset_requested.connect(reset_progress)
 	back_button.pressed.connect(show_home)
-	var version: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://PuzzleEngine/BuildVersion.json"))
-	build_label.text = "بیلد %s" % PuzzleHUD._persian(str(int(version["build_number"])))
 	settings.path = settings_path
 	settings.open()
 	if music_player.stream is AudioStreamMP3:

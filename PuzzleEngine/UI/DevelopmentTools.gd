@@ -54,7 +54,8 @@ func close() -> void:
 	test_panel.hide()
 	test_error.text = ""
 	_cancel_reset()
-	launcher.show()
+	# Keep the development tools and their signals available without a visible entry.
+	launcher.hide()
 
 func _toggle_test() -> void:
 	if not enabled or reset_panel.visible:

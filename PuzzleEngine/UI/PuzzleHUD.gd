@@ -5,6 +5,8 @@ signal menu_requested
 
 const EMPTY_STAR := preload("res://assets/ui/empty-star.png")
 const FILLED_STAR := preload("res://assets/ui/star.png")
+const TIMER_NORMAL_COLOR := Color.WHITE
+const TIMER_WARNING_COLOR := Color(1.0, 0.32, 0.25, 1.0)
 @onready var toolbar: Control = $SafeMargin/Layout/Toolbar
 @onready var question_label: Label = $SafeMargin/Layout/Toolbar/QuestionScroll/Question
 @onready var timer_label: Label = $SafeMargin/Layout/Toolbar/Time
@@ -111,10 +113,14 @@ func update_counters(variables: Dictionary) -> void:
 
 func set_countdown(seconds: int) -> void:
 	timer_label.text = _persian("%02d:%02d" % [int(seconds / 60.0), seconds % 60])
+	var color := TIMER_WARNING_COLOR if seconds <= 10 else TIMER_NORMAL_COLOR
+	if timer_label.get_theme_color("font_color") != color:
+		timer_label.add_theme_color_override("font_color", color)
 
 func show_load_error() -> void:
 	question_label.text = "بارگذاری مرحله انجام نشد. لطفاً دوباره تلاش کنید."
 	timer_label.text = "—"
+	timer_label.add_theme_color_override("font_color", TIMER_NORMAL_COLOR)
 	level_label.text = "رمز و راز"
 
 static func _persian(value: String) -> String:

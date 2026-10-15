@@ -43,6 +43,7 @@ var results: Dictionary = {}
 var _environment_pauses: Dictionary = {}
 var _result_delay_remaining: float = 0.0
 var _success_player: AudioStreamPlayer
+var _timer_warning_played: bool = false
 @onready var object_root: Node2D = $Stage/Objects
 @onready var background: Sprite2D = $Stage/Background
 @onready var hud: PuzzleHUD = $HUDLayer/HUD
@@ -134,6 +135,8 @@ func load_level_index(index: int) -> bool:
 
 func _clear_stage() -> void:
 	_clear_success_sound()
+	GameAudio.stop_timer_warning()
+	_timer_warning_played = false
 	_result_delay_remaining = 0.0
 	clock.stop()
 	current_result.clear()
@@ -213,7 +216,14 @@ func _process(delta: float) -> void:
 func _update_clock() -> void:
 	clock.update()
 	hud.update_counters(state.variables)
-	hud.set_countdown(clock.countdown_seconds())
+	var seconds := clock.countdown_seconds()
+	hud.set_countdown(seconds)
+	if (
+		run_status == STATUS_PLAYING and clock.running and clock.pause_reasons.is_empty()
+		and seconds > 0 and seconds <= 10 and not _timer_warning_played
+	):
+		_timer_warning_played = true
+		GameAudio.play_timer_warning()
 	if run_status == STATUS_PLAYING and clock.expired():
 		run_status = STATUS_FAILED
 		clock.stop()
@@ -560,6 +570,7 @@ func _show_reward_hint(request: Dictionary) -> void:
 		overlay.show_hint(current_definition["hint"])
 
 func _exit_tree() -> void:
+	GameAudio.stop_timer_warning()
 	if ad_adapter.event_received.is_connected(_on_ad_event):
 		ad_adapter.event_received.disconnect(_on_ad_event)
 	ad_adapter.show_guard = Callable()

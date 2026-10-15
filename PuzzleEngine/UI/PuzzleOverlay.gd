@@ -8,7 +8,7 @@ signal hint_purchase_requested
 signal dismiss_requested
 
 const STUDIO_URL: String = "http://gheleghstudio.ir"
-const GAME_GUIDE: String = "در هر مرحله با یک سؤال کوتاه و صحنه‌ای پر از اشیای قابل تعامل روبه‌رو می‌شوی؛ برای پیدا کردن پاسخ باید محیط را بررسی کنی، اشیا را لمس، جابه‌جا یا استفاده کنی و حواست به دام‌ها و نکات پنهان باشد. کافی است راه‌حل را در خود صحنه اجرا کنی. وقتی حرکت درست را پیدا کنی، نتیجه همان لحظه در محیط بازی دیده می‌شود."
+const GAME_GUIDE: String = "در هر مرحله با یک سؤال کوتاه و صحنه‌ای پر از اشیای قابل تعامل روبه‌رو می‌شوی؛ برای پیدا کردن پاسخ باید محیط را بررسی کنی، اشیا را لمس، جابه‌جا یا استفاده کنی و حواست به دام‌ها و نکات پنهان باشد. کافی است راه‌حل را در خود صحنه اجرا کنی. وقتی حرکت درست را پیدا کنی، نتیجه همان لحظه در محیط بازی دیده می‌شود.(نسخه 1)"
 
 var mode: String = ""
 @onready var hint_action: Button = $SafeMargin/Center/Panel/Padding/Content/HintAction
@@ -17,6 +17,9 @@ var mode: String = ""
 
 @onready var title: Label = $SafeMargin/Center/Panel/Padding/Content/Title
 @onready var details: Label = $SafeMargin/Center/Panel/Padding/Content/DetailsScroll/Details
+@onready var result_metrics: VBoxContainer = $SafeMargin/Center/Panel/Padding/Content/ResultMetrics
+@onready var result_score: Label = $SafeMargin/Center/Panel/Padding/Content/ResultMetrics/Score/Value
+@onready var result_stars: HBoxContainer = $SafeMargin/Center/Panel/Padding/Content/ResultMetrics/Stars
 @onready var continue_button: Button = $SafeMargin/Center/Panel/Padding/Content/Continue
 @onready var retry_button: Button = $SafeMargin/Center/Panel/Padding/Content/Retry
 @onready var studio_brand: VBoxContainer = $SafeMargin/Center/Panel/Padding/Content/Studio
@@ -33,9 +36,14 @@ func _ready() -> void:
 func show_result(result: Dictionary, last_level: bool, answer: String = "") -> void:
 	_reset_buttons()
 	title.text = "معما حل شد!"
-	details.text = "امتیاز: %s\nستاره‌ها: %s از ۳" % [PuzzleHUD._persian(str(result["score"])), PuzzleHUD._persian(str(result["stars"]))]
-	if not answer.is_empty():
-		details.text = "پاسخ: %s\n\n%s" % [answer, details.text]
+	details.add_theme_font_size_override("font_size", details.get_theme_font_size("font_size") + 4)
+	details.text = "پاسخ: %s" % answer if not answer.is_empty() else ""
+	result_score.text = PuzzleHUD._persian(str(result["score"]))
+	var stars := clampi(int(result["stars"]), 1, 3)
+	for i in range(result_stars.get_child_count()):
+		(result_stars.get_child(i) as Control).visible = i < stars
+	result_stars.tooltip_text = "%s ستاره" % PuzzleHUD._persian(str(stars))
+	result_metrics.show()
 	continue_button.text = "پایان این نسخه" if last_level else "مرحلهٔ بعد"
 	continue_button.disabled = false
 	continue_button.show()
@@ -72,6 +80,8 @@ func show_game_finished(score: int, stars: int, completed_levels: int = 0) -> vo
 
 func _reset_buttons() -> void:
 	mode = ""
+	details.remove_theme_font_size_override("font_size")
+	result_metrics.hide()
 	($SafeMargin/Center/Panel/Padding/Content/DetailsScroll as ScrollContainer).scroll_vertical = 0
 	hint_action.hide()
 	hint_purchase.hide()
@@ -93,7 +103,7 @@ func _hint_panel(kind: String, heading: String, message: String, action: String 
 
 func show_hint_offer(score: int = 0) -> void:
 	_hint_panel("offer", "راهنمای معما", "با پرداخت ۱۰۰ امتیاز یا تماشای کامل تبلیغ، راهنمای این مرحله را باز کنید.\nامتیاز موجود: %s" % PuzzleHUD._persian(str(score)), "تماشای تبلیغ")
-	hint_purchase.text = "پرداخت ۱۰۰ امتیاز"
+	hint_purchase.text = "کسر ۱۰۰ امتیاز"
 	hint_purchase.show()
 
 func show_insufficient_points(score: int) -> void:
@@ -105,7 +115,7 @@ func show_hint(text: String) -> void:
 
 func show_ad_unavailable() -> void:
 	_hint_panel("unavailable", "راهنما باز نشد", "تبلیغ تکمیل نشد یا در دسترس نیست. دوباره تلاش کنید.", "تلاش مجدد برای تبلیغ")
-	hint_purchase.text = "پرداخت ۱۰۰ امتیاز"
+	hint_purchase.text = "کسر ۱۰۰ امتیاز"
 	hint_purchase.show()
 
 func show_simulated_ad() -> void:
