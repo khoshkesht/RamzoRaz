@@ -8,7 +8,7 @@
   "base_score": 100,
   "background": "res://assets/samples/one_way_street_background.svg",
   "success": {
-    "result_delay_seconds": 2
+    "result_delay_seconds": 1.0
   },
   "variables": {
     "solved": false

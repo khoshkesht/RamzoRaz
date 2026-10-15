@@ -6,7 +6,7 @@
   "answer": "سکوت؛ با گفتن نامش، حرف می‌زنیم و سکوت از بین می‌رود.",
   "time_limit_seconds": 30,
   "base_score": 50,
-  "success": { "result_delay_seconds": 2 },
+  "success": { "result_delay_seconds": 1.0 },
   "background": "res://assets/samples/bright_room.svg",
   "objects": [
     { "id": "person", "scene": "ImageObject", "sprite": "res://assets/samples/man.svg", "position": [650, 660] },

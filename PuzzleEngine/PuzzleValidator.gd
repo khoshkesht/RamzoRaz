@@ -124,7 +124,7 @@ func validate_level(value: Variant, file_path: String = "", expected_id: int = 0
 		_error("success", "Expected an object.")
 	else:
 		_keys(success, ["animation", "sound", "result_delay_seconds"], [], "success")
-		var result_delay: Variant = success.get("result_delay_seconds", 1.5)
+		var result_delay: Variant = success.get("result_delay_seconds", 1.0)
 		if _number(result_delay, "success.result_delay_seconds") and (float(result_delay) < 0.0 or float(result_delay) > 5.0):
 			_error("success.result_delay_seconds", "Expected a duration from zero to five seconds.")
 		success["result_delay_seconds"] = result_delay

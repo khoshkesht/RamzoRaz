@@ -102,20 +102,20 @@ func _hint_panel(kind: String, heading: String, message: String, action: String 
 	show()
 
 func show_hint_offer(score: int = 0) -> void:
-	_hint_panel("offer", "راهنمای معما", "با پرداخت ۱۰۰ امتیاز یا تماشای کامل تبلیغ، راهنمای این مرحله را باز کنید.\nامتیاز موجود: %s" % PuzzleHUD._persian(str(score)), "تماشای تبلیغ")
-	hint_purchase.text = "کسر ۱۰۰ امتیاز"
+	_hint_panel("offer", "راهنمای معما", "با پرداخت %s امتیاز یا تماشای کامل تبلیغ، راهنمای این مرحله را باز کنید.\nامتیاز موجود: %s" % [PuzzleHUD._persian(str(PuzzleProgressStore.HINT_COST)), PuzzleHUD._persian(str(score))], "تماشای تبلیغ")
+	hint_purchase.text = "کسر %s امتیاز" % PuzzleHUD._persian(str(PuzzleProgressStore.HINT_COST))
 	hint_purchase.show()
 
 func show_insufficient_points(score: int) -> void:
 	show_hint_offer(score)
-	details.text = "امتیاز کافی ندارید؛ برای دریافت راهنما به ۱۰۰ امتیاز نیاز دارید.\nامتیاز موجود: %s\nمی‌توانید با تماشای کامل تبلیغ راهنما را دریافت کنید." % PuzzleHUD._persian(str(score))
+	details.text = "امتیاز کافی ندارید؛ برای دریافت راهنما به %s امتیاز نیاز دارید.\nامتیاز موجود: %s\nمی‌توانید با تماشای کامل تبلیغ راهنما را دریافت کنید." % [PuzzleHUD._persian(str(PuzzleProgressStore.HINT_COST)), PuzzleHUD._persian(str(score))]
 
 func show_hint(text: String) -> void:
 	_hint_panel("hint", "راهنمای معما", text)
 
 func show_ad_unavailable() -> void:
 	_hint_panel("unavailable", "راهنما باز نشد", "تبلیغ تکمیل نشد یا در دسترس نیست. دوباره تلاش کنید.", "تلاش مجدد برای تبلیغ")
-	hint_purchase.text = "کسر ۱۰۰ امتیاز"
+	hint_purchase.text = "کسر %s امتیاز" % PuzzleHUD._persian(str(PuzzleProgressStore.HINT_COST))
 	hint_purchase.show()
 
 func show_simulated_ad() -> void:

@@ -6,7 +6,7 @@
   "answer": "حوله؛ آب را از دست می‌گیرد، خودش خیس می‌شود و دست را خشک می‌کند.",
   "time_limit_seconds": 35,
   "base_score": 50,
-  "success": { "result_delay_seconds": 2.0 },
+  "success": { "result_delay_seconds": 1.0 },
   "background": "res://assets/samples/bathroom_sink_background_light.svg",
   "objects": [
     { "id": "hand", "scene": "ImageObject", "sprite": "res://assets/samples/hand_five_wet.svg", "position": [760, 650], "state": { "wet": true } },

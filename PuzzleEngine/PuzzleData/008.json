@@ -192,6 +192,6 @@
   },
   "background": "res://assets/samples/kitchen_counter_background_light.svg",
   "success": {
-    "result_delay_seconds": 2
+    "result_delay_seconds": 1.0
   }
 }

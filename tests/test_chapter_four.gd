@@ -260,10 +260,38 @@ func _run() -> void:
 	_swipe(c, "trail_3")
 	check(c.state.variables["trail"] == 0, "Following a disconnected last segment does not count")
 	_water_transitions(c)
+	_result_delay_and_hint_price(c)
 	c.free()
 	await _progression()
 	_migration()
 	_finish()
+
+func _result_delay_and_hint_price(c: PuzzleController) -> void:
+	c.load_level_index(30)
+	_solve(c, 31)
+	check(c._result_delay_remaining == 1.0 and PuzzleSuccessFeedback.DURATION == 1.0, "Result and success effect both wait one second")
+	c._process(0.5)
+	check(not c.overlay.visible, "Result does not appear early")
+	c._process(0.5)
+	check(c.overlay.visible, "Result appears after one second")
+	for gross in [349, 350, 400]:
+		var store := PuzzleProgressStore.new()
+		store.manifest = c.manifest
+		store.persistent = false
+		var saved := {"save_version": 1, "manifest_version": 8, "current_level_id": 3, "pending_result_level_id": null, "unlocked_hints": [1], "hint_points_spent": 100, "results": {
+			"1": {"level_id": 1, "score": 200, "stars": 3, "elapsed_seconds": 1, "hint_received": true},
+			"2": {"level_id": 2, "score": gross - 200, "stars": 3, "elapsed_seconds": 1, "hint_received": false}}}
+		check(store.commit(saved), "Legacy purchases retain their original cost")
+		var before := store.data.duplicate(true)
+		if gross == 349:
+			check(not store.buy_hint(3) and store.data == before, "249 points cannot buy or charge a hint")
+		else:
+			store.fail_writes = true
+			check(not store.buy_hint(3) and store.data == before, "A failed purchase preserves the balance and hint")
+			store.fail_writes = false
+			check(store.buy_hint(3) and store.data["hint_points_spent"] == 350, "New purchase charges 250 after a legacy purchase")
+			check(store.buy_hint(3) and store.data["hint_points_spent"] == 350, "An unlocked hint is never charged again")
+			check(store.valid(JSON.parse_string(JSON.stringify(store.data))), "Mixed old and new spending survives serialization")
 
 func _water_transitions(c: PuzzleController) -> void:
 	# Check the whole legal volume space, not only the documented six moves.

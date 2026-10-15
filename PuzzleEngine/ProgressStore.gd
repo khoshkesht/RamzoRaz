@@ -1,7 +1,8 @@
 class_name PuzzleProgressStore
 extends RefCounted
 
-const HINT_COST: int = 100
+const HINT_COST: int = 250
+const LEGACY_HINT_COST: int = 100
 
 var path: String = "user://progress.json"
 var persistent: bool = true
@@ -165,7 +166,7 @@ func valid(value: Variant) -> bool:
 			return false
 	var current: Variant = value.get("current_level_id")
 	var spent: Variant = value.get("hint_points_spent", 0)
-	if not _integer(spent) or spent < 0 or int(spent) % HINT_COST != 0 or available_score(value) < 0 or spent > normalized_hints.size() * HINT_COST:
+	if not _integer(spent) or spent < 0 or available_score(value) < 0 or not _valid_hint_spending(int(spent), normalized_hints.size()):
 		return false
 	var pending: Variant = value.get("pending_result_level_id")
 	if current != null and (not _integer(current) or int(current) not in ids):
@@ -181,6 +182,14 @@ func valid(value: Variant) -> bool:
 		if not saved.has(str(ids[i])):
 			return false
 	return current == (ids[completed_count] if completed_count < ids.size() else null)
+
+func _valid_hint_spending(spent: int, hint_count: int) -> bool:
+	# Older purchases retain their original price, including after a new purchase.
+	for current_purchases in range(mini(hint_count, int(spent / HINT_COST)) + 1):
+		var legacy_spent := spent - current_purchases * HINT_COST
+		if legacy_spent % LEGACY_HINT_COST == 0 and current_purchases + int(legacy_spent / LEGACY_HINT_COST) <= hint_count:
+			return true
+	return false
 
 func _integer(value: Variant) -> bool:
 	return (value is int or value is float) and is_finite(float(value)) and float(value) == floor(float(value))

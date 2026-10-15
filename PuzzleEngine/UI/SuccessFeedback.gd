@@ -2,7 +2,7 @@ class_name PuzzleSuccessFeedback
 extends Control
 
 const STAR := preload("res://assets/ui/star.png")
-const DURATION: float = 1.1
+const DURATION: float = 1.0
 const PARTICLE_COUNT: int = 24
 var elapsed: float = 0.0
 var active: bool = false

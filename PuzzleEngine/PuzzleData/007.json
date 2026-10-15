@@ -222,6 +222,6 @@
   },
   "background": "res://assets/samples/bright_room.svg",
   "success": {
-    "result_delay_seconds": 2
+    "result_delay_seconds": 1.0
   }
 }

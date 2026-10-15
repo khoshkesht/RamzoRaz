@@ -94,7 +94,7 @@ class Level:
         row = next(line.split('|')[1:-1] for line in (ROOT/'docs/100_interactive_persian_puzzles.md').read_text(encoding='utf-8').splitlines() if line.startswith(f'| {number} |'))
         self.d = dict(schema_version=1, id=number, question=row[1].strip(), hint=hint,
                       answer=row[2].strip(), time_limit_seconds=int(row[5]), base_score=int(row[6]),
-                      background=P+background+'.svg', success=dict(result_delay_seconds=2),
+                      background=P+background+'.svg', success=dict(result_delay_seconds=1),
                       variables=dict(solved=False), objects=[], rules=[], win_condition=var('solved'))
     def variable(self, **kw): self.d['variables'].update(kw)
     def image(self, id, sprite, x, y, inputs=(), **kw):

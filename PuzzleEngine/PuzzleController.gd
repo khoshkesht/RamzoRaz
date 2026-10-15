@@ -340,7 +340,7 @@ func _show_current_result(present_success: bool = false) -> void:
 		GameAudio.stop_timer_warning()
 		_play_success_sound()
 		success_feedback.play()
-		_result_delay_remaining = maxf(PuzzleSuccessFeedback.DURATION, float(current_definition.get("success", {}).get("result_delay_seconds", 1.5)))
+		_result_delay_remaining = maxf(PuzzleSuccessFeedback.DURATION, float(current_definition.get("success", {}).get("result_delay_seconds", 1.0)))
 		if _result_delay_remaining > 0.0:
 			# The result is already recorded; leave the solved scene visible first.
 			overlay.hide()

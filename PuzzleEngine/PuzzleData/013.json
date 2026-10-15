@@ -2,7 +2,7 @@
   "schema_version": 1,
   "background": "res://assets/samples/rain_background.svg",
   "success": {
-    "result_delay_seconds": 2
+    "result_delay_seconds": 1.0
   },
   "id": 13,
   "question": "آن چیست که پنج انگشت دارد، اما جان ندارد؟",

@@ -8,7 +8,7 @@
   "base_score": 95,
   "background": "res://assets/samples/room_lighting.svg",
   "success": {
-    "result_delay_seconds": 2
+    "result_delay_seconds": 1.0
   },
   "variables": {
     "solved": false

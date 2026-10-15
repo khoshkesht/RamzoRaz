@@ -2,7 +2,7 @@
   "schema_version": 1,
   "background": "res://assets/samples/calendar_desk_background_light.svg",
   "success": {
-    "result_delay_seconds": 2
+    "result_delay_seconds": 1.0
   },
   "id": 20,
   "question": "آن چیست که هر روز می‌آید اما هیچ‌وقت امروز نیست؟",

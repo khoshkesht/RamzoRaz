@@ -2,7 +2,7 @@
   "schema_version": 1,
   "background": "res://assets/samples/room_overhead_background.svg",
   "success": {
-    "result_delay_seconds": 2
+    "result_delay_seconds": 1.0
   },
   "id": 14,
   "question": "در اتاق ۴ گوشه و در هر گوشه یک گربه است. چند گربه داریم؟",

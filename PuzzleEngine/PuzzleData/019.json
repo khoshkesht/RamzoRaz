@@ -2,7 +2,7 @@
   "schema_version": 1,
   "background": "res://assets/samples/room_lighting.svg",
   "success": {
-    "result_delay_seconds": 2
+    "result_delay_seconds": 1.0
   },
   "id": 19,
   "question": "آن چیست که هرچه بیشتر باشد، کمتر می‌بینی؟",

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "background": "res://assets/samples/friends_living_room.svg",
   "success": {
-    "result_delay_seconds": 2
+    "result_delay_seconds": 1.0
   },
   "id": 16,
   "question": "کدام ماه ۲۸ روز دارد؟",

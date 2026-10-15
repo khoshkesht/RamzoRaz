@@ -8,7 +8,7 @@
   "base_score": 110,
   "background": "res://assets/samples/apple_orchard_background.svg",
   "success": {
-    "result_delay_seconds": 2
+    "result_delay_seconds": 1.0
   },
   "variables": {
     "solved": false,
