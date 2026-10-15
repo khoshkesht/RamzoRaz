@@ -1,0 +1,4319 @@
+{
+  "schema_version": 1,
+  "id": 42,
+  "question": "سه کلید بیرون اتاق و سه لامپ داخل است؛ فقط یک بار می‌توانی وارد شوی. کلیدها را چگونه تشخیص می‌دهی؟ لامپ‌ها رشته‌ای‌اند.",
+  "hint": "یکی را گرم و خاموش کن، یکی را روشن بگذار؛ پس از ورود نور و گرما را بررسی کن.",
+  "answer": "یک لامپ را مدتی روشن و خاموش کن، دومی را روشن بگذار؛ داخل اتاق نور و گرما تعیین‌کننده‌اند",
+  "time_limit_seconds": 125,
+  "base_score": 150,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "entered": false,
+    "toggled": false,
+    "switch_0": false,
+    "switch_1": false,
+    "switch_2": false,
+    "warm_0": false,
+    "warm_1": false,
+    "warm_2": false,
+    "inspected_0": false,
+    "inspected_1": false,
+    "inspected_2": false,
+    "map_0": false,
+    "map_1": false,
+    "map_2": false
+  },
+  "objects": [
+    {
+      "id": "instructions",
+      "scene": "TextObject",
+      "text": "۳ ثانیه نگه‌داشتن کلید = ۵ دقیقهٔ داستانی گرما؛ لمس: روشن/خاموش. گرما تا پایان بازدید می‌ماند.",
+      "position": [
+        960,
+        350
+      ],
+      "hit_size": [
+        1500,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "switch_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/wall_switch.svg",
+      "position": [
+        520,
+        510
+      ],
+      "interactions": [
+        "tap",
+        {
+          "type": "hold",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "id": "switch_name_0",
+      "scene": "TextObject",
+      "text": "کلید ۱",
+      "position": [
+        520,
+        630
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "heat_ready_0",
+      "scene": "TextObject",
+      "text": "۵ دقیقه: گرم شد",
+      "position": [
+        520,
+        710
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "switch_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/wall_switch.svg",
+      "position": [
+        960,
+        510
+      ],
+      "interactions": [
+        "tap",
+        {
+          "type": "hold",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "id": "switch_name_1",
+      "scene": "TextObject",
+      "text": "کلید ۲",
+      "position": [
+        960,
+        630
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "heat_ready_1",
+      "scene": "TextObject",
+      "text": "۵ دقیقه: گرم شد",
+      "position": [
+        960,
+        710
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "switch_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/wall_switch.svg",
+      "position": [
+        1400,
+        510
+      ],
+      "interactions": [
+        "tap",
+        {
+          "type": "hold",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "id": "switch_name_2",
+      "scene": "TextObject",
+      "text": "کلید ۳",
+      "position": [
+        1400,
+        630
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "heat_ready_2",
+      "scene": "TextObject",
+      "text": "۵ دقیقه: گرم شد",
+      "position": [
+        1400,
+        710
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "enter",
+      "scene": "TextObject",
+      "text": "ورود به اتاق",
+      "position": [
+        960,
+        870
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "lamp_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bulb_cold.svg",
+      "position": [
+        520,
+        530
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": false
+    },
+    {
+      "id": "lamp_name_0",
+      "scene": "TextObject",
+      "text": "لامپ ۱",
+      "position": [
+        520,
+        670
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "heat_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/heat_lines.svg",
+      "position": [
+        690,
+        500
+      ],
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "cold_0",
+      "scene": "TextObject",
+      "text": "خاموش و سرد",
+      "position": [
+        520,
+        730
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "light_0",
+      "scene": "TextObject",
+      "text": "روشن",
+      "position": [
+        520,
+        730
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "warm_0",
+      "scene": "TextObject",
+      "text": "خاموش و گرم",
+      "position": [
+        520,
+        730
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "choice_0",
+      "scene": "TextObject",
+      "text": "کلید ۱",
+      "position": [
+        520,
+        900
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg",
+      "visible": false
+    },
+    {
+      "id": "lamp_zone_0",
+      "scene": "DropZone",
+      "position": [
+        520,
+        530
+      ],
+      "hit_size": [
+        280,
+        220
+      ],
+      "accepted_sources": [
+        "choice_0",
+        "choice_1",
+        "choice_2"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "mapping_0_0",
+      "scene": "TextObject",
+      "text": "انتخاب: کلید ۱",
+      "position": [
+        520,
+        805
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "mapping_0_1",
+      "scene": "TextObject",
+      "text": "انتخاب: کلید ۲",
+      "position": [
+        520,
+        805
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "mapping_0_2",
+      "scene": "TextObject",
+      "text": "انتخاب: کلید ۳",
+      "position": [
+        520,
+        805
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "lamp_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bulb_cold.svg",
+      "position": [
+        960,
+        530
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": false
+    },
+    {
+      "id": "lamp_name_1",
+      "scene": "TextObject",
+      "text": "لامپ ۲",
+      "position": [
+        960,
+        670
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "heat_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/heat_lines.svg",
+      "position": [
+        1130,
+        500
+      ],
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "cold_1",
+      "scene": "TextObject",
+      "text": "خاموش و سرد",
+      "position": [
+        960,
+        730
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "light_1",
+      "scene": "TextObject",
+      "text": "روشن",
+      "position": [
+        960,
+        730
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "warm_1",
+      "scene": "TextObject",
+      "text": "خاموش و گرم",
+      "position": [
+        960,
+        730
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "choice_1",
+      "scene": "TextObject",
+      "text": "کلید ۲",
+      "position": [
+        960,
+        900
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg",
+      "visible": false
+    },
+    {
+      "id": "lamp_zone_1",
+      "scene": "DropZone",
+      "position": [
+        960,
+        530
+      ],
+      "hit_size": [
+        280,
+        220
+      ],
+      "accepted_sources": [
+        "choice_0",
+        "choice_1",
+        "choice_2"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "mapping_1_0",
+      "scene": "TextObject",
+      "text": "انتخاب: کلید ۱",
+      "position": [
+        960,
+        805
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "mapping_1_1",
+      "scene": "TextObject",
+      "text": "انتخاب: کلید ۲",
+      "position": [
+        960,
+        805
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "mapping_1_2",
+      "scene": "TextObject",
+      "text": "انتخاب: کلید ۳",
+      "position": [
+        960,
+        805
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "lamp_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bulb_cold.svg",
+      "position": [
+        1400,
+        530
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": false
+    },
+    {
+      "id": "lamp_name_2",
+      "scene": "TextObject",
+      "text": "لامپ ۳",
+      "position": [
+        1400,
+        670
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "heat_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/heat_lines.svg",
+      "position": [
+        1570,
+        500
+      ],
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "cold_2",
+      "scene": "TextObject",
+      "text": "خاموش و سرد",
+      "position": [
+        1400,
+        730
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "light_2",
+      "scene": "TextObject",
+      "text": "روشن",
+      "position": [
+        1400,
+        730
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "warm_2",
+      "scene": "TextObject",
+      "text": "خاموش و گرم",
+      "position": [
+        1400,
+        730
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "choice_2",
+      "scene": "TextObject",
+      "text": "کلید ۳",
+      "position": [
+        1400,
+        900
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg",
+      "visible": false
+    },
+    {
+      "id": "lamp_zone_2",
+      "scene": "DropZone",
+      "position": [
+        1400,
+        530
+      ],
+      "hit_size": [
+        280,
+        220
+      ],
+      "accepted_sources": [
+        "choice_0",
+        "choice_1",
+        "choice_2"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "mapping_2_0",
+      "scene": "TextObject",
+      "text": "انتخاب: کلید ۱",
+      "position": [
+        1400,
+        805
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "mapping_2_1",
+      "scene": "TextObject",
+      "text": "انتخاب: کلید ۲",
+      "position": [
+        1400,
+        805
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "mapping_2_2",
+      "scene": "TextObject",
+      "text": "انتخاب: کلید ۳",
+      "position": [
+        1400,
+        805
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "confirm",
+      "scene": "TextObject",
+      "text": "تأیید تطبیق",
+      "position": [
+        1650,
+        1010
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "visible": false
+    },
+    {
+      "id": "torch",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/flashlight.svg",
+      "position": [
+        280,
+        840
+      ],
+      "interactions": [
+        "hold"
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "color_label",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/day_card.svg",
+      "position": [
+        1650,
+        500
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.35,
+        0.35
+      ]
+    },
+    {
+      "id": "guess",
+      "scene": "DropZone",
+      "position": [
+        1650,
+        720
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "color_label"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "guess_label",
+      "scene": "TextObject",
+      "text": "کارت حدس رنگ",
+      "position": [
+        1650,
+        720
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "tap",
+      "source": "switch_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "switch_0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "switch_0",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggled",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "rotate",
+          "target": "switch_0",
+          "degrees": 0
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "tap",
+      "source": "switch_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "switch_0",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggled",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "switch_0",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "rotate",
+          "target": "switch_0",
+          "degrees": 180
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "switch_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggled",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "hold",
+      "source": "switch_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "switch_0",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "warm_0",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "rotate",
+          "target": "switch_0",
+          "degrees": 180
+        },
+        {
+          "type": "show",
+          "target": "heat_ready_0"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "tap",
+      "source": "switch_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "switch_1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "switch_1",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggled",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "rotate",
+          "target": "switch_1",
+          "degrees": 0
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
+      "source": "switch_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "switch_1",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggled",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "switch_1",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "rotate",
+          "target": "switch_1",
+          "degrees": 180
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "tap",
+      "source": "switch_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggled",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "hold",
+      "source": "switch_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "switch_1",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "warm_1",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "rotate",
+          "target": "switch_1",
+          "degrees": 180
+        },
+        {
+          "type": "show",
+          "target": "heat_ready_1"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
+      "event": "tap",
+      "source": "switch_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "switch_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "switch_2",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggled",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "rotate",
+          "target": "switch_2",
+          "degrees": 0
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0009",
+      "event": "tap",
+      "source": "switch_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "switch_2",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggled",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "switch_2",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "rotate",
+          "target": "switch_2",
+          "degrees": 180
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0010",
+      "event": "tap",
+      "source": "switch_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggled",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0011",
+      "event": "hold",
+      "source": "switch_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "switch_2",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "warm_2",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "rotate",
+          "target": "switch_2",
+          "degrees": 180
+        },
+        {
+          "type": "show",
+          "target": "heat_ready_2"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0012",
+      "event": "tap",
+      "source": "enter",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "entered",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "enter"
+        },
+        {
+          "type": "hide",
+          "target": "instructions"
+        },
+        {
+          "type": "hide",
+          "target": "switch_0"
+        },
+        {
+          "type": "hide",
+          "target": "switch_name_0"
+        },
+        {
+          "type": "hide",
+          "target": "heat_ready_0"
+        },
+        {
+          "type": "show",
+          "target": "lamp_0"
+        },
+        {
+          "type": "show",
+          "target": "lamp_name_0"
+        },
+        {
+          "type": "show",
+          "target": "choice_0"
+        },
+        {
+          "type": "hide",
+          "target": "switch_1"
+        },
+        {
+          "type": "hide",
+          "target": "switch_name_1"
+        },
+        {
+          "type": "hide",
+          "target": "heat_ready_1"
+        },
+        {
+          "type": "show",
+          "target": "lamp_1"
+        },
+        {
+          "type": "show",
+          "target": "lamp_name_1"
+        },
+        {
+          "type": "show",
+          "target": "choice_1"
+        },
+        {
+          "type": "hide",
+          "target": "switch_2"
+        },
+        {
+          "type": "hide",
+          "target": "switch_name_2"
+        },
+        {
+          "type": "hide",
+          "target": "heat_ready_2"
+        },
+        {
+          "type": "show",
+          "target": "lamp_2"
+        },
+        {
+          "type": "show",
+          "target": "lamp_name_2"
+        },
+        {
+          "type": "show",
+          "target": "choice_2"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0013",
+      "event": "tap",
+      "source": "lamp_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "switch_1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp_0",
+          "sprite": "res://assets/samples/bulb_lit.svg"
+        },
+        {
+          "type": "show",
+          "target": "light_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "inspected_0",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0014",
+      "event": "tap",
+      "source": "enter",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "switch_1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp_0",
+          "sprite": "res://assets/samples/bulb_lit.svg"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0015",
+      "event": "tap",
+      "source": "lamp_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "switch_1",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "warm_1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "heat_0"
+        },
+        {
+          "type": "show",
+          "target": "warm_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "inspected_0",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0016",
+      "event": "tap",
+      "source": "lamp_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "switch_1",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "warm_1",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "cold_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "inspected_0",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0017",
+      "event": "drop_on",
+      "source": "choice_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "inspected_0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "choice_0",
+          "position": [
+            520,
+            900
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "map_0",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_0_0"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_0_1"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_0_2"
+        },
+        {
+          "type": "show",
+          "target": "mapping_0_0"
+        },
+        {
+          "type": "play_animation",
+          "target": "lamp_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "lamp_zone_0"
+    },
+    {
+      "id": "r0018",
+      "event": "drop_on",
+      "source": "choice_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "inspected_0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "choice_1",
+          "position": [
+            960,
+            900
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "map_0",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_0_0"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_0_1"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_0_2"
+        },
+        {
+          "type": "show",
+          "target": "mapping_0_1"
+        },
+        {
+          "type": "play_animation",
+          "target": "lamp_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "lamp_zone_0"
+    },
+    {
+      "id": "r0019",
+      "event": "drop_on",
+      "source": "choice_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "inspected_0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "choice_2",
+          "position": [
+            1400,
+            900
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "map_0",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_0_0"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_0_1"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_0_2"
+        },
+        {
+          "type": "show",
+          "target": "mapping_0_2"
+        },
+        {
+          "type": "play_animation",
+          "target": "lamp_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "lamp_zone_0"
+    },
+    {
+      "id": "r0020",
+      "event": "tap",
+      "source": "lamp_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "switch_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp_1",
+          "sprite": "res://assets/samples/bulb_lit.svg"
+        },
+        {
+          "type": "show",
+          "target": "light_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "inspected_1",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0021",
+      "event": "tap",
+      "source": "enter",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "switch_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp_1",
+          "sprite": "res://assets/samples/bulb_lit.svg"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0022",
+      "event": "tap",
+      "source": "lamp_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "switch_2",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "warm_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "heat_1"
+        },
+        {
+          "type": "show",
+          "target": "warm_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "inspected_1",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0023",
+      "event": "tap",
+      "source": "lamp_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "switch_2",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "warm_2",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "cold_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "inspected_1",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0024",
+      "event": "drop_on",
+      "source": "choice_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "inspected_1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "choice_0",
+          "position": [
+            520,
+            900
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "map_1",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_1_0"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_1_1"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_1_2"
+        },
+        {
+          "type": "show",
+          "target": "mapping_1_0"
+        },
+        {
+          "type": "play_animation",
+          "target": "lamp_1",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "lamp_zone_1"
+    },
+    {
+      "id": "r0025",
+      "event": "drop_on",
+      "source": "choice_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "inspected_1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "choice_1",
+          "position": [
+            960,
+            900
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "map_1",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_1_0"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_1_1"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_1_2"
+        },
+        {
+          "type": "show",
+          "target": "mapping_1_1"
+        },
+        {
+          "type": "play_animation",
+          "target": "lamp_1",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "lamp_zone_1"
+    },
+    {
+      "id": "r0026",
+      "event": "drop_on",
+      "source": "choice_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "inspected_1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "choice_2",
+          "position": [
+            1400,
+            900
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "map_1",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_1_0"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_1_1"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_1_2"
+        },
+        {
+          "type": "show",
+          "target": "mapping_1_2"
+        },
+        {
+          "type": "play_animation",
+          "target": "lamp_1",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "lamp_zone_1"
+    },
+    {
+      "id": "r0027",
+      "event": "tap",
+      "source": "lamp_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "switch_0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp_2",
+          "sprite": "res://assets/samples/bulb_lit.svg"
+        },
+        {
+          "type": "show",
+          "target": "light_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "inspected_2",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0028",
+      "event": "tap",
+      "source": "enter",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "switch_0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp_2",
+          "sprite": "res://assets/samples/bulb_lit.svg"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0029",
+      "event": "tap",
+      "source": "lamp_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "switch_0",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "warm_0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "heat_2"
+        },
+        {
+          "type": "show",
+          "target": "warm_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "inspected_2",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0030",
+      "event": "tap",
+      "source": "lamp_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "switch_0",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "warm_0",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "cold_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "inspected_2",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0031",
+      "event": "drop_on",
+      "source": "choice_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "inspected_2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "choice_0",
+          "position": [
+            520,
+            900
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "map_2",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_2_0"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_2_1"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_2_2"
+        },
+        {
+          "type": "show",
+          "target": "mapping_2_0"
+        },
+        {
+          "type": "play_animation",
+          "target": "lamp_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "lamp_zone_2"
+    },
+    {
+      "id": "r0032",
+      "event": "drop_on",
+      "source": "choice_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "inspected_2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "choice_1",
+          "position": [
+            960,
+            900
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "map_2",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_2_0"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_2_1"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_2_2"
+        },
+        {
+          "type": "show",
+          "target": "mapping_2_1"
+        },
+        {
+          "type": "play_animation",
+          "target": "lamp_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "lamp_zone_2"
+    },
+    {
+      "id": "r0033",
+      "event": "drop_on",
+      "source": "choice_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "inspected_2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "any",
+          "conditions": [
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "type": "all",
+              "conditions": [
+                {
+                  "type": "variable",
+                  "name": "switch_2",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_1",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_1",
+                  "operator": "eq",
+                  "value": true
+                },
+                {
+                  "type": "variable",
+                  "name": "switch_0",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "type": "variable",
+                  "name": "warm_0",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "choice_2",
+          "position": [
+            1400,
+            900
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "map_2",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_2_0"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_2_1"
+        },
+        {
+          "type": "hide",
+          "target": "mapping_2_2"
+        },
+        {
+          "type": "show",
+          "target": "mapping_2_2"
+        },
+        {
+          "type": "play_animation",
+          "target": "lamp_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "lamp_zone_2"
+    },
+    {
+      "id": "r0034",
+      "event": "tap",
+      "source": "enter",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "entered",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "confirm"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0035",
+      "event": "tap",
+      "source": "confirm",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "map_0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "map_1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "map_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0036",
+      "event": "hold",
+      "source": "torch",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "torch",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0037",
+      "event": "drop_on",
+      "source": "color_label",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "color_label",
+          "position": [
+            1650,
+            500
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "color_label",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "guess"
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

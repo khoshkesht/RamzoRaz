@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "id": 40,
+  "question": "کدام کوزه آب دارد؟",
+  "hint": "کوزه‌ها را با حرکت سریع تکان بده؛ موج آب را ببین و همان کوزه را لمس کن.",
+  "answer": "کوزه‌ای که هنگام تکان‌دادن صدای آب می‌دهد",
+  "time_limit_seconds": 95,
+  "base_score": 125,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "water_seen": false
+  },
+  "objects": [
+    {
+      "id": "jug_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/water_jug.svg",
+      "position": [
+        520,
+        630
+      ],
+      "interactions": [
+        "swipe",
+        "tap"
+      ]
+    },
+    {
+      "id": "waves_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/milk_ripple.svg",
+      "position": [
+        520,
+        480
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "jug_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/water_jug.svg",
+      "position": [
+        960,
+        630
+      ],
+      "interactions": [
+        "swipe",
+        "tap"
+      ]
+    },
+    {
+      "id": "waves_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/milk_ripple.svg",
+      "position": [
+        960,
+        480
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "jug_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/water_jug.svg",
+      "position": [
+        1400,
+        630
+      ],
+      "interactions": [
+        "swipe",
+        "tap"
+      ]
+    },
+    {
+      "id": "waves_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/milk_ripple.svg",
+      "position": [
+        1400,
+        480
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "pebbles",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/shopping_bag.svg",
+      "position": [
+        350,
+        850
+      ],
+      "interactions": [
+        "hold"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "pebble_a",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/stone.svg",
+      "position": [
+        330,
+        830
+      ],
+      "interactions": [],
+      "scale": [
+        0.25,
+        0.25
+      ]
+    },
+    {
+      "id": "pebble_b",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/stone.svg",
+      "position": [
+        370,
+        850
+      ],
+      "interactions": [],
+      "scale": [
+        0.2,
+        0.2
+      ]
+    },
+    {
+      "id": "lid",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bottle_cap.svg",
+      "position": [
+        1570,
+        840
+      ],
+      "interactions": [
+        "tap"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "swipe",
+      "source": "jug_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "jug_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "swipe",
+      "source": "jug_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "jug_1",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "swipe",
+      "source": "jug_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "jug_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        },
+        {
+          "type": "show",
+          "target": "waves_2"
+        },
+        {
+          "type": "play_sound",
+          "sound": "res://assets/samples/water_slosh.wav",
+          "wait": false
+        },
+        {
+          "type": "set_variable",
+          "name": "water_seen",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "hold",
+      "source": "pebbles",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_sound",
+          "sound": "res://assets/sounds/ui_click.wav",
+          "wait": false
+        },
+        {
+          "type": "play_animation",
+          "target": "pebbles",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "tap",
+      "source": "lid",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "lid",
+          "degrees": 45
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
+      "source": "jug_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "water_seen",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

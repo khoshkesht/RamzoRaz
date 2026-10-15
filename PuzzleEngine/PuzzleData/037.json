@@ -1,0 +1,297 @@
+{
+  "schema_version": 1,
+  "id": 37,
+  "question": "کدام قالی راه خروج را پنهان کرده؟",
+  "hint": "قالیچه‌ها را کنار بکش؛ دریچهٔ آشکارشده را لمس کن.",
+  "answer": "قالیچه روی دریچه",
+  "time_limit_seconds": 90,
+  "base_score": 120,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "hatch",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/floor_hatch.svg",
+      "position": [
+        960,
+        600
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": false
+    },
+    {
+      "id": "rug_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/woven_mat.svg",
+      "position": [
+        480,
+        600
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            220,
+            480,
+            1450,
+            400
+          ],
+          "return_on_invalid": false
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.4,
+        1.4
+      ]
+    },
+    {
+      "id": "rug_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/woven_mat.svg",
+      "position": [
+        960,
+        600
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            220,
+            480,
+            1450,
+            400
+          ],
+          "return_on_invalid": false
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.4,
+        1.4
+      ]
+    },
+    {
+      "id": "rug_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/woven_mat.svg",
+      "position": [
+        1440,
+        600
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            220,
+            480,
+            1450,
+            400
+          ],
+          "return_on_invalid": false
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.4,
+        1.4
+      ]
+    },
+    {
+      "id": "doormat",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/woven_mat.svg",
+      "position": [
+        300,
+        890
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "dust",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/dust_motes.svg",
+      "position": [
+        1510,
+        900
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "broom",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/broom.svg",
+      "position": [
+        1600,
+        850
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "right"
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drag_end",
+      "source": "rug_0",
+      "conditions": [
+        {
+          "type": "moved_distance_at_least",
+          "value": 150
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "rug_0",
+          "position": [
+            480,
+            830
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "drag_end",
+      "source": "rug_1",
+      "conditions": [
+        {
+          "type": "moved_distance_at_least",
+          "value": 150
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "rug_1",
+          "position": [
+            960,
+            830
+          ]
+        },
+        {
+          "type": "show",
+          "target": "hatch"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "drag_end",
+      "source": "rug_2",
+      "conditions": [
+        {
+          "type": "moved_distance_at_least",
+          "value": 150
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "rug_2",
+          "position": [
+            1440,
+            830
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "drag_end",
+      "source": "doormat",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "doormat",
+          "position": [
+            450,
+            900
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "swipe",
+      "source": "broom",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "dust"
+        },
+        {
+          "type": "play_animation",
+          "target": "broom",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
+      "source": "hatch",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

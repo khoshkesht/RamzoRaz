@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "id": 39,
+  "question": "کدام سماور هنوز داغ است؟",
+  "hint": "درِ سماورها را نگه دار؛ بعد سماوری را انتخاب کن که بخار آزاد می‌کند.",
+  "answer": "سماوری که بخار دارد",
+  "time_limit_seconds": 90,
+  "base_score": 120,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "hot_seen": false
+  },
+  "objects": [
+    {
+      "id": "samovar_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/samovar.svg",
+      "position": [
+        520,
+        650
+      ],
+      "interactions": [
+        "hold",
+        "tap"
+      ]
+    },
+    {
+      "id": "steam_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/steam_plume.svg",
+      "position": [
+        520,
+        470
+      ],
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "samovar_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/samovar.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [
+        "hold",
+        "tap"
+      ]
+    },
+    {
+      "id": "steam_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/steam_plume.svg",
+      "position": [
+        960,
+        470
+      ],
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "samovar_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/samovar.svg",
+      "position": [
+        1400,
+        650
+      ],
+      "interactions": [
+        "hold",
+        "tap"
+      ]
+    },
+    {
+      "id": "steam_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/steam_plume.svg",
+      "position": [
+        1400,
+        470
+      ],
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "glass",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/cup.svg",
+      "position": [
+        350,
+        860
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "glass_steam",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/steam_plume.svg",
+      "position": [
+        350,
+        750
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "cloth",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/towel_dry.svg",
+      "position": [
+        1550,
+        860
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "tray_image",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/test_tray.svg",
+      "position": [
+        1220,
+        900
+      ],
+      "interactions": [],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "stain",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/dust_motes.svg",
+      "position": [
+        1220,
+        900
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "tray",
+      "scene": "DropZone",
+      "position": [
+        1220,
+        900
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "cloth"
+      ],
+      "z_index": -1
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "hold",
+      "source": "samovar_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "samovar_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "hold",
+      "source": "samovar_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "show",
+          "target": "steam_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "hot_seen",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "hold",
+      "source": "samovar_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "samovar_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "tap",
+      "source": "glass",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "glass_steam"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "source": "cloth",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cloth",
+          "position": [
+            1550,
+            860
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "stain"
+        },
+        {
+          "type": "play_animation",
+          "target": "cloth",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
+      "source": "samovar_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "hot_seen",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

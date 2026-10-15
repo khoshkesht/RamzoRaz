@@ -1,0 +1,575 @@
+{
+  "schema_version": 1,
+  "id": 45,
+  "question": "اگر دیروز فردای شنبه بود، امروز چه روزی است؟",
+  "hint": "فردای شنبه یکشنبه است؛ دیروز و امروز را در دو جای مستقل بچین.",
+  "answer": "دوشنبه",
+  "time_limit_seconds": 105,
+  "base_score": 140,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "yesterday": false,
+    "today": false
+  },
+  "objects": [
+    {
+      "id": "instructions",
+      "scene": "TextObject",
+      "text": "فردای شنبه = دیروز؛ یک روز بعد از دیروز = امروز",
+      "position": [
+        960,
+        350
+      ],
+      "hit_size": [
+        1500,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "saturday",
+      "scene": "TextObject",
+      "text": "شنبه",
+      "position": [
+        480,
+        520
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "yesterday",
+      "scene": "DropZone",
+      "position": [
+        960,
+        550
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "sun",
+        "mon",
+        "tue"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "yesterday_label",
+      "scene": "TextObject",
+      "text": "دیروز",
+      "position": [
+        960,
+        470
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "today",
+      "scene": "DropZone",
+      "position": [
+        1440,
+        550
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "sun",
+        "mon",
+        "tue"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "today_label",
+      "scene": "TextObject",
+      "text": "امروز",
+      "position": [
+        1440,
+        470
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "sun",
+      "scene": "TextObject",
+      "text": "یکشنبه",
+      "position": [
+        550,
+        800
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "mon",
+      "scene": "TextObject",
+      "text": "دوشنبه",
+      "position": [
+        960,
+        800
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "tue",
+      "scene": "TextObject",
+      "text": "سه‌شنبه",
+      "position": [
+        1370,
+        800
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "yesterday_ok",
+      "scene": "TextObject",
+      "text": "یکشنبه",
+      "position": [
+        960,
+        610
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "today_ok",
+      "scene": "TextObject",
+      "text": "دوشنبه",
+      "position": [
+        1440,
+        610
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "confirm",
+      "scene": "TextObject",
+      "text": "تأیید",
+      "position": [
+        960,
+        920
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "clock",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/clock_face.svg",
+      "position": [
+        300,
+        820
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "sun",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "sun",
+          "position": [
+            550,
+            800
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "sun",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "yesterday"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "sun",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "sun",
+          "position": [
+            550,
+            800
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "sun",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "today"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "mon",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "mon",
+          "position": [
+            960,
+            800
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "mon",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "yesterday"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "mon",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "mon",
+          "position": [
+            960,
+            800
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "mon",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "today"
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "source": "tue",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "tue",
+          "position": [
+            1370,
+            800
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "yesterday",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "tue",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "yesterday"
+    },
+    {
+      "id": "r0005",
+      "event": "drop_on",
+      "source": "tue",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "tue",
+          "position": [
+            1370,
+            800
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "today",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "tue",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "today"
+    },
+    {
+      "id": "r0006",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "yesterday_ok"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "yesterday_ok"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "today_ok"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0009",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "today_ok"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0010",
+      "event": "tap",
+      "source": "confirm",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "yesterday",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "today",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0011",
+      "event": "tap",
+      "source": "clock",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "clock",
+          "degrees": 90
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

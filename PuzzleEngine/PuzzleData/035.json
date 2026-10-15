@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "id": 35,
+  "question": "در سفره هفت‌سین چیزی پیدا کن که با «س» شروع نمی‌شود.",
+  "hint": "نام چیزهای سفره را در نظر بگیر؛ همهٔ آن‌ها جزو هفت سین نیستند.",
+  "answer": "ماهی قرمز",
+  "time_limit_seconds": 80,
+  "base_score": 115,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "mat",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/woven_mat.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        5,
+        3
+      ],
+      "z_index": -3
+    },
+    {
+      "id": "apple",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/apple.svg",
+      "position": [
+        520,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "apple_name",
+      "scene": "TextObject",
+      "text": "سیب",
+      "position": [
+        520,
+        605
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "garlic",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/garlic.svg",
+      "position": [
+        810,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "garlic_name",
+      "scene": "TextObject",
+      "text": "سیر",
+      "position": [
+        810,
+        605
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "sprouts",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/green_sprouts.svg",
+      "position": [
+        1100,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "sprouts_name",
+      "scene": "TextObject",
+      "text": "سبزه",
+      "position": [
+        1100,
+        605
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "vinegar",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bottle.svg",
+      "position": [
+        1400,
+        520
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "vinegar_name",
+      "scene": "TextObject",
+      "text": "سرکه",
+      "position": [
+        1400,
+        605
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "sumac",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/sumac_bowl.svg",
+      "position": [
+        520,
+        790
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "sumac_name",
+      "scene": "TextObject",
+      "text": "سماق",
+      "position": [
+        520,
+        875
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "oleaster",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/oleaster_bowl.svg",
+      "position": [
+        810,
+        790
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "oleaster_name",
+      "scene": "TextObject",
+      "text": "سنجد",
+      "position": [
+        810,
+        875
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "samanu",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/samanu_bowl.svg",
+      "position": [
+        1100,
+        790
+      ],
+      "interactions": [
+        "hold"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "samanu_name",
+      "scene": "TextObject",
+      "text": "سمنو",
+      "position": [
+        1100,
+        875
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "fish",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/goldfish_bowl.svg",
+      "position": [
+        1400,
+        780
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "samanu_lid",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/bowl_lid.svg",
+      "position": [
+        1100,
+        750
+      ],
+      "interactions": [],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "flower",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/hyacinth.svg",
+      "position": [
+        1670,
+        640
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "up"
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "hold",
+      "source": "samanu",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "samanu_lid"
+        },
+        {
+          "type": "play_animation",
+          "target": "samanu",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "swipe",
+      "source": "flower",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "flower",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "fish",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "fish",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "id": 32,
+  "question": "آن چیست که وقتی می‌شکند صدا ندارد؟",
+  "hint": "دست‌های دو نفر را از هم دور کن؛ شکستن قول صدا ندارد.",
+  "answer": "قول",
+  "time_limit_seconds": 70,
+  "base_score": 100,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "person_a",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/man.svg",
+      "position": [
+        670,
+        610
+      ],
+      "interactions": [],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "person_b",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/man.svg",
+      "position": [
+        1250,
+        610
+      ],
+      "interactions": [],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "joined",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/promise_joined.svg",
+      "position": [
+        960,
+        640
+      ],
+      "interactions": []
+    },
+    {
+      "id": "hand",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/hand_dry.svg",
+      "position": [
+        1030,
+        650
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            700,
+            520,
+            800,
+            250
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "broken",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/promise_broken.svg",
+      "position": [
+        960,
+        570
+      ],
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "glass",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/cup.svg",
+      "position": [
+        440,
+        830
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "agreement",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/paper.svg",
+      "position": [
+        1490,
+        800
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "down"
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "tap",
+      "source": "glass",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "glass",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        },
+        {
+          "type": "play_sound",
+          "sound": "res://assets/sounds/ui_click.wav",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "swipe",
+      "source": "agreement",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "agreement",
+          "sprite": "res://assets/samples/agreement_folded.svg"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "drag_end",
+      "source": "hand",
+      "conditions": [
+        {
+          "type": "moved_distance_at_least",
+          "value": 180
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "joined"
+        },
+        {
+          "type": "show",
+          "target": "broken"
+        },
+        {
+          "type": "move",
+          "target": "hand",
+          "position": [
+            1260,
+            670
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

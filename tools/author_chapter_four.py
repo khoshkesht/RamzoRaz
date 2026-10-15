@@ -1,0 +1,414 @@
+"""Author packaged stages 31–50. Writes content only; does not run Godot or tests."""
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+ASSETS = ROOT / 'assets/samples'
+DATA = ROOT / 'PuzzleEngine/PuzzleData'
+P = 'res://assets/samples/'
+
+
+def svg(name, body, w=240, h=200):
+    (ASSETS / (name + '.svg')).write_text(
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">'
+        '<g stroke="#48575d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">'
+        + body + '</g></svg>\n', encoding='utf-8')
+
+
+# New vector assets supply the missing silhouettes and physical clues only.
+svg('match_unlit', '<path d="M50 160 180 40" stroke="#c9a26e" stroke-width="18"/><path d="m170 50 18-17" stroke="#b95e50" stroke-width="23"/><rect x="20" y="165" width="200" height="18" rx="8" fill="#936b56"/>')
+svg('match_lit', '<path d="M50 160 180 40" stroke="#c9a26e" stroke-width="18"/><path d="M180 59Q134 22 185 5Q179 28 202 34Q215 66 180 59Z" fill="#ffc956"/><path d="M180 55Q170 35 189 29Q202 48 180 55" fill="#ff8b47"/><rect x="20" y="165" width="200" height="18" rx="8" fill="#936b56"/>')
+svg('empty_lighter', '<rect x="65" y="65" width="110" height="120" rx="18" fill="#9cb9bc"/><rect x="78" y="40" width="84" height="35" fill="#c1c8bc"/><circle cx="136" cy="35" r="16" fill="#899394"/>')
+svg('wall_switch', '<rect x="50" y="15" width="140" height="170" rx="16" fill="#f2e6cb"/><rect x="89" y="55" width="62" height="85" rx="8" fill="#9bbfbb"/><path d="M105 72H135"/>')
+svg('room_heater', '<rect x="20" y="20" width="200" height="150" rx="18" fill="#a4b4ad"/><path d="M55 50v90m32-90v90m33-90v90m33-90v90m32-90v90M52 175v15m136-15v15" fill="none" stroke-width="10"/>')
+svg('promise_joined', '<path d="m10 72 70-30 40 25 40-25 70 30-20 68-58-6-32 24-32-24-58 6Z" fill="#e6b28f"/><path d="m78 72 34 37q12 12 24-3l21-25M90 124l28 22M110 111l30 26" fill="none"/><path d="M100 35q-28-27-26-5q0 16 26 30 26-14 26-30 2-22-26 5Z" fill="#d99189"/>', 240, 180)
+svg('promise_broken', '<path d="M80 38Q32-7 31 35q0 31 49 60 49-29 49-60 0-42-49 3Z" fill="#d99189"/><path d="m84 13-15 30 22 9-18 38" fill="none" stroke="#fff0d8" stroke-width="9"/>', 160, 110)
+svg('window_open_cold', '<rect x="10" y="10" width="340" height="230" rx="12" fill="#c19569"/><rect x="25" y="25" width="310" height="200" fill="#c7e5ed"/><path d="m25 25 94 35v126l-94 39Zm310 0-94 35v126l94 39Z" fill="#f4e6ca"/><path d="M130 87q49-30 92 0M130 125q49-30 92 0M130 163q49-30 92 0" fill="none" stroke="#6da9bc"/>', 360, 250)
+svg('thermometer_cold', '<rect x="82" y="12" width="42" height="135" rx="20" fill="#f8efd9"/><circle cx="103" cy="154" r="28" fill="#76b8d3"/><path d="M103 147V113" stroke="#76b8d3" stroke-width="17"/><path d="M138 40h22m-22 30h22m-22 30h22"/>', 200, 200)
+svg('toy_car', '<path d="M20 96 60 85 85 46h82l30 45 27 11v50H20Z" fill="#e3a56b"/><path d="M95 57h59l25 33H76Z" fill="#c7e3e5"/><circle cx="64" cy="154" r="24" fill="#626b6b"/><circle cx="181" cy="154" r="24" fill="#626b6b"/>')
+svg('goldfish_bowl', '<path d="M52 35h136l-18 24q62 103-50 112Q8 162 70 59Z" fill="#d1e9eb"/><path d="M51 102q70 17 138 0" fill="none" stroke="#71b3c1"/><path d="m135 106 33-26v52Z" fill="#e49454"/><ellipse cx="113" cy="105" rx="37" ry="23" fill="#ed8662"/><circle cx="95" cy="100" r="4" fill="#48575d"/>')
+svg('pomegranate', '<path d="m100 38-9-25 26 10 24-10-3 25Q205 53 194 125q-8 63-75 63T45 125Q34 55 100 38Z" fill="#cd7974"/><path d="M70 93q0-29 27-34" fill="none" stroke="#edb0a0" stroke-width="9"/>')
+svg('weighing_scale', '<path d="M120 24v130M75 180h90M30 80h180" fill="none" stroke="#a68a5c" stroke-width="12"/><path d="m44 80-25 60h76L70 80m100 0-25 60h76l-25-60" fill="#c6d7c8"/>')
+svg('floor_hatch', '<rect x="12" y="15" width="256" height="150" rx="10" fill="#846e56"/><rect x="27" y="29" width="226" height="120" fill="#3f5960"/><path d="M99 43v93m70-93v93m-70-71h70m-70 32h70m-70 28h70" stroke="#d1b284" stroke-width="8"/>', 280, 180)
+for name, teeth in [('toothed_key_a', '140,107 140,132 158,132 158,116 178,116 178,132 198,132 198,93'), ('toothed_key_b', '140,107 140,132 158,132 158,93 178,93 178,116 198,116 198,93'), ('toothed_key_c', '140,107 140,116 158,116 158,132 178,132 178,93 198,93')]:
+    svg(name, '<circle cx="57" cy="93" r="36" fill="#d8bb77"/><circle cx="57" cy="93" r="17" fill="#f8ecd3"/><path d="M93 93H211" stroke="#d8bb77" stroke-width="16"/>' + f'<polygon points="{teeth}" fill="#d8bb77"/>')
+svg('chest_closed', '<path d="M20 82Q20 20 130 20T240 82v113H20Z" fill="#b28b60"/><path d="M20 83h220M64 36v159M195 36v159" fill="none" stroke="#d9ba7b" stroke-width="12"/><rect x="99" y="74" width="64" height="59" rx="8" fill="#d9ba7b"/>', 260, 210)
+svg('chest_open', '<path d="M20 95h220v100H20Z" fill="#b28b60"/><path d="M20 80V22h220v58Z" fill="#d6b575"/><path d="M34 105h192v55H34Z" fill="#4c6864"/><circle cx="100" cy="131" r="18" fill="#f7d37b"/><circle cx="142" cy="131" r="18" fill="#f7d37b"/>', 260, 210)
+svg('key_profile', '<circle cx="57" cy="93" r="36" fill="#61797b"/><circle cx="57" cy="93" r="17" fill="#f8ecd3"/><path d="M93 93H211" stroke="#61797b" stroke-width="16"/><polygon points="140,107 140,132 158,132 158,93 178,93 178,116 198,116 198,93" fill="#61797b"/>')
+svg('samovar', '<ellipse cx="120" cy="110" rx="70" ry="66" fill="#c6ac74"/><path d="M66 40h108M90 24h60M120 178v10M80 192h80M184 120h37v-22M51 70Q9 60 26 116" fill="none" stroke="#b49a65" stroke-width="12"/><ellipse cx="120" cy="47" rx="58" ry="12" fill="#dfc998"/>')
+svg('steam_plume', '<path d="M35 126q-30-25 0-46t0-51M80 126q-30-25 0-46t0-51M125 126q-30-25 0-46t0-51" stroke="#79aab0" stroke-width="10" fill="none"/>', 160, 150)
+svg('water_jug', '<path d="M76 28h88v32q55 34 39 95-11 40-83 40t-83-40Q21 94 76 60Z" fill="#c4a47e"/><ellipse cx="120" cy="28" rx="44" ry="14" fill="#726b59"/><path d="M195 81q49-7 31 52l-23 9" fill="none" stroke-width="12"/>', 260, 210)
+svg('bird_cage', '<path d="M20 185V75Q20 10 120 10T220 75v110Z" fill="none" stroke="#a78c61" stroke-width="10"/><path d="M50 48v137M85 25v160M120 12v173M155 25v160M190 48v137M20 90h200" fill="none"/><rect x="80" y="85" width="80" height="100" rx="7" fill="none"/><path d="M8 189h224" stroke-width="13"/>')
+svg('cage_back_open', '<path d="M20 185V75Q20 10 120 10T220 75v110M8 189h224M50 48v137M190 48v137" fill="none" stroke="#a78c61" stroke-width="10"/><path d="M80 185V75h80v110l65-40V42l-65 33" fill="none" stroke="#5c9b9c"/>')
+svg('bulb_cold', '<path d="M80 147Q32 113 49 67q17-43 71-43t71 43q17 46-31 80v23H80Z" fill="#e4e7d9"/><path d="M85 175h70m-65 12h60M97 137l-9-51 32 21 32-21-9 51" fill="none"/>')
+svg('bulb_lit', '<path d="M80 147Q32 113 49 67q17-43 71-43t71 43q17 46-31 80v23H80Z" fill="#ffe591"/><path d="M85 175h70m-65 12h60M120 3v13M23 45l16 9m162 0 16-9M10 111h20m180 0h20M97 137l-9-51 32 21 32-21-9 51" fill="none" stroke="#bc975d"/>')
+svg('heat_lines', '<path d="M30 80q-20-18 0-36t0-35m45 71q-20-18 0-36t0-35m45 71q-20-18 0-36t0-35" fill="none" stroke="#c48668" stroke-width="8"/>', 150, 100)
+svg('sheep_alive', '<path d="M55 124v43m69-43v43" stroke-width="13"/><path d="M36 111Q3 90 28 70 16 37 49 36 64 9 91 31q32-17 45 9 35-5 38 28l-8 49Z" fill="#f4ead5"/><ellipse cx="168" cy="102" rx="31" ry="37" fill="#c4b6a0"/><circle cx="176" cy="94" r="4" fill="#48575d"/>', 220, 180)
+svg('sheep_dead', '<path d="M27 132q-14-38 18-49 0-30 36-24 22-26 45 0 36-7 42 23l9 50Z" fill="#e0d8c8"/><ellipse cx="175" cy="116" rx="30" ry="25" fill="#b8b1a1"/><path d="m168 106 15 14m-15 0 15-14M47 150h115" fill="none"/>', 220, 180)
+svg('footprints_right', '<ellipse cx="45" cy="43" rx="22" ry="33" fill="#a68f73" transform="rotate(-30 45 43)"/><ellipse cx="109" cy="91" rx="22" ry="33" fill="#a68f73" transform="rotate(-30 109 91)"/><path d="m160 43 51 37-51 37" fill="none" stroke="#a68f73" stroke-width="11"/>', 240, 150)
+svg('footprint_trail', '<path d="m990 400-280-50-270-90-250-60-80-90" fill="none" stroke="#a68f73" stroke-width="15" stroke-dasharray="12 23" opacity="0.55"/>',1100,500)
+svg('shoe_stamp', '<rect x="64" y="70" width="110" height="94" rx="10" fill="#c2a477"/><path d="M120 75V29" stroke-width="22"/><ellipse cx="120" cy="26" rx="33" ry="15" fill="#876e55"/>')
+svg('flashlight', '<path d="m35 88 123-28 35 113-123 28Z" fill="#9eb9ac"/><path d="m151 60 44-32 41 137-43 8Z" fill="#e4c38a"/>')
+svg('snowball', '<circle cx="120" cy="100" r="72" fill="#e5f1ed"/><path d="M73 72q18-28 43-25m-31 89 45 9" fill="none" stroke="#bad6d5"/>')
+svg('hyacinth', '<path d="M120 174V42M120 157q-52-3-56-44 43 0 56 44m0-18q48-13 48-42-37 3-48 42" fill="#8bab78"/><path d="M83 180h74l-8 19H91Z" fill="#b78d68"/>' + ''.join(f'<circle cx="{x}" cy="{y}" r="15" fill="#ac9cbf"/>' for x,y in [(105,32),(130,32),(99,58),(127,58),(107,83),(134,83)]))
+svg('garlic', '<path d="M120 31Q51 57 53 126q3 55 67 55t67-55Q189 57 120 31Z" fill="#eee1c8"/><path d="M120 31q-33 76 0 150m0-150q33 76 0 150M120 31l10-20" fill="none" stroke="#c8b99f"/>')
+svg('green_sprouts', '<path d="M45 158h150l-17 30H62Z" fill="#c1d5cd"/><path d="M70 155V63m20 92V36m22 119V60m22 95V25m22 130V50m20 105V73" stroke="#83a66a" stroke-width="13"/>')
+svg('broom', '<path d="m135 15-33 110" stroke="#a88960" stroke-width="13"/><path d="m75 109 57 17 15 65-97-27Z" fill="#d1b579"/><path d="m89 127-17 40m36-34-8 42m24-35 2 42" stroke="#a98d5c"/>')
+svg('ribbon', '<path d="M120 83Q25-10 22 63q0 64 98 20 98 44 98-20-3-73-98 20Zm-9 12-39 87 48-16 29 16-18-87" fill="#cf8e82"/>')
+svg('hammer', '<path d="M118 70v115" stroke="#ad8b65" stroke-width="20"/><rect x="49" y="32" width="144" height="50" rx="10" fill="#9aafad"/>')
+for name,color in [('sumac_bowl','#af665e'),('samanu_bowl','#9e7352')]:
+    svg(name, f'<path d="M25 80h190q-8 92-95 92T25 80Z" fill="#b5cfca"/><ellipse cx="120" cy="80" rx="95" ry="24" fill="{color}"/>')
+svg('oleaster_bowl','<path d="M25 100h190q-8 72-95 72T25 100Z" fill="#b5cfca"/>'+''.join(f'<ellipse cx="{x}" cy="{y}" rx="22" ry="15" fill="#b48f60"/>' for x,y in [(65,91),(107,88),(150,94),(177,84),(83,68),(132,62)]))
+svg('bowl_lid','<path d="M12 65q108-90 216 0Z" fill="#bdcfc4"/><path d="M110 19h20" stroke-width="14"/>',240,80)
+svg('agreement_folded','<path d="M30 25h180v150H30Z" fill="#eadfc7"/><path d="M30 25 120 95l90-70M30 175l90-80 90 80" fill="#f7ecd7"/><path d="M54 132h41m50 0h40" fill="none"/>')
+svg('dust_motes','<path d="M30 65q20-31 50-4 26-42 56-7 34-25 58 18Z" fill="#b8a28a" stroke="none"/><circle cx="38" cy="26" r="7" fill="#b8a28a"/><circle cx="163" cy="25" r="9" fill="#b8a28a"/>',220,100)
+svg('chest_handle','<path d="M40 120V85q0-45 80-45t80 45v35" fill="none" stroke="#c5a66a" stroke-width="21"/><circle cx="40" cy="130" r="19" fill="#e0c283"/><circle cx="200" cy="130" r="19" fill="#e0c283"/>')
+svg('seed_bowl','<path d="M25 100h190q-8 72-95 72T25 100Z" fill="#b5cfca"/>'+''.join(f'<ellipse cx="{x}" cy="{y}" rx="10" ry="5" fill="#d7b579"/>' for x,y in [(48,92),(78,87),(109,93),(138,83),(174,92),(74,70),(107,67),(142,62)]))
+svg('puzzle_tile','<rect x="7" y="7" width="266" height="96" rx="16" fill="#f5e9cc"/><path d="M24 25h232" stroke="#d1b078"/>',280,110)
+svg('decorative_measure','<path d="M35 33h136v145H35Z" fill="#d2e6dd"/><path d="M171 53q58-9 44 66h-44M55 52h48m-48 31h27m-27 14h48m-48 45h27" fill="none"/>')
+svg('height_ruler','<rect x="10" y="10" width="70" height="220" rx="7" fill="#e4c790"/><path d="M12 30h40m-40 22h22m-22 22h40m-40 22h22m-22 22h40m-40 22h22m-22 22h40m-40 22h22m-22 22h40" fill="none"/>',90,240)
+
+
+def var(name, value=True, op='eq'):
+    return dict(type='variable', name=name, operator=op, value=value)
+
+
+def setv(name, value=True, operation='assign'):
+    return dict(type='set_variable', name=name, value=value, operation=operation)
+
+
+def act(kind, target, **kw):
+    return dict(type=kind, target=target, **kw)
+
+
+def show(target): return act('show', target)
+def hide(target): return act('hide', target)
+def move(target, x, y): return act('move', target, position=[x, y])
+def replace(target, sprite): return act('replace_sprite', target, sprite=P+sprite+'.svg')
+def feedback(target): return act('play_animation', target, animation='chapter_two/rattle', wait=False)
+def sound(): return dict(type='play_sound', sound='res://assets/sounds/ui_click.wav', wait=False)
+
+
+class Level:
+    def __init__(self, number, hint, background='bright_room'):
+        row = next(line.split('|')[1:-1] for line in (ROOT/'docs/100_interactive_persian_puzzles.md').read_text(encoding='utf-8').splitlines() if line.startswith(f'| {number} |'))
+        self.d = dict(schema_version=1, id=number, question=row[1].strip(), hint=hint,
+                      answer=row[2].strip(), time_limit_seconds=int(row[5]), base_score=int(row[6]),
+                      background=P+background+'.svg', success=dict(result_delay_seconds=2),
+                      variables=dict(solved=False), objects=[], rules=[], win_condition=var('solved'))
+    def variable(self, **kw): self.d['variables'].update(kw)
+    def image(self, id, sprite, x, y, inputs=(), **kw):
+        self.d['objects'].append(dict(id=id, scene='ClickableObject' if inputs else 'ImageObject', sprite=P+sprite+'.svg', position=[x,y], interactions=list(inputs), **kw))
+    def text(self, id, text, x, y, inputs=(), **kw):
+        self.d['objects'].append(dict(id=id, scene='TextObject', text=text.translate(str.maketrans('0123456789','۰۱۲۳۴۵۶۷۸۹')), position=[x,y], hit_size=[300,70], text_color='#354f54', interactions=list(inputs), **kw))
+    def drag(self, id, sprite, x, y, extra=(), bounds=(200,460,1500,450), **kw):
+        self.image(id, sprite, x,y, [dict(type='drag', bounds=list(bounds), return_on_invalid=True), 'drop_on', *extra], z_index=5, **kw)
+    def card(self, id, text, x,y):
+        self.text(id,text,x,y,[dict(type='drag',bounds=[200,460,1500,440],return_on_invalid=True),'drop_on'])
+        self.d['objects'][-1].update(sprite=P+'puzzle_tile.svg',hit_size=[300,110])
+    def zone(self, id, x,y, sources, size=(260,150)):
+        self.d['objects'].append(dict(id=id,scene='DropZone',position=[x,y],hit_size=list(size),accepted_sources=list(sources),z_index=-1))
+    def rule(self,event,source,actions,conditions=(),target=None,once=False):
+        r=dict(id=f'r{len(self.d["rules"]):04}',event=event,source=source,conditions=list(conditions),actions=actions,once=once)
+        if target is not None: r['target']=target
+        self.d['rules'].append(r)
+    def drop(self,source,target,actions,conditions=(),once=False): self.rule('drop_on',source,actions,conditions,target,once)
+    def win(self,event,source,actions=(),conditions=(),target=None): self.rule(event,source,[*actions,setv('solved')],conditions,target)
+    def note(self,text):
+        self.text('instructions',text,960,350)
+        self.d['objects'][-1]['hit_size']=[1500,100]
+    def save(self): (DATA/f'{self.d["id"]:03}.json').write_text(json.dumps(self.d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+
+# 31: the scene is dim because darkness is part of the question; HUD is separate.
+l=Level(31,'پیش از روشن‌کردن هر وسیله، کبریت را روی سطح زبر بکش.','room_lighting')
+l.image('shade','room_shade_2',960,540,z_index=-5)
+l.image('match','match_unlit',960,650,['swipe'])
+l.image('lamp','lamp_off',600,580,['tap']); l.image('candle','candle_body',1320,590,['tap'])
+l.image('heater','room_heater',1530,770,['tap'])
+l.image('lighter','empty_lighter',400,830,['tap']); l.image('switch','wall_switch',1500,480,['tap'])
+l.image('spark','camera_flash',400,710,visible=False,scale=[.4,.4])
+l.rule('tap','lighter',[show('spark'),act('play_animation','spark',animation='chapter_two/flash',wait=False),sound()])
+l.rule('tap','switch',[feedback('switch'),sound()])
+for obj in ['lamp','candle','heater']: l.rule('tap',obj,[feedback(obj)])
+l.win('swipe','match',[replace('match','match_lit')]); l.save()
+
+l=Level(32,'دست‌های دو نفر را از هم دور کن؛ شکستن قول صدا ندارد.')
+l.image('person_a','man',670,610,scale=[.6,.6]); l.image('person_b','man',1250,610,scale=[.6,.6])
+l.image('joined','promise_joined',960,640)
+l.drag('hand','hand_dry',1030,650,bounds=(700,520,800,250),scale=[.6,.6])
+l.image('broken','promise_broken',960,570,visible=False)
+l.image('glass','cup',440,830,['tap']); l.image('agreement','paper',1490,800,[dict(type='swipe',direction='down')])
+l.rule('tap','glass',[feedback('glass'),sound()]); l.rule('swipe','agreement',[replace('agreement','agreement_folded')])
+l.win('drag_end','hand',[hide('joined'),show('broken'),move('hand',1260,670)],[dict(type='moved_distance_at_least',value=180)])
+l.save()
+
+l=Level(33,'پنجره را باز کن و به دما و لرزیدن شخصیت دقت کن.')
+l.image('window','window_daylight',960,530,['tap']); l.image('person','man',960,820,scale=[.6,.6])
+l.image('cold','thermometer_cold',1220,700,visible=False)
+l.drag('snowball','snowball',450,750,scale=[.7,.7]); l.image('basket','basket_empty',500,500); l.zone('basket_zone',500,500,['snowball'])
+l.image('blanket','towel_dry',1500,760,['hold'])
+l.drop('snowball','basket_zone',[move('snowball',450,750),feedback('basket')]); l.rule('hold','blanket',[act('scale','blanket',value=[.7,.7])])
+l.variable(opened=False)
+l.rule('tap','window',[replace('window','window_open_cold'),show('cold'),setv('opened'),feedback('person')],once=True)
+l.win('custom:animation_finished','person',conditions=[var('opened')]); l.save()
+
+l=Level(34,'بدنهٔ ساعت ثابت می‌ماند؛ عقربه را لمس کن.')
+l.image('clock','clock_face',960,600,scale=[1.6,1.6]); l.image('hands','clock_hands',960,600,['tap'],scale=[1.6,1.6],z_index=2)
+l.drag('car','toy_car',450,850); l.image('photo','clock_face',1480,760,[dict(type='swipe',direction='right')],scale=[.7,.7])
+l.rule('drag_end','car',[move('car',450,850)])
+l.rule('swipe','photo',[replace('photo','alarm_clock')])
+l.win('tap','hands',[act('rotate','hands',degrees=90)]); l.save()
+
+l=Level(35,'نام چیزهای سفره را در نظر بگیر؛ همهٔ آن‌ها جزو هفت سین نیستند.')
+l.image('mat','woven_mat',960,650,scale=[5,3],z_index=-3)
+for id,sprite,x,y,label in [('apple','apple',520,520,'سیب'),('garlic','garlic',810,520,'سیر'),('sprouts','green_sprouts',1100,520,'سبزه'),('vinegar','bottle',1400,520,'سرکه'),('sumac','sumac_bowl',520,790,'سماق'),('oleaster','oleaster_bowl',810,790,'سنجد'),('samanu','samanu_bowl',1100,790,'سمنو')]:
+    l.image(id,sprite,x,y,['hold'] if id=='samanu' else ['tap'],scale=[.65,.65]); l.text(id+'_name',label,x,y+85)
+l.image('fish','goldfish_bowl',1400,780,['tap'])
+l.image('samanu_lid','bowl_lid',1100,750,scale=[.65,.65])
+l.image('flower','hyacinth',1670,640,[dict(type='swipe',direction='up')])
+l.rule('hold','samanu',[hide('samanu_lid'),feedback('samanu')]); l.rule('swipe','flower',[feedback('flower')]); l.win('tap','fish',[feedback('fish')]); l.save()
+
+l=Level(36,'هر سه انار را وزن کن و بعد سبک‌ترین را لمس کن.')
+l.variable(weighed_a=False,weighed_b=False,weighed_c=False)
+l.image('scale','weighing_scale',960,550); l.zone('pan',960,550,['fruit_a','fruit_b','fruit_c'])
+for i,letter in enumerate('abc'):
+    x=550+i*400
+    l.drag('fruit_'+letter,'pomegranate',x,820,extra=['tap'],scale=[.8,.8])
+    l.image('weight_'+letter,'selection_check',x,690,visible=False,scale=[.4,.4])
+    l.text('reading_'+letter,'۶۰ گرم' if letter=='c' else '۱۰۰ گرم',960,420,visible=False)
+    l.drop('fruit_'+letter,'pan',[*[hide('reading_'+other) for other in 'abc'],show('reading_'+letter),show('weight_'+letter),act('rotate','scale',degrees=3 if letter=='c' else 9),move('fruit_'+letter,x,820),setv('weighed_'+letter)])
+l.drag('ribbon','ribbon',300,770,scale=[.6,.6]); l.zone('base',960,690,['ribbon'])
+l.drop('ribbon','base',[move('ribbon',300,770),feedback('ribbon')]); l.image('hammer','hammer',1630,780,['tap'],scale=[.65,.65]); l.rule('tap','hammer',[sound(),feedback('hammer')])
+l.win('tap','fruit_c',conditions=[var('weighed_'+a) for a in 'abc']); l.save()
+
+l=Level(37,'قالیچه‌ها را کنار بکش؛ دریچهٔ آشکارشده را لمس کن.')
+l.image('hatch','floor_hatch',960,600,['tap'],visible=False)
+for i in range(3):
+    x=480+i*480; l.drag('rug_'+str(i),'woven_mat',x,600,bounds=(220,480,1450,400),scale=[1.4,1.4])
+    l.d['objects'][-1]['interactions'][0]['return_on_invalid']=False
+    l.rule('drag_end','rug_'+str(i),[move('rug_'+str(i),x,830)]+([show('hatch')] if i==1 else []),[dict(type='moved_distance_at_least',value=150)])
+l.drag('doormat','woven_mat',300,890,scale=[.6,.6]); l.rule('drag_end','doormat',[move('doormat',450,900)])
+l.image('dust','dust_motes',1510,900,scale=[.5,.5])
+l.image('broom','broom',1600,850,[dict(type='swipe',direction='right')]); l.rule('swipe','broom',[hide('dust'),feedback('broom')]); l.win('tap','hatch'); l.save()
+
+l=Level(38,'دندانه‌های کلید را با شیار روی صندوق مقایسه کن.')
+l.image('chest','chest_closed',960,560,scale=[1.2,1.2]); l.image('profile','key_profile',960,690,scale=[.8,.8]); l.zone('lock',960,560,['key_a','key_b','key_c'])
+for i,letter in enumerate('abc'):
+    x=550+i*400; l.drag('key_'+letter,'toothed_key_'+letter,x,850)
+    if letter=='b': l.win('drop_on','key_b',[hide('key_b'),replace('chest','chest_open')],target='lock')
+    else: l.drop('key_'+letter,'lock',[move('key_'+letter,x,850),feedback('chest')])
+l.image('shine','camera_flash',1150,550,visible=False,scale=[.5,.5])
+l.drag('oil','bottle',300,720,scale=[.6,.6]); l.zone('hinge',1150,550,['oil']); l.drop('oil','hinge',[move('oil',300,720),show('shine'),act('play_animation','shine',animation='chapter_two/flash',wait=False)])
+l.image('handle','chest_handle',1600,720,['hold']); l.rule('hold','handle',[feedback('handle')]); l.save()
+
+l=Level(39,'درِ سماورها را نگه دار؛ بعد سماوری را انتخاب کن که بخار آزاد می‌کند.')
+l.variable(hot_seen=False)
+for i,x in enumerate([520,960,1400]):
+    l.image('samovar_'+str(i),'samovar',x,650,['hold','tap'])
+    l.image('steam_'+str(i),'steam_plume',x,470,visible=False)
+    l.rule('hold','samovar_'+str(i),[show('steam_1'),setv('hot_seen')] if i==1 else [feedback('samovar_'+str(i))])
+l.image('glass','cup',350,860,['tap']); l.image('glass_steam','steam_plume',350,750,scale=[.5,.5])
+l.rule('tap','glass',[hide('glass_steam')]); l.drag('cloth','towel_dry',1550,860,scale=[.6,.6]); l.image('tray_image','test_tray',1220,900,scale=[.65,.65]); l.image('stain','dust_motes',1220,900,scale=[.5,.5]); l.zone('tray',1220,900,['cloth']); l.drop('cloth','tray',[move('cloth',1550,860),hide('stain'),feedback('cloth')])
+l.win('tap','samovar_1',conditions=[var('hot_seen')]); l.save()
+
+l=Level(40,'کوزه‌ها را با حرکت سریع تکان بده؛ موج آب را ببین و همان کوزه را لمس کن.')
+l.variable(water_seen=False)
+for i,x in enumerate([520,960,1400]):
+    l.image('jug_'+str(i),'water_jug',x,630,['swipe','tap'])
+    l.image('waves_'+str(i),'milk_ripple',x,480,visible=False,scale=[.5,.5])
+    l.rule('swipe','jug_'+str(i),[feedback('jug_'+str(i))]+([show('waves_2'),dict(type='play_sound',sound=P+'water_slosh.wav',wait=False),setv('water_seen')] if i==2 else []))
+l.image('pebbles','shopping_bag',350,850,['hold'],scale=[.65,.65]); l.rule('hold','pebbles',[sound(),feedback('pebbles')])
+l.image('pebble_a','stone',330,830,scale=[.25,.25]); l.image('pebble_b','stone',370,850,scale=[.2,.2])
+l.image('lid','bottle_cap',1570,840,['tap']); l.rule('tap','lid',[act('rotate','lid',degrees=45)])
+l.win('tap','jug_2',conditions=[var('water_seen')]); l.save()
+
+l=Level(41,'قفل جلو لازم نیست باز شود؛ قفس را کنار بکش و پشت آن را ببین.')
+l.image('bird','bird_perched',960,640,scale=[.6,.6]); l.drag('cage','bird_cage',960,610,bounds=(650,460,800,400),scale=[1.5,1.5])
+l.image('lock','closed_padlock',960,740,scale=[.3,.3]); l.zone('front_lock',960,740,['key'],size=(130,100)); l.drag('key','toothed_key_a',450,820,scale=[.7,.7])
+l.drop('key','front_lock',[move('key',450,820),feedback('lock')]); l.image('seed','seed_bowl',1500,830,['tap'],scale=[.6,.6]); l.rule('tap','seed',[feedback('bird')])
+l.win('drag_end','cage',[move('cage',1320,620),move('lock',1320,750),replace('cage','cage_back_open'),move('bird',650,520)],[dict(type='moved_distance_at_least',value=200)]); l.save()
+
+# 42: Hold measures simulated heating (3 s gesture = 5 story minutes).
+# Heat remains for the whole single visit; entering freezes every switch.
+l=Level(42,'یکی را گرم و خاموش کن، یکی را روشن بگذار؛ پس از ورود نور و گرما را بررسی کن.')
+l.d['question'] += ' لامپ‌ها رشته‌ای‌اند.'
+l.variable(entered=False,toggled=False, switch_0=False,switch_1=False,switch_2=False,warm_0=False,warm_1=False,warm_2=False, inspected_0=False,inspected_1=False,inspected_2=False,map_0=False,map_1=False,map_2=False)
+l.note('۳ ثانیه نگه‌داشتن کلید = ۵ دقیقهٔ داستانی گرما؛ لمس: روشن/خاموش. گرما تا پایان بازدید می‌ماند.')
+for i,x in enumerate([520,960,1400]):
+    l.image('switch_'+str(i),'wall_switch',x,510,['tap',dict(type='hold',duration=3)])
+    l.text('switch_name_'+str(i),'کلید '+str(i+1),x,630)
+    l.rule('tap','switch_'+str(i),[setv('switch_'+str(i),False),setv('toggled'),act('rotate','switch_'+str(i),degrees=0)],[var('entered',False),var('switch_'+str(i))])
+    l.rule('tap','switch_'+str(i),[setv('switch_'+str(i)),act('rotate','switch_'+str(i),degrees=180)],[var('entered',False),var('switch_'+str(i),False),var('toggled',False)])
+    l.rule('tap','switch_'+str(i),[setv('toggled',False)])
+    l.rule('hold','switch_'+str(i),[setv('switch_'+str(i)),setv('warm_'+str(i)),act('rotate','switch_'+str(i),degrees=180),show('heat_ready_'+str(i))],[var('entered',False)])
+    l.text('heat_ready_'+str(i),'۵ دقیقه: گرم شد',x,710,visible=False)
+l.text('enter','ورود به اتاق',960,870,['tap'])
+enter_actions=[setv('entered'),hide('enter'),hide('instructions')]
+for i in range(3): enter_actions += [hide('switch_'+str(i)),hide('switch_name_'+str(i)),hide('heat_ready_'+str(i)),show('lamp_'+str(i)),show('lamp_name_'+str(i)),show('choice_'+str(i))]
+l.rule('tap','enter',enter_actions,[var('entered',False)],once=True)
+# Wiring: bulb left = switch 2; middle = switch 3; right = switch 1.
+for bulb,switch in enumerate([1,2,0]):
+    x=520+440*bulb
+    l.image('lamp_'+str(bulb),'bulb_cold',x,530,['tap'],visible=False)
+    l.text('lamp_name_'+str(bulb),'لامپ '+str(bulb+1),x,670,visible=False)
+    l.image('heat_'+str(bulb),'heat_lines',x+170,500,visible=False)
+    l.text('cold_'+str(bulb),'خاموش و سرد',x,730,visible=False)
+    l.text('light_'+str(bulb),'روشن',x,730,visible=False)
+    l.text('warm_'+str(bulb),'خاموش و گرم',x,730,visible=False)
+    l.card('choice_'+str(bulb),'کلید '+str(bulb+1),520+440*bulb,900); l.d['objects'][-1]['visible']=False
+    l.zone('lamp_zone_'+str(bulb),x,530,['choice_0','choice_1','choice_2'],size=(280,220))
+    l.rule('tap','lamp_'+str(bulb),[replace('lamp_'+str(bulb),'bulb_lit'),show('light_'+str(bulb)),setv('inspected_'+str(bulb))],[var('entered'),var('switch_'+str(switch))])
+    l.rule('tap','enter',[replace('lamp_'+str(bulb),'bulb_lit')],[var('switch_'+str(switch))])
+    l.rule('tap','lamp_'+str(bulb),[show('heat_'+str(bulb)),show('warm_'+str(bulb)),setv('inspected_'+str(bulb))],[var('entered'),var('switch_'+str(switch),False),var('warm_'+str(switch))])
+    l.rule('tap','lamp_'+str(bulb),[show('cold_'+str(bulb)),setv('inspected_'+str(bulb))],[var('entered'),var('switch_'+str(switch),False),var('warm_'+str(switch),False)])
+    # A mapping is accepted only after all three observable states differ.
+    evidence=dict(type='any',conditions=[dict(type='all',conditions=[var('switch_'+str(on)),var('switch_'+str(warm),False),var('warm_'+str(warm)),var('switch_'+str(cold),False),var('warm_'+str(cold),False)]) for on in range(3) for warm in range(3) for cold in range(3) if len({on,warm,cold})==3])
+    for card in range(3):
+        label=f'mapping_{bulb}_{card}'
+        l.text(label,'انتخاب: کلید '+str(card+1),x,805,visible=False)
+        l.drop('choice_'+str(card),'lamp_zone_'+str(bulb),[move('choice_'+str(card),520+440*card,900),setv('map_'+str(bulb),card==switch),*[hide(f'mapping_{bulb}_{other}') for other in range(3)],show(label),feedback('lamp_'+str(bulb))],[var('entered'),var('inspected_'+str(bulb)),evidence])
+l.text('confirm','تأیید تطبیق',1650,1010,['tap'],visible=False)
+l.rule('tap','enter',[show('confirm')],[var('entered')])
+l.win('tap','confirm',conditions=[var('map_'+str(i)) for i in range(3)])
+l.image('torch','flashlight',280,840,['hold'],scale=[.5,.5]); l.rule('hold','torch',[feedback('torch')])
+l.drag('color_label','day_card',1650,500,scale=[.35,.35]); l.zone('guess',1650,720,['color_label']); l.text('guess_label','کارت حدس رنگ',1650,720)
+l.drop('color_label','guess',[move('color_label',1650,500),feedback('color_label')]); l.save()
+
+# 43: enumerate the finite volume graph, without arithmetic expressions in JSON.
+l=Level(43,'ظرف‌ها را روی شیر، تخلیه یا ظرف دیگر بگذار؛ انتقال تا پرشدن مقصد یا خالی‌شدن مبدأ است.')
+l.variable(five=0,three=0)
+l.note('ریختن: تا پرشدن ظرف مقصد یا خالی‌شدن ظرف مبدأ ادامه دارد.')
+l.drag('five','water_jug',650,720); l.drag('three','water_jug',1250,720,scale=[.75,.75])
+l.zone('five_zone',650,720,['three']); l.zone('three_zone',1250,720,['five'])
+l.image('tap','water_drops',470,490,scale=[.6,.6]); l.zone('tap_zone',470,490,['five','three','measure'])
+l.image('drain','hole',1450,490,scale=[.6,.6]); l.zone('drain_zone',1450,490,['five','three'])
+for name,max_volume,x in [('five',5,650),('three',3,1250)]:
+    for n in range(max_volume+1): l.text(name+'_reading_'+str(n),str(n)+' / '+str(max_volume)+' لیتر',x,870,visible=n==0)
+    for zone,val in [('tap_zone',max_volume),('drain_zone',0)]:
+        l.drop(name,zone,[setv(name,val),move(name,x,720)])
+    for n in range(max_volume+1):
+        l.rule('variable_changed','$level',[*[hide(name+'_reading_'+str(k)) for k in range(max_volume+1)],show(name+'_reading_'+str(n))],[var(name,n)])
+for a in range(6):
+    for b in range(4):
+        for src,dest,amount in [('five','three',min(a,3-b)),('three','five',min(b,5-a))]:
+            if amount:
+                na,nb=(a-amount,b+amount) if src=='five' else (a+amount,b-amount)
+                # Snapshot variables avoid matching multiple transitions during one drop.
+                l.drop(src,dest+'_zone',[setv('next_five',na),setv('next_three',nb),setv('transferred')],[var('five',a),var('three',b),var('transferred',False)])
+l.variable(next_five=0,next_three=0,transferred=False)
+for a in range(6):
+    for b in range(4):
+        l.rule('drop_on','five',[setv('five',a),setv('three',b),move('five',650,720)],[var('transferred'),var('next_five',a),var('next_three',b)],target='three_zone')
+        l.rule('drop_on','three',[setv('five',a),setv('three',b),move('three',1250,720)],[var('transferred'),var('next_five',a),var('next_three',b)],target='five_zone')
+for src,dest in [('five','three'),('three','five')]: l.drop(src,dest+'_zone',[setv('transferred',False),move(src,650 if src=='five' else 1250,720)])
+l.drag('measure','decorative_measure',280,800,scale=[.7,.7]); l.drop('measure','tap_zone',[move('measure',280,800),feedback('measure')])
+l.image('ruler','height_ruler',1600,800,['hold'],scale=[.75,.75]); l.rule('hold','ruler',[feedback('ruler')]); l.win('variable_changed','$level',conditions=[var('five',4)]); l.save()
+
+l=Level(44,'از دو طرف تا خودت بشمار؛ فرد هدف را دوبار حساب نکن.')
+l.variable(front=False,back=False)
+l.note('صف از چپ شروع می‌شود. دو مهره را از دو سمت روی فرد هدف قرار بده.')
+for i in range(24):
+    x=270+60*i; l.image('person_'+str(i),'walking_person',x,600,scale=[.14,.3])
+    if i==9: l.image('target_mark','selection_check',x,480,scale=[.5,.5])
+l.card('front_counter','از جلو: ۱۰',420,790); l.card('back_counter','از عقب: ۱۵',1470,790)
+l.zone('target_front',810,550,['front_counter'],size=(100,100)); l.zone('target_back',810,650,['back_counter'],size=(100,100))
+l.drop('front_counter','target_front',[setv('front'),move('front_counter',420,790),show('front_check')]); l.drop('back_counter','target_back',[setv('back'),move('back_counter',1470,790),show('back_check')])
+l.text('front_check','از جلو: ۱۰ نفر',600,440,visible=False); l.text('back_check','از عقب: ۱۵ نفر',1160,440,visible=False)
+l.card('answer24','۲۴',820,880); l.card('answer25','۲۵',1170,880); l.zone('answer',960,730,['answer24','answer25']); l.text('answer_label','پاسخ',960,730)
+l.drop('answer25','answer',[move('answer25',1170,880),feedback('answer25')]); l.win('drop_on','answer24',[move('answer24',960,730)],conditions=[var('front'),var('back')],target='answer')
+l.drag('flag','left_arrow',1600,880,scale=[.5,.5]); l.rule('drag_end','flag',[move('flag',1600,880)]); l.save()
+
+l=Level(45,'فردای شنبه یکشنبه است؛ دیروز و امروز را در دو جای مستقل بچین.')
+l.variable(yesterday=False,today=False)
+l.note('فردای شنبه = دیروز؛ یک روز بعد از دیروز = امروز')
+l.text('saturday','شنبه',480,520)
+for id,x,label in [('yesterday',960,'دیروز'),('today',1440,'امروز')]:
+    l.zone(id,x,550,['sun','mon','tue']); l.text(id+'_label',label,x,470)
+for id,text,x in [('sun','یکشنبه',550),('mon','دوشنبه',960),('tue','سه‌شنبه',1370)]:
+    l.card(id,text,x,800)
+    for zone in ['yesterday','today']:
+        right=(id=='sun' and zone=='yesterday') or (id=='mon' and zone=='today')
+        l.drop(id,zone,[move(id,x,800),setv(zone,right),feedback(id)])
+l.text('yesterday_ok','یکشنبه',960,610,visible=False); l.text('today_ok','دوشنبه',1440,610,visible=False)
+for id in ['yesterday','today']:
+    l.rule('variable_changed','$level',[show(id+'_ok')],[var(id)]); l.rule('variable_changed','$level',[hide(id+'_ok')],[var(id,False)])
+l.text('confirm','تأیید',960,920,['tap']); l.win('tap','confirm',conditions=[var('yesterday'),var('today')])
+l.image('clock','clock_face',300,820,['tap'],scale=[.6,.6]); l.rule('tap','clock',[act('rotate','clock',degrees=90)]); l.save()
+
+for number,sequence,correct,wrong,hint in [(46,'۲، ۶، ۱۲، ۲۰، ۳۰، ؟','۴۲','۴۰','هر جمله حاصل ضرب دو عدد پیاپی است.'),(47,'۳، ۶، ۱۱، ۱۸، ۲۷، ؟','۳۸','۳۶','اختلاف جمله‌های پشت سر هم را ببین؛ اختلاف بعدی دو واحد بیشتر است.')]:
+    l=Level(number,hint); l.text('sequence',sequence,960,470); l.d['objects'][-1]['hit_size']=[1100,80]
+    l.zone('answer',1320,620,['right','wrong','other']); l.text('blank','؟',1320,620)
+    l.card('right',correct,650,820); l.card('wrong',wrong,960,820); l.card('other','۵۴' if number==47 else '۴۴',1270,820)
+    l.win('drop_on','right',[move('right',1320,620),hide('blank')],target='answer')
+    for id,x in [('wrong',960),('other',1270)]: l.drop(id,'answer',[move(id,x,820),feedback(id)])
+    if number==46:
+        l.text('decoy','جدول جمع ۱۰',400,660,['hold']); l.text('decoy_result','۳۰ + ۱۰ = ۴۰',400,750,visible=False); l.rule('hold','decoy',[show('decoy_result')])
+    else:
+        l.text('differences','نمایش اختلاف‌ها',700,620,['tap']); l.text('diff_result','۳، ۵، ۷، ۹، ؟',700,710,visible=False); l.rule('tap','differences',[show('diff_result')])
+        l.text('double','نوار دوبرابر',1550,800,[dict(type='swipe',direction='right')]); l.text('double_result','۲۷ × ۲ = ۵۴',1550,900,visible=False); l.rule('swipe','double',[show('double_result')])
+    l.save()
+
+l=Level(48,'همه به‌جز ۹ تا؛ مرده‌ها را کنار بزن و تعداد زنده‌ها را تأیید کن.')
+l.variable(removed=0)
+for i in range(17):
+    x=370+(i%9)*145; y=520+(i//9)*210
+    l.image('sheep_'+str(i),'sheep_alive' if i<9 else 'sheep_dead',x,y,['tap'] if i>=9 else [],scale=[.6,.6])
+    if i>=9: l.rule('tap','sheep_'+str(i),[hide('sheep_'+str(i)),setv('removed',1,'increment')],once=True)
+l.card('nine','۹',700,920); l.card('eight','۸',1180,920); l.zone('answer',960,820,['nine','eight']); l.text('answer_label','تعداد زنده‌ها',960,820)
+l.drop('eight','answer',[move('eight',1180,920),feedback('eight')]); l.win('drop_on','nine',[move('nine',960,820)],conditions=[var('removed',8)],target='answer')
+l.image('gate','stream_gate',1650,800,[dict(type='swipe',direction='left')],scale=[.6,.6]); l.rule('swipe','gate',[feedback('gate')]); l.save()
+
+l=Level(49,'هر دو شرط را بررسی کن: مجموع رقم‌ها و اختلاف عدد با وارونهٔ آن.')
+l.variable(tens=0,units=0)
+l.note('عدد اصلی − وارونه = ۲۷؛ مجموع دو رقم = ۹')
+for id,x,label in [('tens',790,'دهگان'),('units',1130,'یکان')]:
+    l.zone(id,x,580,['six','three','four','five']); l.text(id+'_label',label,x,470)
+    for n in [3,4,5,6]: l.text(id+'_'+str(n),str(n),x,580,visible=False)
+for id,digit,x in [('six',6,450),('three',3,790),('four',4,1130),('five',5,1470)]:
+    l.card(id,str(digit),x,840)
+    for zone in ['tens','units']:
+        l.drop(id,zone,[setv(zone,digit),move(id,x,840),*[hide(zone+'_'+str(n)) for n in [3,4,5,6]],show(zone+'_'+str(digit))])
+l.text('partial','مجموع ۹؛ اختلاف ۹ است',960,700,visible=False)
+l.rule('variable_changed','$level',[hide('partial')])
+l.rule('variable_changed','$level',[show('partial')],[dict(type='any',conditions=[dict(type='all',conditions=[var('tens',4),var('units',5)]),dict(type='all',conditions=[var('tens',5),var('units',4)])])])
+l.text('confirm','بررسی دو شرط',960,940,['tap']); l.text('reversed','۶۳ − ۳۶ = ۲۷؛ ۶ + ۳ = ۹',960,700,visible=False)
+l.win('tap','confirm',[show('reversed')],conditions=[var('tens',6),var('units',3)])
+l.image('mirror','mirror_frame',1630,570,['tap'],scale=[.5,.5]); l.rule('tap','mirror',[feedback('mirror')]); l.save()
+
+l=Level(50,'ردپا را از آغاز قدم‌به‌قدم دنبال کن؛ مقصد رد واقعی را انتخاب کن.')
+l.variable(trail=0)
+for i,x in enumerate([520,960,1400]): l.image('chest_'+str(i),'chest_closed',x,530,['tap'])
+l.image('connected_trail','footprint_trail',960,700,z_index=-2)
+# A connected, bent trail leads from the lower right to the left chest.
+for i,(x,y,angle) in enumerate([(1400,850,-155),(1120,800,-160),(850,710,-150),(600,650,-100)]):
+    l.image('trail_'+str(i),'footprints_right',x,y,['swipe'],rotation_degrees=angle,scale=[.65,.65])
+    l.image('trail_check_'+str(i),'selection_check',x,y,visible=False,scale=[.3,.3])
+    l.rule('swipe','trail_'+str(i),[show('trail_check_'+str(i)),setv('trail',i+1)],[var('trail',i)],once=True)
+l.text('trail_start','شروع رد',1570,900)
+# Reuse the existing coin texture by explicit path (outside samples).
+l.d['objects'].append(dict(id='coin',scene='DraggableObject',sprite='res://assets/ui/score_icon.tres',position=[300,840],scale=[2,2],interactions=[dict(type='drag',bounds=[200,460,1500,450],return_on_invalid=True),'drop_on']))
+l.zone('right_chest',1400,530,['coin']); l.drop('coin','right_chest',[move('coin',300,840),feedback('chest_2')])
+l.drag('stamp','shoe_stamp',1650,530,scale=[.6,.6]); l.image('paper','paper',1650,760,scale=[.5,.5]); l.zone('paper_zone',1650,760,['stamp']); l.image('false_print','footprints_right',1650,760,visible=False,rotation_degrees=180,scale=[.4,.4])
+l.drop('stamp','paper_zone',[move('stamp',1650,530),show('false_print')]); l.win('tap','chest_0',[replace('chest_0','chest_open')],conditions=[var('trail',4)]); l.save()
+
+# The manifest is appended, while the existing thirty definitions remain intact.
+manifest=json.loads((DATA/'manifest.json').read_text(encoding='utf-8'))
+manifest['manifest_version']=8
+manifest['levels']=[dict(id=i,path=f'res://PuzzleEngine/PuzzleData/{i:03}.json') for i in range(1,51)]
+(DATA/'manifest.json').write_text('{\n  "schema_version": 1,\n  "manifest_version": 8,\n  "levels": [\n'+',\n'.join('    { '+json.dumps(entry)[1:-1]+' }' for entry in manifest['levels'])+'\n  ]\n}\n',encoding='utf-8')
+
+# Distinct local water feedback; a matching visible ripple is shown by the rule.
+import math
+import random
+import struct
+import wave
+rng=random.Random(40)
+samples=[]
+for i in range(15435):
+    t=i/22050
+    envelope=math.sin(math.pi*t/.7)**2
+    samples.append(int(6500*envelope*(.55*math.sin(2*math.pi*(210*t+35*math.sin(15*t)))+.25*rng.uniform(-1,1))))
+with wave.open(str(ASSETS/'water_slosh.wav'),'wb') as stream:
+    stream.setparams((1,2,22050,0,'NONE','not compressed'))
+    stream.writeframes(struct.pack('<'+'h'*len(samples),*samples))

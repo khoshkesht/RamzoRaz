@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "id": 31,
+  "question": "اتاق تاریک است و فقط یک کبریت داری؛ اول چه چیز را روشن می‌کنی؟",
+  "hint": "پیش از روشن‌کردن هر وسیله، کبریت را روی سطح زبر بکش.",
+  "answer": "کبریت",
+  "time_limit_seconds": 65,
+  "base_score": 95,
+  "background": "res://assets/samples/room_lighting.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "shade",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/room_shade_2.svg",
+      "position": [
+        960,
+        540
+      ],
+      "interactions": [],
+      "z_index": -5
+    },
+    {
+      "id": "match",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/match_unlit.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [
+        "swipe"
+      ]
+    },
+    {
+      "id": "lamp",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/lamp_off.svg",
+      "position": [
+        600,
+        580
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "candle",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/candle_body.svg",
+      "position": [
+        1320,
+        590
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "heater",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/room_heater.svg",
+      "position": [
+        1530,
+        770
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "lighter",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/empty_lighter.svg",
+      "position": [
+        400,
+        830
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "switch",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/wall_switch.svg",
+      "position": [
+        1500,
+        480
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "spark",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/camera_flash.svg",
+      "position": [
+        400,
+        710
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.4,
+        0.4
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "tap",
+      "source": "lighter",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "show",
+          "target": "spark"
+        },
+        {
+          "type": "play_animation",
+          "target": "spark",
+          "animation": "chapter_two/flash",
+          "wait": false
+        },
+        {
+          "type": "play_sound",
+          "sound": "res://assets/sounds/ui_click.wav",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "tap",
+      "source": "switch",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "switch",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        },
+        {
+          "type": "play_sound",
+          "sound": "res://assets/sounds/ui_click.wav",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "lamp",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "lamp",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "tap",
+      "source": "candle",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "candle",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "tap",
+      "source": "heater",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "heater",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "swipe",
+      "source": "match",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "match",
+          "sprite": "res://assets/samples/match_lit.svg"
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

@@ -1,0 +1,518 @@
+{
+  "schema_version": 1,
+  "id": 36,
+  "question": "در میان چند انار، کدام یکی سبک‌تر است؟",
+  "hint": "هر سه انار را وزن کن و بعد سبک‌ترین را لمس کن.",
+  "answer": "انار توخالی",
+  "time_limit_seconds": 95,
+  "base_score": 125,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "weighed_a": false,
+    "weighed_b": false,
+    "weighed_c": false
+  },
+  "objects": [
+    {
+      "id": "scale",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/weighing_scale.svg",
+      "position": [
+        960,
+        550
+      ],
+      "interactions": []
+    },
+    {
+      "id": "pan",
+      "scene": "DropZone",
+      "position": [
+        960,
+        550
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "fruit_a",
+        "fruit_b",
+        "fruit_c"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "fruit_a",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/pomegranate.svg",
+      "position": [
+        550,
+        820
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "id": "weight_a",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        550,
+        690
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "id": "reading_a",
+      "scene": "TextObject",
+      "text": "۱۰۰ گرم",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "fruit_b",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/pomegranate.svg",
+      "position": [
+        950,
+        820
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "id": "weight_b",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        950,
+        690
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "id": "reading_b",
+      "scene": "TextObject",
+      "text": "۱۰۰ گرم",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "fruit_c",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/pomegranate.svg",
+      "position": [
+        1350,
+        820
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "id": "weight_c",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        1350,
+        690
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "id": "reading_c",
+      "scene": "TextObject",
+      "text": "۶۰ گرم",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "ribbon",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/ribbon.svg",
+      "position": [
+        300,
+        770
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "base",
+      "scene": "DropZone",
+      "position": [
+        960,
+        690
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "ribbon"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "hammer",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/hammer.svg",
+      "position": [
+        1630,
+        780
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "fruit_a",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "reading_a"
+        },
+        {
+          "type": "hide",
+          "target": "reading_b"
+        },
+        {
+          "type": "hide",
+          "target": "reading_c"
+        },
+        {
+          "type": "show",
+          "target": "reading_a"
+        },
+        {
+          "type": "show",
+          "target": "weight_a"
+        },
+        {
+          "type": "rotate",
+          "target": "scale",
+          "degrees": 9
+        },
+        {
+          "type": "move",
+          "target": "fruit_a",
+          "position": [
+            550,
+            820
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "weighed_a",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "pan"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "fruit_b",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "reading_a"
+        },
+        {
+          "type": "hide",
+          "target": "reading_b"
+        },
+        {
+          "type": "hide",
+          "target": "reading_c"
+        },
+        {
+          "type": "show",
+          "target": "reading_b"
+        },
+        {
+          "type": "show",
+          "target": "weight_b"
+        },
+        {
+          "type": "rotate",
+          "target": "scale",
+          "degrees": 9
+        },
+        {
+          "type": "move",
+          "target": "fruit_b",
+          "position": [
+            950,
+            820
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "weighed_b",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "pan"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "fruit_c",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "reading_a"
+        },
+        {
+          "type": "hide",
+          "target": "reading_b"
+        },
+        {
+          "type": "hide",
+          "target": "reading_c"
+        },
+        {
+          "type": "show",
+          "target": "reading_c"
+        },
+        {
+          "type": "show",
+          "target": "weight_c"
+        },
+        {
+          "type": "rotate",
+          "target": "scale",
+          "degrees": 3
+        },
+        {
+          "type": "move",
+          "target": "fruit_c",
+          "position": [
+            1350,
+            820
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "weighed_c",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "pan"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "ribbon",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "ribbon",
+          "position": [
+            300,
+            770
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "ribbon",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "base"
+    },
+    {
+      "id": "r0004",
+      "event": "tap",
+      "source": "hammer",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_sound",
+          "sound": "res://assets/sounds/ui_click.wav",
+          "wait": false
+        },
+        {
+          "type": "play_animation",
+          "target": "hammer",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
+      "source": "fruit_c",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighed_a",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "weighed_b",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "weighed_c",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

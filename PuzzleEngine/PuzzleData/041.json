@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "id": 41,
+  "question": "پرنده داخل قفس است؛ بدون باز کردن قفل آزادش کن.",
+  "hint": "قفل جلو لازم نیست باز شود؛ قفس را کنار بکش و پشت آن را ببین.",
+  "answer": "کل قفس را کنار بکش؛ درِ پشت قفس باز است",
+  "time_limit_seconds": 85,
+  "base_score": 115,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "bird",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/bird_perched.svg",
+      "position": [
+        960,
+        640
+      ],
+      "interactions": [],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "cage",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bird_cage.svg",
+      "position": [
+        960,
+        610
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            650,
+            460,
+            800,
+            400
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.5,
+        1.5
+      ]
+    },
+    {
+      "id": "lock",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/closed_padlock.svg",
+      "position": [
+        960,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        0.3,
+        0.3
+      ]
+    },
+    {
+      "id": "front_lock",
+      "scene": "DropZone",
+      "position": [
+        960,
+        740
+      ],
+      "hit_size": [
+        130,
+        100
+      ],
+      "accepted_sources": [
+        "key"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "key",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/toothed_key_a.svg",
+      "position": [
+        450,
+        820
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "seed",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/seed_bowl.svg",
+      "position": [
+        1500,
+        830
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "key",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "key",
+          "position": [
+            450,
+            820
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "lock",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "front_lock"
+    },
+    {
+      "id": "r0001",
+      "event": "tap",
+      "source": "seed",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "bird",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "drag_end",
+      "source": "cage",
+      "conditions": [
+        {
+          "type": "moved_distance_at_least",
+          "value": 200
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cage",
+          "position": [
+            1320,
+            620
+          ]
+        },
+        {
+          "type": "move",
+          "target": "lock",
+          "position": [
+            1320,
+            750
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cage",
+          "sprite": "res://assets/samples/cage_back_open.svg"
+        },
+        {
+          "type": "move",
+          "target": "bird",
+          "position": [
+            650,
+            520
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

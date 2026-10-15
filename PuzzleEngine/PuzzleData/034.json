@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "id": 34,
+  "question": "آن چیست که جلو می‌رود ولی خودش جابه‌جا نمی‌شود؟",
+  "hint": "بدنهٔ ساعت ثابت می‌ماند؛ عقربه را لمس کن.",
+  "answer": "عقربه ساعت روی صفحه",
+  "time_limit_seconds": 65,
+  "base_score": 95,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "clock",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/clock_face.svg",
+      "position": [
+        960,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        1.6,
+        1.6
+      ]
+    },
+    {
+      "id": "hands",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/clock_hands.svg",
+      "position": [
+        960,
+        600
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        1.6,
+        1.6
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "car",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/toy_car.svg",
+      "position": [
+        450,
+        850
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "photo",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/clock_face.svg",
+      "position": [
+        1480,
+        760
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "right"
+        }
+      ],
+      "scale": [
+        0.7,
+        0.7
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drag_end",
+      "source": "car",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "car",
+          "position": [
+            450,
+            850
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "swipe",
+      "source": "photo",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "photo",
+          "sprite": "res://assets/samples/alarm_clock.svg"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "hands",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "hands",
+          "degrees": 90
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

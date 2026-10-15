@@ -1,0 +1,327 @@
+{
+  "schema_version": 1,
+  "id": 38,
+  "question": "قفل صندوق با کدام کلید باز می‌شود؟",
+  "hint": "دندانه‌های کلید را با شیار روی صندوق مقایسه کن.",
+  "answer": "کلیدی که شکل دندانه‌هایش با قفل هماهنگ است",
+  "time_limit_seconds": 90,
+  "base_score": 120,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "chest",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/chest_closed.svg",
+      "position": [
+        960,
+        560
+      ],
+      "interactions": [],
+      "scale": [
+        1.2,
+        1.2
+      ]
+    },
+    {
+      "id": "profile",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/key_profile.svg",
+      "position": [
+        960,
+        690
+      ],
+      "interactions": [],
+      "scale": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "id": "lock",
+      "scene": "DropZone",
+      "position": [
+        960,
+        560
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "key_a",
+        "key_b",
+        "key_c"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "key_a",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/toothed_key_a.svg",
+      "position": [
+        550,
+        850
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "key_b",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/toothed_key_b.svg",
+      "position": [
+        950,
+        850
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "key_c",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/toothed_key_c.svg",
+      "position": [
+        1350,
+        850
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "shine",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/camera_flash.svg",
+      "position": [
+        1150,
+        550
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "oil",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bottle.svg",
+      "position": [
+        300,
+        720
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "hinge",
+      "scene": "DropZone",
+      "position": [
+        1150,
+        550
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "oil"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "handle",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/chest_handle.svg",
+      "position": [
+        1600,
+        720
+      ],
+      "interactions": [
+        "hold"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "key_a",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "key_a",
+          "position": [
+            550,
+            850
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "chest",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "lock"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "key_b",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "key_b"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "chest",
+          "sprite": "res://assets/samples/chest_open.svg"
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "lock"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "key_c",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "key_c",
+          "position": [
+            1350,
+            850
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "chest",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "lock"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "oil",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "oil",
+          "position": [
+            300,
+            720
+          ]
+        },
+        {
+          "type": "show",
+          "target": "shine"
+        },
+        {
+          "type": "play_animation",
+          "target": "shine",
+          "animation": "chapter_two/flash",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "hinge"
+    },
+    {
+      "id": "r0004",
+      "event": "hold",
+      "source": "handle",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "handle",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

@@ -79,7 +79,7 @@ func _migrate_sample_progress(value: Variant) -> Dictionary:
 	return next if valid(next) else {}
 
 func _is_expanded_main_catalog() -> bool:
-	var count := 5 if manifest.get("manifest_version") == 4 else 10 if manifest.get("manifest_version") == 5 else 20 if manifest.get("manifest_version") == 6 else 30 if manifest.get("manifest_version") == 7 else 0
+	var count := 5 if manifest.get("manifest_version") == 4 else 10 if manifest.get("manifest_version") == 5 else 20 if manifest.get("manifest_version") == 6 else 30 if manifest.get("manifest_version") == 7 else 50 if manifest.get("manifest_version") == 8 else 0
 	if count == 0 or manifest.get("levels", []).size() != count:
 		return false
 	for i in range(count):
@@ -93,7 +93,7 @@ func _migrate_main_progress(value: Variant) -> Dictionary:
 	if not value is Dictionary:
 		return {}
 	var old_version: Variant = value.get("manifest_version")
-	var old_count := 2 if old_version == 3 else 5 if old_version == 4 else 10 if old_version == 5 else 20 if old_version == 6 else 0
+	var old_count := 2 if old_version == 3 else 5 if old_version == 4 else 10 if old_version == 5 else 20 if old_version == 6 else 30 if old_version == 7 else 0
 	if old_count == 0 or old_version >= manifest["manifest_version"]:
 		return {}
 	var previous := PuzzleProgressStore.new()

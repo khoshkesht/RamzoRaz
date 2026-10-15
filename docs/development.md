@@ -555,3 +555,35 @@ manifest نسخهٔ۶ شامل۱تا۲۰ است؛ انتقال نسخهٔ۵ پا
 آزمون‌های مرتبط: `tests/test_chapter_three.gd` برای حل۲۱تا۳۰، دام‌ها جدا/در هر دو ترتیب و تکرار، قیدهای ترتیب، مقصد پُر، Retry، مکث/لغو/پایان زمان انیمیشن، ادامه تا۳۰ و انتقال پایدار نسخه۶؛ `tests/test_foundation.gd` برای فهرست۳۰مرحله، منابع و همخوانی جدول؛ `tests/test_chapter_two.gd` برای ادامه۲۰به۲۱؛ `tests/test_production_layout.gd` برای حدود تصویر/لمس، مقصدها، مسیر Drag و اکشن‌ها در ماتریس هشت‌اندازه‌ای. `tests/test_rules_actions.gd`، `tests/test_lifecycle.gd` و `tests/test_progress_hints.gd` به تغییر Runner و انتقال ذخیره مرتبط‌اند. آزمون فصل سوم به `tools/run_checks.ps1` متصل شد.
 
 وضعیت همهٔ این آزمون‌ها و ماتریس موبایل: **اجرا نشده؛ نیازمند دستور صریح کاربر**. فقط فایل‌ها، کد و diff بازبینی شدند؛ Godot/Import، آزمون عددی/تصویری، APK و نصب گوشی اجرا نشدند. دادهٔ ذخیرهٔ واقعی بازیکن خوانده یا تغییر داده نشد.
+
+## مراحل۳۱تا۵۰ — 2026-10-15
+
+بیست مرحله در `PuzzleEngine/PuzzleData/031.json` تا `050.json` با زمان/امتیاز جدول، یک هینت فارسی، پاسخ و دو دام تعاملی پیاده‌سازی شدند. manifest نسخه۸ تا۵۰ گسترش یافت؛ ProgressStore نسخه۷ و نسخه‌های شناخته‌شدهٔ قبلی را با حفظ نتیجه‌ها، هینت‌ها، هزینهٔ خرید، pending و بایگانی منتقل می‌کند؛ پایان نسخه۷ به۳۱ می‌رود. مرحله۳۳ پس از پایان لرزش شخصیت حل می‌شود؛۳۶ مقایسهٔ هر سه جرم،۳۹/۴۰ بررسی بخار/موج پیش از انتخاب،۴۲ سه مشاهدهٔ متمایز و تطبیق کامل،۴۳ انتقال محدود به ظرفیت،۴۴ دو شمارش،۴۵ دو رابطه،۴۸ هشت حذف مستقل،۴۹ هر دو قید و۵۰ ترتیب چهار بخش ردپا را لازم دارند. نور کم۳۱ بخشی از سؤال است؛ بقیه در فضای روشن‌اند. HUD، Safe Area و تبدیل ورودی مشترک حفظ شدند.
+
+ابزار بازتولید همین محتوا `tools/author_chapter_four.py` است؛ فقط JSONهای۳۱تا۵۰، manifest و منابع تازهٔ همین بخش را می‌نویسد و Godot/آزمون اجرا نمی‌کند. منابع مراحل۱تا۳۰ تغییر نکردند. Sceneهای `PuzzleEngine/Objects/`، فونت `assets/fonts/Vazirmatn-Regular.ttf` و انیمیشن‌های موجود `chapter_two/rattle`/`chapter_two/flash` بازاستفاده شدند. مسیر همهٔ نام‌های جدول زیر `assets/samples/` است مگر جایی که مسیر دیگری آمده باشد.
+
+| مرحله | بازاستفادهٔ بدون تغییر | منابع تازه و نیاز فاقد منبع مناسب |
+| --- | --- | --- |
+| ۳۱ | room_lighting.svg، room_shade_2.svg، lamp_off.svg، candle_body.svg، camera_flash.svg | match_unlit.svg، match_lit.svg، empty_lighter.svg، wall_switch.svg، room_heater.svg: کبریت با سطح اصطکاک، شعله و ابزارهای خاموش |
+| ۳۲ | bright_room.svg، man.svg، hand_dry.svg، cup.svg، paper.svg | promise_joined.svg، promise_broken.svg، agreement_folded.svg: پیوند/شکست بی‌صدای قول و کاغذ تاشده |
+| ۳۳ | bright_room.svg، window_daylight.svg، man.svg، basket_empty.svg، towel_dry.svg | window_open_cold.svg، thermometer_cold.svg، snowball.svg: بازشدن پنجره، افت دما و توپ برفی مصنوعی |
+| ۳۴ | bright_room.svg، clock_face.svg، clock_hands.svg، alarm_clock.svg | toy_car.svg: جابه‌جایی بدنهٔ ماشین در برابر ساعت ثابت |
+| ۳۵ | bright_room.svg، woven_mat.svg، apple.svg، bottle.svg | goldfish_bowl.svg، garlic.svg، green_sprouts.svg، hyacinth.svg، sumac_bowl.svg، oleaster_bowl.svg، samanu_bowl.svg، bowl_lid.svg: هفت سین متمایز، ماهی و درِ قابل کناررفتن |
+| ۳۶ | bright_room.svg، selection_check.svg | pomegranate.svg، weighing_scale.svg، ribbon.svg، hammer.svg: میوه‌های ظاهراً یکسان، اندازه‌گیری جرم و دام‌های مستقل |
+| ۳۷ | bright_room.svg، woven_mat.svg | floor_hatch.svg، broom.svg، dust_motes.svg: دریچهٔ مستقل زیر قالی و گردوغبار قابل پاک‌کردن |
+| ۳۸ | bright_room.svg، bottle.svg، camera_flash.svg | chest_closed.svg، chest_open.svg، toothed_key_a.svg تا toothed_key_c.svg، key_profile.svg، chest_handle.svg: انطباق واقعی دندانهٔ کلید دوم و شیار قفل، صندوق و دستگیره |
+| ۳۹ | bright_room.svg، cup.svg، towel_dry.svg، test_tray.svg؛ dust_motes.svg این بخش | samovar.svg، steam_plume.svg: سماور و بخار مستقل برای شواهد گرما |
+| ۴۰ | bright_room.svg، milk_ripple.svg، shopping_bag.svg، stone.svg، bottle_cap.svg | water_jug.svg، water_slosh.wav: کوزه و صدای محلی مایع همراه موج دیداری |
+| ۴۱ | bright_room.svg، bird_perched.svg، closed_padlock.svg؛ toothed_key_a.svg این بخش | bird_cage.svg، cage_back_open.svg، seed_bowl.svg: قفل جلو، خروج باز پشت و ظرف دانه |
+| ۴۲ | bright_room.svg، day_card.svg؛ wall_switch.svg این بخش | bulb_cold.svg، bulb_lit.svg، heat_lines.svg، flashlight.svg: رشتهٔ لامپ، تمایز نور/گرما و چراغ‌قوهٔ بی‌اثر بر شواهد |
+| ۴۳ | bright_room.svg، water_drops.svg، hole.svg؛ water_jug.svg این بخش | decorative_measure.svg، height_ruler.svg: پیمانه با خط‌های نامعتبر و خط‌کش ارتفاع بدون کالیبراسیون حجم؛ حجم‌ها و خوانش‌ها دادهٔ مستقل‌اند |
+| ۴۴ | bright_room.svg، walking_person.svg، selection_check.svg، left_arrow.svg | puzzle_tile.svg: زمینهٔ قابل تشخیص برای مهره/کارت‌های متنی؛ در۴۲تا۴۹ هم بازاستفاده شده |
+| ۴۵ | bright_room.svg، clock_face.svg؛ puzzle_tile.svg این بخش | منبع تازه ندارد؛ خط زمان و کارت روزها با فونت مشترک‌اند |
+| ۴۶/۴۷ | bright_room.svg؛ puzzle_tile.svg این بخش | منبع تازه ندارد؛ دنباله، اختلاف‌ها و دام‌های عددی با TextObject هستند |
+| ۴۸ | bright_room.svg، stream_gate.svg؛ puzzle_tile.svg این بخش | sheep_alive.svg، sheep_dead.svg: تمایز۹زنده و۸مرده با چشم ضربدری |
+| ۴۹ | bright_room.svg، mirror_frame.svg؛ puzzle_tile.svg این بخش | منبع تازه ندارد؛ خانه‌های ارقام، وارونه و بازخورد دو قید متنی‌اند |
+| ۵۰ | bright_room.svg، selection_check.svg، paper.svg، assets/ui/score_icon.tres؛ صندوق‌های این بخش | footprints_right.svg، footprint_trail.svg، shoe_stamp.svg: رد پیوستهٔ جهت‌دار و مُهر مخالف روی کاغذ مستقل |
+
+آزمون اختصاصی `tests/test_chapter_four.gd` برای حل۲۰مرحله با ورودی واقعی Manager، دام‌ها جدا/در هر دو ترتیب و تکرار، قیدهای شواهد، Retry، فضای قانونی انتقال آب، ادامه۳۱تا۵۰ و انتقال حافظه‌ای/پایدار ذخیره آماده و به `tools/run_checks.ps1` محلی متصل شد. انتظارهای فهرست در `tests/test_foundation.gd` و ادامه۳۰به۳۱ در `tests/test_chapter_three.gd` محلی به‌روز شدند؛ این فایل‌های قبلی طبق `.gitignore` فعلی خارج از Git هستند. `tests/test_production_layout.gd` برای حدود تصویر/لمس، Drag، مقصد و انیمیشن در ماتریس اندازه‌های موبایل و `tests/test_progress_hints.gd` برای وابستگی ذخیره مرتبط‌اند.
+
+وضعیت همهٔ آزمون‌ها، Import، ماتریس اندازه‌ها و آزمون تصویری: **اجرا نشده؛ نیازمند دستور صریح کاربر**. فقط تولید محتوا، خواندن فایل و بازبینی کد/diff انجام شد؛ پذیرش گام۷ و Android باز است. APK ساخته و روی گوشی نصب نشد؛ ذخیرهٔ واقعی بازیکن خوانده یا تغییر داده نشد.

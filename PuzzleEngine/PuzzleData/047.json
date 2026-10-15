@@ -1,0 +1,329 @@
+{
+  "schema_version": 1,
+  "id": 47,
+  "question": "عدد بعدی: 3, 6, 11, 18, 27, ؟",
+  "hint": "اختلاف جمله‌های پشت سر هم را ببین؛ اختلاف بعدی دو واحد بیشتر است.",
+  "answer": "38",
+  "time_limit_seconds": 110,
+  "base_score": 140,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "sequence",
+      "scene": "TextObject",
+      "text": "۳، ۶، ۱۱، ۱۸، ۲۷، ؟",
+      "position": [
+        960,
+        470
+      ],
+      "hit_size": [
+        1100,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "answer",
+      "scene": "DropZone",
+      "position": [
+        1320,
+        620
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "right",
+        "wrong",
+        "other"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "blank",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        1320,
+        620
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "right",
+      "scene": "TextObject",
+      "text": "۳۸",
+      "position": [
+        650,
+        820
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "wrong",
+      "scene": "TextObject",
+      "text": "۳۶",
+      "position": [
+        960,
+        820
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "other",
+      "scene": "TextObject",
+      "text": "۵۴",
+      "position": [
+        1270,
+        820
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "differences",
+      "scene": "TextObject",
+      "text": "نمایش اختلاف‌ها",
+      "position": [
+        700,
+        620
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "diff_result",
+      "scene": "TextObject",
+      "text": "۳، ۵، ۷، ۹، ؟",
+      "position": [
+        700,
+        710
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "double",
+      "scene": "TextObject",
+      "text": "نوار دوبرابر",
+      "position": [
+        1550,
+        800
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "right"
+        }
+      ]
+    },
+    {
+      "id": "double_result",
+      "scene": "TextObject",
+      "text": "۲۷ × ۲ = ۵۴",
+      "position": [
+        1550,
+        900
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "right",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "right",
+          "position": [
+            1320,
+            620
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "blank"
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "answer"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "wrong",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "wrong",
+          "position": [
+            960,
+            820
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "wrong",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "answer"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "other",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "other",
+          "position": [
+            1270,
+            820
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "other",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "answer"
+    },
+    {
+      "id": "r0003",
+      "event": "tap",
+      "source": "differences",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "show",
+          "target": "diff_result"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "swipe",
+      "source": "double",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "show",
+          "target": "double_result"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

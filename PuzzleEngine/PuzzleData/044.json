@@ -1,0 +1,762 @@
+{
+  "schema_version": 1,
+  "id": 44,
+  "question": "در یک صف از جلو دهم و از عقب پانزدهمی. چند نفرند؟",
+  "hint": "از دو طرف تا خودت بشمار؛ فرد هدف را دوبار حساب نکن.",
+  "answer": "۲۴ نفر",
+  "time_limit_seconds": 115,
+  "base_score": 145,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "front": false,
+    "back": false
+  },
+  "objects": [
+    {
+      "id": "instructions",
+      "scene": "TextObject",
+      "text": "صف از چپ شروع می‌شود. دو مهره را از دو سمت روی فرد هدف قرار بده.",
+      "position": [
+        960,
+        350
+      ],
+      "hit_size": [
+        1500,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "person_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        270,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        330,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        390,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        450,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        510,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        570,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        630,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        690,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        750,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_9",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        810,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "target_mark",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        810,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "person_10",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        870,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_11",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        930,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_12",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        990,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_13",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1050,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_14",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1110,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_15",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1170,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_16",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1230,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_17",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1290,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_18",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1350,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_19",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1410,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_20",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1470,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_21",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1530,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_22",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1590,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "person_23",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1650,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.14,
+        0.3
+      ]
+    },
+    {
+      "id": "front_counter",
+      "scene": "TextObject",
+      "text": "از جلو: ۱۰",
+      "position": [
+        420,
+        790
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "back_counter",
+      "scene": "TextObject",
+      "text": "از عقب: ۱۵",
+      "position": [
+        1470,
+        790
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "target_front",
+      "scene": "DropZone",
+      "position": [
+        810,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "front_counter"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "target_back",
+      "scene": "DropZone",
+      "position": [
+        810,
+        650
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "back_counter"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "front_check",
+      "scene": "TextObject",
+      "text": "از جلو: ۱۰ نفر",
+      "position": [
+        600,
+        440
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "back_check",
+      "scene": "TextObject",
+      "text": "از عقب: ۱۵ نفر",
+      "position": [
+        1160,
+        440
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "answer24",
+      "scene": "TextObject",
+      "text": "۲۴",
+      "position": [
+        820,
+        880
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "answer25",
+      "scene": "TextObject",
+      "text": "۲۵",
+      "position": [
+        1170,
+        880
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            440
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "answer",
+      "scene": "DropZone",
+      "position": [
+        960,
+        730
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "answer24",
+        "answer25"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "answer_label",
+      "scene": "TextObject",
+      "text": "پاسخ",
+      "position": [
+        960,
+        730
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "flag",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/left_arrow.svg",
+      "position": [
+        1600,
+        880
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "front_counter",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "front",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "front_counter",
+          "position": [
+            420,
+            790
+          ]
+        },
+        {
+          "type": "show",
+          "target": "front_check"
+        }
+      ],
+      "once": false,
+      "target": "target_front"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "back_counter",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "back",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "back_counter",
+          "position": [
+            1470,
+            790
+          ]
+        },
+        {
+          "type": "show",
+          "target": "back_check"
+        }
+      ],
+      "once": false,
+      "target": "target_back"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "answer25",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "answer25",
+          "position": [
+            1170,
+            880
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "answer25",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "answer"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "answer24",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "front",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "back",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "answer24",
+          "position": [
+            960,
+            730
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "answer"
+    },
+    {
+      "id": "r0004",
+      "event": "drag_end",
+      "source": "flag",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "flag",
+          "position": [
+            1600,
+            880
+          ]
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

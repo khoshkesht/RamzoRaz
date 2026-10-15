@@ -1,0 +1,509 @@
+{
+  "schema_version": 1,
+  "id": 50,
+  "question": "کدام صندوق از روی ردپا صاحب سکه را پنهان کرده؟",
+  "hint": "ردپا را از آغاز قدم‌به‌قدم دنبال کن؛ مقصد رد واقعی را انتخاب کن.",
+  "answer": "صندوقی که ردپا به آن ختم می‌شود",
+  "time_limit_seconds": 105,
+  "base_score": 140,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "trail": 0
+  },
+  "objects": [
+    {
+      "id": "chest_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/chest_closed.svg",
+      "position": [
+        520,
+        530
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "chest_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/chest_closed.svg",
+      "position": [
+        960,
+        530
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "chest_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/chest_closed.svg",
+      "position": [
+        1400,
+        530
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "connected_trail",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/footprint_trail.svg",
+      "position": [
+        960,
+        700
+      ],
+      "interactions": [],
+      "z_index": -2
+    },
+    {
+      "id": "trail_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/footprints_right.svg",
+      "position": [
+        1400,
+        850
+      ],
+      "interactions": [
+        "swipe"
+      ],
+      "rotation_degrees": -155,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "trail_check_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        1400,
+        850
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.3,
+        0.3
+      ]
+    },
+    {
+      "id": "trail_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/footprints_right.svg",
+      "position": [
+        1120,
+        800
+      ],
+      "interactions": [
+        "swipe"
+      ],
+      "rotation_degrees": -160,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "trail_check_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        1120,
+        800
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.3,
+        0.3
+      ]
+    },
+    {
+      "id": "trail_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/footprints_right.svg",
+      "position": [
+        850,
+        710
+      ],
+      "interactions": [
+        "swipe"
+      ],
+      "rotation_degrees": -150,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "trail_check_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        850,
+        710
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.3,
+        0.3
+      ]
+    },
+    {
+      "id": "trail_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/footprints_right.svg",
+      "position": [
+        600,
+        650
+      ],
+      "interactions": [
+        "swipe"
+      ],
+      "rotation_degrees": -100,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "trail_check_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        600,
+        650
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.3,
+        0.3
+      ]
+    },
+    {
+      "id": "trail_start",
+      "scene": "TextObject",
+      "text": "شروع رد",
+      "position": [
+        1570,
+        900
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "coin",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/ui/score_icon.tres",
+      "position": [
+        300,
+        840
+      ],
+      "scale": [
+        2,
+        2
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ]
+    },
+    {
+      "id": "right_chest",
+      "scene": "DropZone",
+      "position": [
+        1400,
+        530
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "coin"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "stamp",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/shoe_stamp.svg",
+      "position": [
+        1650,
+        530
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "paper",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/paper.svg",
+      "position": [
+        1650,
+        760
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "paper_zone",
+      "scene": "DropZone",
+      "position": [
+        1650,
+        760
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "stamp"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "false_print",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/footprints_right.svg",
+      "position": [
+        1650,
+        760
+      ],
+      "interactions": [],
+      "visible": false,
+      "rotation_degrees": 180,
+      "scale": [
+        0.4,
+        0.4
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "swipe",
+      "source": "trail_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "trail",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "trail_check_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "trail",
+          "value": 1,
+          "operation": "assign"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0001",
+      "event": "swipe",
+      "source": "trail_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "trail",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "trail_check_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "trail",
+          "value": 2,
+          "operation": "assign"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0002",
+      "event": "swipe",
+      "source": "trail_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "trail",
+          "operator": "eq",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "trail_check_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "trail",
+          "value": 3,
+          "operation": "assign"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0003",
+      "event": "swipe",
+      "source": "trail_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "trail",
+          "operator": "eq",
+          "value": 3
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "trail_check_3"
+        },
+        {
+          "type": "set_variable",
+          "name": "trail",
+          "value": 4,
+          "operation": "assign"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "source": "coin",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "coin",
+          "position": [
+            300,
+            840
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "chest_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "right_chest"
+    },
+    {
+      "id": "r0005",
+      "event": "drop_on",
+      "source": "stamp",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "stamp",
+          "position": [
+            1650,
+            530
+          ]
+        },
+        {
+          "type": "show",
+          "target": "false_print"
+        }
+      ],
+      "once": false,
+      "target": "paper_zone"
+    },
+    {
+      "id": "r0006",
+      "event": "tap",
+      "source": "chest_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "trail",
+          "operator": "eq",
+          "value": 4
+        }
+      ],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "chest_0",
+          "sprite": "res://assets/samples/chest_open.svg"
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

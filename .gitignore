@@ -25,3 +25,6 @@ tools/android/*
 /tests/*
 !/tests/test_adivery_adapter.gd
 !/tests/test_adivery_adapter.gd.uid
+!/tests/test_chapter_four.gd
+!/tests/test_chapter_four.gd.uid
+!/tools/author_chapter_four.py

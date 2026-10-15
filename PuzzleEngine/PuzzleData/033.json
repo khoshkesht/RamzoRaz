@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "id": 33,
+  "question": "آن چیست که را می‌توان گرفت ولی نمی‌توان پرتاب کرد؟",
+  "hint": "پنجره را باز کن و به دما و لرزیدن شخصیت دقت کن.",
+  "answer": "سرما",
+  "time_limit_seconds": 75,
+  "base_score": 100,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "opened": false
+  },
+  "objects": [
+    {
+      "id": "window",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/window_daylight.svg",
+      "position": [
+        960,
+        530
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "person",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/man.svg",
+      "position": [
+        960,
+        820
+      ],
+      "interactions": [],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "cold",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/thermometer_cold.svg",
+      "position": [
+        1220,
+        700
+      ],
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "snowball",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/snowball.svg",
+      "position": [
+        450,
+        750
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            460,
+            1500,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "basket",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/basket_empty.svg",
+      "position": [
+        500,
+        500
+      ],
+      "interactions": []
+    },
+    {
+      "id": "basket_zone",
+      "scene": "DropZone",
+      "position": [
+        500,
+        500
+      ],
+      "hit_size": [
+        260,
+        150
+      ],
+      "accepted_sources": [
+        "snowball"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "blanket",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/towel_dry.svg",
+      "position": [
+        1500,
+        760
+      ],
+      "interactions": [
+        "hold"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "snowball",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "snowball",
+          "position": [
+            450,
+            750
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "basket",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "basket_zone"
+    },
+    {
+      "id": "r0001",
+      "event": "hold",
+      "source": "blanket",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "scale",
+          "target": "blanket",
+          "value": [
+            0.7,
+            0.7
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "window",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "window",
+          "sprite": "res://assets/samples/window_open_cold.svg"
+        },
+        {
+          "type": "show",
+          "target": "cold"
+        },
+        {
+          "type": "set_variable",
+          "name": "opened",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "person",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0003",
+      "event": "custom:animation_finished",
+      "source": "person",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "opened",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}
