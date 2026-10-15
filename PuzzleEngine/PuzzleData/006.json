@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "id": 6,
+  "question": "آن چیست که یک چشم دارد ولی نمی‌بیند؟",
+  "hint": "نخ را روی سوراخ کوچک بالای سوزن بکش و رها کن.",
+  "answer": "سوزن؛ چشم آن سوراخ عبور نخ است و چیزی نمی‌بیند.",
+  "time_limit_seconds": 35,
+  "base_score": 55,
+  "objects": [
+    {
+      "id": "needle",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/needle.svg",
+      "position": [
+        820,
+        650
+      ],
+      "state": {
+        "threaded": false
+      }
+    },
+    {
+      "id": "eye_zone",
+      "scene": "DropZone",
+      "position": [
+        820,
+        545
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "thread"
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "thread",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/thread_spool.svg",
+      "position": [
+        1120,
+        775
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "return_on_invalid": true,
+          "bounds": [
+            350,
+            530,
+            1240,
+            320
+          ]
+        },
+        "drop_on"
+      ]
+    },
+    {
+      "id": "threaded_eye",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/thread_in_eye.svg",
+      "position": [
+        820,
+        575
+      ],
+      "visible": false,
+      "z_index": 4
+    },
+    {
+      "id": "face",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/face_frame.svg",
+      "position": [
+        1500,
+        650
+      ]
+    },
+    {
+      "id": "face_zone",
+      "scene": "DropZone",
+      "position": [
+        1500,
+        650
+      ],
+      "hit_size": [
+        240,
+        240
+      ],
+      "accepted_sources": [
+        "glasses"
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "glasses",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/glasses.svg",
+      "position": [
+        1450,
+        850
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "return_on_invalid": true,
+          "bounds": [
+            350,
+            530,
+            1240,
+            320
+          ]
+        },
+        "drop_on"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "try_glasses",
+      "event": "drop_on",
+      "source": "glasses",
+      "actions": [
+        {
+          "type": "move",
+          "target": "glasses",
+          "position": [
+            1500,
+            650
+          ]
+        }
+      ],
+      "target": "face_zone",
+      "once": false
+    },
+    {
+      "id": "thread_eye",
+      "event": "drop_on",
+      "source": "thread",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "thread"
+        },
+        {
+          "type": "show",
+          "target": "threaded_eye"
+        },
+        {
+          "type": "set_state",
+          "target": "needle",
+          "key": "threaded",
+          "value": true
+        }
+      ],
+      "target": "eye_zone"
+    }
+  ],
+  "win_condition": {
+    "type": "object_state",
+    "target": "needle",
+    "key": "threaded",
+    "operator": "eq",
+    "value": true
+  },
+  "background": "res://assets/samples/sewing_desk_background_light.svg",
+  "success": {
+    "result_delay_seconds": 2
+  }
+}

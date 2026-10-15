@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "id": 25,
+  "question": "آن چیست که دور دنیا می‌چرخد ولی از گوشهٔ پاکت تکان نمی‌خورد؟",
+  "hint": "تمبر را به گوشهٔ بالای سمت راست پاکت بچسبان و سفرش را دنبال کن.",
+  "answer": "تمبر؛ همراه پاکت سفر می‌کند و در گوشهٔ همان پاکت می‌ماند.",
+  "time_limit_seconds": 80,
+  "base_score": 105,
+  "background": "res://assets/samples/post_office_background.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "map",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/world_map.svg",
+      "position": [
+        990,
+        690
+      ],
+      "scale": [
+        1.1,
+        1.1
+      ]
+    },
+    {
+      "id": "envelope",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/envelope.svg",
+      "position": [
+        650,
+        760
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "trip",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/envelope_stamped.svg",
+      "position": [
+        650,
+        760
+      ],
+      "visible": false,
+      "z_index": 3
+    },
+    {
+      "id": "corner",
+      "scene": "DropZone",
+      "position": [
+        747,
+        716
+      ],
+      "hit_size": [
+        100,
+        95
+      ],
+      "accepted_sources": [
+        "stamp"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "stamp",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/postage_stamp.svg",
+      "position": [
+        360,
+        540
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            490,
+            1600,
+            480
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 6
+    },
+    {
+      "id": "globe",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/globe.svg",
+      "position": [
+        1550,
+        610
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "right"
+        }
+      ]
+    },
+    {
+      "id": "seal",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/postal_seal.svg",
+      "position": [
+        350,
+        850
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            490,
+            1600,
+            480
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ]
+    },
+    {
+      "id": "receipt",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/paper.svg",
+      "position": [
+        1570,
+        880
+      ],
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "receipt_zone",
+      "scene": "DropZone",
+      "position": [
+        1570,
+        880
+      ],
+      "hit_size": [
+        225,
+        165
+      ],
+      "accepted_sources": [
+        "seal"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "marked_receipt",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/receipt_marked.svg",
+      "position": [
+        1570,
+        880
+      ],
+      "visible": false,
+      "z_index": 3
+    },
+    {
+      "id": "landed",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/envelope_stamped.svg",
+      "position": [
+        1250,
+        760
+      ],
+      "visible": false,
+      "z_index": 3
+    }
+  ],
+  "rules": [
+    {
+      "id": "attach",
+      "event": "drop_on",
+      "source": "stamp",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "stamp"
+        },
+        {
+          "type": "hide",
+          "target": "envelope"
+        },
+        {
+          "type": "show",
+          "target": "trip"
+        },
+        {
+          "type": "play_animation",
+          "target": "trip",
+          "animation": "chapter_three/journey",
+          "wait": false
+        }
+      ],
+      "target": "corner"
+    },
+    {
+      "id": "arrive",
+      "event": "custom:animation_finished",
+      "source": "trip",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "trip"
+        },
+        {
+          "type": "show",
+          "target": "landed"
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "chapter_three/journey"
+        }
+      ]
+    },
+    {
+      "id": "globe_spin",
+      "event": "swipe",
+      "source": "globe",
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "globe",
+          "animation": "chapter_three/spin",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "postmark",
+      "event": "drop_on",
+      "source": "seal",
+      "actions": [
+        {
+          "type": "move",
+          "target": "seal",
+          "position": [
+            350,
+            850
+          ]
+        },
+        {
+          "type": "show",
+          "target": "marked_receipt"
+        }
+      ],
+      "target": "receipt_zone",
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

@@ -1,0 +1,3 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="PackedScene" path="res://PuzzleEngine/Objects/PuzzleObject.tscn" id="1"]
+[node name="ClickableObject" instance=ExtResource("1")]

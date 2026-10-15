@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2,
+    "sound": "res://assets/samples/piano_note.wav"
+  },
+  "id": 18,
+  "question": "آن چیست که کلید دارد ولی قفل باز نمی‌کند؟",
+  "hint": "پارچهٔ روی پیانو را به چپ بکش و کنار بزن؛ بعد یکی از کلاویه‌ها را لمس کن.",
+  "answer": "پیانو؛ کلیدهای آن کلاویه‌اند و صدا تولید می‌کنند، اما قفل را باز نمی‌کنند.",
+  "time_limit_seconds": 45,
+  "base_score": 70,
+  "variables": {
+    "note_played": false,
+    "cloth_removed": false
+  },
+  "objects": [
+    {
+      "id": "piano",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/piano.svg",
+      "position": [
+        850,
+        700
+      ]
+    },
+    {
+      "id": "key_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/piano_key.svg",
+      "position": [
+        755,
+        725
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "z_index": 2,
+      "visible": false
+    },
+    {
+      "id": "key_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/piano_key.svg",
+      "position": [
+        850,
+        725
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "z_index": 2,
+      "visible": false
+    },
+    {
+      "id": "key_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/piano_key.svg",
+      "position": [
+        945,
+        725
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "z_index": 2,
+      "visible": false
+    },
+    {
+      "id": "notes",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/sound_waves.svg",
+      "position": [
+        1140,
+        650
+      ],
+      "visible": false,
+      "scale": [
+        0.75,
+        0.75
+      ],
+      "z_index": 3
+    },
+    {
+      "id": "lock",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/closed_padlock.svg",
+      "position": [
+        1440,
+        670
+      ],
+      "state": {
+        "open": false
+      }
+    },
+    {
+      "id": "lock_zone",
+      "scene": "DropZone",
+      "position": [
+        1440,
+        670
+      ],
+      "hit_size": [
+        180,
+        210
+      ],
+      "accepted_sources": [
+        "keyring"
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "keyring",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/keyring.svg",
+      "position": [
+        1440,
+        880
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "return_on_invalid": true,
+          "bounds": [
+            300,
+            570,
+            1260,
+            335
+          ]
+        },
+        "drop_on"
+      ]
+    },
+    {
+      "id": "piano_cloth",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/piano_cover.svg",
+      "position": [
+        850,
+        700
+      ],
+      "z_index": 4,
+      "interactions": [
+        {
+          "type": "drag",
+          "axis": "x",
+          "return_on_invalid": true,
+          "bounds": [
+            300,
+            690,
+            550,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cloth_aside",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/piano_cover.svg",
+      "position": [
+        350,
+        780
+      ],
+      "scale": [
+        0.55,
+        0.55
+      ],
+      "visible": false,
+      "z_index": 4
+    }
+  ],
+  "rules": [
+    {
+      "id": "uncover_piano",
+      "event": "drag_end",
+      "source": "piano_cloth",
+      "conditions": [
+        {
+          "type": "moved_distance_at_least",
+          "value": 200
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "piano_cloth"
+        },
+        {
+          "type": "show",
+          "target": "cloth_aside"
+        },
+        {
+          "type": "set_variable",
+          "name": "cloth_removed",
+          "operation": "assign",
+          "value": true
+        },
+        {
+          "type": "show",
+          "target": "key_1"
+        },
+        {
+          "type": "show",
+          "target": "key_2"
+        },
+        {
+          "type": "show",
+          "target": "key_3"
+        }
+      ]
+    },
+    {
+      "id": "wrong_keys",
+      "event": "drop_on",
+      "source": "keyring",
+      "actions": [
+        {
+          "type": "move",
+          "target": "keyring",
+          "position": [
+            1440,
+            880
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "keyring",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "target": "lock_zone",
+      "once": false
+    },
+    {
+      "id": "play_key_1",
+      "event": "tap",
+      "source": "key_1",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "key_1",
+          "sprite": "res://assets/samples/piano_key_down.svg"
+        },
+        {
+          "type": "show",
+          "target": "notes"
+        },
+        {
+          "type": "set_variable",
+          "name": "note_played",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "cloth_removed",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "play_key_2",
+      "event": "tap",
+      "source": "key_2",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "key_2",
+          "sprite": "res://assets/samples/piano_key_down.svg"
+        },
+        {
+          "type": "show",
+          "target": "notes"
+        },
+        {
+          "type": "set_variable",
+          "name": "note_played",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "cloth_removed",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "play_key_3",
+      "event": "tap",
+      "source": "key_3",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "key_3",
+          "sprite": "res://assets/samples/piano_key_down.svg"
+        },
+        {
+          "type": "show",
+          "target": "notes"
+        },
+        {
+          "type": "set_variable",
+          "name": "note_played",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "cloth_removed",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "all",
+    "conditions": [
+      {
+        "type": "variable",
+        "name": "cloth_removed",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "variable",
+        "name": "note_played",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "object_state",
+        "target": "lock",
+        "key": "open",
+        "operator": "eq",
+        "value": false
+      }
+    ]
+  }
+}

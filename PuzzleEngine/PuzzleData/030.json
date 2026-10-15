@@ -1,0 +1,693 @@
+{
+  "schema_version": 1,
+  "id": 30,
+  "question": "سه سیب را بین سه نفر تقسیم کن و یک سیب هم داخل سبد بماند.",
+  "hint": "دو سیب را جدا بده؛ برای نفر سوم، سبد و سیب داخلش را با هم ببر.",
+  "answer": "سیب سوم همراه سبد به نفر سوم می‌رسد؛ هر سه نفر سیب دارند و یک سیب همچنان در سبد است.",
+  "time_limit_seconds": 85,
+  "base_score": 110,
+  "background": "res://assets/samples/apple_orchard_background.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "apples": 0,
+    "has_0": false,
+    "has_1": false,
+    "basket_given": false
+  },
+  "objects": [
+    {
+      "id": "basket",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/basket_apple.svg",
+      "position": [
+        980,
+        750
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            490,
+            1600,
+            480
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "apple_a",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/apple.svg",
+      "position": [
+        900,
+        700
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            490,
+            1600,
+            480
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 4
+    },
+    {
+      "id": "apple_b",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/apple.svg",
+      "position": [
+        1050,
+        700
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            490,
+            1600,
+            480
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 4
+    },
+    {
+      "id": "plate",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/test_tray.svg",
+      "position": [
+        420,
+        950
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            490,
+            1600,
+            480
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ]
+    },
+    {
+      "id": "table",
+      "scene": "DropZone",
+      "position": [
+        690,
+        950
+      ],
+      "hit_size": [
+        290,
+        120
+      ],
+      "accepted_sources": [
+        "plate"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "bag",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/shopping_bag.svg",
+      "position": [
+        1540,
+        900
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            490,
+            1600,
+            480
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "recipient_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/man.svg",
+      "position": [
+        420,
+        510
+      ],
+      "scale": [
+        0.35,
+        0.35
+      ]
+    },
+    {
+      "id": "recipient_label_0",
+      "scene": "TextObject",
+      "text": "نفر اول",
+      "text_color": "#364D55",
+      "position": [
+        420,
+        650
+      ],
+      "hit_size": [
+        260,
+        70
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "receive_0",
+      "scene": "DropZone",
+      "position": [
+        420,
+        540
+      ],
+      "hit_size": [
+        250,
+        230
+      ],
+      "accepted_sources": [
+        "apple_a",
+        "apple_b"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "given_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/apple.svg",
+      "position": [
+        520,
+        560
+      ],
+      "visible": false,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "recipient_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/man.svg",
+      "position": [
+        980,
+        510
+      ],
+      "scale": [
+        0.35,
+        0.35
+      ]
+    },
+    {
+      "id": "recipient_label_1",
+      "scene": "TextObject",
+      "text": "نفر دوم",
+      "text_color": "#364D55",
+      "position": [
+        980,
+        650
+      ],
+      "hit_size": [
+        260,
+        70
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "receive_1",
+      "scene": "DropZone",
+      "position": [
+        980,
+        540
+      ],
+      "hit_size": [
+        250,
+        230
+      ],
+      "accepted_sources": [
+        "apple_a",
+        "apple_b"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "given_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/apple.svg",
+      "position": [
+        1080,
+        560
+      ],
+      "visible": false,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "recipient_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/man.svg",
+      "position": [
+        1540,
+        510
+      ],
+      "scale": [
+        0.35,
+        0.35
+      ]
+    },
+    {
+      "id": "recipient_label_2",
+      "scene": "TextObject",
+      "text": "نفر سوم",
+      "text_color": "#364D55",
+      "position": [
+        1540,
+        650
+      ],
+      "hit_size": [
+        260,
+        70
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "receive_2",
+      "scene": "DropZone",
+      "position": [
+        1540,
+        540
+      ],
+      "hit_size": [
+        250,
+        230
+      ],
+      "accepted_sources": [
+        "basket"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "given_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/apple.svg",
+      "position": [
+        1640,
+        560
+      ],
+      "visible": false,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "give_apple_a_0",
+      "event": "drop_on",
+      "source": "apple_a",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "apple_a"
+        },
+        {
+          "type": "show",
+          "target": "given_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "has_0",
+          "operation": "assign",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "apples",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "target": "receive_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "has_0",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "visible",
+          "target": "apple_a"
+        }
+      ]
+    },
+    {
+      "id": "give_apple_b_0",
+      "event": "drop_on",
+      "source": "apple_b",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "apple_b"
+        },
+        {
+          "type": "show",
+          "target": "given_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "has_0",
+          "operation": "assign",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "apples",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "target": "receive_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "has_0",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "visible",
+          "target": "apple_b"
+        }
+      ]
+    },
+    {
+      "id": "give_apple_a_1",
+      "event": "drop_on",
+      "source": "apple_a",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "apple_a"
+        },
+        {
+          "type": "show",
+          "target": "given_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "has_1",
+          "operation": "assign",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "apples",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "target": "receive_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "has_1",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "visible",
+          "target": "apple_a"
+        }
+      ]
+    },
+    {
+      "id": "give_apple_b_1",
+      "event": "drop_on",
+      "source": "apple_b",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "apple_b"
+        },
+        {
+          "type": "show",
+          "target": "given_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "has_1",
+          "operation": "assign",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "apples",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "target": "receive_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "has_1",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "visible",
+          "target": "apple_b"
+        }
+      ]
+    },
+    {
+      "id": "deliver_basket",
+      "event": "drop_on",
+      "source": "basket",
+      "actions": [
+        {
+          "type": "move",
+          "target": "basket",
+          "position": [
+            1540,
+            760
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "basket_given",
+          "operation": "assign",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "target": "receive_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "apples",
+          "operator": "eq",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "basket_too_early",
+      "event": "drop_on",
+      "source": "basket",
+      "actions": [
+        {
+          "type": "move",
+          "target": "basket",
+          "position": [
+            980,
+            750
+          ]
+        }
+      ],
+      "target": "receive_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "basket_given",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "plate_on_table",
+      "event": "drop_on",
+      "source": "plate",
+      "actions": [
+        {
+          "type": "move",
+          "target": "plate",
+          "position": [
+            690,
+            950
+          ]
+        }
+      ],
+      "target": "table",
+      "once": false
+    },
+    {
+      "id": "occupied_apple_a_0",
+      "event": "drop_on",
+      "source": "apple_a",
+      "target": "receive_0",
+      "once": false,
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "has_0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "visible",
+          "target": "apple_a"
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "apple_a",
+          "position": [
+            900,
+            700
+          ]
+        }
+      ]
+    },
+    {
+      "id": "occupied_apple_b_0",
+      "event": "drop_on",
+      "source": "apple_b",
+      "target": "receive_0",
+      "once": false,
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "has_0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "visible",
+          "target": "apple_b"
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "apple_b",
+          "position": [
+            1050,
+            700
+          ]
+        }
+      ]
+    },
+    {
+      "id": "occupied_apple_a_1",
+      "event": "drop_on",
+      "source": "apple_a",
+      "target": "receive_1",
+      "once": false,
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "has_1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "visible",
+          "target": "apple_a"
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "apple_a",
+          "position": [
+            900,
+            700
+          ]
+        }
+      ]
+    },
+    {
+      "id": "occupied_apple_b_1",
+      "event": "drop_on",
+      "source": "apple_b",
+      "target": "receive_1",
+      "once": false,
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "has_1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "visible",
+          "target": "apple_b"
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "apple_b",
+          "position": [
+            1050,
+            700
+          ]
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

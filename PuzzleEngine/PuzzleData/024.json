@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "id": 24,
+  "question": "آن چیست که می‌دود ولی پا ندارد؟",
+  "hint": "راه آب را باز کن؛ چرخاندن چرخ کافی نیست.",
+  "answer": "آب؛ با کنارزدن دریچه در جوی جاری می‌شود.",
+  "time_limit_seconds": 65,
+  "base_score": 95,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "bed",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/stream_bed.svg",
+      "position": [
+        1100,
+        740
+      ]
+    },
+    {
+      "id": "flow",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/stream_flow.svg",
+      "position": [
+        1100,
+        740
+      ],
+      "visible": false
+    },
+    {
+      "id": "gate",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/stream_gate.svg",
+      "position": [
+        850,
+        725
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            600,
+            560,
+            1100,
+            360
+          ]
+        }
+      ],
+      "z_index": 3
+    },
+    {
+      "id": "wheel",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/waterwheel.svg",
+      "position": [
+        410,
+        700
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "right"
+        }
+      ]
+    },
+    {
+      "id": "shoe",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/shoe.svg",
+      "position": [
+        1550,
+        930
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            490,
+            1600,
+            480
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "open",
+      "event": "drag_end",
+      "source": "gate",
+      "actions": [
+        {
+          "type": "move",
+          "target": "gate",
+          "position": [
+            670,
+            610
+          ]
+        },
+        {
+          "type": "show",
+          "target": "flow"
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "type": "moved_distance_at_least",
+          "value": 180
+        }
+      ]
+    },
+    {
+      "id": "wheel_spin",
+      "event": "swipe",
+      "source": "wheel",
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "wheel",
+          "animation": "chapter_three/spin",
+          "wait": false
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

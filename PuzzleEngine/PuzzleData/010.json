@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "id": 10,
+  "question": "آن چیست که بالا می‌رود ولی پایین نمی‌آید؟",
+  "hint": "شمع‌های تولد را لمس کن و عدد سن را ببین.",
+  "answer": "سن؛ در تولد بعدی از شش به هفت سال می‌رسد و به عقب برنمی‌گردد.",
+  "time_limit_seconds": 45,
+  "base_score": 70,
+  "variables": {
+    "age": 6
+  },
+  "objects": [
+    {
+      "id": "cake",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/birthday_cake.svg",
+      "position": [
+        850,
+        755
+      ]
+    },
+    {
+      "id": "candles",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/birthday_candles.svg",
+      "position": [
+        850,
+        625
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "age_card",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/age_six.svg",
+      "position": [
+        1130,
+        710
+      ]
+    },
+    {
+      "id": "age_six_text",
+      "scene": "TextObject",
+      "text": "۶",
+      "text_color": "#557E80",
+      "position": [1130, 710],
+      "hit_size": [50, 65],
+      "scale": [2, 2],
+      "z_index": 3
+    },
+    {
+      "id": "age_seven_text",
+      "scene": "TextObject",
+      "text": "۷",
+      "text_color": "#557E80",
+      "position": [1130, 710],
+      "hit_size": [50, 65],
+      "scale": [2, 2],
+      "visible": false,
+      "z_index": 3
+    },
+    {
+      "id": "balloon",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/balloon.svg",
+      "position": [
+        1460,
+        690
+      ],
+      "interactions": [
+        "hold"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "inflate_balloon",
+      "event": "hold",
+      "source": "balloon",
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "balloon",
+          "animation": "puzzles/inflate_return",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "birthday",
+      "event": "tap",
+      "source": "candles",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "age_card",
+          "sprite": "res://assets/samples/age_seven.svg"
+        },
+        { "type": "hide", "target": "age_six_text" },
+        { "type": "show", "target": "age_seven_text" },
+        {
+          "type": "set_variable",
+          "name": "age",
+          "operation": "increment",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "age",
+    "operator": "eq",
+    "value": 7
+  },
+  "background": "res://assets/samples/birthday_party_background.svg",
+  "success": {
+    "result_delay_seconds": 2
+  }
+}

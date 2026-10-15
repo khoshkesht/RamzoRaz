@@ -1,0 +1,366 @@
+{
+  "schema_version": 1,
+  "background": "res://assets/samples/room_overhead_background.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "id": 14,
+  "question": "در اتاق ۴ گوشه و در هر گوشه یک گربه است. چند گربه داریم؟",
+  "hint": "پوشش هر چهار گوشهٔ اتاق را یک بار لمس کن.",
+  "answer": "چهار گربه؛ در هر گوشه دقیقاً یک گربه هست و دوباره شمردنِ یک گوشه گربهٔ تازه‌ای نمی‌سازد.",
+  "time_limit_seconds": 60,
+  "base_score": 80,
+  "variables": {
+    "cats_revealed": 0
+  },
+  "counters": [
+    {
+      "variable": "cats_revealed",
+      "label": "گربه‌های پیدا شده",
+      "target": 4
+    }
+  ],
+  "objects": [
+    {
+      "id": "room",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/room_four_corners.svg",
+      "position": [
+        960,
+        730
+      ]
+    },
+    {
+      "id": "cat_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/cat.svg",
+      "position": [
+        670,
+        585
+      ],
+      "visible": false,
+      "z_index": 2,
+      "state": {
+        "revealed": false
+      }
+    },
+    {
+      "id": "corner_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/corner_cover.svg",
+      "position": [
+        670,
+        585
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "z_index": 3
+    },
+    {
+      "id": "cat_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/cat.svg",
+      "position": [
+        1250,
+        585
+      ],
+      "visible": false,
+      "z_index": 2,
+      "state": {
+        "revealed": false
+      }
+    },
+    {
+      "id": "corner_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/corner_cover.svg",
+      "position": [
+        1250,
+        585
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "z_index": 3
+    },
+    {
+      "id": "cat_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/cat.svg",
+      "position": [
+        670,
+        875
+      ],
+      "visible": false,
+      "z_index": 2,
+      "state": {
+        "revealed": false
+      }
+    },
+    {
+      "id": "corner_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/corner_cover.svg",
+      "position": [
+        670,
+        875
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "z_index": 3
+    },
+    {
+      "id": "cat_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/cat.svg",
+      "position": [
+        1250,
+        875
+      ],
+      "visible": false,
+      "z_index": 2,
+      "state": {
+        "revealed": false
+      }
+    },
+    {
+      "id": "corner_4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/corner_cover.svg",
+      "position": [
+        1250,
+        875
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "z_index": 3
+    },
+    {
+      "id": "milk",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/milk_bowl.svg",
+      "position": [
+        1520,
+        655
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "ripple",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/milk_ripple.svg",
+      "position": [
+        1520,
+        630
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "yarn",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/yarn_ball.svg",
+      "position": [
+        1520,
+        840
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "right"
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "milk_ripples",
+      "event": "tap",
+      "source": "milk",
+      "actions": [
+        {
+          "type": "show",
+          "target": "ripple"
+        },
+        {
+          "type": "play_animation",
+          "target": "ripple",
+          "animation": "chapter_two/flash",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "unroll_yarn",
+      "event": "swipe",
+      "source": "yarn",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "yarn",
+          "sprite": "res://assets/samples/yarn_unrolled.svg"
+        },
+        {
+          "type": "play_animation",
+          "target": "yarn",
+          "animation": "puzzles/flutter",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "reveal_corner_1",
+      "event": "tap",
+      "source": "corner_1",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "corner_1"
+        },
+        {
+          "type": "show",
+          "target": "cat_1"
+        },
+        {
+          "type": "set_state",
+          "target": "cat_1",
+          "key": "revealed",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "cats_revealed",
+          "operation": "increment",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "reveal_corner_2",
+      "event": "tap",
+      "source": "corner_2",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "corner_2"
+        },
+        {
+          "type": "show",
+          "target": "cat_2"
+        },
+        {
+          "type": "set_state",
+          "target": "cat_2",
+          "key": "revealed",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "cats_revealed",
+          "operation": "increment",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "reveal_corner_3",
+      "event": "tap",
+      "source": "corner_3",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "corner_3"
+        },
+        {
+          "type": "show",
+          "target": "cat_3"
+        },
+        {
+          "type": "set_state",
+          "target": "cat_3",
+          "key": "revealed",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "cats_revealed",
+          "operation": "increment",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "reveal_corner_4",
+      "event": "tap",
+      "source": "corner_4",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "corner_4"
+        },
+        {
+          "type": "show",
+          "target": "cat_4"
+        },
+        {
+          "type": "set_state",
+          "target": "cat_4",
+          "key": "revealed",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "cats_revealed",
+          "operation": "increment",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "all",
+    "conditions": [
+      {
+        "type": "variable",
+        "name": "cats_revealed",
+        "operator": "eq",
+        "value": 4
+      },
+      {
+        "type": "object_state",
+        "target": "cat_1",
+        "key": "revealed",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "object_state",
+        "target": "cat_2",
+        "key": "revealed",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "object_state",
+        "target": "cat_3",
+        "key": "revealed",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "object_state",
+        "target": "cat_4",
+        "key": "revealed",
+        "operator": "eq",
+        "value": true
+      }
+    ]
+  }
+}

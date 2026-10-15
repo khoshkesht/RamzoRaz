@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": 2,
+  "question": "هرچه بیشتر از آن برداری، بزرگ‌تر می‌شود. چیست؟",
+  "hint": "بیل را روی خاک بکش و رها کن؛ این کار را چند بار انجام بده.",
+  "answer": "چاله؛ هرچه خاک بیشتری از آن بردارید، بزرگ‌تر می‌شود.",
+  "time_limit_seconds": 40,
+  "base_score": 55,
+  "background": "res://assets/samples/garden_background.svg",
+  "variables": { "ground_state": 0 },
+  "counters": [{ "label": "کندن زمین", "variable": "ground_state", "target": 3 }],
+  "objects": [
+    { "id": "ground", "scene": "DropZone", "sprite": "res://assets/samples/ground.svg", "position": [970, 735], "hit_size": [570, 240], "accepted_sources": ["shovel"] },
+    { "id": "hole", "scene": "ImageObject", "sprite": "res://assets/samples/hole.svg", "position": [970, 735], "visible": false, "z_index": 1 },
+    { "id": "shovel", "scene": "DraggableObject", "sprite": "res://assets/samples/shovel.svg", "position": [525, 665], "rotation_degrees": -18, "z_index": 2, "interactions": [{ "type": "drag", "return_on_invalid": true, "bounds": [180, 470, 1560, 420] }, "drop_on"] },
+    { "id": "stone", "scene": "ClickableObject", "sprite": "res://assets/samples/stone.svg", "position": [1400, 755], "hit_size": [180, 120], "interactions": ["tap"] }
+  ],
+  "rules": [
+    { "id": "stone_feedback", "event": "tap", "source": "stone", "once": false, "actions": [{ "type": "play_animation", "target": "stone", "animation": "tilt", "wait": false }] },
+    { "id": "dig", "event": "drop_on", "source": "shovel", "target": "ground", "once": false, "conditions": [{ "type": "variable", "name": "ground_state", "operator": "lt", "value": 3 }], "actions": [{ "type": "set_variable", "name": "ground_state", "operation": "increment", "value": 1 }, { "type": "move", "target": "shovel", "position": [525, 665] }] },
+    { "id": "soil_first_dig", "event": "drop_on", "source": "shovel", "target": "ground", "conditions": [{ "type": "variable", "name": "ground_state", "operator": "eq", "value": 1 }], "actions": [{ "type": "replace_sprite", "target": "ground", "sprite": "res://assets/samples/ground_dug_1.svg" }] },
+    { "id": "soil_second_dig", "event": "drop_on", "source": "shovel", "target": "ground", "conditions": [{ "type": "variable", "name": "ground_state", "operator": "eq", "value": 2 }], "actions": [{ "type": "replace_sprite", "target": "ground", "sprite": "res://assets/samples/ground_dug_2.svg" }] },
+    { "id": "reveal_hole", "event": "drop_on", "source": "shovel", "target": "ground", "conditions": [{ "type": "variable", "name": "ground_state", "operator": "eq", "value": 3 }], "actions": [{ "type": "show", "target": "hole" }] }
+  ],
+  "win_condition": { "type": "all", "conditions": [{ "type": "visible", "target": "hole" }, { "type": "variable", "name": "ground_state", "operator": "eq", "value": 3 }] }
+}

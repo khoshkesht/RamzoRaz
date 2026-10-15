@@ -1,0 +1,12 @@
+.godot/
+.tools/
+builds/
+test_outputs/*
+!test_outputs/.gdignore
+*.tmp
+.godot/export_credentials.cfg
+
+desing/
+test_outputs/
+tests/
+tools/

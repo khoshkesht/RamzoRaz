@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "id": 22,
+  "question": "آن چیست که بدون دهان حرف می‌زند؟",
+  "hint": "زنگ را به صدا درآور و بازگشت موج از غار را ببین.",
+  "answer": "پژواک؛ صدای زنگ از دیوارهٔ غار بازمی‌گردد.",
+  "time_limit_seconds": 65,
+  "base_score": 95,
+  "background": "res://assets/samples/cave_cliffs_background.svg",
+  "success": {
+    "result_delay_seconds": 2,
+    "sound": "res://assets/samples/alarm_ring.wav"
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "cave",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/cave.svg",
+      "position": [
+        1330,
+        700
+      ]
+    },
+    {
+      "id": "bell",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bell.svg",
+      "position": [
+        650,
+        720
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "echo",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/sound_waves.svg",
+      "position": [
+        650,
+        650
+      ],
+      "visible": false,
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "speaker",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/speaker.svg",
+      "position": [
+        340,
+        770
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "speaker_waves",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/sound_waves.svg",
+      "position": [
+        340,
+        550
+      ],
+      "visible": false,
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "drum",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/drum.svg",
+      "position": [
+        1660,
+        800
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "down"
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "ring",
+      "event": "tap",
+      "source": "bell",
+      "actions": [
+        {
+          "type": "play_sound",
+          "sound": "res://assets/samples/alarm_ring.wav",
+          "wait": false
+        },
+        {
+          "type": "show",
+          "target": "echo"
+        },
+        {
+          "type": "play_animation",
+          "target": "echo",
+          "animation": "chapter_three/echo",
+          "wait": false
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "event": "custom:animation_finished",
+      "source": "echo",
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "chapter_three/echo"
+        }
+      ]
+    },
+    {
+      "id": "direct",
+      "event": "tap",
+      "source": "speaker",
+      "actions": [
+        {
+          "type": "play_sound",
+          "sound": "res://assets/samples/radio_chime.wav",
+          "wait": false
+        },
+        {
+          "type": "show",
+          "target": "speaker_waves"
+        },
+        {
+          "type": "play_animation",
+          "target": "speaker_waves",
+          "animation": "puzzles/inflate_return",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "beat",
+      "event": "swipe",
+      "source": "drum",
+      "actions": [
+        {
+          "type": "play_sound",
+          "sound": "res://assets/samples/piano_note.wav",
+          "wait": false
+        },
+        {
+          "type": "play_animation",
+          "target": "drum",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

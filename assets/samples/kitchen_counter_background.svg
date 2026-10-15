@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs><pattern id="tile" width="120" height="90" patternUnits="userSpaceOnUse"><rect width="120" height="90" fill="#f4ead4"/><path d="M120 0H0V90" fill="none" stroke="#e3d3b7" stroke-width="3"/></pattern></defs>
+  <rect width="1920" height="1080" fill="url(#tile)"/>
+  <g stroke="#799a90" stroke-width="6" stroke-linejoin="round">
+    <rect x="165" y="283" width="1045" height="198" rx="12" fill="#c8dbbf"/>
+    <path d="M513 284V480M862 284V480" fill="none"/>
+    <path d="M457 369V407M570 369V407M807 369V407M918 369V407" stroke="#faf2dc" stroke-width="10" stroke-linecap="round"/>
+    <path d="M1280 462H1550" fill="none" stroke-width="12" stroke-linecap="round"/>
+    <path d="M1280 446V478M1550 446V478" stroke-width="8"/>
+    <path d="M0 898H1920V1080H0Z" fill="#a9c3ac"/>
+    <path d="M310 952H770V1080H310M1130 952H1590V1080H1130" fill="none"/>
+    <path d="M704 989H739M1164 989H1199" stroke="#faf2dc" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <path d="M0 522H1920V904H0Z" fill="#e6d4b2"/>
+  <path d="M0 522H1920" stroke="#c1aa87" stroke-width="9"/>
+  <path d="M0 897H1920" stroke="#b49776" stroke-width="16"/>
+  <path d="M80 849H1840M100 870H500M1290 870H1760" stroke="#d5bf9c" stroke-width="3"/>
+</svg>

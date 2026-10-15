@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "id": 12,
+  "question": "خروس روی دیوار تخم گذاشته؛ تخم به کدام طرف می‌افتد؟",
+  "hint": "به جای انتخاب جهت، خودِ خروس را لمس کن.",
+  "answer": "خروس تخم نمی‌گذارد؛ تخم فقط فرضِ نادرست سؤال بود.",
+  "time_limit_seconds": 45,
+  "base_score": 70,
+  "objects": [
+    {
+      "id": "wall",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/brick_wall.svg",
+      "position": [
+        960,
+        860
+      ]
+    },
+    {
+      "id": "rooster",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/rooster.svg",
+      "position": [
+        960,
+        610
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "z_index": 2,
+      "state": {
+        "recognized": false
+      }
+    },
+    {
+      "id": "crown",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/rooster_crown.svg",
+      "position": [
+        1010,
+        495
+      ],
+      "visible": false,
+      "z_index": 3
+    },
+    {
+      "id": "thought",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/dialogue_cloud.svg",
+      "position": [
+        610,
+        535
+      ],
+      "scale": [
+        0.85,
+        0.85
+      ]
+    },
+    {
+      "id": "imagined_egg",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/egg_assumption.svg",
+      "position": [
+        610,
+        518
+      ],
+      "scale": [
+        0.7,
+        0.7
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "gutter",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/gutter.svg",
+      "position": [
+        1460,
+        735
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ]
+    },
+    {
+      "id": "fall_left",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/left_arrow.svg",
+      "position": [
+        1460,
+        855
+      ],
+      "visible": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "gutter_left",
+      "event": "swipe",
+      "source": "gutter",
+      "actions": [
+        {
+          "type": "show",
+          "target": "fall_left"
+        },
+        {
+          "type": "play_animation",
+          "target": "gutter",
+          "animation": "tilt",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "recognize_rooster",
+      "event": "tap",
+      "source": "rooster",
+      "actions": [
+        {
+          "type": "show",
+          "target": "crown"
+        },
+        {
+          "type": "hide",
+          "target": "imagined_egg"
+        },
+        {
+          "type": "hide",
+          "target": "thought"
+        },
+        {
+          "type": "set_state",
+          "target": "rooster",
+          "key": "recognized",
+          "value": true
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "object_state",
+    "target": "rooster",
+    "key": "recognized",
+    "operator": "eq",
+    "value": true
+  }
+}

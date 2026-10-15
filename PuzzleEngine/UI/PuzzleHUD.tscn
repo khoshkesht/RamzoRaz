@@ -1,0 +1,192 @@
+[gd_scene load_steps=5 format=3]
+[ext_resource type="Script" path="res://PuzzleEngine/UI/PuzzleHUD.gd" id="1"]
+[ext_resource type="Script" path="res://PuzzleEngine/UI/SafeMargin.gd" id="2"]
+[ext_resource type="Texture2D" path="res://assets/ui/top-toolbar.png" id="3"]
+[sub_resource type="StyleBoxEmpty" id="Empty"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+layout_direction = 2
+
+[node name="SafeMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2")
+
+[node name="Layout" type="VBoxContainer" parent="SafeMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Toolbar" type="Control" parent="SafeMargin/Layout"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Artwork" type="TextureRect" parent="SafeMargin/Layout/Toolbar"]
+layout_mode = 1
+anchor_left = 0.00000000
+anchor_top = 0.00000000
+anchor_right = 1.00000000
+anchor_bottom = 1.00000000
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Score" type="Label" parent="SafeMargin/Layout/Toolbar"]
+layout_mode = 1
+anchor_left = 0.22727273
+anchor_top = 0.09704641
+anchor_right = 0.30143541
+anchor_bottom = 0.35443038
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 38
+text = "۰"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_direction = 1
+
+[node name="Time" type="Label" parent="SafeMargin/Layout/Toolbar"]
+layout_mode = 1
+anchor_left = 0.67882775
+anchor_top = 0.09704641
+anchor_right = 0.76136364
+anchor_bottom = 0.35443038
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 38
+text = "۰۰:۰۰"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_direction = 1
+
+[node name="Level" type="Label" parent="SafeMargin/Layout/Toolbar"]
+layout_mode = 1
+anchor_left = 0.79425837
+anchor_top = 0.09704641
+anchor_right = 0.90430622
+anchor_bottom = 0.35443038
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 38
+text = "مرحله ۱/۲"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_direction = 2
+
+[node name="Stars" type="HBoxContainer" parent="SafeMargin/Layout/Toolbar"]
+layout_mode = 1
+anchor_left = 0.09330144
+anchor_top = 0.12658228
+anchor_right = 0.18959330
+anchor_bottom = 0.32067511
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Menu" type="Button" parent="SafeMargin/Layout/Toolbar"]
+layout_mode = 1
+anchor_left = 0.01375598
+anchor_top = 0.02953586
+anchor_right = 0.06997608
+anchor_bottom = 0.41350211
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "منوی اصلی"
+flat = true
+theme_override_styles/normal = SubResource("Empty")
+theme_override_styles/hover = SubResource("Empty")
+theme_override_styles/pressed = SubResource("Empty")
+theme_override_styles/disabled = SubResource("Empty")
+theme_override_styles/focus = SubResource("Empty")
+
+[node name="Hint" type="Button" parent="SafeMargin/Layout/Toolbar"]
+layout_mode = 1
+anchor_left = 0.92404306
+anchor_top = 0.02953586
+anchor_right = 0.99521531
+anchor_bottom = 0.42194093
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "راهنما"
+flat = true
+theme_override_styles/normal = SubResource("Empty")
+theme_override_styles/hover = SubResource("Empty")
+theme_override_styles/pressed = SubResource("Empty")
+theme_override_styles/disabled = SubResource("Empty")
+theme_override_styles/focus = SubResource("Empty")
+
+[node name="QuestionScroll" type="ScrollContainer" parent="SafeMargin/Layout/Toolbar"]
+layout_mode = 1
+anchor_left = 0.09031100
+anchor_top = 0.52742616
+anchor_right = 0.91267943
+anchor_bottom = 0.87341772
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="Question" type="Label" parent="SafeMargin/Layout/Toolbar/QuestionScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.19, 0.13, 0.06, 1)
+theme_override_font_sizes/font_size = 38
+text = "به صحنه دقت کنید."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_direction = 2
+
+[node name="Counters" type="VBoxContainer" parent="SafeMargin/Layout"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="TestBadge" type="Label" parent="SafeMargin/Layout/Toolbar"]
+visible = false
+layout_mode = 1
+anchor_left = 0.38
+anchor_top = 0.09
+anchor_right = 0.60
+anchor_bottom = 0.36
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.5, 1)
+theme_override_font_sizes/font_size = 30
+text = "اجرای آزمایشی"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_direction = 2
+
+[node name="PlaySpace" type="Control" parent="SafeMargin/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+

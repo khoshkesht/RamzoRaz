@@ -1,0 +1,34 @@
+[gd_resource type="AnimationLibrary" load_steps=3 format=3]
+
+[sub_resource type="Animation" id="Animation_flash"]
+resource_name = "flash"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.9), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rattle"]
+resource_name = "rattle"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(8, 0), Vector2(-8, 0), Vector2(7, 0), Vector2(-5, 0), Vector2(0, 0)]
+}
+
+[resource]
+_data = {
+"flash": SubResource("Animation_flash"),
+"rattle": SubResource("Animation_rattle")
+}
+

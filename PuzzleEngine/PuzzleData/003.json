@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": 3,
+  "question": "آن چیست که با گفتن نامش از بین می‌رود؟",
+  "hint": "صدای یک وسیله کافی نیست؛ دهان شخصیت را لمس کن تا خودش حرف بزند.",
+  "answer": "سکوت؛ با گفتن نامش، حرف می‌زنیم و سکوت از بین می‌رود.",
+  "time_limit_seconds": 30,
+  "base_score": 50,
+  "success": { "result_delay_seconds": 2 },
+  "background": "res://assets/samples/bright_room.svg",
+  "objects": [
+    { "id": "person", "scene": "ImageObject", "sprite": "res://assets/samples/man.svg", "position": [650, 660] },
+    { "id": "mouth", "scene": "ClickableObject", "sprite": "res://assets/samples/mouth_closed.svg", "position": [650, 598], "hit_size": [140, 110], "z_index": 3, "state": { "speaking": false }, "interactions": ["tap"] },
+    { "id": "silence", "scene": "ImageObject", "sprite": "res://assets/samples/silence_intact.svg", "position": [990, 640], "state": { "broken": false } },
+    { "id": "speech_bubble", "scene": "ImageObject", "sprite": "res://assets/samples/dialogue_cloud.svg", "position": [815, 460], "visible": false, "z_index": 4 },
+    { "id": "speech", "scene": "TextObject", "text": "سکوت", "text_color": "#26383B", "position": [815, 443], "hit_size": [210, 76], "visible": false, "z_index": 5 },
+    { "id": "radio", "scene": "ClickableObject", "sprite": "res://assets/samples/radio.svg", "position": [1390, 735], "interactions": ["tap"] },
+    { "id": "radio_waves", "scene": "ImageObject", "sprite": "res://assets/samples/sound_waves.svg", "position": [1390, 550], "visible": false, "z_index": 1 }
+  ],
+  "rules": [
+    { "id": "radio_feedback", "event": "tap", "source": "radio", "once": false, "actions": [
+      { "type": "play_sound", "sound": "res://assets/samples/radio_chime.wav", "wait": false },
+      { "type": "show", "target": "radio_waves" },
+      { "type": "play_animation", "target": "radio_waves", "animation": "tilt", "wait": false }
+    ] },
+    { "id": "say_silence", "event": "tap", "source": "mouth", "actions": [
+      { "type": "replace_sprite", "target": "mouth", "sprite": "res://assets/samples/mouth_speaking.svg" },
+      { "type": "show", "target": "speech_bubble" },
+      { "type": "show", "target": "speech" },
+      { "type": "replace_sprite", "target": "silence", "sprite": "res://assets/samples/silence_broken.svg" },
+      { "type": "set_state", "target": "silence", "key": "broken", "value": true },
+      { "type": "set_state", "target": "mouth", "key": "speaking", "value": true }
+    ] }
+  ],
+  "win_condition": { "type": "all", "conditions": [
+    { "type": "object_state", "target": "mouth", "key": "speaking", "operator": "eq", "value": true },
+    { "type": "object_state", "target": "silence", "key": "broken", "operator": "eq", "value": true },
+    { "type": "visible", "target": "speech" }
+  ] }
+}

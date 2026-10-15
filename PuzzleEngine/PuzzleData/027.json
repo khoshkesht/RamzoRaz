@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "id": 27,
+  "question": "آن چیست که با استفاده کوتاه‌تر می‌شود؟",
+  "hint": "مداد را سه بار روی کاغذ بکش و تغییر طولش را ببین.",
+  "answer": "مداد؛ هنگام نوشتن مصرف می‌شود و کوتاه‌تر می‌گردد.",
+  "time_limit_seconds": 80,
+  "base_score": 105,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "lines": 0
+  },
+  "objects": [
+    {
+      "id": "paper",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/paper.svg",
+      "position": [
+        1080,
+        700
+      ]
+    },
+    {
+      "id": "paper_zone",
+      "scene": "DropZone",
+      "position": [
+        1080,
+        700
+      ],
+      "hit_size": [
+        390,
+        285
+      ],
+      "accepted_sources": [
+        "pencil"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "pencil",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/pencil_0.svg",
+      "position": [
+        620,
+        580
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            490,
+            1600,
+            480
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 4
+    },
+    {
+      "id": "pen",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/pen.svg",
+      "position": [
+        370,
+        820
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            490,
+            1600,
+            480
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ]
+    },
+    {
+      "id": "test_paper",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/paper.svg",
+      "position": [
+        1570,
+        810
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "test_zone",
+      "scene": "DropZone",
+      "position": [
+        1570,
+        810
+      ],
+      "hit_size": [
+        260,
+        190
+      ],
+      "accepted_sources": [
+        "pen"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "pen_line",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/ink_line.svg",
+      "position": [
+        1570,
+        800
+      ],
+      "visible": false,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "eraser",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/eraser.svg",
+      "position": [
+        1500,
+        540
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ]
+    },
+    {
+      "id": "smudge",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/ink_line.svg",
+      "position": [
+        1580,
+        550
+      ],
+      "scale": [
+        0.3,
+        0.6
+      ]
+    },
+    {
+      "id": "line_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/ink_line.svg",
+      "position": [
+        1080,
+        786
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "line_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/ink_line.svg",
+      "position": [
+        1080,
+        734
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "line_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/ink_line.svg",
+      "position": [
+        1080,
+        682
+      ],
+      "visible": false,
+      "z_index": 2
+    }
+  ],
+  "rules": [
+    {
+      "id": "pen_write",
+      "event": "drop_on",
+      "source": "pen",
+      "actions": [
+        {
+          "type": "show",
+          "target": "pen_line"
+        },
+        {
+          "type": "move",
+          "target": "pen",
+          "position": [
+            370,
+            820
+          ]
+        }
+      ],
+      "target": "test_zone",
+      "once": false
+    },
+    {
+      "id": "erase",
+      "event": "swipe",
+      "source": "eraser",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "smudge"
+        },
+        {
+          "type": "play_animation",
+          "target": "eraser",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "write_3",
+      "event": "drop_on",
+      "source": "pencil",
+      "actions": [
+        {
+          "type": "show",
+          "target": "line_3"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "pencil",
+          "sprite": "res://assets/samples/pencil_3.svg"
+        },
+        {
+          "type": "move",
+          "target": "pencil",
+          "position": [
+            620,
+            580
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "lines",
+          "operation": "increment",
+          "value": 1
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "target": "paper_zone",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "lines",
+          "operator": "eq",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "write_2",
+      "event": "drop_on",
+      "source": "pencil",
+      "actions": [
+        {
+          "type": "show",
+          "target": "line_2"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "pencil",
+          "sprite": "res://assets/samples/pencil_2.svg"
+        },
+        {
+          "type": "move",
+          "target": "pencil",
+          "position": [
+            620,
+            580
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "lines",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "target": "paper_zone",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "lines",
+          "operator": "eq",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "write_1",
+      "event": "drop_on",
+      "source": "pencil",
+      "actions": [
+        {
+          "type": "show",
+          "target": "line_1"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "pencil",
+          "sprite": "res://assets/samples/pencil_1.svg"
+        },
+        {
+          "type": "move",
+          "target": "pencil",
+          "position": [
+            620,
+            580
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "lines",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "target": "paper_zone",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "lines",
+          "operator": "eq",
+          "value": 0
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

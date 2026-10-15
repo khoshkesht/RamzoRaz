@@ -1,0 +1,372 @@
+{
+  "schema_version": 1,
+  "background": "res://assets/samples/friends_living_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "id": 11,
+  "question": "آن چیست که مال توست ولی دیگران بیشتر از تو آن را می‌گویند؟",
+  "hint": "دو دوستِ مریم را لمس کن و به حباب‌های حرفشان نگاه کن.",
+  "answer": "نامت؛ دوستان مریم نام او را می‌گویند، در حالی که آن نام متعلق به خود اوست.",
+  "time_limit_seconds": 55,
+  "base_score": 75,
+  "variables": {
+    "names_spoken": 0
+  },
+  "counters": [
+    {
+      "variable": "names_spoken",
+      "label": "دوستانی که نام را گفتند",
+      "target": 2
+    }
+  ],
+  "objects": [
+    {
+      "id": "player",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/girl_maryam.svg",
+      "position": [
+        960,
+        740
+      ],
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "player_name",
+      "scene": "TextObject",
+      "text": "مریم",
+      "text_color": "#364D55",
+      "position": [
+        960,
+        890
+      ],
+      "hit_size": [
+        160,
+        60
+      ]
+    },
+    {
+      "id": "friend_a",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/boy_blue.svg",
+      "position": [
+        620,
+        720
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ],
+      "state": {
+        "spoke": false
+      }
+    },
+    {
+      "id": "friend_b",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/boy_green.svg",
+      "position": [
+        1260,
+        720
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ],
+      "state": {
+        "spoke": false
+      }
+    },
+    {
+      "id": "bubble_a",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/dialogue_cloud.svg",
+      "position": [
+        620,
+        535
+      ],
+      "scale": [
+        0.85,
+        0.85
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "name_a",
+      "scene": "TextObject",
+      "text": "مریم",
+      "text_color": "#364D55",
+      "position": [
+        620,
+        529
+      ],
+      "hit_size": [
+        170,
+        70
+      ],
+      "visible": false,
+      "z_index": 3
+    },
+    {
+      "id": "bubble_b",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/dialogue_cloud.svg",
+      "position": [
+        1260,
+        535
+      ],
+      "scale": [
+        0.85,
+        0.85
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "name_b",
+      "scene": "TextObject",
+      "text": "مریم",
+      "text_color": "#364D55",
+      "position": [
+        1260,
+        529
+      ],
+      "hit_size": [
+        170,
+        70
+      ],
+      "visible": false,
+      "z_index": 3
+    },
+    {
+      "id": "mirror",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/mirror_frame.svg",
+      "position": [
+        365,
+        760
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "return_on_invalid": true,
+          "bounds": [
+            240,
+            555,
+            1320,
+            325
+          ]
+        },
+        "drop_on"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "player_zone",
+      "scene": "DropZone",
+      "position": [
+        960,
+        740
+      ],
+      "hit_size": [
+        220,
+        240
+      ],
+      "accepted_sources": [
+        "mirror"
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "reflection",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/girl_maryam.svg",
+      "position": [
+        960,
+        710
+      ],
+      "scale": [
+        0.25,
+        0.25
+      ],
+      "visible": false,
+      "z_index": 4
+    },
+    {
+      "id": "camera",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/camera.svg",
+      "position": [
+        1510,
+        765
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "photo",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/girl_maryam.svg",
+      "position": [
+        1574,
+        790
+      ],
+      "scale": [
+        0.18,
+        0.18
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "flash",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/camera_flash.svg",
+      "position": [
+        1550,
+        655
+      ],
+      "visible": false,
+      "z_index": 4
+    }
+  ],
+  "rules": [
+    {
+      "id": "mirror_face",
+      "event": "drop_on",
+      "source": "mirror",
+      "actions": [
+        {
+          "type": "move",
+          "target": "mirror",
+          "position": [
+            960,
+            740
+          ]
+        },
+        {
+          "type": "show",
+          "target": "reflection"
+        }
+      ],
+      "target": "player_zone",
+      "once": false
+    },
+    {
+      "id": "camera_photo",
+      "event": "tap",
+      "source": "camera",
+      "actions": [
+        {
+          "type": "show",
+          "target": "photo"
+        },
+        {
+          "type": "show",
+          "target": "flash"
+        },
+        {
+          "type": "play_animation",
+          "target": "flash",
+          "animation": "chapter_two/flash",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "friend_a_speaks",
+      "event": "tap",
+      "source": "friend_a",
+      "actions": [
+        {
+          "type": "show",
+          "target": "bubble_a"
+        },
+        {
+          "type": "show",
+          "target": "name_a"
+        },
+        {
+          "type": "set_state",
+          "target": "friend_a",
+          "key": "spoke",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "names_spoken",
+          "operation": "increment",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "friend_b_speaks",
+      "event": "tap",
+      "source": "friend_b",
+      "actions": [
+        {
+          "type": "show",
+          "target": "bubble_b"
+        },
+        {
+          "type": "show",
+          "target": "name_b"
+        },
+        {
+          "type": "set_state",
+          "target": "friend_b",
+          "key": "spoke",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "names_spoken",
+          "operation": "increment",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "all",
+    "conditions": [
+      {
+        "type": "object_state",
+        "target": "friend_a",
+        "key": "spoke",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "object_state",
+        "target": "friend_b",
+        "key": "spoke",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "variable",
+        "name": "names_spoken",
+        "operator": "eq",
+        "value": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "id": 8,
+  "question": "آن چیست که گردن دارد ولی سر ندارد؟",
+  "hint": "درپوش بطری را به اندازه‌ای کنار بکش که دیگر روی گردن آن نباشد.",
+  "answer": "بطری؛ بخش باریک بالای آن گردن است، اما سر ندارد.",
+  "time_limit_seconds": 35,
+  "base_score": 50,
+  "objects": [
+    {
+      "id": "bottle",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/bottle.svg",
+      "position": [
+        800,
+        695
+      ],
+      "state": {
+        "open": false
+      }
+    },
+    {
+      "id": "neck_zone",
+      "scene": "DropZone",
+      "position": [
+        800,
+        550
+      ],
+      "hit_size": [
+        170,
+        120
+      ],
+      "accepted_sources": [],
+      "interactive": true
+    },
+    {
+      "id": "cap",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/bottle_cap.svg",
+      "position": [
+        800,
+        540
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            400,
+            540,
+            1150,
+            310
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cup",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/cup.svg",
+      "position": [
+        510,
+        765
+      ]
+    },
+    {
+      "id": "hanger",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/hanger.svg",
+      "position": [
+        1400,
+        595
+      ]
+    },
+    {
+      "id": "hanger_zone",
+      "scene": "DropZone",
+      "position": [
+        1400,
+        630
+      ],
+      "hit_size": [
+        220,
+        150
+      ],
+      "accepted_sources": [
+        "scarf"
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "scarf",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/scarf.svg",
+      "position": [
+        1170,
+        785
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "return_on_invalid": true,
+          "bounds": [
+            400,
+            550,
+            1150,
+            300
+          ]
+        },
+        "drop_on"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "hang_scarf",
+      "event": "drop_on",
+      "source": "scarf",
+      "actions": [
+        {
+          "type": "move",
+          "target": "scarf",
+          "position": [
+            1400,
+            725
+          ]
+        }
+      ],
+      "target": "hanger_zone",
+      "once": false
+    },
+    {
+      "id": "remove_cap",
+      "event": "drag_end",
+      "source": "cap",
+      "actions": [
+        {
+          "type": "set_state",
+          "target": "bottle",
+          "key": "open",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "type": "not",
+          "condition": {
+            "type": "inside",
+            "target": "cap",
+            "zone": "neck_zone"
+          }
+        },
+        {
+          "type": "moved_distance_at_least",
+          "value": 170
+        }
+      ]
+    },
+    {
+      "id": "return_covering_cap",
+      "event": "drag_end",
+      "source": "cap",
+      "actions": [
+        {
+          "type": "move",
+          "target": "cap",
+          "position": [
+            800,
+            540
+          ]
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "bottle",
+          "key": "open",
+          "operator": "eq",
+          "value": false
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "object_state",
+    "target": "bottle",
+    "key": "open",
+    "operator": "eq",
+    "value": true
+  },
+  "background": "res://assets/samples/kitchen_counter_background_light.svg",
+  "success": {
+    "result_delay_seconds": 2
+  }
+}

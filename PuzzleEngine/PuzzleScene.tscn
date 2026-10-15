@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3]
+[ext_resource type="Script" path="res://PuzzleEngine/PuzzleController.gd" id="1"]
+[ext_resource type="PackedScene" path="res://PuzzleEngine/UI/PuzzleHUD.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://PuzzleEngine/UI/PuzzleOverlay.tscn" id="3"]
+[ext_resource type="Script" path="res://PuzzleEngine/InteractionManager.gd" id="4"]
+[ext_resource type="Script" path="res://PuzzleEngine/ActionRunner.gd" id="5"]
+[ext_resource type="Script" path="res://PuzzleEngine/RuleEvaluator.gd" id="6"]
+
+[node name="PuzzleScene" type="Node"]
+script = ExtResource("1")
+
+[node name="Stage" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Stage"]
+z_index = -4096
+z_as_relative = false
+
+[node name="Objects" type="Node2D" parent="Stage"]
+
+[node name="InteractionManager" type="Node" parent="."]
+script = ExtResource("4")
+
+[node name="ActionRunner" type="Node" parent="."]
+script = ExtResource("5")
+
+[node name="RuleEvaluator" type="Node" parent="."]
+script = ExtResource("6")
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="HUD" parent="HUDLayer" instance=ExtResource("2")]
+
+[node name="OverlayLayer" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="OverlayRoot" parent="OverlayLayer" instance=ExtResource("3")]
+
+[connection signal="interaction_event" from="InteractionManager" to="." method="_on_interaction_event"]
+[connection signal="level_completed" from="RuleEvaluator" to="." method="_on_level_completed"]
+[connection signal="runtime_error" from="RuleEvaluator" to="." method="_on_runtime_error"]
+

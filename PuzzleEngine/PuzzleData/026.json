@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "id": 26,
+  "question": "راننده خلاف جهت خیابان یک‌طرفه می‌رود و جریمه نمی‌شود. چرا؟",
+  "hint": "ماشین را به کنار بکش تا پاهای مرد دیده شود؛ ببین واقعاً سوار است یا پیاده راه می‌رود.",
+  "answer": "پیاده است؛ راننده بودن به این معنی نیست که اکنون پشت فرمان باشد.",
+  "time_limit_seconds": 70,
+  "base_score": 100,
+  "background": "res://assets/samples/one_way_street_background.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "walker",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1000,
+        730
+      ],
+      "scale": [
+        0.85,
+        0.85
+      ]
+    },
+    {
+      "id": "car",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/car_side_reveal.svg",
+      "position": [
+        1000,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "axis": "x",
+          "return_on_invalid": true,
+          "bounds": [
+            680,
+            720,
+            920,
+            20
+          ]
+        }
+      ],
+      "z_index": 3
+    },
+    {
+      "id": "traffic",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/traffic_light.svg",
+      "position": [
+        420,
+        710
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "horn",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/horn.svg",
+      "position": [
+        1560,
+        760
+      ],
+      "interactions": [
+        "hold"
+      ]
+    },
+    {
+      "id": "horn_waves",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/sound_waves.svg",
+      "position": [
+        1550,
+        560
+      ],
+      "visible": false,
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "direction",
+      "scene": "TextObject",
+      "text": "خیابان یک‌طرفه ←",
+      "text_color": "#364D55",
+      "position": [
+        1000,
+        500
+      ],
+      "hit_size": [
+        470,
+        70
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "parked_car",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/car_side_reveal.svg",
+      "position": [
+        1560,
+        950
+      ],
+      "visible": false,
+      "z_index": 3,
+      "scale": [
+        0.6,
+        0.6
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "walk_reveal",
+      "event": "drag_end",
+      "source": "car",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "car"
+        },
+        {
+          "type": "show",
+          "target": "parked_car"
+        },
+        {
+          "type": "play_animation",
+          "target": "walker",
+          "animation": "puzzles/two_steps",
+          "wait": false
+        }
+      ],
+      "conditions": [
+        {
+          "type": "moved_distance_at_least",
+          "value": 280
+        }
+      ]
+    },
+    {
+      "id": "light",
+      "event": "tap",
+      "source": "traffic",
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "traffic",
+          "animation": "chapter_three/light",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "honk",
+      "event": "hold",
+      "source": "horn",
+      "actions": [
+        {
+          "type": "play_sound",
+          "sound": "res://assets/samples/radio_chime.wav",
+          "wait": false
+        },
+        {
+          "type": "show",
+          "target": "horn_waves"
+        },
+        {
+          "type": "play_animation",
+          "target": "horn",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "walked",
+      "event": "custom:animation_finished",
+      "source": "walker",
+      "conditions": [
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "puzzles/two_steps"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "operation": "assign",
+          "value": true
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

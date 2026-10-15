@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <pattern id="wood" width="270" height="1080" patternUnits="userSpaceOnUse"><rect width="270" height="1080" fill="#e7cda6"/><path d="M269 0V1080M34 80Q13 460 38 810M225 175Q245 580 224 1000" fill="none" stroke="#ccac81" stroke-width="3"/></pattern>
+    <pattern id="fabric" width="38" height="38" patternUnits="userSpaceOnUse"><rect width="38" height="38" fill="#d4a8ad"/><path d="M19 0V38M0 19H38" stroke="#efd0c9" stroke-width="3"/></pattern>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#a6c2b3" stroke-width="1.5"/></pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#wood)"/>
+  <path d="M70 313 318 342 341 1025 66 1009Z" fill="url(#fabric)" stroke="#b38c91" stroke-width="5"/>
+  <rect x="490" y="394" width="800" height="600" rx="24" fill="#dce8d8" stroke="#87a89b" stroke-width="7"/>
+  <rect x="510" y="414" width="760" height="560" rx="12" fill="url(#grid)"/>
+  <path d="M546 438H1219M546 950H1219" stroke="#f0f4df" stroke-width="8"/>
+  <path d="M1350 977H1770V1025H1350Z" fill="#f5dfb5" stroke="#b5946c" stroke-width="4"/>
+  <path d="M1380 978V1005M1410 978V992M1440 978V1005M1470 978V992M1500 978V1005M1530 978V992M1560 978V1005M1590 978V992M1620 978V1005M1650 978V992M1680 978V1005M1710 978V992M1740 978V1005" stroke="#ad906b" stroke-width="3"/>
+  <path d="M1388 382H1720" stroke="#c7a57b" stroke-width="5"/>
+</svg>

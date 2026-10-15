@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "background": "res://assets/samples/rain_background.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "id": 13,
+  "question": "آن چیست که پنج انگشت دارد، اما جان ندارد؟",
+  "hint": "پنج جای انگشتِ دستکش را روی دست بی‌پوشش مرد قرار بده.",
+  "answer": "دستکش پنج‌انگشتی؛ پنج جای انگشت دارد، اما جان ندارد.",
+  "time_limit_seconds": 45,
+  "base_score": 70,
+  "background_material": "res://assets/samples/day_rain.tres",
+  "objects": [
+    {
+      "id": "man",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/man.svg",
+      "position": [
+        925,
+        680
+      ],
+      "scale": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "id": "bare_hand",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/hand_five_dry.svg",
+      "position": [
+        1140,
+        670
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "hand_zone",
+      "scene": "DropZone",
+      "position": [
+        1140,
+        670
+      ],
+      "hit_size": [
+        245,
+        190
+      ],
+      "accepted_sources": [
+        "glove"
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "bench",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/rain_bench.svg",
+      "position": [
+        1480,
+        880
+      ]
+    },
+    {
+      "id": "glove",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/glove_five.svg",
+      "position": [
+        1460,
+        755
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "return_on_invalid": true,
+          "bounds": [
+            300,
+            550,
+            1280,
+            340
+          ]
+        },
+        "drop_on"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "worn_glove",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/glove_five.svg",
+      "position": [
+        1140,
+        670
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ],
+      "visible": false,
+      "z_index": 4,
+      "state": {
+        "fitted": false
+      }
+    },
+    {
+      "id": "boot",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/rain_boot.svg",
+      "position": [
+        450,
+        775
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "return_on_invalid": true,
+          "bounds": [
+            300,
+            550,
+            1280,
+            340
+          ]
+        },
+        "drop_on"
+      ],
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "foot_zone",
+      "scene": "DropZone",
+      "position": [
+        935,
+        850
+      ],
+      "hit_size": [
+        180,
+        130
+      ],
+      "accepted_sources": [
+        "boot"
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "worn_boot",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/rain_boot.svg",
+      "position": [
+        935,
+        850
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ],
+      "visible": false,
+      "z_index": 2
+    }
+  ],
+  "rules": [
+    {
+      "id": "wear_boot",
+      "event": "drop_on",
+      "source": "boot",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "boot"
+        },
+        {
+          "type": "show",
+          "target": "worn_boot"
+        }
+      ],
+      "target": "foot_zone"
+    },
+    {
+      "id": "fit_glove",
+      "event": "drop_on",
+      "source": "glove",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "glove"
+        },
+        {
+          "type": "hide",
+          "target": "bare_hand"
+        },
+        {
+          "type": "show",
+          "target": "worn_glove"
+        },
+        {
+          "type": "set_state",
+          "target": "worn_glove",
+          "key": "fitted",
+          "value": true
+        }
+      ],
+      "target": "hand_zone"
+    }
+  ],
+  "win_condition": {
+    "type": "object_state",
+    "target": "worn_glove",
+    "key": "fitted",
+    "operator": "eq",
+    "value": true
+  }
+}

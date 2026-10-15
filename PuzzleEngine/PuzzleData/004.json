@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": 4,
+  "question": "آن چیست که خیس می‌شود تا تو را خشک کند؟",
+  "hint": "حولهٔ خشک را روی دستِ قطره‌دار بکش و رها کن.",
+  "answer": "حوله؛ آب را از دست می‌گیرد، خودش خیس می‌شود و دست را خشک می‌کند.",
+  "time_limit_seconds": 35,
+  "base_score": 50,
+  "success": { "result_delay_seconds": 2.0 },
+  "background": "res://assets/samples/bathroom_sink_background_light.svg",
+  "objects": [
+    { "id": "hand", "scene": "ImageObject", "sprite": "res://assets/samples/hand_five_wet.svg", "position": [760, 650], "state": { "wet": true } },
+    { "id": "hand_zone", "scene": "DropZone", "position": [760, 650], "hit_size": [300, 260], "accepted_sources": ["towel"], "z_index": 1 },
+    { "id": "towel", "scene": "DraggableObject", "sprite": "res://assets/samples/towel_dry.svg", "position": [1160, 700], "state": { "wet": false }, "z_index": 3, "interactions": [{ "type": "drag", "return_on_invalid": true, "bounds": [350, 500, 1190, 390] }, "drop_on"] },
+    { "id": "soap_dish", "scene": "DropZone", "sprite": "res://assets/samples/soap_dish.svg", "position": [1470, 800], "hit_size": [250, 110], "accepted_sources": ["soap"] },
+    { "id": "soap", "scene": "DraggableObject", "sprite": "res://assets/samples/soap.svg", "position": [1470, 530], "z_index": 3, "interactions": [{ "type": "drag", "return_on_invalid": true, "bounds": [350, 500, 1190, 390] }, "drop_on"] },
+    { "id": "soap_foam", "scene": "ImageObject", "sprite": "res://assets/samples/foam.svg", "position": [1470, 755], "visible": false, "z_index": 4 }
+  ],
+  "rules": [
+    { "id": "soap_feedback", "event": "drop_on", "source": "soap", "target": "soap_dish", "once": false, "actions": [
+      { "type": "move", "target": "soap", "position": [1470, 800] },
+      { "type": "show", "target": "soap_foam" }
+    ] },
+    { "id": "dry_hand", "event": "drop_on", "source": "towel", "target": "hand_zone", "actions": [
+      { "type": "replace_sprite", "target": "hand", "sprite": "res://assets/samples/hand_five_dry.svg" },
+      { "type": "replace_sprite", "target": "towel", "sprite": "res://assets/samples/towel_soaked.svg" },
+      { "type": "move", "target": "towel", "position": [1160, 700] },
+      { "type": "set_state", "target": "hand", "key": "wet", "value": false },
+      { "type": "set_state", "target": "towel", "key": "wet", "value": true }
+    ] }
+  ],
+  "win_condition": { "type": "all", "conditions": [
+    { "type": "object_state", "target": "hand", "key": "wet", "operator": "eq", "value": false },
+    { "type": "object_state", "target": "towel", "key": "wet", "operator": "eq", "value": true }
+  ] }
+}

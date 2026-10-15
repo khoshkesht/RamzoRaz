@@ -1,0 +1,781 @@
+{
+  "schema_version": 1,
+  "id": 29,
+  "question": "دو پدر و دو پسر سه سیب دارند و هرکدام یک سیب می‌خورند. چطور؟",
+  "hint": "چهار کارت را روی افراد بگذار؛ پدربزرگ برای بزرگ‌تر، پسر برای کوچک‌تر، و هر دو کارت پدر و پسر برای فرد میانی.",
+  "answer": "سه نفرند: پدربزرگ، پدر و پسر؛ پدرِ میانی، پسرِ پدربزرگ هم هست.",
+  "time_limit_seconds": 90,
+  "base_score": 110,
+  "background": "res://assets/samples/family_picnic_background.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "relations": 0,
+    "middle_son": false,
+    "youngest_son": false
+  },
+  "objects": [
+    {
+      "id": "person_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/man.svg",
+      "position": [
+        620,
+        680
+      ],
+      "scale": [
+        0.45,
+        0.45
+      ]
+    },
+    {
+      "id": "age_0",
+      "scene": "TextObject",
+      "text": "۷۰ سال",
+      "text_color": "#364D55",
+      "position": [
+        620,
+        850
+      ],
+      "hit_size": [
+        260,
+        70
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "role_0",
+      "scene": "TextObject",
+      "text": "پدربزرگ",
+      "text_color": "#364D55",
+      "position": [
+        510,
+        470
+      ],
+      "hit_size": [
+        270,
+        90
+      ],
+      "z_index": 5,
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            470,
+            1600,
+            500
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "interactive": true,
+      "sprite": "res://assets/samples/family_role_card.svg"
+    },
+    {
+      "id": "relation_0",
+      "scene": "DropZone",
+      "position": [
+        620,
+        670
+      ],
+      "hit_size": [
+        220,
+        250
+      ],
+      "accepted_sources": [
+        "role_0"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "apple_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/apple.svg",
+      "position": [
+        620,
+        935
+      ],
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "assigned_0",
+      "scene": "TextObject",
+      "text": "پدربزرگ",
+      "text_color": "#364D55",
+      "position": [
+        620,
+        550
+      ],
+      "hit_size": [
+        270,
+        90
+      ],
+      "z_index": 5,
+      "visible": false,
+      "sprite": "res://assets/samples/family_role_card.svg"
+    },
+    {
+      "id": "person_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/man.svg",
+      "position": [
+        970,
+        745
+      ],
+      "scale": [
+        0.45,
+        0.45
+      ]
+    },
+    {
+      "id": "age_1",
+      "scene": "TextObject",
+      "text": "۴۰ سال",
+      "text_color": "#364D55",
+      "position": [
+        970,
+        885
+      ],
+      "hit_size": [
+        260,
+        70
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "role_1",
+      "scene": "TextObject",
+      "text": "پدر",
+      "text_color": "#364D55",
+      "position": [
+        810,
+        470
+      ],
+      "hit_size": [
+        270,
+        90
+      ],
+      "z_index": 5,
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            470,
+            1600,
+            500
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "interactive": true,
+      "sprite": "res://assets/samples/family_role_card.svg"
+    },
+    {
+      "id": "relation_1",
+      "scene": "DropZone",
+      "position": [
+        970,
+        735
+      ],
+      "hit_size": [
+        220,
+        250
+      ],
+      "accepted_sources": [
+        "role_1",
+        "role_2",
+        "role_3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "apple_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/apple.svg",
+      "position": [
+        970,
+        985
+      ],
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "assigned_1",
+      "scene": "TextObject",
+      "text": "پدر",
+      "text_color": "#364D55",
+      "position": [
+        970,
+        520
+      ],
+      "hit_size": [
+        270,
+        90
+      ],
+      "z_index": 5,
+      "visible": false,
+      "sprite": "res://assets/samples/family_role_card.svg"
+    },
+    {
+      "id": "person_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/man.svg",
+      "position": [
+        1320,
+        680
+      ],
+      "scale": [
+        0.45,
+        0.45
+      ]
+    },
+    {
+      "id": "age_2",
+      "scene": "TextObject",
+      "text": "۱۰ سال",
+      "text_color": "#364D55",
+      "position": [
+        1320,
+        850
+      ],
+      "hit_size": [
+        260,
+        70
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "role_2",
+      "scene": "TextObject",
+      "text": "پسر",
+      "text_color": "#364D55",
+      "position": [
+        1110,
+        470
+      ],
+      "hit_size": [
+        270,
+        90
+      ],
+      "z_index": 5,
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            470,
+            1600,
+            500
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "interactive": true,
+      "sprite": "res://assets/samples/family_role_card.svg"
+    },
+    {
+      "id": "relation_2",
+      "scene": "DropZone",
+      "position": [
+        1320,
+        670
+      ],
+      "hit_size": [
+        220,
+        250
+      ],
+      "accepted_sources": [
+        "role_2",
+        "role_3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "apple_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/apple.svg",
+      "position": [
+        1320,
+        935
+      ],
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "assigned_2",
+      "scene": "TextObject",
+      "text": "پسر",
+      "text_color": "#364D55",
+      "position": [
+        1320,
+        550
+      ],
+      "hit_size": [
+        270,
+        90
+      ],
+      "z_index": 5,
+      "visible": false,
+      "sprite": "res://assets/samples/family_role_card.svg"
+    },
+    {
+      "id": "extra_chair",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/chair.svg",
+      "position": [
+        320,
+        800
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            170,
+            610,
+            250,
+            290
+          ]
+        }
+      ],
+      "scale": [
+        0.75,
+        0.75
+      ]
+    },
+    {
+      "id": "knife",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/fruit_knife.svg",
+      "position": [
+        1580,
+        800
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "role_3",
+      "scene": "TextObject",
+      "text": "پسر",
+      "text_color": "#364D55",
+      "position": [
+        1410,
+        470
+      ],
+      "hit_size": [
+        270,
+        90
+      ],
+      "z_index": 5,
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            470,
+            1600,
+            500
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "interactive": true,
+      "sprite": "res://assets/samples/family_role_card.svg"
+    },
+    {
+      "id": "assigned_middle_son",
+      "scene": "TextObject",
+      "text": "پسر",
+      "text_color": "#364D55",
+      "position": [
+        970,
+        620
+      ],
+      "hit_size": [
+        270,
+        90
+      ],
+      "z_index": 5,
+      "visible": false,
+      "sprite": "res://assets/samples/family_role_card.svg"
+    }
+  ],
+  "rules": [
+    {
+      "id": "assign_role_3_youngest_son",
+      "event": "drop_on",
+      "source": "role_3",
+      "target": "relation_2",
+      "conditions": [
+        {
+          "type": "visible",
+          "target": "role_3"
+        },
+        {
+          "type": "variable",
+          "name": "youngest_son",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "role_3"
+        },
+        {
+          "type": "show",
+          "target": "assigned_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "youngest_son",
+          "operation": "assign",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "relations",
+          "operation": "increment",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "assign_role_3_middle_son",
+      "event": "drop_on",
+      "source": "role_3",
+      "target": "relation_1",
+      "conditions": [
+        {
+          "type": "visible",
+          "target": "role_3"
+        },
+        {
+          "type": "variable",
+          "name": "middle_son",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "role_3"
+        },
+        {
+          "type": "show",
+          "target": "assigned_middle_son"
+        },
+        {
+          "type": "set_variable",
+          "name": "middle_son",
+          "operation": "assign",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "relations",
+          "operation": "increment",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "assign_role_2_youngest_son",
+      "event": "drop_on",
+      "source": "role_2",
+      "target": "relation_2",
+      "conditions": [
+        {
+          "type": "visible",
+          "target": "role_2"
+        },
+        {
+          "type": "variable",
+          "name": "youngest_son",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "role_2"
+        },
+        {
+          "type": "show",
+          "target": "assigned_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "youngest_son",
+          "operation": "assign",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "relations",
+          "operation": "increment",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "assign_role_2_middle_son",
+      "event": "drop_on",
+      "source": "role_2",
+      "target": "relation_1",
+      "conditions": [
+        {
+          "type": "visible",
+          "target": "role_2"
+        },
+        {
+          "type": "variable",
+          "name": "middle_son",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "role_2"
+        },
+        {
+          "type": "show",
+          "target": "assigned_middle_son"
+        },
+        {
+          "type": "set_variable",
+          "name": "middle_son",
+          "operation": "assign",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "relations",
+          "operation": "increment",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "assign_0",
+      "event": "drop_on",
+      "source": "role_0",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "role_0"
+        },
+        {
+          "type": "show",
+          "target": "assigned_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "relations",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "target": "relation_0"
+    },
+    {
+      "id": "assign_1",
+      "event": "drop_on",
+      "source": "role_1",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "role_1"
+        },
+        {
+          "type": "show",
+          "target": "assigned_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "relations",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "target": "relation_1"
+    },
+    {
+      "id": "knife_turn",
+      "event": "tap",
+      "source": "knife",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "knife",
+          "degrees": 25
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "family_complete",
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "relations",
+          "operator": "eq",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "id": "occupied_role_2_middle_son",
+      "event": "drop_on",
+      "source": "role_2",
+      "target": "relation_1",
+      "once": false,
+      "conditions": [
+        {
+          "type": "visible",
+          "target": "role_2"
+        },
+        {
+          "type": "variable",
+          "name": "middle_son",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "role_2",
+          "position": [
+            1110,
+            470
+          ]
+        }
+      ]
+    },
+    {
+      "id": "occupied_role_2_youngest_son",
+      "event": "drop_on",
+      "source": "role_2",
+      "target": "relation_2",
+      "once": false,
+      "conditions": [
+        {
+          "type": "visible",
+          "target": "role_2"
+        },
+        {
+          "type": "variable",
+          "name": "youngest_son",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "role_2",
+          "position": [
+            1110,
+            470
+          ]
+        }
+      ]
+    },
+    {
+      "id": "occupied_role_3_middle_son",
+      "event": "drop_on",
+      "source": "role_3",
+      "target": "relation_1",
+      "once": false,
+      "conditions": [
+        {
+          "type": "visible",
+          "target": "role_3"
+        },
+        {
+          "type": "variable",
+          "name": "middle_son",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "role_3",
+          "position": [
+            1410,
+            470
+          ]
+        }
+      ]
+    },
+    {
+      "id": "occupied_role_3_youngest_son",
+      "event": "drop_on",
+      "source": "role_3",
+      "target": "relation_2",
+      "once": false,
+      "conditions": [
+        {
+          "type": "visible",
+          "target": "role_3"
+        },
+        {
+          "type": "variable",
+          "name": "youngest_son",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "role_3",
+          "position": [
+            1410,
+            470
+          ]
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

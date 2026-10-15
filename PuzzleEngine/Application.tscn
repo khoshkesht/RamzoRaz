@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=3]
+[ext_resource type="Script" path="res://PuzzleEngine/Application.gd" id="1"]
+[ext_resource type="PackedScene" path="res://PuzzleEngine/UI/HomeScreen.tscn" id="2"]
+[ext_resource type="Script" path="res://PuzzleEngine/UI/SafeMargin.gd" id="3"]
+[ext_resource type="PackedScene" path="res://PuzzleEngine/UI/DevelopmentTools.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://PuzzleEngine/UI/MainMenu.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://PuzzleEngine/UI/PuzzleOverlay.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://PuzzleEngine/UI/SettingsDialog.tscn" id="7"]
+[ext_resource type="AudioStream" path="res://assets/sounds/music1.mp3" id="8"]
+
+[node name="Application" type="Node"]
+script = ExtResource("1")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8")
+volume_db = -18.0
+
+[node name="SettingsLayer" type="CanvasLayer" parent="."]
+layer = 45
+
+[node name="SettingsDialog" parent="SettingsLayer" instance=ExtResource("7")]
+
+[node name="MessageLayer" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="MessageDialog" parent="MessageLayer" instance=ExtResource("6")]
+
+[node name="HomeLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Home" parent="HomeLayer" instance=ExtResource("2")]
+
+[node name="MainMenuLayer" type="CanvasLayer" parent="."]
+layer = 35
+
+[node name="MainMenu" parent="MainMenuLayer" instance=ExtResource("5")]
+footer_clearance = 48.0
+
+[node name="DevelopmentLayer" type="CanvasLayer" parent="."]
+layer = 40
+
+[node name="DevelopmentTools" parent="DevelopmentLayer" instance=ExtResource("4")]
+
+[node name="NavigationLayer" type="CanvasLayer" parent="."]
+layer = 30
+
+[node name="Root" type="Control" parent="NavigationLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+layout_direction = 2
+
+[node name="SafeMargin" type="MarginContainer" parent="NavigationLayer/Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3")
+
+[node name="Layout" type="VBoxContainer" parent="NavigationLayer/Root/SafeMargin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Spacer" type="Control" parent="NavigationLayer/Root/SafeMargin/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Footer" type="HBoxContainer" parent="NavigationLayer/Root/SafeMargin/Layout"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="Back" type="Button" parent="NavigationLayer/Root/SafeMargin/Layout/Footer"]
+visible = false
+layout_mode = 2
+text = "صفحهٔ اصلی"
+text_direction = 2
+
+[node name="Space" type="Control" parent="NavigationLayer/Root/SafeMargin/Layout/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="BuildRow" type="HBoxContainer" parent="NavigationLayer/Root/SafeMargin/Layout"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Space" type="Control" parent="NavigationLayer/Root/SafeMargin/Layout/BuildRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Build" type="Label" parent="NavigationLayer/Root/SafeMargin/Layout/BuildRow"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.58, 0.70, 0.73, 1)
+vertical_alignment = 1
+text_direction = 2

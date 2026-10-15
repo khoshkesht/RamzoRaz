@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": 5,
+  "question": "آن چیست که دندان دارد اما غذا نمی‌خورد؟",
+  "hint": "وسیلهٔ دندانه‌دار را روی موهای نامرتب بکش و رها کن.",
+  "answer": "شانه؛ دندانه دارد و مو را مرتب می‌کند، اما غذا نمی‌خورد.",
+  "time_limit_seconds": 40,
+  "base_score": 55,
+  "background": "res://assets/samples/bright_room.svg",
+  "objects": [
+    { "id": "hair", "scene": "ImageObject", "sprite": "res://assets/samples/hair_messy.svg", "position": [760, 650], "state": { "neat": false } },
+    { "id": "hair_zone", "scene": "DropZone", "position": [760, 550], "hit_size": [250, 180], "accepted_sources": ["comb"], "z_index": 1 },
+    { "id": "comb", "scene": "DraggableObject", "sprite": "res://assets/samples/comb.svg", "position": [1160, 750], "z_index": 3, "interactions": [{ "type": "drag", "return_on_invalid": true, "bounds": [350, 500, 1190, 390] }, "drop_on"] },
+    { "id": "toothbrush", "scene": "ClickableObject", "sprite": "res://assets/samples/toothbrush.svg", "position": [1480, 745], "hit_size": [280, 120], "z_index": 2, "interactions": ["tap"] },
+    { "id": "brush_zone", "scene": "DropZone", "position": [1560, 725], "hit_size": [180, 140], "accepted_sources": ["toothpaste"], "z_index": 1 },
+    { "id": "toothpaste", "scene": "DraggableObject", "sprite": "res://assets/samples/toothpaste.svg", "position": [1490, 515], "z_index": 3, "interactions": [{ "type": "drag", "return_on_invalid": true, "bounds": [350, 500, 1250, 390] }, "drop_on"] },
+    { "id": "brush_foam", "scene": "ImageObject", "sprite": "res://assets/samples/foam.svg", "position": [1550, 701], "scale": [0.65, 0.65], "visible": false, "z_index": 4 }
+  ],
+  "rules": [
+    { "id": "toothbrush_feedback", "event": "tap", "source": "toothbrush", "once": false, "actions": [
+      { "type": "play_animation", "target": "toothbrush", "animation": "tilt", "wait": false }
+    ] },
+    { "id": "toothpaste_feedback", "event": "drop_on", "source": "toothpaste", "target": "brush_zone", "once": false, "actions": [
+      { "type": "move", "target": "toothpaste", "position": [1490, 515] },
+      { "type": "show", "target": "brush_foam" }
+    ] },
+    { "id": "comb_hair", "event": "drop_on", "source": "comb", "target": "hair_zone", "actions": [
+      { "type": "replace_sprite", "target": "hair", "sprite": "res://assets/samples/hair_neat.svg" },
+      { "type": "move", "target": "comb", "position": [1160, 750] },
+      { "type": "set_state", "target": "hair", "key": "neat", "value": true }
+    ] }
+  ],
+  "win_condition": { "type": "object_state", "target": "hair", "key": "neat", "operator": "eq", "value": true }
+}

@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "id": 7,
+  "question": "آن چیست که پا دارد ولی راه نمی‌رود؟",
+  "hint": "کفش را روی پایهٔ میز امتحان کن؛ پایه سر جایش می‌ماند.",
+  "answer": "میز؛ پایه‌هایش مانند پا هستند، ولی میز راه نمی‌رود.",
+  "time_limit_seconds": 40,
+  "base_score": 55,
+  "objects": [
+    {
+      "id": "table",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/four_leg_table.svg",
+      "position": [
+        760,
+        665
+      ],
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "table_leg",
+      "scene": "DropZone",
+      "position": [
+        630,
+        795
+      ],
+      "hit_size": [
+        180,
+        110
+      ],
+      "accepted_sources": [
+        "shoe"
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "shoe",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/shoe.svg",
+      "position": [
+        450,
+        820
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "return_on_invalid": true,
+          "bounds": [
+            250,
+            550,
+            1320,
+            300
+          ]
+        },
+        "drop_on"
+      ]
+    },
+    {
+      "id": "walker",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1220,
+        665
+      ]
+    },
+    {
+      "id": "walker_foot",
+      "scene": "DropZone",
+      "position": [
+        1195,
+        790
+      ],
+      "hit_size": [
+        150,
+        120
+      ],
+      "accepted_sources": [
+        "sock"
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "sock",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/sock.svg",
+      "position": [
+        1040,
+        850
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "return_on_invalid": true,
+          "bounds": [
+            250,
+            550,
+            1320,
+            300
+          ]
+        },
+        "drop_on"
+      ]
+    },
+    {
+      "id": "worn_sock",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/sock.svg",
+      "position": [
+        1195,
+        790
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ],
+      "visible": false,
+      "z_index": 4
+    },
+    {
+      "id": "doll",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/doll.svg",
+      "position": [
+        1560,
+        680
+      ],
+      "interactions": [
+        "tap"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "person_walks",
+      "event": "level_started",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "walker",
+          "animation": "puzzles/walk",
+          "wait": false
+        }
+      ]
+    },
+    {
+      "id": "doll_steps",
+      "event": "tap",
+      "source": "doll",
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "doll",
+          "animation": "puzzles/two_steps",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "wear_sock",
+      "event": "drop_on",
+      "source": "sock",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "sock"
+        },
+        {
+          "type": "show",
+          "target": "worn_sock"
+        },
+        {
+          "type": "play_animation",
+          "target": "walker",
+          "animation": "puzzles/walk",
+          "wait": false
+        },
+        {
+          "type": "play_animation",
+          "target": "worn_sock",
+          "animation": "puzzles/walk",
+          "wait": false
+        }
+      ],
+      "target": "walker_foot"
+    },
+    {
+      "id": "check_fixed_leg",
+      "event": "drop_on",
+      "source": "shoe",
+      "actions": [
+        {
+          "type": "move",
+          "target": "shoe",
+          "position": [
+            630,
+            795
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "table",
+          "key": "checked",
+          "value": true
+        }
+      ],
+      "target": "table_leg"
+    }
+  ],
+  "win_condition": {
+    "type": "object_state",
+    "target": "table",
+    "key": "checked",
+    "operator": "eq",
+    "value": true
+  },
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  }
+}

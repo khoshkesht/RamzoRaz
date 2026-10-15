@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+  </defs>
+  <rect width="1920" height="1080" fill="#dfc8a2"/><path d="M320 0V1080M40 120Q64 490 42 990M279 75Q259 430 280 880M640 0V1080M360 120Q384 490 362 990M599 75Q579 430 600 880M960 0V1080M680 120Q704 490 682 990M919 75Q899 430 920 880M1280 0V1080M1000 120Q1024 490 1002 990M1239 75Q1219 430 1240 880M1600 0V1080M1320 120Q1344 490 1322 990M1559 75Q1539 430 1560 880M1920 0V1080M1640 120Q1664 490 1642 990M1879 75Q1859 430 1880 880" stroke="#c8ad83" stroke-width="3" fill="none"/>
+  <rect x="370" y="452" width="1390" height="534" rx="32" fill="#9eb4a2" stroke="#81988b" stroke-width="7"/>
+  <rect x="391" y="473" width="1348" height="492" rx="22" fill="#d6dfc8" stroke="#c1cdb6" stroke-width="3"/>
+  <path d="M443 940H1688" stroke="#b9c7ae" stroke-width="4"/>
+  <g fill="#c9d1b0" stroke="#8fa18a" stroke-width="4">
+    <path d="M199 551Q107 505 141 438Q204 453 199 551Z"/>
+    <path d="M208 553Q220 456 282 465Q302 535 208 553Z"/>
+    <path d="M202 536Q165 439 214 410Q266 449 202 536Z"/>
+  </g>
+  <path d="M140 543H277L259 660H160Z" fill="#c29a7b" stroke="#9b8068" stroke-width="5"/>
+  <path d="M84 994H302" stroke="#f1dfbc" stroke-width="17" stroke-linecap="round"/>
+</svg>

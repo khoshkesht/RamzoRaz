@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="330" viewBox="0 0 540 330">
+  <g stroke="#48575d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- The driver's window stays transparent so the character behind it is visible. -->
+    <path d="M80 146 134 43Q143 27 165 27H322Q336 27 346 43L423 146H400L329 50H154L104 146Z" fill="#86b1ae"/>
+    <path d="M154 50H217L206 139H108Z" fill="#c5e1df"/>
+    <path d="M221 44 211 146M337 48 409 146" fill="none" stroke="#648c8b" stroke-width="10"/>
+    <path d="M76 138H418L497 157Q517 162 520 185L526 245Q526 269 501 270H40Q16 270 16 247V194Q16 171 37 158Z" fill="#86b1ae"/>
+    <path d="M31 193Q262 173 511 194" fill="none" stroke="#bed4c5" stroke-width="9"/>
+    <path d="M205 148V246M393 151V245" fill="none" stroke="#648c8b" stroke-width="4"/>
+    <path d="M229 171H256M123 171H149" stroke="#f5e5be" stroke-width="8"/>
+    <path d="M487 185H519V211H487Z" fill="#f7e4a7"/>
+    <path d="M19 186H39V213H19Z" fill="#d99c87"/>
+    <path d="M17 245H60M481 245H526" stroke="#cbd4c7" stroke-width="12"/>
+    <circle cx="112" cy="267" r="44" fill="#48575d"/>
+    <circle cx="112" cy="267" r="23" fill="#c5cfbf"/>
+    <circle cx="432" cy="267" r="44" fill="#48575d"/>
+    <circle cx="432" cy="267" r="23" fill="#c5cfbf"/>
+    <path d="M60 249Q65 210 112 210Q159 210 165 249M380 249Q386 210 432 210Q478 210 485 249" fill="none" stroke="#648c8b" stroke-width="8"/>
+  </g>
+</svg>

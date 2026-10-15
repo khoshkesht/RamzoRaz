@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "id": 17,
+  "question": "آن چیست که صفحه دارد ولی کتاب نیست؟",
+  "hint": "صفحهٔ ساعت را لمس کن تا عقربه حرکت کند.",
+  "answer": "ساعت؛ صفحه و عقربه دارد، اما کتاب نیست.",
+  "time_limit_seconds": 50,
+  "base_score": 70,
+  "objects": [
+    {
+      "id": "clock",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/clock_face.svg",
+      "position": [
+        850,
+        700
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "ticked": false
+      }
+    },
+    {
+      "id": "hands",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/clock_hands.svg",
+      "position": [
+        850,
+        700
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "book",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/open_book.svg",
+      "position": [
+        1340,
+        720
+      ]
+    },
+    {
+      "id": "notebook",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/notebook.svg",
+      "position": [
+        450,
+        735
+      ]
+    },
+    {
+      "id": "book_zone",
+      "scene": "DropZone",
+      "position": [
+        1340,
+        720
+      ],
+      "hit_size": [
+        240,
+        180
+      ],
+      "accepted_sources": [
+        "bookmark"
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "bookmark",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/bookmark.svg",
+      "position": [
+        1510,
+        880
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "return_on_invalid": true,
+          "bounds": [
+            300,
+            570,
+            1260,
+            335
+          ]
+        },
+        "drop_on"
+      ],
+      "scale": [
+        0.8,
+        0.8
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "mark_book",
+      "event": "drop_on",
+      "source": "bookmark",
+      "actions": [
+        {
+          "type": "move",
+          "target": "bookmark",
+          "position": [
+            1340,
+            720
+          ]
+        }
+      ],
+      "target": "book_zone",
+      "once": false
+    },
+    {
+      "id": "tick_clock",
+      "event": "tap",
+      "source": "clock",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "hands",
+          "degrees": 90
+        },
+        {
+          "type": "set_state",
+          "target": "clock",
+          "key": "ticked",
+          "value": true
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "object_state",
+    "target": "clock",
+    "key": "ticked",
+    "operator": "eq",
+    "value": true
+  }
+}

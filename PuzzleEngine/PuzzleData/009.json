@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "id": 9,
+  "question": "آن چیست که پر دارد ولی پرواز نمی‌کند؟",
+  "hint": "بالش را کمی نگه دار تا پرهای داخل آن دیده شوند.",
+  "answer": "بالش؛ داخل آن پر است، اما خودش پرواز نمی‌کند.",
+  "time_limit_seconds": 40,
+  "base_score": 55,
+  "objects": [
+    {
+      "id": "pillow",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/pillow.svg",
+      "position": [
+        850,
+        725
+      ],
+      "interactions": [
+        "hold"
+      ],
+      "state": {
+        "feathers_seen": false
+      }
+    },
+    {
+      "id": "feathers",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/pillow_feathers.svg",
+      "position": [
+        1005,
+        690
+      ],
+      "scale": [0.6, 0.6],
+      "visible": false,
+      "z_index": 3
+    },
+    {
+      "id": "fan",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/hand_fan.svg",
+      "position": [
+        460,
+        720
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "right"
+        }
+      ]
+    },
+    {
+      "id": "perch",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/bird_perch.svg",
+      "position": [1420, 808]
+    },
+    {
+      "id": "bird",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bird_perched.svg",
+      "position": [
+        1420,
+        740
+      ],
+      "interactions": [
+        "tap"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "fan_air",
+      "event": "swipe",
+      "source": "fan",
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "fan",
+          "animation": "puzzles/flutter",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "bird_flies",
+      "event": "tap",
+      "source": "bird",
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "bird",
+          "animation": "puzzles/fly_return",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "press_pillow",
+      "event": "hold",
+      "source": "pillow",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "pillow",
+          "sprite": "res://assets/samples/pillow_open.svg"
+        },
+        {
+          "type": "show",
+          "target": "feathers"
+        },
+        {
+          "type": "set_state",
+          "target": "pillow",
+          "key": "feathers_seen",
+          "value": true
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "object_state",
+    "target": "pillow",
+    "key": "feathers_seen",
+    "operator": "eq",
+    "value": true
+  },
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  }
+}

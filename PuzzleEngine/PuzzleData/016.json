@@ -1,0 +1,2409 @@
+{
+  "schema_version": 1,
+  "background": "res://assets/samples/friends_living_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "id": 16,
+  "question": "کدام ماه ۲۸ روز دارد؟",
+  "hint": "سه بار تقویم را به چپ ورق بزن و بعد از هر بار، روز ۲۸ ماه تازه را لمس کن.",
+  "answer": "همهٔ ماه‌ها روز بیست‌وهشتم دارند؛ لازم نیست طول ماه دقیقاً بیست‌وهشت روز باشد.",
+  "time_limit_seconds": 70,
+  "base_score": 85,
+  "variables": {
+    "current_month": 1,
+    "months_checked": 0,
+    "month_turns": 0
+  },
+  "counters": [
+    {
+      "variable": "months_checked",
+      "label": "ماه‌های بررسی‌شده پس از ورق‌زدن",
+      "target": 3
+    }
+  ],
+  "objects": [
+    {
+      "id": "page_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/calendar_page_curled.svg",
+      "position": [
+        850,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "visible": true,
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "month_1",
+      "scene": "TextObject",
+      "text": "فروردین",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        580
+      ],
+      "hit_size": [
+        390,
+        65
+      ],
+      "visible": true,
+      "z_index": 2
+    },
+    {
+      "id": "marked_1",
+      "scene": "ImageObject",
+      "position": [
+        1100,
+        895
+      ],
+      "hit_size": [
+        60,
+        60
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "page_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/calendar_page_curled.svg",
+      "position": [
+        850,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "visible": false,
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "month_2",
+      "scene": "TextObject",
+      "text": "اردیبهشت",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        580
+      ],
+      "hit_size": [
+        390,
+        65
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "marked_2",
+      "scene": "ImageObject",
+      "position": [
+        1100,
+        895
+      ],
+      "hit_size": [
+        60,
+        60
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "page_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/calendar_page_curled.svg",
+      "position": [
+        850,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "visible": false,
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "month_3",
+      "scene": "TextObject",
+      "text": "خرداد",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        580
+      ],
+      "hit_size": [
+        390,
+        65
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "marked_3",
+      "scene": "ImageObject",
+      "position": [
+        1100,
+        895
+      ],
+      "hit_size": [
+        60,
+        60
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "page_4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/calendar_page_curled.svg",
+      "position": [
+        850,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "visible": false,
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "month_4",
+      "scene": "TextObject",
+      "text": "تیر",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        580
+      ],
+      "hit_size": [
+        390,
+        65
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "marked_4",
+      "scene": "ImageObject",
+      "position": [
+        1100,
+        895
+      ],
+      "hit_size": [
+        60,
+        60
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "page_5",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/calendar_page_curled.svg",
+      "position": [
+        850,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "visible": false,
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "month_5",
+      "scene": "TextObject",
+      "text": "مرداد",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        580
+      ],
+      "hit_size": [
+        390,
+        65
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "marked_5",
+      "scene": "ImageObject",
+      "position": [
+        1100,
+        895
+      ],
+      "hit_size": [
+        60,
+        60
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "page_6",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/calendar_page_curled.svg",
+      "position": [
+        850,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "visible": false,
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "month_6",
+      "scene": "TextObject",
+      "text": "شهریور",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        580
+      ],
+      "hit_size": [
+        390,
+        65
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "marked_6",
+      "scene": "ImageObject",
+      "position": [
+        1100,
+        895
+      ],
+      "hit_size": [
+        60,
+        60
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "page_7",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/calendar_page_curled.svg",
+      "position": [
+        850,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "visible": false,
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "month_7",
+      "scene": "TextObject",
+      "text": "مهر",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        580
+      ],
+      "hit_size": [
+        390,
+        65
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "marked_7",
+      "scene": "ImageObject",
+      "position": [
+        1100,
+        895
+      ],
+      "hit_size": [
+        60,
+        60
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "page_8",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/calendar_page_curled.svg",
+      "position": [
+        850,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "visible": false,
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "month_8",
+      "scene": "TextObject",
+      "text": "آبان",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        580
+      ],
+      "hit_size": [
+        390,
+        65
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "marked_8",
+      "scene": "ImageObject",
+      "position": [
+        1100,
+        895
+      ],
+      "hit_size": [
+        60,
+        60
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "page_9",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/calendar_page_curled.svg",
+      "position": [
+        850,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "visible": false,
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "month_9",
+      "scene": "TextObject",
+      "text": "آذر",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        580
+      ],
+      "hit_size": [
+        390,
+        65
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "marked_9",
+      "scene": "ImageObject",
+      "position": [
+        1100,
+        895
+      ],
+      "hit_size": [
+        60,
+        60
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "page_10",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/calendar_page_curled.svg",
+      "position": [
+        850,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "visible": false,
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "month_10",
+      "scene": "TextObject",
+      "text": "دی",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        580
+      ],
+      "hit_size": [
+        390,
+        65
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "marked_10",
+      "scene": "ImageObject",
+      "position": [
+        1100,
+        895
+      ],
+      "hit_size": [
+        60,
+        60
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "page_11",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/calendar_page_curled.svg",
+      "position": [
+        850,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "visible": false,
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "month_11",
+      "scene": "TextObject",
+      "text": "بهمن",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        580
+      ],
+      "hit_size": [
+        390,
+        65
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "marked_11",
+      "scene": "ImageObject",
+      "position": [
+        1100,
+        895
+      ],
+      "hit_size": [
+        60,
+        60
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "page_12",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/calendar_page_curled.svg",
+      "position": [
+        850,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "visible": false,
+      "state": {
+        "checked": false
+      }
+    },
+    {
+      "id": "month_12",
+      "scene": "TextObject",
+      "text": "اسفند",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        580
+      ],
+      "hit_size": [
+        390,
+        65
+      ],
+      "visible": false,
+      "z_index": 2
+    },
+    {
+      "id": "marked_12",
+      "scene": "ImageObject",
+      "position": [
+        1100,
+        895
+      ],
+      "hit_size": [
+        60,
+        60
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "day_1",
+      "scene": "TextObject",
+      "text": "۱",
+      "text_color": "#364D55",
+      "position": [
+        652,
+        672
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_2",
+      "scene": "TextObject",
+      "text": "۲",
+      "text_color": "#364D55",
+      "position": [
+        718,
+        672
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_3",
+      "scene": "TextObject",
+      "text": "۳",
+      "text_color": "#364D55",
+      "position": [
+        784,
+        672
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_4",
+      "scene": "TextObject",
+      "text": "۴",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        672
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_5",
+      "scene": "TextObject",
+      "text": "۵",
+      "text_color": "#364D55",
+      "position": [
+        916,
+        672
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_6",
+      "scene": "TextObject",
+      "text": "۶",
+      "text_color": "#364D55",
+      "position": [
+        982,
+        672
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_7",
+      "scene": "TextObject",
+      "text": "۷",
+      "text_color": "#364D55",
+      "position": [
+        1048,
+        672
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_8",
+      "scene": "TextObject",
+      "text": "۸",
+      "text_color": "#364D55",
+      "position": [
+        652,
+        727
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_9",
+      "scene": "TextObject",
+      "text": "۹",
+      "text_color": "#364D55",
+      "position": [
+        718,
+        727
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_10",
+      "scene": "TextObject",
+      "text": "۱۰",
+      "text_color": "#364D55",
+      "position": [
+        784,
+        727
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_11",
+      "scene": "TextObject",
+      "text": "۱۱",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        727
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_12",
+      "scene": "TextObject",
+      "text": "۱۲",
+      "text_color": "#364D55",
+      "position": [
+        916,
+        727
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_13",
+      "scene": "TextObject",
+      "text": "۱۳",
+      "text_color": "#364D55",
+      "position": [
+        982,
+        727
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_14",
+      "scene": "TextObject",
+      "text": "۱۴",
+      "text_color": "#364D55",
+      "position": [
+        1048,
+        727
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_15",
+      "scene": "TextObject",
+      "text": "۱۵",
+      "text_color": "#364D55",
+      "position": [
+        652,
+        782
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_16",
+      "scene": "TextObject",
+      "text": "۱۶",
+      "text_color": "#364D55",
+      "position": [
+        718,
+        782
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_17",
+      "scene": "TextObject",
+      "text": "۱۷",
+      "text_color": "#364D55",
+      "position": [
+        784,
+        782
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_18",
+      "scene": "TextObject",
+      "text": "۱۸",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        782
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_19",
+      "scene": "TextObject",
+      "text": "۱۹",
+      "text_color": "#364D55",
+      "position": [
+        916,
+        782
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_20",
+      "scene": "TextObject",
+      "text": "۲۰",
+      "text_color": "#364D55",
+      "position": [
+        982,
+        782
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_21",
+      "scene": "TextObject",
+      "text": "۲۱",
+      "text_color": "#364D55",
+      "position": [
+        1048,
+        782
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_22",
+      "scene": "TextObject",
+      "text": "۲۲",
+      "text_color": "#364D55",
+      "position": [
+        652,
+        837
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_23",
+      "scene": "TextObject",
+      "text": "۲۳",
+      "text_color": "#364D55",
+      "position": [
+        718,
+        837
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_24",
+      "scene": "TextObject",
+      "text": "۲۴",
+      "text_color": "#364D55",
+      "position": [
+        784,
+        837
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_25",
+      "scene": "TextObject",
+      "text": "۲۵",
+      "text_color": "#364D55",
+      "position": [
+        850,
+        837
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_26",
+      "scene": "TextObject",
+      "text": "۲۶",
+      "text_color": "#364D55",
+      "position": [
+        916,
+        837
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_27",
+      "scene": "TextObject",
+      "text": "۲۷",
+      "text_color": "#364D55",
+      "position": [
+        982,
+        837
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "day_28_hint",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/calendar_day_hint.svg",
+      "position": [
+        1048,
+        837
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "day_28",
+      "scene": "TextObject",
+      "text": "۲۸",
+      "text_color": "#364D55",
+      "position": [
+        1048,
+        837
+      ],
+      "hit_size": [
+        60,
+        52
+      ],
+      "z_index": 2,
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "holiday",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/holiday_sheet.svg",
+      "position": [
+        1430,
+        740
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "holiday_label",
+      "scene": "TextObject",
+      "text": "تعطیلات",
+      "text_color": "#364D55",
+      "position": [
+        1430,
+        686
+      ],
+      "hit_size": [
+        180,
+        60
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "holiday_stamp",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/holiday_stamp.svg",
+      "position": [
+        1430,
+        798
+      ],
+      "visible": false,
+      "z_index": 3
+    },
+    {
+      "id": "holiday_stamp_text",
+      "scene": "TextObject",
+      "text": "تعطیل",
+      "text_color": "#B96960",
+      "position": [
+        1430,
+        798
+      ],
+      "hit_size": [
+        130,
+        52
+      ],
+      "visible": false,
+      "z_index": 4
+    }
+  ],
+  "rules": [
+    {
+      "id": "stamp_holidays",
+      "event": "tap",
+      "source": "holiday",
+      "actions": [
+        {
+          "type": "show",
+          "target": "holiday_stamp"
+        },
+        {
+          "type": "show",
+          "target": "holiday_stamp_text"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "turn_month_1",
+      "event": "swipe",
+      "source": "page_1",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "page_1"
+        },
+        {
+          "type": "hide",
+          "target": "month_1"
+        },
+        {
+          "type": "hide",
+          "target": "marked_1"
+        },
+        {
+          "type": "show",
+          "target": "page_2"
+        },
+        {
+          "type": "show",
+          "target": "month_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "current_month",
+          "operation": "assign",
+          "value": 2
+        },
+        {
+          "type": "set_variable",
+          "name": "month_turns",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "restore_mark_1",
+      "event": "swipe",
+      "source": "page_1",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_2"
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "page_2",
+          "key": "checked",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "mark_month_1",
+      "event": "tap",
+      "source": "day_28",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_1"
+        },
+        {
+          "type": "set_state",
+          "target": "page_1",
+          "key": "checked",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "months_checked",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "current_month",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "object_state",
+          "target": "page_1",
+          "key": "checked",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "month_turns",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "turn_month_2",
+      "event": "swipe",
+      "source": "page_2",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "page_2"
+        },
+        {
+          "type": "hide",
+          "target": "month_2"
+        },
+        {
+          "type": "hide",
+          "target": "marked_2"
+        },
+        {
+          "type": "show",
+          "target": "page_3"
+        },
+        {
+          "type": "show",
+          "target": "month_3"
+        },
+        {
+          "type": "set_variable",
+          "name": "current_month",
+          "operation": "assign",
+          "value": 3
+        },
+        {
+          "type": "set_variable",
+          "name": "month_turns",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "restore_mark_2",
+      "event": "swipe",
+      "source": "page_2",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_3"
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "page_3",
+          "key": "checked",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "mark_month_2",
+      "event": "tap",
+      "source": "day_28",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_2"
+        },
+        {
+          "type": "set_state",
+          "target": "page_2",
+          "key": "checked",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "months_checked",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "current_month",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "object_state",
+          "target": "page_2",
+          "key": "checked",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "month_turns",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "turn_month_3",
+      "event": "swipe",
+      "source": "page_3",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "page_3"
+        },
+        {
+          "type": "hide",
+          "target": "month_3"
+        },
+        {
+          "type": "hide",
+          "target": "marked_3"
+        },
+        {
+          "type": "show",
+          "target": "page_4"
+        },
+        {
+          "type": "show",
+          "target": "month_4"
+        },
+        {
+          "type": "set_variable",
+          "name": "current_month",
+          "operation": "assign",
+          "value": 4
+        },
+        {
+          "type": "set_variable",
+          "name": "month_turns",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "restore_mark_3",
+      "event": "swipe",
+      "source": "page_3",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_4"
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "page_4",
+          "key": "checked",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "mark_month_3",
+      "event": "tap",
+      "source": "day_28",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_3"
+        },
+        {
+          "type": "set_state",
+          "target": "page_3",
+          "key": "checked",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "months_checked",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "current_month",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "object_state",
+          "target": "page_3",
+          "key": "checked",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "month_turns",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "turn_month_4",
+      "event": "swipe",
+      "source": "page_4",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "page_4"
+        },
+        {
+          "type": "hide",
+          "target": "month_4"
+        },
+        {
+          "type": "hide",
+          "target": "marked_4"
+        },
+        {
+          "type": "show",
+          "target": "page_5"
+        },
+        {
+          "type": "show",
+          "target": "month_5"
+        },
+        {
+          "type": "set_variable",
+          "name": "current_month",
+          "operation": "assign",
+          "value": 5
+        },
+        {
+          "type": "set_variable",
+          "name": "month_turns",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "restore_mark_4",
+      "event": "swipe",
+      "source": "page_4",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_5"
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "page_5",
+          "key": "checked",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "mark_month_4",
+      "event": "tap",
+      "source": "day_28",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_4"
+        },
+        {
+          "type": "set_state",
+          "target": "page_4",
+          "key": "checked",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "months_checked",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "current_month",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "object_state",
+          "target": "page_4",
+          "key": "checked",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "month_turns",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "turn_month_5",
+      "event": "swipe",
+      "source": "page_5",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "page_5"
+        },
+        {
+          "type": "hide",
+          "target": "month_5"
+        },
+        {
+          "type": "hide",
+          "target": "marked_5"
+        },
+        {
+          "type": "show",
+          "target": "page_6"
+        },
+        {
+          "type": "show",
+          "target": "month_6"
+        },
+        {
+          "type": "set_variable",
+          "name": "current_month",
+          "operation": "assign",
+          "value": 6
+        },
+        {
+          "type": "set_variable",
+          "name": "month_turns",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "restore_mark_5",
+      "event": "swipe",
+      "source": "page_5",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_6"
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "page_6",
+          "key": "checked",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "mark_month_5",
+      "event": "tap",
+      "source": "day_28",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_5"
+        },
+        {
+          "type": "set_state",
+          "target": "page_5",
+          "key": "checked",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "months_checked",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "current_month",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "object_state",
+          "target": "page_5",
+          "key": "checked",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "month_turns",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "turn_month_6",
+      "event": "swipe",
+      "source": "page_6",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "page_6"
+        },
+        {
+          "type": "hide",
+          "target": "month_6"
+        },
+        {
+          "type": "hide",
+          "target": "marked_6"
+        },
+        {
+          "type": "show",
+          "target": "page_7"
+        },
+        {
+          "type": "show",
+          "target": "month_7"
+        },
+        {
+          "type": "set_variable",
+          "name": "current_month",
+          "operation": "assign",
+          "value": 7
+        },
+        {
+          "type": "set_variable",
+          "name": "month_turns",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "restore_mark_6",
+      "event": "swipe",
+      "source": "page_6",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_7"
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "page_7",
+          "key": "checked",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "mark_month_6",
+      "event": "tap",
+      "source": "day_28",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_6"
+        },
+        {
+          "type": "set_state",
+          "target": "page_6",
+          "key": "checked",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "months_checked",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "current_month",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "object_state",
+          "target": "page_6",
+          "key": "checked",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "month_turns",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "turn_month_7",
+      "event": "swipe",
+      "source": "page_7",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "page_7"
+        },
+        {
+          "type": "hide",
+          "target": "month_7"
+        },
+        {
+          "type": "hide",
+          "target": "marked_7"
+        },
+        {
+          "type": "show",
+          "target": "page_8"
+        },
+        {
+          "type": "show",
+          "target": "month_8"
+        },
+        {
+          "type": "set_variable",
+          "name": "current_month",
+          "operation": "assign",
+          "value": 8
+        },
+        {
+          "type": "set_variable",
+          "name": "month_turns",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "restore_mark_7",
+      "event": "swipe",
+      "source": "page_7",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_8"
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "page_8",
+          "key": "checked",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "mark_month_7",
+      "event": "tap",
+      "source": "day_28",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_7"
+        },
+        {
+          "type": "set_state",
+          "target": "page_7",
+          "key": "checked",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "months_checked",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "current_month",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "object_state",
+          "target": "page_7",
+          "key": "checked",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "month_turns",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "turn_month_8",
+      "event": "swipe",
+      "source": "page_8",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "page_8"
+        },
+        {
+          "type": "hide",
+          "target": "month_8"
+        },
+        {
+          "type": "hide",
+          "target": "marked_8"
+        },
+        {
+          "type": "show",
+          "target": "page_9"
+        },
+        {
+          "type": "show",
+          "target": "month_9"
+        },
+        {
+          "type": "set_variable",
+          "name": "current_month",
+          "operation": "assign",
+          "value": 9
+        },
+        {
+          "type": "set_variable",
+          "name": "month_turns",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "restore_mark_8",
+      "event": "swipe",
+      "source": "page_8",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_9"
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "page_9",
+          "key": "checked",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "mark_month_8",
+      "event": "tap",
+      "source": "day_28",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_8"
+        },
+        {
+          "type": "set_state",
+          "target": "page_8",
+          "key": "checked",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "months_checked",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "current_month",
+          "operator": "eq",
+          "value": 8
+        },
+        {
+          "type": "object_state",
+          "target": "page_8",
+          "key": "checked",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "month_turns",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "turn_month_9",
+      "event": "swipe",
+      "source": "page_9",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "page_9"
+        },
+        {
+          "type": "hide",
+          "target": "month_9"
+        },
+        {
+          "type": "hide",
+          "target": "marked_9"
+        },
+        {
+          "type": "show",
+          "target": "page_10"
+        },
+        {
+          "type": "show",
+          "target": "month_10"
+        },
+        {
+          "type": "set_variable",
+          "name": "current_month",
+          "operation": "assign",
+          "value": 10
+        },
+        {
+          "type": "set_variable",
+          "name": "month_turns",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "restore_mark_9",
+      "event": "swipe",
+      "source": "page_9",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_10"
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "page_10",
+          "key": "checked",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "mark_month_9",
+      "event": "tap",
+      "source": "day_28",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_9"
+        },
+        {
+          "type": "set_state",
+          "target": "page_9",
+          "key": "checked",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "months_checked",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "current_month",
+          "operator": "eq",
+          "value": 9
+        },
+        {
+          "type": "object_state",
+          "target": "page_9",
+          "key": "checked",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "month_turns",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "turn_month_10",
+      "event": "swipe",
+      "source": "page_10",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "page_10"
+        },
+        {
+          "type": "hide",
+          "target": "month_10"
+        },
+        {
+          "type": "hide",
+          "target": "marked_10"
+        },
+        {
+          "type": "show",
+          "target": "page_11"
+        },
+        {
+          "type": "show",
+          "target": "month_11"
+        },
+        {
+          "type": "set_variable",
+          "name": "current_month",
+          "operation": "assign",
+          "value": 11
+        },
+        {
+          "type": "set_variable",
+          "name": "month_turns",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "restore_mark_10",
+      "event": "swipe",
+      "source": "page_10",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_11"
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "page_11",
+          "key": "checked",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "mark_month_10",
+      "event": "tap",
+      "source": "day_28",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_10"
+        },
+        {
+          "type": "set_state",
+          "target": "page_10",
+          "key": "checked",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "months_checked",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "current_month",
+          "operator": "eq",
+          "value": 10
+        },
+        {
+          "type": "object_state",
+          "target": "page_10",
+          "key": "checked",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "month_turns",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "turn_month_11",
+      "event": "swipe",
+      "source": "page_11",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "page_11"
+        },
+        {
+          "type": "hide",
+          "target": "month_11"
+        },
+        {
+          "type": "hide",
+          "target": "marked_11"
+        },
+        {
+          "type": "show",
+          "target": "page_12"
+        },
+        {
+          "type": "show",
+          "target": "month_12"
+        },
+        {
+          "type": "set_variable",
+          "name": "current_month",
+          "operation": "assign",
+          "value": 12
+        },
+        {
+          "type": "set_variable",
+          "name": "month_turns",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "restore_mark_11",
+      "event": "swipe",
+      "source": "page_11",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_12"
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "page_12",
+          "key": "checked",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "mark_month_11",
+      "event": "tap",
+      "source": "day_28",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_11"
+        },
+        {
+          "type": "set_state",
+          "target": "page_11",
+          "key": "checked",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "months_checked",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "current_month",
+          "operator": "eq",
+          "value": 11
+        },
+        {
+          "type": "object_state",
+          "target": "page_11",
+          "key": "checked",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "month_turns",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "turn_month_12",
+      "event": "swipe",
+      "source": "page_12",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "page_12"
+        },
+        {
+          "type": "hide",
+          "target": "month_12"
+        },
+        {
+          "type": "hide",
+          "target": "marked_12"
+        },
+        {
+          "type": "show",
+          "target": "page_1"
+        },
+        {
+          "type": "show",
+          "target": "month_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "current_month",
+          "operation": "assign",
+          "value": 1
+        },
+        {
+          "type": "set_variable",
+          "name": "month_turns",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "restore_mark_12",
+      "event": "swipe",
+      "source": "page_12",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_1"
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "page_1",
+          "key": "checked",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "mark_month_12",
+      "event": "tap",
+      "source": "day_28",
+      "actions": [
+        {
+          "type": "show",
+          "target": "marked_12"
+        },
+        {
+          "type": "set_state",
+          "target": "page_12",
+          "key": "checked",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "months_checked",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "current_month",
+          "operator": "eq",
+          "value": 12
+        },
+        {
+          "type": "object_state",
+          "target": "page_12",
+          "key": "checked",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "month_turns",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "all",
+    "conditions": [
+      {
+        "type": "variable",
+        "name": "months_checked",
+        "operator": "gte",
+        "value": 3
+      },
+      {
+        "type": "variable",
+        "name": "month_turns",
+        "operator": "gte",
+        "value": 3
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="mirror" x2="1" y2="1"><stop stop-color="#b9dce0"/><stop offset="1" stop-color="#edf8f1"/></linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="#e1eeea"/><path d="M160 0V1080M320 0V1080M480 0V1080M640 0V1080M800 0V1080M960 0V1080M1120 0V1080M1280 0V1080M1440 0V1080M1600 0V1080M1760 0V1080M0 140H1920M0 280H1920M0 420H1920M0 560H1920M0 700H1920M0 840H1920M0 980H1920" fill="none" stroke="#f9fcf5" stroke-width="7"/>
+  <g stroke="#789a96" stroke-width="6" stroke-linejoin="round">
+    <rect x="190" y="302" width="330" height="378" rx="42" fill="#f8f3de"/>
+    <rect x="208" y="320" width="294" height="342" rx="30" fill="url(#mirror)"/>
+    <path d="m244 421 93-65m-91 104 154-107" stroke="#f7fcf4" stroke-width="12" opacity=".6"/>
+    <path d="M165 871H1755V1080H165Z" fill="#8fafaa"/>
+    <path d="M205 933H635V1080H205M1295 933H1715V1080H1295" fill="none"/>
+    <path d="M620 989H654M1280 989H1314" stroke="#f6e8ca" stroke-width="10" stroke-linecap="round"/>
+    <rect x="128" y="832" width="1664" height="65" rx="20" fill="#f4efdf"/>
+    <ellipse cx="866" cy="846" rx="336" ry="79" fill="#c6dcd6"/>
+    <ellipse cx="866" cy="838" rx="292" ry="50" fill="#e9f4eb" stroke-width="4"/>
+    <path d="M591 760V691Q591 649 632 649H680V678H634V760Z" fill="#b6c8c4"/>
+    <path d="M564 760H628" stroke-width="12" stroke-linecap="round"/>
+    <path d="M1440 375H1665" stroke="#a5b9ae" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>

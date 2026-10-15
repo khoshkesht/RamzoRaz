@@ -1,0 +1,125 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://PuzzleEngine/UI/SettingsDialog.gd" id="1"]
+[ext_resource type="Script" path="res://PuzzleEngine/UI/SafeMargin.gd" id="2"]
+[ext_resource type="Script" path="res://PuzzleEngine/UI/ResponsiveDialog.gd" id="3"]
+[ext_resource type="Theme" path="res://PuzzleEngine/UI/PuzzleTheme.tres" id="4"]
+
+[node name="SettingsDialog" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+layout_direction = 2
+mouse_filter = 0
+theme = ExtResource("4")
+script = ExtResource("1")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+color = Color(0.012, 0.025, 0.045, 0.82)
+
+[node name="SafeMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2")
+
+[node name="Center" type="CenterContainer" parent="SafeMargin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="SafeMargin/Center"]
+layout_mode = 2
+mouse_filter = 0
+script = ExtResource("3")
+scroll_path = NodePath("Padding/Content/OptionsScroll")
+content_path = NodePath("Padding/Content/OptionsScroll/Options")
+
+[node name="Padding" type="MarginContainer" parent="SafeMargin/Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 32
+
+[node name="Content" type="VBoxContainer" parent="SafeMargin/Center/Panel/Padding"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="SafeMargin/Center/Panel/Padding/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+theme_override_colors/font_color = Color(1, 0.82, 0.4, 1)
+text = "تنظیمات"
+horizontal_alignment = 1
+text_direction = 2
+
+[node name="OptionsScroll" type="ScrollContainer" parent="SafeMargin/Center/Panel/Padding/Content"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="Options" type="VBoxContainer" parent="SafeMargin/Center/Panel/Padding/Content/OptionsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+
+[node name="Music" type="Button" parent="SafeMargin/Center/Panel/Padding/Content/OptionsScroll/Options"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_constants/icon_max_width = 48
+text = "موسیقی: خاموش"
+text_direction = 2
+
+[node name="BackgroundTitle" type="Label" parent="SafeMargin/Center/Panel/Padding/Content/OptionsScroll/Options"]
+layout_mode = 2
+text = "تصویر زمینه"
+horizontal_alignment = 2
+text_direction = 2
+
+[node name="Backgrounds" type="GridContainer" parent="SafeMargin/Center/Panel/Padding/Content/OptionsScroll/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="Message" type="Label" parent="SafeMargin/Center/Panel/Padding/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = " "
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+text_direction = 2
+
+[node name="Buttons" type="HBoxContainer" parent="SafeMargin/Center/Panel/Padding/Content"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Save" type="Button" parent="SafeMargin/Center/Panel/Padding/Content/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ذخیره"
+text_direction = 2
+
+[node name="Close" type="Button" parent="SafeMargin/Center/Panel/Padding/Content/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "بستن"
+text_direction = 2

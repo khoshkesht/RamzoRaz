@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": 1,
+  "question": "مردی زیر باران است و چتری کنار اوست، اما موهایش خیس نمی‌شود. چرا؟",
+  "hint": "کلاه مرد را کنار بکش و به سر او دقت کن.",
+  "answer": "مرد کچل است؛ مویی ندارد که زیر باران خیس شود.",
+  "time_limit_seconds": 45,
+  "base_score": 50,
+  "background": "res://assets/samples/rain_background.svg",
+  "background_material": "res://assets/samples/day_rain.tres",
+  "objects": [
+    { "id": "man", "scene": "ImageObject", "sprite": "res://assets/samples/man.svg", "position": [960, 620] },
+    { "id": "bald_head", "scene": "ImageObject", "sprite": "res://assets/samples/bald_head.svg", "position": [960, 496], "scale": [0.95, 0.6], "visible": false, "z_index": 2 },
+    { "id": "head_cover", "scene": "DropZone", "position": [960, 495], "hit_size": [400, 170], "accepted_sources": [] },
+    { "id": "torso", "scene": "DropZone", "position": [960, 715], "hit_size": [220, 230], "accepted_sources": ["raincoat"] },
+    { "id": "worn_raincoat", "scene": "ImageObject", "sprite": "res://assets/samples/raincoat.svg", "position": [960, 715], "visible": false, "z_index": 1 },
+    { "id": "hat", "scene": "DraggableObject", "sprite": "res://assets/samples/hat.svg", "position": [960, 500], "z_index": 3, "interactions": [{ "type": "drag", "return_on_invalid": true, "bounds": [160, 390, 1600, 570] }] },
+    { "id": "umbrella", "scene": "DraggableObject", "sprite": "res://assets/samples/umbrella.svg", "position": [1440, 680], "z_index": 4, "interactions": [{ "type": "drag", "return_on_invalid": true, "bounds": [140, 395, 1640, 515] }] },
+    { "id": "raincoat", "scene": "DraggableObject", "sprite": "res://assets/samples/raincoat.svg", "position": [470, 720], "z_index": 4, "interactions": [{ "type": "drag", "return_on_invalid": true, "bounds": [160, 425, 1600, 470] }, "drop_on"] }
+  ],
+  "rules": [
+    { "id": "wear_raincoat", "event": "drop_on", "source": "raincoat", "target": "torso", "actions": [{ "type": "hide", "target": "raincoat" }, { "type": "show", "target": "worn_raincoat" }] },
+    { "id": "reveal_head", "event": "drag_end", "source": "hat", "conditions": [{ "type": "moved_distance_at_least", "value": 120 }, { "type": "not", "condition": { "type": "inside", "target": "hat", "zone": "head_cover" } }], "actions": [{ "type": "move", "target": "hat", "position": [610, 580] }, { "type": "show", "target": "bald_head" }] }
+  ],
+  "win_condition": { "type": "visible", "target": "bald_head" }
+}

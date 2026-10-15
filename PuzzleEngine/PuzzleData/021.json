@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "id": 21,
+  "question": "آن چیست که همیشه جلوی توست ولی دیده نمی‌شود؟",
+  "hint": "پردهٔ مسیر زمان را کنار بزن؛ آیا آینده را می‌توان دید؟",
+  "answer": "آینده؛ حتی با کنارزدن پرده و نگاه به دوردست، هنوز ناشناخته است.",
+  "time_limit_seconds": 75,
+  "base_score": 100,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "unveiled": false
+  },
+  "objects": [
+    {
+      "id": "walker",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        480,
+        720
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "today",
+      "scene": "TextObject",
+      "text": "امروز",
+      "text_color": "#364D55",
+      "position": [
+        490,
+        950
+      ],
+      "hit_size": [
+        260,
+        70
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "future",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/unknown_horizon.svg",
+      "position": [
+        1150,
+        690
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "future_label",
+      "scene": "TextObject",
+      "text": "آینده",
+      "text_color": "#364D55",
+      "position": [
+        1150,
+        900
+      ],
+      "hit_size": [
+        260,
+        70
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "veil",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/future_veil.svg",
+      "position": [
+        1150,
+        690
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            900,
+            540,
+            760,
+            310
+          ]
+        }
+      ],
+      "z_index": 3
+    },
+    {
+      "id": "binoculars",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/binoculars.svg",
+      "position": [
+        360,
+        530
+      ],
+      "interactions": [
+        "hold"
+      ]
+    },
+    {
+      "id": "present_view",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/window_daylight.svg",
+      "position": [
+        690,
+        540
+      ],
+      "visible": false,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "look",
+      "event": "hold",
+      "source": "binoculars",
+      "actions": [
+        {
+          "type": "show",
+          "target": "present_view"
+        },
+        {
+          "type": "scale",
+          "target": "present_view",
+          "value": [
+            0.8,
+            0.8
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "unveil",
+      "event": "drag_end",
+      "source": "veil",
+      "actions": [
+        {
+          "type": "move",
+          "target": "veil",
+          "position": [
+            1600,
+            710
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "unveiled",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "type": "moved_distance_at_least",
+          "value": 220
+        }
+      ]
+    },
+    {
+      "id": "future_unknown",
+      "event": "tap",
+      "source": "future",
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "unveiled",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

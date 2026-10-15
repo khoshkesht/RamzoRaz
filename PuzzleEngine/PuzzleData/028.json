@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "id": 28,
+  "question": "آن چیست که بدون بال پرواز می‌کند و بدون چشم گریه می‌کند؟",
+  "hint": "ابر را در آسمان جابه‌جا کن و سپس لمسش کن.",
+  "answer": "ابر؛ در آسمان جابه‌جا می‌شود و باران می‌بارد.",
+  "time_limit_seconds": 75,
+  "base_score": 100,
+  "background": "res://assets/samples/garden_background.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "variables": {
+    "solved": false,
+    "moved": false
+  },
+  "objects": [
+    {
+      "id": "cloud",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/cloud.svg",
+      "position": [
+        970,
+        540
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            700,
+            480,
+            500,
+            140
+          ]
+        },
+        "tap"
+      ],
+      "z_index": 3
+    },
+    {
+      "id": "rain",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/water_drops.svg",
+      "position": [
+        1170,
+        730
+      ],
+      "visible": false
+    },
+    {
+      "id": "kite",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/kite.svg",
+      "position": [
+        430,
+        650
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            490,
+            300,
+            350
+          ]
+        }
+      ]
+    },
+    {
+      "id": "can",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/watering_can.svg",
+      "position": [
+        1540,
+        830
+      ],
+      "interactions": [
+        "hold"
+      ]
+    },
+    {
+      "id": "garden_drops",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/water_drops.svg",
+      "position": [
+        1570,
+        960
+      ],
+      "visible": false,
+      "scale": [
+        0.6,
+        0.6
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "cloud_moves",
+      "event": "drag_end",
+      "source": "cloud",
+      "actions": [
+        {
+          "type": "move",
+          "target": "cloud",
+          "position": [
+            1170,
+            540
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "moved",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "type": "moved_distance_at_least",
+          "value": 140
+        }
+      ]
+    },
+    {
+      "id": "cloud_rains",
+      "event": "tap",
+      "source": "cloud",
+      "actions": [
+        {
+          "type": "move",
+          "target": "cloud",
+          "position": [
+            1170,
+            540
+          ]
+        },
+        {
+          "type": "show",
+          "target": "rain"
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "operation": "assign",
+          "value": true
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "moved",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "water_garden",
+      "event": "hold",
+      "source": "can",
+      "actions": [
+        {
+          "type": "show",
+          "target": "garden_drops"
+        },
+        {
+          "type": "play_animation",
+          "target": "can",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

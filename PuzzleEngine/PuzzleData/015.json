@@ -1,0 +1,750 @@
+{
+  "schema_version": 1,
+  "background": "res://assets/samples/bright_room.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "id": 15,
+  "question": "۵ شمع روشن است و ۲ تا را خاموش می‌کنی. چند شمع باقی می‌ماند؟",
+  "hint": "دو شعلهٔ اول را با حرکت انگشت خاموش کن؛ بعد هر بدنهٔ باقی‌مانده را لمس کن.",
+  "answer": "پنج شمع؛ خاموش‌شدن دو شعله بدنه‌های شمع را از بین نمی‌برد.",
+  "time_limit_seconds": 65,
+  "base_score": 85,
+  "variables": {
+    "flames_out": 0,
+    "bodies_selected": 0
+  },
+  "counters": [
+    {
+      "variable": "flames_out",
+      "label": "شعله‌های خاموش",
+      "target": 2
+    },
+    {
+      "variable": "bodies_selected",
+      "label": "بدنه‌های شمرده شده",
+      "target": 5
+    }
+  ],
+  "objects": [
+    {
+      "id": "candle_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/candle_body.svg",
+      "position": [
+        620,
+        735
+      ],
+      "interactions": [
+        "tap",
+        "swipe"
+      ],
+      "state": {
+        "selected": false
+      },
+      "z_index": 2
+    },
+    {
+      "id": "flame_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/candle_flame.svg",
+      "position": [
+        620,
+        600
+      ],
+      "interactions": [
+        "swipe"
+      ],
+      "z_index": 3,
+      "state": {
+        "extinguished": false
+      }
+    },
+    {
+      "id": "selected_1",
+      "scene": "ImageObject",
+      "position": [
+        620,
+        870
+      ],
+      "hit_size": [
+        80,
+        70
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "candle_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/candle_body.svg",
+      "position": [
+        790,
+        735
+      ],
+      "interactions": [
+        "tap",
+        "swipe"
+      ],
+      "state": {
+        "selected": false
+      },
+      "z_index": 2
+    },
+    {
+      "id": "flame_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/candle_flame.svg",
+      "position": [
+        790,
+        600
+      ],
+      "interactions": [
+        "swipe"
+      ],
+      "z_index": 3,
+      "state": {
+        "extinguished": false
+      }
+    },
+    {
+      "id": "selected_2",
+      "scene": "ImageObject",
+      "position": [
+        790,
+        870
+      ],
+      "hit_size": [
+        80,
+        70
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "candle_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/candle_body.svg",
+      "position": [
+        960,
+        735
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "selected": false
+      },
+      "z_index": 2
+    },
+    {
+      "id": "flame_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/candle_flame.svg",
+      "position": [
+        960,
+        600
+      ],
+      "z_index": 3
+    },
+    {
+      "id": "selected_3",
+      "scene": "ImageObject",
+      "position": [
+        960,
+        870
+      ],
+      "hit_size": [
+        80,
+        70
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "candle_4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/candle_body.svg",
+      "position": [
+        1130,
+        735
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "selected": false
+      },
+      "z_index": 2
+    },
+    {
+      "id": "flame_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/candle_flame.svg",
+      "position": [
+        1130,
+        600
+      ],
+      "z_index": 3
+    },
+    {
+      "id": "selected_4",
+      "scene": "ImageObject",
+      "position": [
+        1130,
+        870
+      ],
+      "hit_size": [
+        80,
+        70
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "candle_5",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/candle_body.svg",
+      "position": [
+        1300,
+        735
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "selected": false
+      },
+      "z_index": 2
+    },
+    {
+      "id": "flame_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/candle_flame.svg",
+      "position": [
+        1300,
+        600
+      ],
+      "z_index": 3
+    },
+    {
+      "id": "selected_5",
+      "scene": "ImageObject",
+      "position": [
+        1300,
+        870
+      ],
+      "hit_size": [
+        80,
+        70
+      ],
+      "visible": false,
+      "z_index": 3,
+      "sprite": "res://assets/samples/selection_check.svg"
+    },
+    {
+      "id": "mat",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/woven_mat.svg",
+      "position": [
+        1530,
+        900
+      ]
+    },
+    {
+      "id": "mat_zone",
+      "scene": "DropZone",
+      "position": [
+        1530,
+        900
+      ],
+      "hit_size": [
+        260,
+        130
+      ],
+      "accepted_sources": [
+        "stand"
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "stand",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/candlestick.svg",
+      "position": [
+        1530,
+        780
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "return_on_invalid": true,
+          "bounds": [
+            300,
+            580,
+            1310,
+            320
+          ]
+        },
+        "drop_on"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "tray",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/soap_dish.svg",
+      "position": [
+        1530,
+        565
+      ]
+    },
+    {
+      "id": "tray_zone",
+      "scene": "DropZone",
+      "position": [
+        1530,
+        565
+      ],
+      "hit_size": [
+        260,
+        130
+      ],
+      "accepted_sources": [
+        "wind_guard"
+      ],
+      "z_index": 1
+    },
+    {
+      "id": "wind_guard",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/glass_wind_guard.svg",
+      "position": [
+        360,
+        800
+      ],
+      "z_index": 3,
+      "interactions": [
+        {
+          "type": "drag",
+          "return_on_invalid": true,
+          "bounds": [
+            300,
+            580,
+            1310,
+            320
+          ]
+        },
+        "drop_on"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "glass_sparkle",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/camera_flash.svg",
+      "position": [
+        1550,
+        555
+      ],
+      "scale": [
+        0.35,
+        0.35
+      ],
+      "visible": false,
+      "z_index": 5
+    }
+  ],
+  "rules": [
+    {
+      "id": "place_stand",
+      "event": "drop_on",
+      "source": "stand",
+      "actions": [
+        {
+          "type": "move",
+          "target": "stand",
+          "position": [
+            1530,
+            875
+          ]
+        }
+      ],
+      "target": "mat_zone",
+      "once": false
+    },
+    {
+      "id": "place_guard",
+      "event": "drop_on",
+      "source": "wind_guard",
+      "actions": [
+        {
+          "type": "move",
+          "target": "wind_guard",
+          "position": [
+            1530,
+            540
+          ]
+        },
+        {
+          "type": "show",
+          "target": "glass_sparkle"
+        },
+        {
+          "type": "play_animation",
+          "target": "glass_sparkle",
+          "animation": "chapter_two/flash",
+          "wait": false
+        }
+      ],
+      "target": "tray_zone",
+      "once": false
+    },
+    {
+      "id": "extinguish_flame_1",
+      "event": "swipe",
+      "source": "flame_1",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "flame_1"
+        },
+        {
+          "type": "set_state",
+          "target": "flame_1",
+          "key": "extinguished",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "flames_out",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "flame_1",
+          "key": "extinguished",
+          "operator": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "extinguish_candle_1",
+      "event": "swipe",
+      "source": "candle_1",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "flame_1"
+        },
+        {
+          "type": "set_state",
+          "target": "flame_1",
+          "key": "extinguished",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "flames_out",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "flame_1",
+          "key": "extinguished",
+          "operator": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "extinguish_flame_2",
+      "event": "swipe",
+      "source": "flame_2",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "flame_2"
+        },
+        {
+          "type": "set_state",
+          "target": "flame_2",
+          "key": "extinguished",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "flames_out",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "flame_2",
+          "key": "extinguished",
+          "operator": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "extinguish_candle_2",
+      "event": "swipe",
+      "source": "candle_2",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "flame_2"
+        },
+        {
+          "type": "set_state",
+          "target": "flame_2",
+          "key": "extinguished",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "flames_out",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "flame_2",
+          "key": "extinguished",
+          "operator": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "count_body_1",
+      "event": "tap",
+      "source": "candle_1",
+      "actions": [
+        {
+          "type": "show",
+          "target": "selected_1"
+        },
+        {
+          "type": "set_state",
+          "target": "candle_1",
+          "key": "selected",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "bodies_selected",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flames_out",
+          "operator": "eq",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "count_body_2",
+      "event": "tap",
+      "source": "candle_2",
+      "actions": [
+        {
+          "type": "show",
+          "target": "selected_2"
+        },
+        {
+          "type": "set_state",
+          "target": "candle_2",
+          "key": "selected",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "bodies_selected",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flames_out",
+          "operator": "eq",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "count_body_3",
+      "event": "tap",
+      "source": "candle_3",
+      "actions": [
+        {
+          "type": "show",
+          "target": "selected_3"
+        },
+        {
+          "type": "set_state",
+          "target": "candle_3",
+          "key": "selected",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "bodies_selected",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flames_out",
+          "operator": "eq",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "count_body_4",
+      "event": "tap",
+      "source": "candle_4",
+      "actions": [
+        {
+          "type": "show",
+          "target": "selected_4"
+        },
+        {
+          "type": "set_state",
+          "target": "candle_4",
+          "key": "selected",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "bodies_selected",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flames_out",
+          "operator": "eq",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "count_body_5",
+      "event": "tap",
+      "source": "candle_5",
+      "actions": [
+        {
+          "type": "show",
+          "target": "selected_5"
+        },
+        {
+          "type": "set_state",
+          "target": "candle_5",
+          "key": "selected",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "bodies_selected",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flames_out",
+          "operator": "eq",
+          "value": 2
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "all",
+    "conditions": [
+      {
+        "type": "variable",
+        "name": "flames_out",
+        "operator": "eq",
+        "value": 2
+      },
+      {
+        "type": "variable",
+        "name": "bodies_selected",
+        "operator": "eq",
+        "value": 5
+      },
+      {
+        "type": "object_state",
+        "target": "candle_1",
+        "key": "selected",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "object_state",
+        "target": "candle_2",
+        "key": "selected",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "object_state",
+        "target": "candle_3",
+        "key": "selected",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "object_state",
+        "target": "candle_4",
+        "key": "selected",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "object_state",
+        "target": "candle_5",
+        "key": "selected",
+        "operator": "eq",
+        "value": true
+      }
+    ]
+  }
+}

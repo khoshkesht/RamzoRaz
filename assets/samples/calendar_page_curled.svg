@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="420" viewBox="0 0 600 420">
+  <defs>
+    <linearGradient id="curl" x1="0" y1="1" x2="1" y2="0">
+      <stop stop-color="#d7c5a6"/>
+      <stop offset=".5" stop-color="#fff9eb"/>
+      <stop offset="1" stop-color="#f2e3c7"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#48575d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M24 381 58 33H541L577 381Z" fill="#947759"/>
+    <rect x="18" y="27" width="571" height="366" rx="17" fill="#e8d7b7"/>
+    <path d="M28 18H572Q589 18 589 35V302Q574 348 526 386H28Q11 386 11 369V35Q11 18 28 18Z" fill="#fff4dd"/>
+    <rect x="11" y="18" width="578" height="81" rx="17" fill="#86b1ae"/>
+    <path d="M70 125H530V345H70ZM70 180H530M70 235H530M70 290H530M135 125V345M201 125V345M267 125V345M333 125V345M399 125V345M465 125V345" fill="none" stroke="#dbc6a2" stroke-width="3"/>
+    <path d="M535 337Q554 355 531 383Q571 365 589 314" fill="#8b775c" fill-opacity=".18" stroke="none"/>
+    <path d="M589 302Q569 333 533 326Q546 355 526 386Q574 353 589 302Z" fill="url(#curl)"/>
+    <path d="M540 333Q553 338 565 330" fill="none" stroke="#fffdf4" stroke-width="3"/>
+    <path d="M80 8V37M180 8V37M300 8V37M420 8V37M520 8V37" stroke="#557c7b" stroke-width="10"/>
+  </g>
+</svg>

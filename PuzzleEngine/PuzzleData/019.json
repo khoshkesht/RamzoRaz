@@ -1,0 +1,713 @@
+{
+  "schema_version": 1,
+  "background": "res://assets/samples/room_lighting.svg",
+  "success": {
+    "result_delay_seconds": 2
+  },
+  "id": 19,
+  "question": "آن چیست که هرچه بیشتر باشد، کمتر می‌بینی؟",
+  "hint": "پرده را بکش تا بسته شود و هر دو چراغ را خاموش کن.",
+  "answer": "تاریکی؛ وقتی نور پنجره و هر دو چراغ حذف شود، دیدن اشیا سخت‌تر می‌شود.",
+  "time_limit_seconds": 65,
+  "base_score": 80,
+  "variables": {
+    "light_changes": 0
+  },
+  "objects": [
+    {
+      "id": "window",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/window_daylight.svg",
+      "position": [
+        700,
+        665
+      ]
+    },
+    {
+      "id": "curtain",
+      "scene": "DraggableObject",
+      "sprite": "res://assets/samples/curtains_open.svg",
+      "position": [
+        700,
+        665
+      ],
+      "z_index": 2,
+      "hit_size": [
+        380,
+        270
+      ],
+      "state": {
+        "closed": false
+      },
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            290,
+            610,
+            1280,
+            280
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lamp_a",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/lamp_on.svg",
+      "position": [
+        1150,
+        670
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "off": false
+      }
+    },
+    {
+      "id": "lamp_b",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/lamp_on.svg",
+      "position": [
+        1460,
+        670
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "off": false
+      }
+    },
+    {
+      "id": "dim",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/room_shade_1.svg",
+      "position": [
+        960,
+        745
+      ],
+      "visible": false,
+      "z_index": 5
+    },
+    {
+      "id": "sunglasses",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/sunglasses.svg",
+      "position": [
+        450,
+        880
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "z_index": 6
+    },
+    {
+      "id": "light_a",
+      "scene": "TextObject",
+      "text": "چراغ ۱",
+      "text_color": "#364D55",
+      "position": [
+        1150,
+        860
+      ],
+      "hit_size": [
+        200,
+        60
+      ],
+      "z_index": 7
+    },
+    {
+      "id": "light_b",
+      "scene": "TextObject",
+      "text": "چراغ ۲",
+      "text_color": "#364D55",
+      "position": [
+        1460,
+        860
+      ],
+      "hit_size": [
+        200,
+        60
+      ],
+      "z_index": 7
+    },
+    {
+      "id": "light_tag_a",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/age_six.svg",
+      "position": [
+        1150,
+        860
+      ],
+      "scale": [
+        2,
+        0.5
+      ],
+      "z_index": 6
+    },
+    {
+      "id": "light_tag_b",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/age_six.svg",
+      "position": [
+        1460,
+        860
+      ],
+      "scale": [
+        2,
+        0.5
+      ],
+      "z_index": 6
+    }
+  ],
+  "rules": [
+    {
+      "id": "dark_glasses",
+      "event": "tap",
+      "source": "sunglasses",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "sunglasses",
+          "sprite": "res://assets/samples/sunglasses_dark.svg"
+        },
+        {
+          "type": "play_animation",
+          "target": "sunglasses",
+          "animation": "tilt",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "dim_curtain_2",
+      "event": "drag_end",
+      "source": "curtain",
+      "actions": [
+        {
+          "type": "move",
+          "target": "curtain",
+          "position": [
+            700,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "curtain",
+          "sprite": "res://assets/samples/curtains_closed.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "dim",
+          "sprite": "res://assets/samples/room_shade_3.svg"
+        },
+        {
+          "type": "show",
+          "target": "dim"
+        },
+        {
+          "type": "set_state",
+          "target": "curtain",
+          "key": "closed",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "light_changes",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "light_changes",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "object_state",
+          "target": "curtain",
+          "key": "closed",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "moved_distance_at_least",
+          "value": 180
+        }
+      ]
+    },
+    {
+      "id": "dim_curtain_1",
+      "event": "drag_end",
+      "source": "curtain",
+      "actions": [
+        {
+          "type": "move",
+          "target": "curtain",
+          "position": [
+            700,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "curtain",
+          "sprite": "res://assets/samples/curtains_closed.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "dim",
+          "sprite": "res://assets/samples/room_shade_2.svg"
+        },
+        {
+          "type": "show",
+          "target": "dim"
+        },
+        {
+          "type": "set_state",
+          "target": "curtain",
+          "key": "closed",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "light_changes",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "light_changes",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "object_state",
+          "target": "curtain",
+          "key": "closed",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "moved_distance_at_least",
+          "value": 180
+        }
+      ]
+    },
+    {
+      "id": "dim_curtain_0",
+      "event": "drag_end",
+      "source": "curtain",
+      "actions": [
+        {
+          "type": "move",
+          "target": "curtain",
+          "position": [
+            700,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "curtain",
+          "sprite": "res://assets/samples/curtains_closed.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "dim",
+          "sprite": "res://assets/samples/room_shade_1.svg"
+        },
+        {
+          "type": "show",
+          "target": "dim"
+        },
+        {
+          "type": "set_state",
+          "target": "curtain",
+          "key": "closed",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "light_changes",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "light_changes",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "object_state",
+          "target": "curtain",
+          "key": "closed",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "moved_distance_at_least",
+          "value": 180
+        }
+      ]
+    },
+    {
+      "id": "dim_lamp_a_2",
+      "event": "tap",
+      "source": "lamp_a",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp_a",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "dim",
+          "sprite": "res://assets/samples/room_shade_3.svg"
+        },
+        {
+          "type": "show",
+          "target": "dim"
+        },
+        {
+          "type": "set_state",
+          "target": "lamp_a",
+          "key": "off",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "light_changes",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "light_changes",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "object_state",
+          "target": "lamp_a",
+          "key": "off",
+          "operator": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "dim_lamp_a_1",
+      "event": "tap",
+      "source": "lamp_a",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp_a",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "dim",
+          "sprite": "res://assets/samples/room_shade_2.svg"
+        },
+        {
+          "type": "show",
+          "target": "dim"
+        },
+        {
+          "type": "set_state",
+          "target": "lamp_a",
+          "key": "off",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "light_changes",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "light_changes",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "object_state",
+          "target": "lamp_a",
+          "key": "off",
+          "operator": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "dim_lamp_a_0",
+      "event": "tap",
+      "source": "lamp_a",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp_a",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "dim",
+          "sprite": "res://assets/samples/room_shade_1.svg"
+        },
+        {
+          "type": "show",
+          "target": "dim"
+        },
+        {
+          "type": "set_state",
+          "target": "lamp_a",
+          "key": "off",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "light_changes",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "light_changes",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "object_state",
+          "target": "lamp_a",
+          "key": "off",
+          "operator": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "dim_lamp_b_2",
+      "event": "tap",
+      "source": "lamp_b",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp_b",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "dim",
+          "sprite": "res://assets/samples/room_shade_3.svg"
+        },
+        {
+          "type": "show",
+          "target": "dim"
+        },
+        {
+          "type": "set_state",
+          "target": "lamp_b",
+          "key": "off",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "light_changes",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "light_changes",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "object_state",
+          "target": "lamp_b",
+          "key": "off",
+          "operator": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "dim_lamp_b_1",
+      "event": "tap",
+      "source": "lamp_b",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp_b",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "dim",
+          "sprite": "res://assets/samples/room_shade_2.svg"
+        },
+        {
+          "type": "show",
+          "target": "dim"
+        },
+        {
+          "type": "set_state",
+          "target": "lamp_b",
+          "key": "off",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "light_changes",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "light_changes",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "object_state",
+          "target": "lamp_b",
+          "key": "off",
+          "operator": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "dim_lamp_b_0",
+      "event": "tap",
+      "source": "lamp_b",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp_b",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "dim",
+          "sprite": "res://assets/samples/room_shade_1.svg"
+        },
+        {
+          "type": "show",
+          "target": "dim"
+        },
+        {
+          "type": "set_state",
+          "target": "lamp_b",
+          "key": "off",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "light_changes",
+          "operation": "increment",
+          "value": 1
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "light_changes",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "object_state",
+          "target": "lamp_b",
+          "key": "off",
+          "operator": "eq",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "return_curtain",
+      "event": "drag_end",
+      "source": "curtain",
+      "actions": [
+        {
+          "type": "move",
+          "target": "curtain",
+          "position": [
+            700,
+            665
+          ]
+        }
+      ],
+      "once": false,
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "curtain",
+          "key": "closed",
+          "operator": "eq",
+          "value": false
+        }
+      ]
+    }
+  ],
+  "win_condition": {
+    "type": "all",
+    "conditions": [
+      {
+        "type": "variable",
+        "name": "light_changes",
+        "operator": "eq",
+        "value": 3
+      },
+      {
+        "type": "object_state",
+        "target": "curtain",
+        "key": "closed",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "object_state",
+        "target": "lamp_a",
+        "key": "off",
+        "operator": "eq",
+        "value": true
+      },
+      {
+        "type": "object_state",
+        "target": "lamp_b",
+        "key": "off",
+        "operator": "eq",
+        "value": true
+      }
+    ]
+  }
+}
