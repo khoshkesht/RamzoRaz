@@ -6,7 +6,7 @@
   "answer": "38",
   "time_limit_seconds": 110,
   "base_score": 140,
-  "background": "res://assets/samples/bright_room.svg",
+  "background": "res://assets/samples/grid_notebook_background.svg",
   "success": {
     "result_delay_seconds": 1.0
   },

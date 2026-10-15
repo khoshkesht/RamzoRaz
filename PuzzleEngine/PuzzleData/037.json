@@ -6,7 +6,7 @@
   "answer": "قالیچه روی دریچه",
   "time_limit_seconds": 90,
   "base_score": 120,
-  "background": "res://assets/samples/bright_room.svg",
+  "background": "res://assets/samples/room_overhead_background.svg",
   "success": {
     "result_delay_seconds": 1.0
   },

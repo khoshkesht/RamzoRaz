@@ -6,7 +6,7 @@
   "answer": "دوشنبه",
   "time_limit_seconds": 105,
   "base_score": 140,
-  "background": "res://assets/samples/bright_room.svg",
+  "background": "res://assets/samples/calendar_desk_background_light.svg",
   "success": {
     "result_delay_seconds": 1.0
   },

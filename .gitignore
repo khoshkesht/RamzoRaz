@@ -28,3 +28,4 @@ tools/android/*
 !/tests/test_chapter_four.gd
 !/tests/test_chapter_four.gd.uid
 !/tools/author_chapter_four.py
+!/tools/author_chapter_four_backgrounds.py

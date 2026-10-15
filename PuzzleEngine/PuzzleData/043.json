@@ -2,18 +2,19 @@
   "schema_version": 1,
   "id": 43,
   "question": "با ظرف‌های ۵ و ۳ لیتری دقیقاً ۴ لیتر بساز.",
-  "hint": "ظرف‌ها را روی شیر، تخلیه یا ظرف دیگر بگذار؛ انتقال تا پرشدن مقصد یا خالی‌شدن مبدأ است.",
+  "hint": "۵ لیتری را پر کن و با آن ۳ لیتری را پر کن. ۳ لیتری را خالی کن و ۲ لیترِ باقی‌مانده را در آن بریز. دوباره ۵ لیتری را پر کن؛ حالا برای پرکردن ۳ لیتری فقط ۱ لیتر لازم است.",
   "answer": "۴ لیتر در ظرف ۵ لیتری",
   "time_limit_seconds": 130,
   "base_score": 155,
-  "background": "res://assets/samples/bright_room.svg",
+  "background": "res://assets/samples/kitchen_counter_background_light.svg",
   "success": {
-    "result_delay_seconds": 1.0
+    "result_delay_seconds": 1
   },
   "variables": {
     "solved": false,
     "five": 0,
     "three": 0,
+    "selected": "",
     "next_five": 0,
     "next_three": 0,
     "transferred": false
@@ -22,7 +23,7 @@
     {
       "id": "instructions",
       "scene": "TextObject",
-      "text": "ریختن: تا پرشدن ظرف مقصد یا خالی‌شدن ظرف مبدأ ادامه دارد.",
+      "text": "۱. ظرف را لمس کن. ۲. دکمهٔ پرکردن، خالی‌کردن یا ریختن را بزن.",
       "position": [
         960,
         350
@@ -35,157 +36,226 @@
       "interactions": []
     },
     {
+      "id": "choose_first",
+      "scene": "TextObject",
+      "text": "اول یکی از دو ظرف را لمس کن.",
+      "position": [
+        960,
+        1035
+      ],
+      "hit_size": [
+        1500,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "filled",
+      "scene": "TextObject",
+      "text": "ظرف انتخاب‌شده از شیر پر شد.",
+      "position": [
+        960,
+        1035
+      ],
+      "hit_size": [
+        1500,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "emptied",
+      "scene": "TextObject",
+      "text": "ظرف انتخاب‌شده خالی شد.",
+      "position": [
+        960,
+        1035
+      ],
+      "hit_size": [
+        1500,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "poured",
+      "scene": "TextObject",
+      "text": "آب تا پرشدن ظرف دیگر یا خالی‌شدن ظرف انتخابی ریخته شد.",
+      "position": [
+        960,
+        1035
+      ],
+      "hit_size": [
+        1500,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "source_empty",
+      "scene": "TextObject",
+      "text": "ظرف انتخاب‌شده خالی است؛ اول آن را پر کن.",
+      "position": [
+        960,
+        1035
+      ],
+      "hit_size": [
+        1500,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "destination_full",
+      "scene": "TextObject",
+      "text": "ظرف دیگر پر است؛ اول آن را خالی کن.",
+      "position": [
+        960,
+        1035
+      ],
+      "hit_size": [
+        1500,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "already_full",
+      "scene": "TextObject",
+      "text": "ظرف انتخاب‌شده از قبل پر است.",
+      "position": [
+        960,
+        1035
+      ],
+      "hit_size": [
+        1500,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "already_empty",
+      "scene": "TextObject",
+      "text": "ظرف انتخاب‌شده از قبل خالی است.",
+      "position": [
+        960,
+        1035
+      ],
+      "hit_size": [
+        1500,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "invalid_measure",
+      "scene": "TextObject",
+      "text": "خط‌های این پیمانه معتبر نیست؛ از دو ظرف اصلی استفاده کن.",
+      "position": [
+        960,
+        1035
+      ],
+      "hit_size": [
+        1500,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "height_only",
+      "scene": "TextObject",
+      "text": "خط‌کش ارتفاع را نشان می‌دهد؛ حجم با ارتفاع یکی نیست.",
+      "position": [
+        960,
+        1035
+      ],
+      "hit_size": [
+        1500,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "five_title",
+      "scene": "TextObject",
+      "text": "ظرف ۵ لیتری",
+      "position": [
+        680,
+        450
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
       "id": "five",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/water_jug.svg",
+      "sprite": "res://assets/samples/measuring_jug_5_0.svg",
       "position": [
-        650,
-        720
+        680,
+        630
       ],
       "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            450
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "z_index": 5
-    },
-    {
-      "id": "three",
-      "scene": "ClickableObject",
-      "sprite": "res://assets/samples/water_jug.svg",
-      "position": [
-        1250,
-        720
-      ],
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            450
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "z_index": 5,
-      "scale": [
-        0.75,
-        0.75
+        "tap"
       ]
     },
     {
-      "id": "five_zone",
-      "scene": "DropZone",
-      "position": [
-        650,
-        720
-      ],
-      "hit_size": [
-        260,
-        150
-      ],
-      "accepted_sources": [
-        "three"
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "three_zone",
-      "scene": "DropZone",
-      "position": [
-        1250,
-        720
-      ],
-      "hit_size": [
-        260,
-        150
-      ],
-      "accepted_sources": [
-        "five"
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "tap",
+      "id": "five_selected",
       "scene": "ImageObject",
-      "sprite": "res://assets/samples/water_drops.svg",
+      "sprite": "res://assets/samples/selection_check.svg",
       "position": [
-        470,
-        490
+        495,
+        520
       ],
       "interactions": [],
-      "scale": [
-        0.6,
-        0.6
-      ]
+      "visible": false
     },
     {
-      "id": "tap_zone",
-      "scene": "DropZone",
+      "id": "five_selected_label",
+      "scene": "TextObject",
+      "text": "انتخاب‌شده",
       "position": [
-        470,
-        490
+        680,
+        870
       ],
       "hit_size": [
-        260,
-        150
+        300,
+        50
       ],
-      "accepted_sources": [
-        "five",
-        "three",
-        "measure"
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "drain",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/hole.svg",
-      "position": [
-        1450,
-        490
-      ],
+      "text_color": "#354f54",
       "interactions": [],
-      "scale": [
-        0.6,
-        0.6
-      ]
-    },
-    {
-      "id": "drain_zone",
-      "scene": "DropZone",
-      "position": [
-        1450,
-        490
-      ],
-      "hit_size": [
-        260,
-        150
-      ],
-      "accepted_sources": [
-        "five",
-        "three"
-      ],
-      "z_index": -1
+      "visible": false
     },
     {
       "id": "five_reading_0",
       "scene": "TextObject",
-      "text": "۰ / ۵ لیتر",
+      "text": "۰ از ۵ لیتر",
       "position": [
-        650,
-        870
+        680,
+        805
       ],
       "hit_size": [
         300,
@@ -198,10 +268,10 @@
     {
       "id": "five_reading_1",
       "scene": "TextObject",
-      "text": "۱ / ۵ لیتر",
+      "text": "۱ از ۵ لیتر",
       "position": [
-        650,
-        870
+        680,
+        805
       ],
       "hit_size": [
         300,
@@ -214,10 +284,10 @@
     {
       "id": "five_reading_2",
       "scene": "TextObject",
-      "text": "۲ / ۵ لیتر",
+      "text": "۲ از ۵ لیتر",
       "position": [
-        650,
-        870
+        680,
+        805
       ],
       "hit_size": [
         300,
@@ -230,10 +300,10 @@
     {
       "id": "five_reading_3",
       "scene": "TextObject",
-      "text": "۳ / ۵ لیتر",
+      "text": "۳ از ۵ لیتر",
       "position": [
-        650,
-        870
+        680,
+        805
       ],
       "hit_size": [
         300,
@@ -246,10 +316,10 @@
     {
       "id": "five_reading_4",
       "scene": "TextObject",
-      "text": "۴ / ۵ لیتر",
+      "text": "۴ از ۵ لیتر",
       "position": [
-        650,
-        870
+        680,
+        805
       ],
       "hit_size": [
         300,
@@ -262,10 +332,10 @@
     {
       "id": "five_reading_5",
       "scene": "TextObject",
-      "text": "۵ / ۵ لیتر",
+      "text": "۵ از ۵ لیتر",
       "position": [
-        650,
-        870
+        680,
+        805
       ],
       "hit_size": [
         300,
@@ -276,12 +346,66 @@
       "visible": false
     },
     {
+      "id": "three_title",
+      "scene": "TextObject",
+      "text": "ظرف ۳ لیتری",
+      "position": [
+        1220,
+        450
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "three",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/measuring_jug_3_0.svg",
+      "position": [
+        1220,
+        630
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "three_selected",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/selection_check.svg",
+      "position": [
+        1035,
+        520
+      ],
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "three_selected_label",
+      "scene": "TextObject",
+      "text": "انتخاب‌شده",
+      "position": [
+        1220,
+        870
+      ],
+      "hit_size": [
+        300,
+        50
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
       "id": "three_reading_0",
       "scene": "TextObject",
-      "text": "۰ / ۳ لیتر",
+      "text": "۰ از ۳ لیتر",
       "position": [
-        1250,
-        870
+        1220,
+        805
       ],
       "hit_size": [
         300,
@@ -294,10 +418,10 @@
     {
       "id": "three_reading_1",
       "scene": "TextObject",
-      "text": "۱ / ۳ لیتر",
+      "text": "۱ از ۳ لیتر",
       "position": [
-        1250,
-        870
+        1220,
+        805
       ],
       "hit_size": [
         300,
@@ -310,10 +434,10 @@
     {
       "id": "three_reading_2",
       "scene": "TextObject",
-      "text": "۲ / ۳ لیتر",
+      "text": "۲ از ۳ لیتر",
       "position": [
-        1250,
-        870
+        1220,
+        805
       ],
       "hit_size": [
         300,
@@ -326,10 +450,10 @@
     {
       "id": "three_reading_3",
       "scene": "TextObject",
-      "text": "۳ / ۳ لیتر",
+      "text": "۳ از ۳ لیتر",
       "position": [
-        1250,
-        870
+        1220,
+        805
       ],
       "hit_size": [
         300,
@@ -338,6 +462,134 @@
       "text_color": "#354f54",
       "interactions": [],
       "visible": false
+    },
+    {
+      "id": "fill",
+      "scene": "TextObject",
+      "text": "پرکردن از شیر",
+      "position": [
+        500,
+        960
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "empty",
+      "scene": "TextObject",
+      "text": "خالی‌کردن",
+      "position": [
+        960,
+        960
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "pour",
+      "scene": "TextObject",
+      "text": "ریختن در ظرف دیگر",
+      "position": [
+        1420,
+        960
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "tap",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/faucet_fill.svg",
+      "position": [
+        300,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "id": "tap_zone",
+      "scene": "DropZone",
+      "position": [
+        300,
+        540
+      ],
+      "hit_size": [
+        200,
+        160
+      ],
+      "accepted_sources": [
+        "measure"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "tap_label",
+      "scene": "TextObject",
+      "text": "شیر آب",
+      "position": [
+        300,
+        665
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "drain",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/sink_drain.svg",
+      "position": [
+        1660,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "id": "drain_label",
+      "scene": "TextObject",
+      "text": "تخلیه",
+      "position": [
+        1660,
+        665
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
     },
     {
       "id": "measure",
@@ -371,7 +623,7 @@
       "scene": "ClickableObject",
       "sprite": "res://assets/samples/height_ruler.svg",
       "position": [
-        1600,
+        1660,
         800
       ],
       "interactions": [
@@ -386,54 +638,77 @@
   "rules": [
     {
       "id": "r0000",
-      "event": "drop_on",
+      "event": "tap",
       "source": "five",
       "conditions": [],
       "actions": [
         {
           "type": "set_variable",
-          "name": "five",
-          "value": 5,
+          "name": "selected",
+          "value": "five",
           "operation": "assign"
         },
         {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
+          "type": "show",
+          "target": "five_selected"
+        },
+        {
+          "type": "show",
+          "target": "five_selected_label"
+        },
+        {
+          "type": "hide",
+          "target": "three_selected"
+        },
+        {
+          "type": "hide",
+          "target": "three_selected_label"
+        },
+        {
+          "type": "hide",
+          "target": "choose_first"
+        },
+        {
+          "type": "hide",
+          "target": "filled"
+        },
+        {
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
         }
       ],
-      "once": false,
-      "target": "tap_zone"
+      "once": false
     },
     {
       "id": "r0001",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "drain_zone"
-    },
-    {
-      "id": "r0002",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -445,6 +720,11 @@
         }
       ],
       "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "five",
+          "sprite": "res://assets/samples/measuring_jug_5_0.svg"
+        },
         {
           "type": "hide",
           "target": "five_reading_0"
@@ -472,6 +752,55 @@
         {
           "type": "show",
           "target": "five_reading_0"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "five",
+          "sprite": "res://assets/samples/measuring_jug_5_1.svg"
+        },
+        {
+          "type": "hide",
+          "target": "five_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "five_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "five_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "five_reading_3"
+        },
+        {
+          "type": "hide",
+          "target": "five_reading_4"
+        },
+        {
+          "type": "hide",
+          "target": "five_reading_5"
+        },
+        {
+          "type": "show",
+          "target": "five_reading_1"
         }
       ],
       "once": false
@@ -485,10 +814,15 @@
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 1
+          "value": 2
         }
       ],
       "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "five",
+          "sprite": "res://assets/samples/measuring_jug_5_2.svg"
+        },
         {
           "type": "hide",
           "target": "five_reading_0"
@@ -515,7 +849,7 @@
         },
         {
           "type": "show",
-          "target": "five_reading_1"
+          "target": "five_reading_2"
         }
       ],
       "once": false
@@ -529,10 +863,15 @@
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 2
+          "value": 3
         }
       ],
       "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "five",
+          "sprite": "res://assets/samples/measuring_jug_5_3.svg"
+        },
         {
           "type": "hide",
           "target": "five_reading_0"
@@ -559,7 +898,7 @@
         },
         {
           "type": "show",
-          "target": "five_reading_2"
+          "target": "five_reading_3"
         }
       ],
       "once": false
@@ -573,10 +912,15 @@
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 3
+          "value": 4
         }
       ],
       "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "five",
+          "sprite": "res://assets/samples/measuring_jug_5_4.svg"
+        },
         {
           "type": "hide",
           "target": "five_reading_0"
@@ -603,7 +947,7 @@
         },
         {
           "type": "show",
-          "target": "five_reading_3"
+          "target": "five_reading_4"
         }
       ],
       "once": false
@@ -617,10 +961,15 @@
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 4
+          "value": 5
         }
       ],
       "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "five",
+          "sprite": "res://assets/samples/measuring_jug_5_5.svg"
+        },
         {
           "type": "hide",
           "target": "five_reading_0"
@@ -647,16 +996,22 @@
         },
         {
           "type": "show",
-          "target": "five_reading_4"
+          "target": "five_reading_5"
         }
       ],
       "once": false
     },
     {
       "id": "r0007",
-      "event": "variable_changed",
-      "source": "$level",
+      "event": "tap",
+      "source": "fill",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
         {
           "type": "variable",
           "name": "five",
@@ -667,91 +1022,65 @@
       "actions": [
         {
           "type": "hide",
-          "target": "five_reading_0"
+          "target": "choose_first"
         },
         {
           "type": "hide",
-          "target": "five_reading_1"
+          "target": "filled"
         },
         {
           "type": "hide",
-          "target": "five_reading_2"
+          "target": "emptied"
         },
         {
           "type": "hide",
-          "target": "five_reading_3"
+          "target": "poured"
         },
         {
           "type": "hide",
-          "target": "five_reading_4"
+          "target": "source_empty"
         },
         {
           "type": "hide",
-          "target": "five_reading_5"
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
         },
         {
           "type": "show",
-          "target": "five_reading_5"
+          "target": "already_full"
         }
       ],
       "once": false
     },
     {
       "id": "r0008",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 3,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "tap_zone"
-    },
-    {
-      "id": "r0009",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "drain_zone"
-    },
-    {
-      "id": "r0010",
-      "event": "variable_changed",
-      "source": "$level",
+      "event": "tap",
+      "source": "empty",
       "conditions": [
         {
           "type": "variable",
-          "name": "three",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
+        {
+          "type": "variable",
+          "name": "five",
           "operator": "eq",
           "value": 0
         }
@@ -759,101 +1088,529 @@
       "actions": [
         {
           "type": "hide",
-          "target": "three_reading_0"
+          "target": "choose_first"
         },
         {
           "type": "hide",
-          "target": "three_reading_1"
+          "target": "filled"
         },
         {
           "type": "hide",
-          "target": "three_reading_2"
+          "target": "emptied"
         },
         {
           "type": "hide",
-          "target": "three_reading_3"
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
         },
         {
           "type": "show",
-          "target": "three_reading_0"
+          "target": "already_empty"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0009",
+      "event": "tap",
+      "source": "fill",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "lt",
+          "value": 5
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "five",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "choose_first"
+        },
+        {
+          "type": "hide",
+          "target": "filled"
+        },
+        {
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "filled"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0010",
+      "event": "tap",
+      "source": "empty",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "gt",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "five",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "choose_first"
+        },
+        {
+          "type": "hide",
+          "target": "filled"
+        },
+        {
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "emptied"
         }
       ],
       "once": false
     },
     {
       "id": "r0011",
-      "event": "variable_changed",
-      "source": "$level",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
-          "name": "three",
+          "name": "selected",
           "operator": "eq",
-          "value": 1
+          "value": "five"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 0
         }
       ],
       "actions": [
         {
           "type": "hide",
-          "target": "three_reading_0"
+          "target": "choose_first"
         },
         {
           "type": "hide",
-          "target": "three_reading_1"
+          "target": "filled"
         },
         {
           "type": "hide",
-          "target": "three_reading_2"
+          "target": "emptied"
         },
         {
           "type": "hide",
-          "target": "three_reading_3"
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
         },
         {
           "type": "show",
-          "target": "three_reading_1"
+          "target": "source_empty"
         }
       ],
       "once": false
     },
     {
       "id": "r0012",
-      "event": "variable_changed",
-      "source": "$level",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "gt",
+          "value": 0
+        },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 2
+          "value": 3
         }
       ],
       "actions": [
         {
           "type": "hide",
-          "target": "three_reading_0"
+          "target": "choose_first"
         },
         {
           "type": "hide",
-          "target": "three_reading_1"
+          "target": "filled"
         },
         {
           "type": "hide",
-          "target": "three_reading_2"
+          "target": "emptied"
         },
         {
           "type": "hide",
-          "target": "three_reading_3"
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
         },
         {
           "type": "show",
-          "target": "three_reading_2"
+          "target": "destination_full"
         }
       ],
       "once": false
     },
     {
       "id": "r0013",
+      "event": "tap",
+      "source": "three",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": "three",
+          "operation": "assign"
+        },
+        {
+          "type": "show",
+          "target": "three_selected"
+        },
+        {
+          "type": "show",
+          "target": "three_selected_label"
+        },
+        {
+          "type": "hide",
+          "target": "five_selected"
+        },
+        {
+          "type": "hide",
+          "target": "five_selected_label"
+        },
+        {
+          "type": "hide",
+          "target": "choose_first"
+        },
+        {
+          "type": "hide",
+          "target": "filled"
+        },
+        {
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0014",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "three",
+          "sprite": "res://assets/samples/measuring_jug_3_0.svg"
+        },
+        {
+          "type": "hide",
+          "target": "three_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "three_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "three_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "three_reading_3"
+        },
+        {
+          "type": "show",
+          "target": "three_reading_0"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0015",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "three",
+          "sprite": "res://assets/samples/measuring_jug_3_1.svg"
+        },
+        {
+          "type": "hide",
+          "target": "three_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "three_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "three_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "three_reading_3"
+        },
+        {
+          "type": "show",
+          "target": "three_reading_1"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0016",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "three",
+          "sprite": "res://assets/samples/measuring_jug_3_2.svg"
+        },
+        {
+          "type": "hide",
+          "target": "three_reading_0"
+        },
+        {
+          "type": "hide",
+          "target": "three_reading_1"
+        },
+        {
+          "type": "hide",
+          "target": "three_reading_2"
+        },
+        {
+          "type": "hide",
+          "target": "three_reading_3"
+        },
+        {
+          "type": "show",
+          "target": "three_reading_2"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0017",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -865,6 +1622,11 @@
         }
       ],
       "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "three",
+          "sprite": "res://assets/samples/measuring_jug_3_3.svg"
+        },
         {
           "type": "hide",
           "target": "three_reading_0"
@@ -889,632 +1651,621 @@
       "once": false
     },
     {
-      "id": "r0014",
-      "event": "drop_on",
-      "source": "three",
+      "id": "r0018",
+      "event": "tap",
+      "source": "fill",
       "conditions": [
         {
           "type": "variable",
-          "name": "five",
+          "name": "selected",
           "operator": "eq",
-          "value": 0
-        },
-        {
-          "type": "variable",
-          "name": "three",
-          "operator": "eq",
-          "value": 1
-        },
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "next_five",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "next_three",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0015",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "five",
-          "operator": "eq",
-          "value": 0
-        },
-        {
-          "type": "variable",
-          "name": "three",
-          "operator": "eq",
-          "value": 2
-        },
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "next_five",
-          "value": 2,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "next_three",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0016",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "five",
-          "operator": "eq",
-          "value": 0
+          "value": "three"
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
           "value": 3
-        },
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": false
         }
       ],
       "actions": [
         {
-          "type": "set_variable",
-          "name": "next_five",
-          "value": 3,
-          "operation": "assign"
+          "type": "hide",
+          "target": "choose_first"
         },
         {
-          "type": "set_variable",
-          "name": "next_three",
-          "value": 0,
-          "operation": "assign"
+          "type": "hide",
+          "target": "filled"
         },
         {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "already_full"
         }
       ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0017",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "five",
-          "operator": "eq",
-          "value": 1
-        },
-        {
-          "type": "variable",
-          "name": "three",
-          "operator": "eq",
-          "value": 0
-        },
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "next_five",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "next_three",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0018",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "five",
-          "operator": "eq",
-          "value": 1
-        },
-        {
-          "type": "variable",
-          "name": "three",
-          "operator": "eq",
-          "value": 1
-        },
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "next_five",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "next_three",
-          "value": 2,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0019",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "empty",
       "conditions": [
         {
           "type": "variable",
-          "name": "five",
+          "name": "selected",
           "operator": "eq",
-          "value": 1
+          "value": "three"
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 1
-        },
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": false
+          "value": 0
         }
       ],
       "actions": [
         {
-          "type": "set_variable",
-          "name": "next_five",
-          "value": 2,
-          "operation": "assign"
+          "type": "hide",
+          "target": "choose_first"
         },
         {
-          "type": "set_variable",
-          "name": "next_three",
-          "value": 0,
-          "operation": "assign"
+          "type": "hide",
+          "target": "filled"
         },
         {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "already_empty"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0020",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "fill",
       "conditions": [
         {
           "type": "variable",
-          "name": "five",
+          "name": "selected",
           "operator": "eq",
-          "value": 1
+          "value": "three"
         },
         {
           "type": "variable",
           "name": "three",
-          "operator": "eq",
-          "value": 2
-        },
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": false
+          "operator": "lt",
+          "value": 3
         }
       ],
       "actions": [
         {
           "type": "set_variable",
-          "name": "next_five",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "next_three",
+          "name": "three",
           "value": 3,
           "operation": "assign"
         },
         {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
+          "type": "hide",
+          "target": "choose_first"
+        },
+        {
+          "type": "hide",
+          "target": "filled"
+        },
+        {
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "filled"
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0021",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "empty",
       "conditions": [
         {
           "type": "variable",
-          "name": "five",
+          "name": "selected",
           "operator": "eq",
-          "value": 1
+          "value": "three"
         },
         {
           "type": "variable",
           "name": "three",
-          "operator": "eq",
-          "value": 2
-        },
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": false
+          "operator": "gt",
+          "value": 0
         }
       ],
       "actions": [
         {
           "type": "set_variable",
-          "name": "next_five",
-          "value": 3,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "next_three",
+          "name": "three",
           "value": 0,
           "operation": "assign"
         },
         {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
+          "type": "hide",
+          "target": "choose_first"
+        },
+        {
+          "type": "hide",
+          "target": "filled"
+        },
+        {
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "emptied"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0022",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
-          "name": "five",
+          "name": "selected",
           "operator": "eq",
-          "value": 1
+          "value": "three"
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 3
-        },
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": false
+          "value": 0
         }
       ],
       "actions": [
         {
-          "type": "set_variable",
-          "name": "next_five",
-          "value": 4,
-          "operation": "assign"
+          "type": "hide",
+          "target": "choose_first"
         },
         {
-          "type": "set_variable",
-          "name": "next_three",
-          "value": 0,
-          "operation": "assign"
+          "type": "hide",
+          "target": "filled"
         },
         {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "source_empty"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0023",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
-          "name": "five",
+          "name": "selected",
           "operator": "eq",
-          "value": 2
+          "value": "three"
         },
         {
           "type": "variable",
           "name": "three",
-          "operator": "eq",
+          "operator": "gt",
           "value": 0
         },
         {
           "type": "variable",
-          "name": "transferred",
+          "name": "five",
           "operator": "eq",
-          "value": false
+          "value": 5
         }
       ],
       "actions": [
         {
-          "type": "set_variable",
-          "name": "next_five",
-          "value": 0,
-          "operation": "assign"
+          "type": "hide",
+          "target": "choose_first"
         },
         {
-          "type": "set_variable",
-          "name": "next_three",
-          "value": 2,
-          "operation": "assign"
+          "type": "hide",
+          "target": "filled"
         },
         {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "destination_full"
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0024",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "fill",
       "conditions": [
         {
           "type": "variable",
-          "name": "five",
+          "name": "selected",
           "operator": "eq",
-          "value": 2
-        },
-        {
-          "type": "variable",
-          "name": "three",
-          "operator": "eq",
-          "value": 1
-        },
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": false
+          "value": ""
         }
       ],
       "actions": [
         {
-          "type": "set_variable",
-          "name": "next_five",
-          "value": 0,
-          "operation": "assign"
+          "type": "hide",
+          "target": "choose_first"
         },
         {
-          "type": "set_variable",
-          "name": "next_three",
-          "value": 3,
-          "operation": "assign"
+          "type": "hide",
+          "target": "filled"
         },
         {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "choose_first"
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0025",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "empty",
       "conditions": [
         {
           "type": "variable",
-          "name": "five",
+          "name": "selected",
           "operator": "eq",
-          "value": 2
-        },
-        {
-          "type": "variable",
-          "name": "three",
-          "operator": "eq",
-          "value": 1
-        },
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": false
+          "value": ""
         }
       ],
       "actions": [
         {
-          "type": "set_variable",
-          "name": "next_five",
-          "value": 3,
-          "operation": "assign"
+          "type": "hide",
+          "target": "choose_first"
         },
         {
-          "type": "set_variable",
-          "name": "next_three",
-          "value": 0,
-          "operation": "assign"
+          "type": "hide",
+          "target": "filled"
         },
         {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "choose_first"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0026",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
-          "name": "five",
+          "name": "selected",
           "operator": "eq",
-          "value": 2
-        },
-        {
-          "type": "variable",
-          "name": "three",
-          "operator": "eq",
-          "value": 2
-        },
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": false
+          "value": ""
         }
       ],
       "actions": [
         {
-          "type": "set_variable",
-          "name": "next_five",
-          "value": 1,
-          "operation": "assign"
+          "type": "hide",
+          "target": "choose_first"
         },
         {
-          "type": "set_variable",
-          "name": "next_three",
-          "value": 3,
-          "operation": "assign"
+          "type": "hide",
+          "target": "filled"
         },
         {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": true,
-          "operation": "assign"
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "choose_first"
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0027",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 2
+          "value": 0
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 2
+          "value": 1
         },
         {
           "type": "variable",
@@ -1527,7 +2278,7 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 4,
+          "value": 1,
           "operation": "assign"
         },
         {
@@ -1543,25 +2294,30 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0028",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 2
+          "value": 0
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 3
+          "value": 2
         },
         {
           "type": "variable",
@@ -1574,7 +2330,7 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 5,
+          "value": 2,
           "operation": "assign"
         },
         {
@@ -1590,25 +2346,30 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0029",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 3
+          "value": 0
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 0
+          "value": 3
         },
         {
           "type": "variable",
@@ -1621,13 +2382,13 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 0,
+          "value": 3,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 3,
+          "value": 0,
           "operation": "assign"
         },
         {
@@ -1637,25 +2398,30 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0030",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 3
+          "value": 1
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 1
+          "value": 0
         },
         {
           "type": "variable",
@@ -1668,13 +2434,13 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 1,
+          "value": 0,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 3,
+          "value": 1,
           "operation": "assign"
         },
         {
@@ -1684,19 +2450,24 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0031",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 3
+          "value": 1
         },
         {
           "type": "variable",
@@ -1715,13 +2486,13 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 4,
+          "value": 0,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 0,
+          "value": 2,
           "operation": "assign"
         },
         {
@@ -1731,25 +2502,30 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0032",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 3
+          "value": 1
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 2
+          "value": 1
         },
         {
           "type": "variable",
@@ -1768,7 +2544,7 @@
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 3,
+          "value": 0,
           "operation": "assign"
         },
         {
@@ -1778,19 +2554,24 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0033",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 3
+          "value": 1
         },
         {
           "type": "variable",
@@ -1809,13 +2590,13 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 5,
+          "value": 0,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 0,
+          "value": 3,
           "operation": "assign"
         },
         {
@@ -1825,25 +2606,30 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0034",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 3
+          "value": 1
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 3
+          "value": 2
         },
         {
           "type": "variable",
@@ -1856,13 +2642,13 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 5,
+          "value": 3,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 1,
+          "value": 0,
           "operation": "assign"
         },
         {
@@ -1872,25 +2658,30 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0035",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 4
+          "value": 1
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 0
+          "value": 3
         },
         {
           "type": "variable",
@@ -1903,13 +2694,13 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 1,
+          "value": 4,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 3,
+          "value": 0,
           "operation": "assign"
         },
         {
@@ -1919,25 +2710,30 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0036",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 4
+          "value": 2
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 1
+          "value": 0
         },
         {
           "type": "variable",
@@ -1950,13 +2746,13 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 2,
+          "value": 0,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 3,
+          "value": 2,
           "operation": "assign"
         },
         {
@@ -1966,19 +2762,24 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0037",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 4
+          "value": 2
         },
         {
           "type": "variable",
@@ -1997,13 +2798,13 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 5,
+          "value": 0,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 0,
+          "value": 3,
           "operation": "assign"
         },
         {
@@ -2013,25 +2814,30 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0038",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 4
+          "value": 2
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 2
+          "value": 1
         },
         {
           "type": "variable",
@@ -2050,7 +2856,7 @@
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 3,
+          "value": 0,
           "operation": "assign"
         },
         {
@@ -2060,19 +2866,24 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0039",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 4
+          "value": 2
         },
         {
           "type": "variable",
@@ -2091,13 +2902,13 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 5,
+          "value": 1,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 1,
+          "value": 3,
           "operation": "assign"
         },
         {
@@ -2107,25 +2918,30 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0040",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 4
+          "value": 2
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 3
+          "value": 2
         },
         {
           "type": "variable",
@@ -2138,13 +2954,13 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 5,
+          "value": 4,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 2,
+          "value": 0,
           "operation": "assign"
         },
         {
@@ -2154,25 +2970,30 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0041",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 5
+          "value": 2
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 0
+          "value": 3
         },
         {
           "type": "variable",
@@ -2185,13 +3006,13 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 2,
+          "value": 5,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "next_three",
-          "value": 3,
+          "value": 0,
           "operation": "assign"
         },
         {
@@ -2201,25 +3022,30 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0042",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
         {
           "type": "variable",
           "name": "five",
           "operator": "eq",
-          "value": 5
+          "value": 3
         },
         {
           "type": "variable",
           "name": "three",
           "operator": "eq",
-          "value": 1
+          "value": 0
         },
         {
           "type": "variable",
@@ -2232,7 +3058,7 @@
         {
           "type": "set_variable",
           "name": "next_five",
-          "value": 3,
+          "value": 0,
           "operation": "assign"
         },
         {
@@ -2248,14 +3074,695 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0043",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0044",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0045",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0046",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0047",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0048",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0049",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0050",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0051",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0052",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0053",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "three"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0054",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0055",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
+        {
+          "type": "variable",
+          "name": "five",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "three",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "next_five",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "next_three",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0056",
+      "event": "tap",
+      "source": "pour",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "selected",
+          "operator": "eq",
+          "value": "five"
+        },
         {
           "type": "variable",
           "name": "five",
@@ -2295,650 +3802,12 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0044",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 0
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 0
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0045",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 0
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 0
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0046",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 0
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 1
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0047",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 0
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 1
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0048",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 0
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 2
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 2,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0049",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 0
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 2
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 2,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0050",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 0
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 3
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 3,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0051",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 0
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 3
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 3,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0052",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 1
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 0
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0053",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 1
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 0
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0054",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 1
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 1
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0055",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 1
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 1
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0056",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 1
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 2
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 2,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0057",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -2950,44 +3819,35 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 1
+          "value": 0
         },
         {
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 2
+          "value": 0
         }
       ],
       "actions": [
         {
           "type": "set_variable",
           "name": "five",
-          "value": 1,
+          "value": 0,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "three",
-          "value": 2,
+          "value": 0,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0058",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -2999,44 +3859,35 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 1
+          "value": 0
         },
         {
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 3
+          "value": 1
         }
       ],
       "actions": [
         {
           "type": "set_variable",
           "name": "five",
-          "value": 1,
+          "value": 0,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "three",
-          "value": 3,
+          "value": 1,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0059",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3048,44 +3899,35 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 1
+          "value": 0
         },
         {
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 3
+          "value": 2
         }
       ],
       "actions": [
         {
           "type": "set_variable",
           "name": "five",
-          "value": 1,
+          "value": 0,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "three",
-          "value": 3,
+          "value": 2,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0060",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3097,44 +3939,35 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 2
+          "value": 0
         },
         {
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 0
+          "value": 3
         }
       ],
       "actions": [
         {
           "type": "set_variable",
           "name": "five",
-          "value": 2,
+          "value": 0,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "three",
-          "value": 0,
+          "value": 3,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0061",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3146,7 +3979,7 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 2
+          "value": 1
         },
         {
           "type": "variable",
@@ -3159,7 +3992,7 @@
         {
           "type": "set_variable",
           "name": "five",
-          "value": 2,
+          "value": 1,
           "operation": "assign"
         },
         {
@@ -3167,23 +4000,14 @@
           "name": "three",
           "value": 0,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0062",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3195,7 +4019,7 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 2
+          "value": 1
         },
         {
           "type": "variable",
@@ -3208,7 +4032,7 @@
         {
           "type": "set_variable",
           "name": "five",
-          "value": 2,
+          "value": 1,
           "operation": "assign"
         },
         {
@@ -3216,23 +4040,14 @@
           "name": "three",
           "value": 1,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0063",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3244,44 +4059,35 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 2
+          "value": 1
         },
         {
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 1
+          "value": 2
         }
       ],
       "actions": [
         {
           "type": "set_variable",
           "name": "five",
-          "value": 2,
+          "value": 1,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "three",
-          "value": 1,
+          "value": 2,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0064",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3293,44 +4099,35 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 2
+          "value": 1
         },
         {
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 2
+          "value": 3
         }
       ],
       "actions": [
         {
           "type": "set_variable",
           "name": "five",
-          "value": 2,
+          "value": 1,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "three",
-          "value": 2,
+          "value": 3,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0065",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3348,7 +4145,7 @@
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 2
+          "value": 0
         }
       ],
       "actions": [
@@ -3361,25 +4158,16 @@
         {
           "type": "set_variable",
           "name": "three",
-          "value": 2,
+          "value": 0,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0066",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3397,7 +4185,7 @@
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 3
+          "value": 1
         }
       ],
       "actions": [
@@ -3410,25 +4198,16 @@
         {
           "type": "set_variable",
           "name": "three",
-          "value": 3,
+          "value": 1,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0067",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3446,7 +4225,7 @@
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 3
+          "value": 2
         }
       ],
       "actions": [
@@ -3459,25 +4238,16 @@
         {
           "type": "set_variable",
           "name": "three",
-          "value": 3,
+          "value": 2,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0068",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3489,44 +4259,35 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 3
+          "value": 2
         },
         {
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 0
+          "value": 3
         }
       ],
       "actions": [
         {
           "type": "set_variable",
           "name": "five",
-          "value": 3,
+          "value": 2,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "three",
-          "value": 0,
+          "value": 3,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0069",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3559,23 +4320,14 @@
           "name": "three",
           "value": 0,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0070",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3608,23 +4360,14 @@
           "name": "three",
           "value": 1,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0071",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3642,7 +4385,7 @@
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 1
+          "value": 2
         }
       ],
       "actions": [
@@ -3655,25 +4398,16 @@
         {
           "type": "set_variable",
           "name": "three",
-          "value": 1,
+          "value": 2,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0072",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3691,7 +4425,7 @@
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 2
+          "value": 3
         }
       ],
       "actions": [
@@ -3704,25 +4438,16 @@
         {
           "type": "set_variable",
           "name": "three",
-          "value": 2,
+          "value": 3,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0073",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3734,44 +4459,35 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 3
+          "value": 4
         },
         {
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 2
+          "value": 0
         }
       ],
       "actions": [
         {
           "type": "set_variable",
           "name": "five",
-          "value": 3,
+          "value": 4,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "three",
-          "value": 2,
+          "value": 0,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0074",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3783,44 +4499,35 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 3
+          "value": 4
         },
         {
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 3
+          "value": 1
         }
       ],
       "actions": [
         {
           "type": "set_variable",
           "name": "five",
-          "value": 3,
+          "value": 4,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "three",
-          "value": 3,
+          "value": 1,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0075",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3832,44 +4539,35 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 3
+          "value": 4
         },
         {
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 3
+          "value": 2
         }
       ],
       "actions": [
         {
           "type": "set_variable",
           "name": "five",
-          "value": 3,
+          "value": 4,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "three",
-          "value": 3,
+          "value": 2,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0076",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3887,7 +4585,7 @@
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 0
+          "value": 3
         }
       ],
       "actions": [
@@ -3900,25 +4598,16 @@
         {
           "type": "set_variable",
           "name": "three",
-          "value": 0,
+          "value": 3,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0077",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3930,7 +4619,7 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 4
+          "value": 5
         },
         {
           "type": "variable",
@@ -3943,7 +4632,7 @@
         {
           "type": "set_variable",
           "name": "five",
-          "value": 4,
+          "value": 5,
           "operation": "assign"
         },
         {
@@ -3951,23 +4640,14 @@
           "name": "three",
           "value": 0,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0078",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -3979,7 +4659,7 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 4
+          "value": 5
         },
         {
           "type": "variable",
@@ -3992,7 +4672,7 @@
         {
           "type": "set_variable",
           "name": "five",
-          "value": 4,
+          "value": 5,
           "operation": "assign"
         },
         {
@@ -4000,23 +4680,14 @@
           "name": "three",
           "value": 1,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0079",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -4028,44 +4699,35 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 4
+          "value": 5
         },
         {
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 1
+          "value": 2
         }
       ],
       "actions": [
         {
           "type": "set_variable",
           "name": "five",
-          "value": 4,
+          "value": 5,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "three",
-          "value": 1,
+          "value": 2,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0080",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
@@ -4077,629 +4739,108 @@
           "type": "variable",
           "name": "next_five",
           "operator": "eq",
-          "value": 4
+          "value": 5
         },
         {
           "type": "variable",
           "name": "next_three",
           "operator": "eq",
-          "value": 2
+          "value": 3
         }
       ],
       "actions": [
         {
           "type": "set_variable",
           "name": "five",
-          "value": 4,
+          "value": 5,
           "operation": "assign"
         },
         {
           "type": "set_variable",
           "name": "three",
-          "value": 2,
+          "value": 3,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0081",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
+      "source": "pour",
       "conditions": [
         {
           "type": "variable",
           "name": "transferred",
           "operator": "eq",
           "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 4
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 2
         }
       ],
       "actions": [
         {
-          "type": "set_variable",
-          "name": "five",
-          "value": 4,
-          "operation": "assign"
+          "type": "hide",
+          "target": "choose_first"
         },
         {
-          "type": "set_variable",
-          "name": "three",
-          "value": 2,
-          "operation": "assign"
+          "type": "hide",
+          "target": "filled"
         },
         {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "poured"
         }
       ],
-      "once": false,
-      "target": "five_zone"
+      "once": false
     },
     {
       "id": "r0082",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 4
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 3
-        }
-      ],
+      "event": "tap",
+      "source": "pour",
+      "conditions": [],
       "actions": [
         {
           "type": "set_variable",
-          "name": "five",
-          "value": 4,
+          "name": "transferred",
+          "value": false,
           "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 3,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
         }
       ],
-      "once": false,
-      "target": "three_zone"
+      "once": false
     },
     {
       "id": "r0083",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 4
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 3
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 4,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 3,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0084",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 5
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 0
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 5,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0085",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 5
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 0
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 5,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0086",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 5
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 1
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 5,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0087",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 5
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 1
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 5,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 1,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0088",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 5
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 2
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 5,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 2,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0089",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 5
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 2
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 5,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 2,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0090",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 5
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 3
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 5,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 3,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0091",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "transferred",
-          "operator": "eq",
-          "value": true
-        },
-        {
-          "type": "variable",
-          "name": "next_five",
-          "operator": "eq",
-          "value": 5
-        },
-        {
-          "type": "variable",
-          "name": "next_three",
-          "operator": "eq",
-          "value": 3
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "five",
-          "value": 5,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "three",
-          "value": 3,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0092",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": false,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            650,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "three_zone"
-    },
-    {
-      "id": "r0093",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "transferred",
-          "value": false,
-          "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            1250,
-            720
-          ]
-        }
-      ],
-      "once": false,
-      "target": "five_zone"
-    },
-    {
-      "id": "r0094",
       "event": "drop_on",
       "source": "measure",
       "conditions": [],
@@ -4717,13 +4858,57 @@
           "target": "measure",
           "animation": "chapter_two/rattle",
           "wait": false
+        },
+        {
+          "type": "hide",
+          "target": "choose_first"
+        },
+        {
+          "type": "hide",
+          "target": "filled"
+        },
+        {
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "invalid_measure"
         }
       ],
       "once": false,
       "target": "tap_zone"
     },
     {
-      "id": "r0095",
+      "id": "r0084",
       "event": "hold",
       "source": "ruler",
       "conditions": [],
@@ -4733,12 +4918,56 @@
           "target": "ruler",
           "animation": "chapter_two/rattle",
           "wait": false
+        },
+        {
+          "type": "hide",
+          "target": "choose_first"
+        },
+        {
+          "type": "hide",
+          "target": "filled"
+        },
+        {
+          "type": "hide",
+          "target": "emptied"
+        },
+        {
+          "type": "hide",
+          "target": "poured"
+        },
+        {
+          "type": "hide",
+          "target": "source_empty"
+        },
+        {
+          "type": "hide",
+          "target": "destination_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_full"
+        },
+        {
+          "type": "hide",
+          "target": "already_empty"
+        },
+        {
+          "type": "hide",
+          "target": "invalid_measure"
+        },
+        {
+          "type": "hide",
+          "target": "height_only"
+        },
+        {
+          "type": "show",
+          "target": "height_only"
         }
       ],
       "once": false
     },
     {
-      "id": "r0096",
+      "id": "r0085",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [

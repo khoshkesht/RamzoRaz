@@ -6,7 +6,7 @@
   "answer": "سرما",
   "time_limit_seconds": 75,
   "base_score": 100,
-  "background": "res://assets/samples/bright_room.svg",
+  "background": "res://assets/samples/winter_room_day.svg",
   "success": {
     "result_delay_seconds": 1.0
   },
@@ -18,7 +18,7 @@
     {
       "id": "window",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/window_daylight.svg",
+      "sprite": "res://assets/samples/window_winter_closed.svg",
       "position": [
         960,
         530
@@ -169,7 +169,7 @@
         {
           "type": "replace_sprite",
           "target": "window",
-          "sprite": "res://assets/samples/window_open_cold.svg"
+          "sprite": "res://assets/samples/window_winter_open.svg"
         },
         {
           "type": "show",

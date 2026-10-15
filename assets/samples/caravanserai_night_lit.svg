@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs><linearGradient id="sand" x2="0" y2="1"><stop stop-color="#eee0bd"/><stop offset="1" stop-color="#dfc89f"/></linearGradient></defs>
+
+    <rect width="1920" height="1080" fill="#41566c"/><circle cx="180" cy="155" r="3" fill="#f7e6bc" opacity=".8"/><circle cx="450" cy="230" r="3" fill="#f7e6bc" opacity=".8"/><circle cx="700" cy="175" r="2" fill="#f7e6bc" opacity=".8"/><circle cx="1080" cy="210" r="3" fill="#f7e6bc" opacity=".8"/><circle cx="1410" cy="150" r="2" fill="#f7e6bc" opacity=".8"/><circle cx="1740" cy="265" r="3" fill="#f7e6bc" opacity=".8"/>
+    <path d="M0 220H1920V535H0Z" fill="#d4bd97"/>
+    <path d="M80 482V330Q80 225 200 225T320 330V482Z" fill="#526779" stroke="#b8a17f" stroke-width="12"/><path d="M460 482V330Q460 225 580 225T700 330V482Z" fill="#526779" stroke="#b8a17f" stroke-width="12"/><path d="M840 482V330Q840 225 960 225T1080 330V482Z" fill="#526779" stroke="#b8a17f" stroke-width="12"/><path d="M1220 482V330Q1220 225 1340 225T1460 330V482Z" fill="#526779" stroke="#b8a17f" stroke-width="12"/><path d="M1600 482V330Q1600 225 1720 225T1840 330V482Z" fill="#526779" stroke="#b8a17f" stroke-width="12"/><circle cx="1740" cy="300" r="28" fill="#f6e7c2"/>
+    <path d="M0 490H1920V1080H0Z" fill="url(#sand)"/>
+    <path d="M0 490H1920" stroke="#b59c77" stroke-width="13"/>
+    <path d="M0 510H1920" stroke="#f0dfba" stroke-width="5"/>
+    <path d="M0 220H1920" stroke="#ae9270" stroke-width="12"/>
+    <g transform="translate(372 350)">
+    <ellipse cy="60" rx="135" ry="160" fill="#ffe6a4" opacity=".12"/>
+    <path d="M0-60V-20" stroke="#716d62" stroke-width="8"/>
+    <rect x="-26" y="-20" width="52" height="82" rx="10" fill="#ffe2a0" stroke="#8a755a" stroke-width="6"/>
+    <path d="M-34-22H34M-34 63H34M0-20V62" stroke="#8a755a" stroke-width="6"/>
+    </g><g transform="translate(1548 350)">
+    <ellipse cy="60" rx="135" ry="160" fill="#ffe6a4" opacity=".12"/>
+    <path d="M0-60V-20" stroke="#716d62" stroke-width="8"/>
+    <rect x="-26" y="-20" width="52" height="82" rx="10" fill="#ffe2a0" stroke="#8a755a" stroke-width="6"/>
+    <path d="M-34-22H34M-34 63H34M0-20V62" stroke="#8a755a" stroke-width="6"/>
+    </g>
+    <path d="M40 1040h170m1490 0h170" stroke="#ccb68e" stroke-width="3" opacity=".5"/>
+    
+</svg>

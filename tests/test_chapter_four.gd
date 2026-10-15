@@ -89,12 +89,15 @@ func _solve(c: PuzzleController, id: int) -> void:
 			for bulb in range(3): _drop(c, "choice_%d" % [1, 2, 0][bulb], "lamp_zone_%d" % bulb)
 			_tap(c, "confirm")
 		43:
-			_drop(c, "five", "tap_zone")
-			_drop(c, "five", "three_zone")
-			_drop(c, "three", "drain_zone")
-			_drop(c, "five", "three_zone")
-			_drop(c, "five", "tap_zone")
-			_drop(c, "five", "three_zone")
+			_tap(c, "five")
+			_tap(c, "fill")
+			_tap(c, "pour")
+			_tap(c, "three")
+			_tap(c, "empty")
+			_tap(c, "five")
+			_tap(c, "pour")
+			_tap(c, "fill")
+			_tap(c, "pour")
 		44:
 			_drop(c, "front_counter", "target_front")
 			_drop(c, "back_counter", "target_back")
@@ -211,11 +214,8 @@ func _run() -> void:
 	_tap(c, "switch_0")
 	check(not c.state.variables["switch_0"], "A second tap turns the switch off")
 	_tap(c, "enter")
-	for bulb in range(3): _tap(c, "lamp_%d" % bulb)
-	for bulb in range(3): _drop(c, "choice_%d" % [1, 2, 0][bulb], "lamp_zone_%d" % bulb)
-	_tap(c, "confirm")
-	check(c.run_status == "PLAYING", "Guessing the hidden wiring without distinct observations cannot win")
-	check(not c.object_nodes["enter"].visible and not c.object_nodes["switch_0"].visible, "Only one visit is available")
+	check(c.run_status == "PLAYING" and not c.state.variables["entered"], "An indistinguishable preparation does not consume the only visit")
+	check(c.object_nodes["entry_warning"].visible and c.object_nodes["switch_0"].visible, "The player receives feedback and can correct the switches")
 	c.clock.elapsed_usec = c.clock.limit_usec
 	c._process(0.0)
 	c.retry_level()
@@ -228,7 +228,18 @@ func _run() -> void:
 			_tap(c, "switch_%d" % warm)
 			_tap(c, "switch_%d" % lit)
 			_tap(c, "enter")
+			check(c.state.variables["entered"] and not c.object_nodes["enter"].visible, "A valid preparation enters once and hides the switches")
+			if warm == 0 and lit == 1:
+				_drop(c, "choice_0", "lamp_zone_0")
+				check(c.object_nodes["choice_0"].position == Vector2(520, 910) and not c.state.variables["assigned_0"], "A premature card returns instead of covering the bulb")
+				check(c.object_nodes["inspect_first"].visible, "A premature card explains the required observation")
 			for bulb in range(3): _tap(c, "lamp_%d" % bulb)
+			if warm == 0 and lit == 1:
+				_tap(c, "confirm")
+				check(c.object_nodes["missing_mapping"].visible and c.run_status == "PLAYING", "Confirm explains missing choices")
+				for bulb in range(3): _drop(c, "choice_%d" % bulb, "lamp_zone_%d" % bulb)
+				_tap(c, "confirm")
+				check(c.object_nodes["wrong_mapping"].visible and c.run_status == "PLAYING", "A wrong complete mapping has visible feedback and remains editable")
 			for bulb in range(3): _drop(c, "choice_%d" % [1, 2, 0][bulb], "lamp_zone_%d" % bulb)
 			_tap(c, "confirm")
 			check(c.run_status == "COMPLETED", "Every choice of warm and lit switch can solve the observations")
@@ -294,6 +305,35 @@ func _result_delay_and_hint_price(c: PuzzleController) -> void:
 			check(store.valid(JSON.parse_string(JSON.stringify(store.data))), "Mixed old and new spending survives serialization")
 
 func _water_transitions(c: PuzzleController) -> void:
+	c.load_level_index(42)
+	for command: String in ["fill", "empty", "pour"]:
+		_tap(c, command)
+		check(c.object_nodes["choose_first"].visible and c.state.variables["five"] == 0 and c.state.variables["three"] == 0, "Commands require an explicit vessel selection")
+	_tap(c, "five")
+	check(c.object_nodes["five_selected"].visible and not c.object_nodes["three_selected"].visible, "The selected vessel has a unique visible marker")
+	_tap(c, "empty")
+	check(c.object_nodes["already_empty"].visible, "Emptying an empty vessel explains the no-op")
+	_tap(c, "fill")
+	check(c.state.variables["five"] == 5 and c.object_nodes["five_reading_5"].visible and c.object_nodes["five"].definition["sprite"].ends_with("measuring_jug_5_5.svg"), "Filling updates both the measured number and visible water")
+	check(c.object_nodes["filled"].visible and not c.object_nodes["already_full"].visible, "A real fill retains its own feedback")
+	_tap(c, "fill")
+	check(c.object_nodes["already_full"].visible, "Filling a full vessel has explicit feedback")
+	_tap(c, "three")
+	_tap(c, "pour")
+	check(c.object_nodes["source_empty"].visible, "Pouring from an empty vessel explains the problem")
+	_tap(c, "fill")
+	_tap(c, "five")
+	_tap(c, "pour")
+	check(c.object_nodes["destination_full"].visible and c.state.variables["five"] == 5 and c.state.variables["three"] == 3, "A full destination preserves both volumes")
+	_tap(c, "three")
+	_tap(c, "empty")
+	_tap(c, "five")
+	_tap(c, "pour")
+	check(c.state.variables["five"] == 2 and c.state.variables["three"] == 3 and c.object_nodes["five_reading_2"].visible and c.object_nodes["three_reading_3"].visible, "Pouring updates both vessels together")
+	c.clock.elapsed_usec = c.clock.limit_usec
+	c._process(0.0)
+	c.retry_level()
+	check(c.state.variables["selected"] == "" and c.state.variables["five"] == 0 and c.state.variables["three"] == 0, "Retry restores empty vessels and clears selection")
 	# Check the whole legal volume space, not only the documented six moves.
 	for five in range(6):
 		for three in range(4):
@@ -302,7 +342,8 @@ func _water_transitions(c: PuzzleController) -> void:
 				c.state.variables["five"] = five
 				c.state.variables["three"] = three
 				var amount := mini(five, 3 - three) if source == "five" else mini(three, 5 - five)
-				_drop(c, source, "three_zone" if source == "five" else "five_zone")
+				_tap(c, source)
+				_tap(c, "pour")
 				var expected_five := five - amount if source == "five" else five + amount
 				var expected_three := three + amount if source == "five" else three - amount
 				check(c.state.variables["five"] == expected_five and c.state.variables["three"] == expected_three, "Pour conserves volume and respects capacities at %d/%d from %s" % [five, three, source])

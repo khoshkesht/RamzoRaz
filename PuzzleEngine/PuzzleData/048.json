@@ -6,7 +6,7 @@
   "answer": "۹",
   "time_limit_seconds": 120,
   "base_score": 145,
-  "background": "res://assets/samples/bright_room.svg",
+  "background": "res://assets/samples/sheepfold_day.svg",
   "success": {
     "result_delay_seconds": 1.0
   },

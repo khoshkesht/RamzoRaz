@@ -6,7 +6,7 @@
   "answer": "انار توخالی",
   "time_limit_seconds": 95,
   "base_score": 125,
-  "background": "res://assets/samples/bright_room.svg",
+  "background": "res://assets/samples/fruit_market_day.svg",
   "success": {
     "result_delay_seconds": 1.0
   },

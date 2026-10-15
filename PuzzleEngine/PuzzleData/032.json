@@ -6,7 +6,7 @@
   "answer": "قول",
   "time_limit_seconds": 70,
   "base_score": 100,
-  "background": "res://assets/samples/bright_room.svg",
+  "background": "res://assets/samples/courtyard_night_lit.svg",
   "success": {
     "result_delay_seconds": 1.0
   },

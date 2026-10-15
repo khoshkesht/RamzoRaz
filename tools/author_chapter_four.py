@@ -6,6 +6,12 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / 'assets/samples'
 DATA = ROOT / 'PuzzleEngine/PuzzleData'
 P = 'res://assets/samples/'
+BACKGROUND_OVERRIDES = {
+    32: 'courtyard_night_lit', 33: 'winter_room_day', 36: 'fruit_market_day',
+    37: 'room_overhead_background', 39: 'tea_house_night_lit',
+    43: 'kitchen_counter_background_light', 45: 'calendar_desk_background_light',
+    47: 'grid_notebook_background', 48: 'sheepfold_day', 50: 'caravanserai_night_lit',
+}
 
 
 def svg(name, body, w=240, h=200):
@@ -91,6 +97,7 @@ def sound(): return dict(type='play_sound', sound='res://assets/sounds/ui_click.
 
 class Level:
     def __init__(self, number, hint, background='bright_room'):
+        background = BACKGROUND_OVERRIDES.get(number, background)
         row = next(line.split('|')[1:-1] for line in (ROOT/'docs/100_interactive_persian_puzzles.md').read_text(encoding='utf-8').splitlines() if line.startswith(f'| {number} |'))
         self.d = dict(schema_version=1, id=number, question=row[1].strip(), hint=hint,
                       answer=row[2].strip(), time_limit_seconds=int(row[5]), base_score=int(row[6]),
@@ -144,13 +151,13 @@ l.win('drag_end','hand',[hide('joined'),show('broken'),move('hand',1260,670)],[d
 l.save()
 
 l=Level(33,'پنجره را باز کن و به دما و لرزیدن شخصیت دقت کن.')
-l.image('window','window_daylight',960,530,['tap']); l.image('person','man',960,820,scale=[.6,.6])
+l.image('window','window_winter_closed',960,530,['tap']); l.image('person','man',960,820,scale=[.6,.6])
 l.image('cold','thermometer_cold',1220,700,visible=False)
 l.drag('snowball','snowball',450,750,scale=[.7,.7]); l.image('basket','basket_empty',500,500); l.zone('basket_zone',500,500,['snowball'])
 l.image('blanket','towel_dry',1500,760,['hold'])
 l.drop('snowball','basket_zone',[move('snowball',450,750),feedback('basket')]); l.rule('hold','blanket',[act('scale','blanket',value=[.7,.7])])
 l.variable(opened=False)
-l.rule('tap','window',[replace('window','window_open_cold'),show('cold'),setv('opened'),feedback('person')],once=True)
+l.rule('tap','window',[replace('window','window_winter_open'),show('cold'),setv('opened'),feedback('person')],once=True)
 l.win('custom:animation_finished','person',conditions=[var('opened')]); l.save()
 
 l=Level(34,'بدنهٔ ساعت ثابت می‌ماند؛ عقربه را لمس کن.')
@@ -229,81 +236,176 @@ l.image('lock','closed_padlock',960,740,scale=[.3,.3]); l.zone('front_lock',960,
 l.drop('key','front_lock',[move('key',450,820),feedback('lock')]); l.image('seed','seed_bowl',1500,830,['tap'],scale=[.6,.6]); l.rule('tap','seed',[feedback('bird')])
 l.win('drag_end','cage',[move('cage',1320,620),move('lock',1320,750),replace('cage','cage_back_open'),move('bird',650,520)],[dict(type='moved_distance_at_least',value=200)]); l.save()
 
-# 42: Hold measures simulated heating (3 s gesture = 5 story minutes).
-# Heat remains for the whole single visit; entering freezes every switch.
-l=Level(42,'یکی را گرم و خاموش کن، یکی را روشن بگذار؛ پس از ورود نور و گرما را بررسی کن.')
-l.d['question'] += ' لامپ‌ها رشته‌ای‌اند.'
-l.variable(entered=False,toggled=False, switch_0=False,switch_1=False,switch_2=False,warm_0=False,warm_1=False,warm_2=False, inspected_0=False,inspected_1=False,inspected_2=False,map_0=False,map_1=False,map_2=False)
-l.note('۳ ثانیه نگه‌داشتن کلید = ۵ دقیقهٔ داستانی گرما؛ لمس: روشن/خاموش. گرما تا پایان بازدید می‌ماند.')
+# 42: two explicit phases; premature cards always return to their tray.
+l=Level(42,'یک کلید را ۳ ثانیه نگه دار و خاموش کن؛ دیگری را روشن بگذار. داخل اتاق نور و گرما را مقایسه کن.','room_lighting')
+l.d['question']='با یک بار ورود، کلید هر لامپ را پیدا کن.'
+l.variable(entered=False,toggled=False, switch_0=False,switch_1=False,switch_2=False,warm_0=False,warm_1=False,warm_2=False, inspected_0=False,inspected_1=False,inspected_2=False,map_0=False,map_1=False,map_2=False,assigned_0=False,assigned_1=False,assigned_2=False)
+
+def stage42_text(id,text,x,y,width=1440,height=80,visible=True,inputs=()):
+    l.text(id,text,x,y,inputs,visible=visible)
+    l.d['objects'][-1]['hit_size']=[width,height]
+
+def stage42_button(id,text,x,y,visible=True):
+    stage42_text(id,text,x,y,300,110,visible,['tap'])
+    l.d['objects'][-1]['sprite']=P+'puzzle_tile.svg'
+
+stage42_text('phase_outside','۱. بیرون اتاق: کلیدها را آماده کن',960,350,height=60)
+stage42_text('instructions','سه لامپ رشته‌ای داخل اتاق‌اند. لمس کلید: روشن/خاموش\n۳ ثانیه نگه‌داشتن: ۵ دقیقه روشن‌بودن و گرم‌شدن',960,420,height=100)
+stage42_text('phase_inside','۲. داخل اتاق: لامپ‌ها را بررسی و کلیدها را مشخص کن',960,350,height=60,visible=False)
+stage42_text('inside_help','هر لامپ را لمس کن تا نور و گرمایش معلوم شود.\nسپس کارت کلید مربوط را از پایین روی همان لامپ بکش و تأیید کن.',960,420,height=100,visible=False)
+stage42_text('entry_warning','با این تنظیم، سه لامپ از هم قابل تشخیص نیستند؛ کلیدها را دوباره تنظیم کن.',960,1010,height=90,visible=False)
+stage42_text('visit_note','فقط یک بار وارد می‌شوی؛ پس از ورود دیگر به کلیدها دسترسی نداری.',960,1010,height=70)
+warnings=['inspect_first','missing_mapping','wrong_mapping']
+stage42_text('inspect_first','اول لامپ را لمس کن، سپس کارت کلید را روی آن بکش.',900,1020,1050,65,False)
+stage42_text('missing_mapping','هنوز برای هر سه لامپ کلید انتخاب نکرده‌ای.',900,1020,1050,65,False)
+stage42_text('wrong_mapping','تطبیق درست نیست؛ نور و گرما را با وضعیت کلیدها مقایسه کن.',900,1020,1050,65,False)
+evidence=dict(type='any',conditions=[dict(type='all',conditions=[var('switch_'+str(on)),var('switch_'+str(warm),False),var('warm_'+str(warm)),var('switch_'+str(cold),False),var('warm_'+str(cold),False)]) for on in range(3) for warm in range(3) for cold in range(3) if len({on,warm,cold})==3])
 for i,x in enumerate([520,960,1400]):
-    l.image('switch_'+str(i),'wall_switch',x,510,['tap',dict(type='hold',duration=3)])
-    l.text('switch_name_'+str(i),'کلید '+str(i+1),x,630)
-    l.rule('tap','switch_'+str(i),[setv('switch_'+str(i),False),setv('toggled'),act('rotate','switch_'+str(i),degrees=0)],[var('entered',False),var('switch_'+str(i))])
-    l.rule('tap','switch_'+str(i),[setv('switch_'+str(i)),act('rotate','switch_'+str(i),degrees=180)],[var('entered',False),var('switch_'+str(i),False),var('toggled',False)])
-    l.rule('tap','switch_'+str(i),[setv('toggled',False)])
-    l.rule('hold','switch_'+str(i),[setv('switch_'+str(i)),setv('warm_'+str(i)),act('rotate','switch_'+str(i),degrees=180),show('heat_ready_'+str(i))],[var('entered',False)])
-    l.text('heat_ready_'+str(i),'۵ دقیقه: گرم شد',x,710,visible=False)
-l.text('enter','ورود به اتاق',960,870,['tap'])
-enter_actions=[setv('entered'),hide('enter'),hide('instructions')]
-for i in range(3): enter_actions += [hide('switch_'+str(i)),hide('switch_name_'+str(i)),hide('heat_ready_'+str(i)),show('lamp_'+str(i)),show('lamp_name_'+str(i)),show('choice_'+str(i))]
-l.rule('tap','enter',enter_actions,[var('entered',False)],once=True)
-# Wiring: bulb left = switch 2; middle = switch 3; right = switch 1.
+    sid='switch_'+str(i)
+    l.image(sid,'wall_switch',x,570,['tap',dict(type='hold',duration=3)])
+    stage42_text('switch_name_'+str(i),'کلید '+str(i+1),x,705,300,60)
+    stage42_text('off_'+str(i),'خاموش',x,765,300,60)
+    stage42_text('on_'+str(i),'روشن',x,765,300,60,False)
+    stage42_text('heat_ready_'+str(i),'گرما ذخیره شد',x,825,300,60,False)
+    off_actions=[setv(sid,False),setv('toggled'),act('rotate',sid,degrees=0),show('off_'+str(i)),hide('on_'+str(i)),hide('entry_warning'),show('visit_note')]
+    on_actions=[setv(sid),act('rotate',sid,degrees=180),hide('off_'+str(i)),show('on_'+str(i)),hide('entry_warning'),show('visit_note')]
+    l.rule('tap',sid,off_actions,[var('entered',False),var(sid)])
+    l.rule('tap',sid,on_actions,[var('entered',False),var(sid,False),var('toggled',False)])
+    l.rule('tap',sid,[setv('toggled',False)])
+    l.rule('hold',sid,[*on_actions,setv('warm_'+str(i)),show('heat_ready_'+str(i))],[var('entered',False)])
+stage42_button('enter','ورود به اتاق',960,920)
+l.rule('tap','enter',[hide('visit_note'),show('entry_warning')],[var('entered',False),dict(type='not',condition=evidence)])
+enter_actions=[setv('entered'),hide('enter'),hide('instructions'),hide('phase_outside'),hide('visit_note'),hide('entry_warning'),show('phase_inside'),show('inside_help'),show('confirm')]
+for i in range(3):
+    enter_actions += [hide('switch_'+str(i)),hide('switch_name_'+str(i)),hide('on_'+str(i)),hide('off_'+str(i)),hide('heat_ready_'+str(i)),show('lamp_'+str(i)),show('lamp_name_'+str(i)),show('choice_'+str(i)),show('lamp_target_'+str(i)),show('unassigned_'+str(i))]
+l.rule('tap','enter',enter_actions,[var('entered',False),evidence],once=True)
+# Wiring is fixed, but any warm/lit/cold preparation can establish the evidence.
 for bulb,switch in enumerate([1,2,0]):
     x=520+440*bulb
-    l.image('lamp_'+str(bulb),'bulb_cold',x,530,['tap'],visible=False)
-    l.text('lamp_name_'+str(bulb),'لامپ '+str(bulb+1),x,670,visible=False)
-    l.image('heat_'+str(bulb),'heat_lines',x+170,500,visible=False)
-    l.text('cold_'+str(bulb),'خاموش و سرد',x,730,visible=False)
-    l.text('light_'+str(bulb),'روشن',x,730,visible=False)
-    l.text('warm_'+str(bulb),'خاموش و گرم',x,730,visible=False)
-    l.card('choice_'+str(bulb),'کلید '+str(bulb+1),520+440*bulb,900); l.d['objects'][-1]['visible']=False
-    l.zone('lamp_zone_'+str(bulb),x,530,['choice_0','choice_1','choice_2'],size=(280,220))
-    l.rule('tap','lamp_'+str(bulb),[replace('lamp_'+str(bulb),'bulb_lit'),show('light_'+str(bulb)),setv('inspected_'+str(bulb))],[var('entered'),var('switch_'+str(switch))])
-    l.rule('tap','enter',[replace('lamp_'+str(bulb),'bulb_lit')],[var('switch_'+str(switch))])
-    l.rule('tap','lamp_'+str(bulb),[show('heat_'+str(bulb)),show('warm_'+str(bulb)),setv('inspected_'+str(bulb))],[var('entered'),var('switch_'+str(switch),False),var('warm_'+str(switch))])
-    l.rule('tap','lamp_'+str(bulb),[show('cold_'+str(bulb)),setv('inspected_'+str(bulb))],[var('entered'),var('switch_'+str(switch),False),var('warm_'+str(switch),False)])
-    # A mapping is accepted only after all three observable states differ.
-    evidence=dict(type='any',conditions=[dict(type='all',conditions=[var('switch_'+str(on)),var('switch_'+str(warm),False),var('warm_'+str(warm)),var('switch_'+str(cold),False),var('warm_'+str(cold),False)]) for on in range(3) for warm in range(3) for cold in range(3) if len({on,warm,cold})==3])
+    l.image('lamp_target_'+str(bulb),'puzzle_tile',x,570,scale=[1.1,2.0],visible=False,z_index=-2)
+    l.image('lamp_'+str(bulb),'bulb_cold',x,570,['tap'],visible=False)
+    stage42_text('lamp_name_'+str(bulb),'لامپ '+str(bulb+1),x,705,300,60,False)
+    l.image('heat_'+str(bulb),'heat_lines',x+150,570,scale=[.65,.65],visible=False)
+    for state,text in [('cold','خاموش و سرد'),('light','روشن'),('warm','خاموش و گرم')]:
+        stage42_text(state+'_'+str(bulb),text,x,765,300,60,False)
+    stage42_text('unassigned_'+str(bulb),'کلید: انتخاب نشده',x,825,300,60,False)
+    l.card('choice_'+str(bulb),'کلید '+str(bulb+1),x,910)
+    l.d['objects'][-1].update(visible=False,z_index=5)
+    l.d['objects'][-1]['interactions'][0]['bounds']=[200,490,1520,450]
+    l.zone('lamp_zone_'+str(bulb),x,570,['choice_0','choice_1','choice_2'],size=(310,240))
+    l.rule('tap','lamp_'+str(bulb),[replace('lamp_'+str(bulb),'bulb_lit'),show('light_'+str(bulb)),setv('inspected_'+str(bulb)),hide('inspect_first')],[var('entered'),var('switch_'+str(switch))])
+    l.rule('tap','enter',[replace('lamp_'+str(bulb),'bulb_lit')],[var('entered'),var('switch_'+str(switch))])
+    l.rule('tap','lamp_'+str(bulb),[show('heat_'+str(bulb)),show('warm_'+str(bulb)),setv('inspected_'+str(bulb)),hide('inspect_first')],[var('entered'),var('switch_'+str(switch),False),var('warm_'+str(switch))])
+    l.rule('tap','lamp_'+str(bulb),[show('cold_'+str(bulb)),setv('inspected_'+str(bulb)),hide('inspect_first')],[var('entered'),var('switch_'+str(switch),False),var('warm_'+str(switch),False)])
     for card in range(3):
         label=f'mapping_{bulb}_{card}'
-        l.text(label,'انتخاب: کلید '+str(card+1),x,805,visible=False)
-        l.drop('choice_'+str(card),'lamp_zone_'+str(bulb),[move('choice_'+str(card),520+440*card,900),setv('map_'+str(bulb),card==switch),*[hide(f'mapping_{bulb}_{other}') for other in range(3)],show(label),feedback('lamp_'+str(bulb))],[var('entered'),var('inspected_'+str(bulb)),evidence])
-l.text('confirm','تأیید تطبیق',1650,1010,['tap'],visible=False)
-l.rule('tap','enter',[show('confirm')],[var('entered')])
-l.win('tap','confirm',conditions=[var('map_'+str(i)) for i in range(3)])
-l.image('torch','flashlight',280,840,['hold'],scale=[.5,.5]); l.rule('hold','torch',[feedback('torch')])
-l.drag('color_label','day_card',1650,500,scale=[.35,.35]); l.zone('guess',1650,720,['color_label']); l.text('guess_label','کارت حدس رنگ',1650,720)
-l.drop('color_label','guess',[move('color_label',1650,500),feedback('color_label')]); l.save()
+        stage42_text(label,'انتخاب: کلید '+str(card+1),x,825,300,60,False)
+        l.drop('choice_'+str(card),'lamp_zone_'+str(bulb),[setv('assigned_'+str(bulb)),setv('map_'+str(bulb),card==switch),hide('unassigned_'+str(bulb)),*[hide(f'mapping_{bulb}_{other}') for other in range(3)],show(label),*[hide(warning) for warning in warnings]],[var('entered'),var('inspected_'+str(bulb))])
+        l.drop('choice_'+str(card),'lamp_zone_'+str(bulb),[hide('missing_mapping'),hide('wrong_mapping'),show('inspect_first')],[var('entered'),var('inspected_'+str(bulb),False)])
+        # A valid Drop with unmet evidence must not leave a card covering the bulb.
+        l.drop('choice_'+str(card),'lamp_zone_'+str(bulb),[move('choice_'+str(card),520+440*card,910)])
+stage42_button('confirm','تأیید پاسخ',1740,1015,False)
+all_seen=dict(type='all',conditions=[var('inspected_'+str(i)) for i in range(3)])
+all_assigned=dict(type='all',conditions=[var('assigned_'+str(i)) for i in range(3)])
+all_correct=dict(type='all',conditions=[var('map_'+str(i)) for i in range(3)])
+l.rule('tap','confirm',[*[hide(warning) for warning in warnings],show('inspect_first')],[dict(type='not',condition=all_seen)])
+l.rule('tap','confirm',[*[hide(warning) for warning in warnings],show('missing_mapping')],[all_seen,dict(type='not',condition=all_assigned)])
+l.rule('tap','confirm',[*[hide(warning) for warning in warnings],show('wrong_mapping')],[all_seen,all_assigned,dict(type='not',condition=all_correct)])
+l.win('tap','confirm',conditions=[all_seen,all_assigned,all_correct])
+l.image('torch','flashlight',200,820,['hold'],scale=[.5,.5])
+l.image('local_light','camera_flash',200,700,visible=False,scale=[.5,.5])
+l.rule('hold','torch',[show('local_light'),act('play_animation','local_light',animation='chapter_two/flash',wait=False)])
+l.drag('color_label','day_card',1730,560,scale=[.35,.35])
+l.d['objects'][-1]['interactions'][0]['bounds']=[250,490,1530,420]
+l.zone('guess',1730,800,['color_label'],size=(180,100))
+stage42_text('guess_label','حدس رنگی',1730,800,180,100)
+l.drop('color_label','guess',[move('color_label',1730,560),feedback('color_label')])
+l.save()
 
-# 43: enumerate the finite volume graph, without arithmetic expressions in JSON.
-l=Level(43,'ظرف‌ها را روی شیر، تخلیه یا ظرف دیگر بگذار؛ انتقال تا پرشدن مقصد یا خالی‌شدن مبدأ است.')
-l.variable(five=0,three=0)
-l.note('ریختن: تا پرشدن ظرف مقصد یا خالی‌شدن ظرف مبدأ ادامه دارد.')
-l.drag('five','water_jug',650,720); l.drag('three','water_jug',1250,720,scale=[.75,.75])
-l.zone('five_zone',650,720,['three']); l.zone('three_zone',1250,720,['five'])
-l.image('tap','water_drops',470,490,scale=[.6,.6]); l.zone('tap_zone',470,490,['five','three','measure'])
-l.image('drain','hole',1450,490,scale=[.6,.6]); l.zone('drain_zone',1450,490,['five','three'])
-for name,max_volume,x in [('five',5,650),('three',3,1250)]:
-    for n in range(max_volume+1): l.text(name+'_reading_'+str(n),str(n)+' / '+str(max_volume)+' لیتر',x,870,visible=n==0)
-    for zone,val in [('tap_zone',max_volume),('drain_zone',0)]:
-        l.drop(name,zone,[setv(name,val),move(name,x,720)])
-    for n in range(max_volume+1):
-        l.rule('variable_changed','$level',[*[hide(name+'_reading_'+str(k)) for k in range(max_volume+1)],show(name+'_reading_'+str(n))],[var(name,n)])
+# 43: select a vessel, then choose one of three explicit operations.
+# New transparent vessels expose volume; the older opaque jug stays unchanged.
+for capacity in [5,3]:
+    for volume in range(capacity+1):
+        height=210*volume/capacity
+        fill=(f'<rect x="57" y="{278-height}" width="184" height="{height}" fill="#75bdd2"/>'
+              f'<path d="M60 {278-height}Q95 {268-height} 130 {278-height}T238 {278-height}" fill="none" stroke="#cceef0" stroke-width="4"/>') if volume else ''
+        ticks=''.join(f'<path d="M72 {278-210*n/capacity}h23"/>' for n in range(1,capacity+1))
+        svg(f'measuring_jug_{capacity}_{volume}',
+            '<defs><clipPath id="interior"><path d="M57 48H241V259Q241 278 222 278H76Q57 278 57 259Z"/></clipPath></defs>'
+            '<path d="M54 32H247L270 53H247V263Q247 290 220 290H75Q45 290 45 263V32Z" fill="#ecf5ea"/>'
+            f'<g clip-path="url(#interior)" stroke="none">{fill}</g>'
+            '<path d="M247 88H279Q307 88 307 119V186Q307 217 279 217H247" fill="none" stroke="#7c9f9c" stroke-width="10"/>'
+            '<path d="M54 32H247L270 53H247V263Q247 290 220 290H75Q45 290 45 263V32Z" fill="none" stroke="#739794"/>'
+            f'<g stroke="#527d7d" stroke-width="3">{ticks}</g>'
+            '<path d="M111 55V262" stroke="#ffffff" stroke-width="10" opacity=".5"/>',320,320)
+svg('faucet_fill','<path d="M52 174V75Q52 44 83 44H165V104H110V174Z" fill="#a7c9c3"/><path d="M80 44V21M52 20H111" fill="none" stroke-width="12"/><path d="M145 117q-17 25 0 25t0-25m0 39q-17 25 0 25t0-25" fill="#7abbd1" stroke="#649aa9"/>',200,200)
+svg('sink_drain','<ellipse cx="100" cy="110" rx="84" ry="58" fill="#b4c7c0"/><ellipse cx="100" cy="110" rx="54" ry="36" fill="#677e7a"/><path d="M60 93h80m-89 19h98m-83 18h68M83 78v65m32-65v65" stroke="#d1ded0" stroke-width="5"/>',200,200)
+
+l=Level(43,'۵ لیتری را پر کن و با آن ۳ لیتری را پر کن. ۳ لیتری را خالی کن و ۲ لیترِ باقی‌مانده را در آن بریز. دوباره ۵ لیتری را پر کن؛ حالا برای پرکردن ۳ لیتری فقط ۱ لیتر لازم است.')
+l.variable(five=0,three=0,selected='',next_five=0,next_three=0,transferred=False)
+l.note('۱. ظرف را لمس کن. ۲. دکمهٔ پرکردن، خالی‌کردن یا ریختن را بزن.')
+messages={
+    'choose_first':'اول یکی از دو ظرف را لمس کن.',
+    'filled':'ظرف انتخاب‌شده از شیر پر شد.',
+    'emptied':'ظرف انتخاب‌شده خالی شد.',
+    'poured':'آب تا پرشدن ظرف دیگر یا خالی‌شدن ظرف انتخابی ریخته شد.',
+    'source_empty':'ظرف انتخاب‌شده خالی است؛ اول آن را پر کن.',
+    'destination_full':'ظرف دیگر پر است؛ اول آن را خالی کن.',
+    'already_full':'ظرف انتخاب‌شده از قبل پر است.',
+    'already_empty':'ظرف انتخاب‌شده از قبل خالی است.',
+    'invalid_measure':'خط‌های این پیمانه معتبر نیست؛ از دو ظرف اصلی استفاده کن.',
+    'height_only':'خط‌کش ارتفاع را نشان می‌دهد؛ حجم با ارتفاع یکی نیست.',
+}
+for id,text in messages.items():
+    l.text(id,text,960,1035,visible=False)
+    l.d['objects'][-1]['hit_size']=[1500,65]
+
+def stage43_message(id):
+    return [*[hide(other) for other in messages],show(id)]
+
+for name,capacity,x in [('five',5,680),('three',3,1220)]:
+    other='three' if name=='five' else 'five'
+    l.text(name+'_title','ظرف '+str(capacity)+' لیتری',x,450)
+    l.image(name,f'measuring_jug_{capacity}_0',x,630,['tap'])
+    l.image(name+'_selected','selection_check',x-185,520,visible=False)
+    l.text(name+'_selected_label','انتخاب‌شده',x,870,visible=False)
+    l.d['objects'][-1]['hit_size']=[300,50]
+    l.rule('tap',name,[setv('selected',name),show(name+'_selected'),show(name+'_selected_label'),hide(other+'_selected'),hide(other+'_selected_label'),*[hide(id) for id in messages]])
+    for n in range(capacity+1):
+        l.text(name+'_reading_'+str(n),str(n)+' از '+str(capacity)+' لیتر',x,805,visible=n==0)
+        l.rule('variable_changed','$level',[replace(name,f'measuring_jug_{capacity}_{n}'),*[hide(name+'_reading_'+str(k)) for k in range(capacity+1)],show(name+'_reading_'+str(n))],[var(name,n)])
+    # No-op feedback comes first, so a real fill/empty keeps its own message.
+    l.rule('tap','fill',stage43_message('already_full'),[var('selected',name),var(name,capacity)])
+    l.rule('tap','empty',stage43_message('already_empty'),[var('selected',name),var(name,0)])
+    l.rule('tap','fill',[setv(name,capacity),*stage43_message('filled')],[var('selected',name),var(name,capacity,'lt')])
+    l.rule('tap','empty',[setv(name,0),*stage43_message('emptied')],[var('selected',name),var(name,0,'gt')])
+    l.rule('tap','pour',stage43_message('source_empty'),[var('selected',name),var(name,0)])
+    l.rule('tap','pour',stage43_message('destination_full'),[var('selected',name),var(name,0,'gt'),var(other,3 if name=='five' else 5)])
+
+for id,text,x in [('fill','پرکردن از شیر',500),('empty','خالی‌کردن',960),('pour','ریختن در ظرف دیگر',1420)]:
+    l.text(id,text,x,960,['tap'])
+    l.d['objects'][-1].update(sprite=P+'puzzle_tile.svg',hit_size=[300,110])
+    l.rule('tap',id,stage43_message('choose_first'),[var('selected','')])
 for a in range(6):
     for b in range(4):
-        for src,dest,amount in [('five','three',min(a,3-b)),('three','five',min(b,5-a))]:
+        for src,amount in [('five',min(a,3-b)),('three',min(b,5-a))]:
             if amount:
                 na,nb=(a-amount,b+amount) if src=='five' else (a+amount,b-amount)
-                # Snapshot variables avoid matching multiple transitions during one drop.
-                l.drop(src,dest+'_zone',[setv('next_five',na),setv('next_three',nb),setv('transferred')],[var('five',a),var('three',b),var('transferred',False)])
-l.variable(next_five=0,next_three=0,transferred=False)
+                l.rule('tap','pour',[setv('next_five',na),setv('next_three',nb),setv('transferred')],[var('selected',src),var('five',a),var('three',b),var('transferred',False)])
 for a in range(6):
     for b in range(4):
-        l.rule('drop_on','five',[setv('five',a),setv('three',b),move('five',650,720)],[var('transferred'),var('next_five',a),var('next_three',b)],target='three_zone')
-        l.rule('drop_on','three',[setv('five',a),setv('three',b),move('three',1250,720)],[var('transferred'),var('next_five',a),var('next_three',b)],target='five_zone')
-for src,dest in [('five','three'),('three','five')]: l.drop(src,dest+'_zone',[setv('transferred',False),move(src,650 if src=='five' else 1250,720)])
-l.drag('measure','decorative_measure',280,800,scale=[.7,.7]); l.drop('measure','tap_zone',[move('measure',280,800),feedback('measure')])
-l.image('ruler','height_ruler',1600,800,['hold'],scale=[.75,.75]); l.rule('hold','ruler',[feedback('ruler')]); l.win('variable_changed','$level',conditions=[var('five',4)]); l.save()
+        l.rule('tap','pour',[setv('five',a),setv('three',b)],[var('transferred'),var('next_five',a),var('next_three',b)])
+l.rule('tap','pour',stage43_message('poured'),[var('transferred')])
+l.rule('tap','pour',[setv('transferred',False)])
+l.image('tap','faucet_fill',300,540,scale=[.8,.8]); l.zone('tap_zone',300,540,['measure'],size=(200,160))
+l.text('tap_label','شیر آب',300,665)
+l.image('drain','sink_drain',1660,540,scale=[.8,.8]); l.text('drain_label','تخلیه',1660,665)
+l.drag('measure','decorative_measure',280,800,scale=[.7,.7])
+l.drop('measure','tap_zone',[move('measure',280,800),feedback('measure'),*stage43_message('invalid_measure')])
+l.image('ruler','height_ruler',1660,800,['hold'],scale=[.75,.75])
+l.rule('hold','ruler',[feedback('ruler'),*stage43_message('height_only')])
+l.win('variable_changed','$level',conditions=[var('five',4)])
+l.save()
 
 l=Level(44,'از دو طرف تا خودت بشمار؛ فرد هدف را دوبار حساب نکن.')
 l.variable(front=False,back=False)
