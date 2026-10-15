@@ -114,10 +114,9 @@ func _fit() -> void:
 func display_progress(data: Dictionary, manifest: Dictionary) -> void:
 	var levels: Array = manifest["levels"]
 	solved_label.text = "حل‌شده: %s از %s" % [PuzzleHUD._persian(str(data["results"].size())), PuzzleHUD._persian(str(PuzzleAppConfig.AUTHORED_LEVEL_COUNT))]
-	var total_score := 0
+	var total_score := PuzzleProgressStore.available_score(data)
 	var total_stars := 0
 	for result: Dictionary in data["results"].values():
-		total_score += int(result["score"])
 		total_stars += int(result["stars"])
 	total_score_label.text = PuzzleHUD._persian(str(total_score))
 	average_stars = float(total_stars) / data["results"].size() if not data["results"].is_empty() else 0.0

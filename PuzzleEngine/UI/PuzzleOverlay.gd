@@ -4,6 +4,7 @@ extends Control
 signal continue_requested
 signal retry_requested
 signal hint_action_requested
+signal hint_purchase_requested
 signal dismiss_requested
 
 const STUDIO_URL: String = "http://gheleghstudio.ir"
@@ -11,6 +12,7 @@ const GAME_GUIDE: String = "در هر مرحله با یک سؤال کوتاه �
 
 var mode: String = ""
 @onready var hint_action: Button = $SafeMargin/Center/Panel/Padding/Content/HintAction
+@onready var hint_purchase: Button = $SafeMargin/Center/Panel/Padding/Content/HintPurchase
 @onready var dismiss_button: Button = $SafeMargin/Center/Panel/Padding/Content/Dismiss
 
 @onready var title: Label = $SafeMargin/Center/Panel/Padding/Content/Title
@@ -22,6 +24,7 @@ var mode: String = ""
 
 func _ready() -> void:
 	hint_action.pressed.connect(func() -> void: hint_action_requested.emit())
+	hint_purchase.pressed.connect(func() -> void: hint_purchase_requested.emit())
 	dismiss_button.pressed.connect(func() -> void: dismiss_requested.emit())
 	continue_button.pressed.connect(func() -> void: continue_requested.emit())
 	retry_button.pressed.connect(func() -> void: retry_requested.emit())
@@ -67,6 +70,7 @@ func _reset_buttons() -> void:
 	mode = ""
 	($SafeMargin/Center/Panel/Padding/Content/DetailsScroll as ScrollContainer).scroll_vertical = 0
 	hint_action.hide()
+	hint_purchase.hide()
 	dismiss_button.hide()
 	continue_button.hide()
 	retry_button.hide()
@@ -83,14 +87,22 @@ func _hint_panel(kind: String, heading: String, message: String, action: String 
 	dismiss_button.show()
 	show()
 
-func show_hint_offer() -> void:
-	_hint_panel("offer", "راهنمای معما", "با تماشای کامل تبلیغ، راهنمای این مرحله باز می‌شود.", "تماشای تبلیغ")
+func show_hint_offer(score: int = 0) -> void:
+	_hint_panel("offer", "راهنمای معما", "با پرداخت ۱۰۰ امتیاز یا تماشای کامل تبلیغ، راهنمای این مرحله را باز کنید.\nامتیاز موجود: %s" % PuzzleHUD._persian(str(score)), "تماشای تبلیغ")
+	hint_purchase.text = "پرداخت ۱۰۰ امتیاز"
+	hint_purchase.show()
+
+func show_insufficient_points(score: int) -> void:
+	show_hint_offer(score)
+	details.text = "امتیاز کافی ندارید؛ برای دریافت راهنما به ۱۰۰ امتیاز نیاز دارید.\nامتیاز موجود: %s\nمی‌توانید با تماشای کامل تبلیغ راهنما را دریافت کنید." % PuzzleHUD._persian(str(score))
 
 func show_hint(text: String) -> void:
 	_hint_panel("hint", "راهنمای معما", text)
 
 func show_ad_unavailable() -> void:
 	_hint_panel("unavailable", "راهنما باز نشد", "تبلیغ تکمیل نشد یا در دسترس نیست. دوباره تلاش کنید.", "تلاش مجدد برای تبلیغ")
+	hint_purchase.text = "پرداخت ۱۰۰ امتیاز"
+	hint_purchase.show()
 
 func show_simulated_ad() -> void:
 	_hint_panel("ad", "تبلیغ آزمایشی", "این نمایش برای آزمایش دریافت پاداش است.", "تکمیل و دریافت راهنما")

@@ -155,10 +155,7 @@ func _total_score() -> int:
 	var saved := progress.data
 	if is_instance_valid(controller) and controller.progress_store.persistent:
 		saved = controller.progress_store.data
-	var score := 0
-	for result: Dictionary in saved.get("results", {}).values():
-		score += int(result["score"])
-	return score
+	return PuzzleProgressStore.available_score(saved)
 
 func open_settings() -> void:
 	if _navigation_blocked() or _development_dialog_open():

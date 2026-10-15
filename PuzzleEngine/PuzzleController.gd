@@ -34,6 +34,8 @@ var allow_development_loading: bool = false
 var return_to_home_after_advance: bool = false
 var test_start_index: int = -1
 var _save_operation: String = ""
+var _purchase_level: int = 0
+var _purchase_run: int = 0
 var _requests: Dictionary = {}
 var _request_serial: int = 0
 var _pending_hint_requests: Array[int] = []
@@ -53,6 +55,7 @@ func _ready() -> void:
 	overlay.continue_requested.connect(continue_to_next_level)
 	overlay.retry_requested.connect(retry_level)
 	overlay.hint_action_requested.connect(_hint_action)
+	overlay.hint_purchase_requested.connect(_buy_hint)
 	overlay.dismiss_requested.connect(_dismiss_hint)
 	hud.hint_button.pressed.connect(request_hint)
 	hud.menu_requested.connect(func() -> void: menu_requested.emit())
@@ -100,7 +103,7 @@ func load_level_index(index: int) -> bool:
 		object_nodes[data["id"]] = object
 	level_index = index
 	hud.set_level(current_definition, index, manifest["levels"].size())
-	hud.set_progress(results)
+	hud.set_progress(results, int(progress_store.data.get("hint_points_spent", 0)))
 	hud.get_node("SafeMargin/Layout/Toolbar/TestBadge").visible = test_start_index >= 0
 	hud.hint_button.disabled = false
 	action_runner.configure(state, object_nodes)
@@ -314,7 +317,7 @@ func _sync_results() -> void:
 	results.clear()
 	for key: String in progress_store.data["results"]:
 		results[int(key)] = progress_store.data["results"][key].duplicate(true)
-	hud.set_progress(results)
+	hud.set_progress(results, int(progress_store.data.get("hint_points_spent", 0)))
 
 func _show_current_result(present_success: bool = false) -> void:
 	if present_success and not current_definition.is_empty():
@@ -364,7 +367,7 @@ func _clear_success_sound() -> void:
 	_success_player = null
 
 func _show_finished() -> void:
-	var score := 0
+	var score := -int(progress_store.data.get("hint_points_spent", 0))
 	var stars := 0
 	for result: Dictionary in results.values():
 		score += int(result["score"])
@@ -381,7 +384,7 @@ func _retry_save() -> void:
 		_save_operation = ""
 		if development_operation == "result":
 			results[state.level_id] = current_result.duplicate(true)
-			hud.set_progress(results)
+			hud.set_progress(results, int(progress_store.data.get("hint_points_spent", 0)))
 			_show_current_result(true)
 			result_ready.emit(current_result.duplicate(true))
 		elif return_to_home_after_advance:
@@ -398,6 +401,7 @@ func _retry_save() -> void:
 	var ok := false
 	var relevant_hint: Dictionary = {}
 	match operation:
+		"buy_hint": ok = progress_store.buy_hint(_purchase_level)
 		"result": ok = progress_store.save_result(current_result)
 		"advance": ok = progress_store.advance()
 		"hint":
@@ -417,6 +421,14 @@ func _retry_save() -> void:
 	_save_operation = ""
 	_sync_results()
 	match operation:
+		"buy_hint":
+			hud.hint_button.disabled = run_status != STATUS_PLAYING or not ad_adapter.active.is_empty()
+			if state.run_id == _purchase_run and run_status == STATUS_PLAYING:
+				_update_clock()
+			if state.run_id == _purchase_run and run_status == STATUS_PLAYING:
+				overlay.show_hint(current_definition["hint"])
+			elif run_status == STATUS_FAILED:
+				overlay.show_failure()
 		"result":
 			_show_current_result(true)
 			result_ready.emit(current_result.duplicate(true))
@@ -463,13 +475,28 @@ func request_hint() -> void:
 	if progress_store.hint_unlocked(state.level_id):
 		overlay.show_hint(current_definition["hint"])
 	else:
-		overlay.show_hint_offer()
+		overlay.show_hint_offer(PuzzleProgressStore.available_score(progress_store.data))
+
+func _buy_hint() -> void:
+	if overlay.mode not in ["offer", "unavailable"] or not _save_operation.is_empty() or not ad_adapter.active.is_empty() or not can_process_gameplay():
+		return
+	if progress_store.hint_unlocked(state.level_id):
+		overlay.show_hint(current_definition["hint"])
+		return
+	var score := PuzzleProgressStore.available_score(progress_store.data)
+	if score < PuzzleProgressStore.HINT_COST:
+		overlay.show_insufficient_points(score)
+		return
+	_purchase_level = state.level_id
+	_purchase_run = state.run_id
+	_save_operation = "buy_hint"
+	_retry_save()
 
 func _hint_action() -> void:
 	if overlay.mode == "ad":
 		ad_adapter.finish_simulation(true)
 		return
-	if overlay.mode not in ["offer", "unavailable"] or not can_process_gameplay():
+	if overlay.mode not in ["offer", "unavailable"] or not _save_operation.is_empty() or not ad_adapter.active.is_empty() or not can_process_gameplay():
 		return
 	_request_serial += 1
 	var id := _request_serial

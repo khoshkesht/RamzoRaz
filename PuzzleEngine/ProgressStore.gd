@@ -1,6 +1,8 @@
 class_name PuzzleProgressStore
 extends RefCounted
 
+const HINT_COST: int = 100
+
 var path: String = "user://progress.json"
 var persistent: bool = true
 var data: Dictionary = {}
@@ -125,7 +127,9 @@ func _archive_sample_files(archive_suffix: String = ".pre-main-content") -> bool
 	return true
 
 func valid(value: Variant) -> bool:
-	if not value is Dictionary or value.size() != 6:
+	if not value is Dictionary or value.size() not in [6, 7]:
+		return false
+	if value.size() == 7 and not value.has("hint_points_spent"):
 		return false
 	for field: String in ["save_version", "manifest_version", "current_level_id", "pending_result_level_id", "unlocked_hints", "results"]:
 		if not value.has(field):
@@ -160,6 +164,9 @@ func valid(value: Variant) -> bool:
 		if result["hint_received"] != (int(result["level_id"]) in normalized_hints):
 			return false
 	var current: Variant = value.get("current_level_id")
+	var spent: Variant = value.get("hint_points_spent", 0)
+	if not _integer(spent) or spent < 0 or int(spent) % HINT_COST != 0 or available_score(value) < 0 or spent > normalized_hints.size() * HINT_COST:
+		return false
 	var pending: Variant = value.get("pending_result_level_id")
 	if current != null and (not _integer(current) or int(current) not in ids):
 		return false
@@ -216,6 +223,23 @@ func commit(next: Dictionary) -> bool:
 
 func hint_unlocked(level_id: int) -> bool:
 	return level_id in data.get("unlocked_hints", [])
+
+static func available_score(saved: Dictionary) -> int:
+	var score := 0
+	for result: Dictionary in saved.get("results", {}).values():
+		score += int(result["score"])
+	return score - int(saved.get("hint_points_spent", 0))
+
+func buy_hint(level_id: int) -> bool:
+	if hint_unlocked(level_id):
+		return true
+	if data.get("current_level_id") != level_id or data.get("pending_result_level_id") != null or available_score(data) < HINT_COST:
+		error = "Hint purchase requires an unfinished current level and sufficient points."
+		return false
+	var next := data.duplicate(true)
+	next["hint_points_spent"] = int(next.get("hint_points_spent", 0)) + HINT_COST
+	next["unlocked_hints"].append(level_id)
+	return commit(next)
 
 func reset_progress() -> bool:
 	if manifest.get("levels", []).is_empty():

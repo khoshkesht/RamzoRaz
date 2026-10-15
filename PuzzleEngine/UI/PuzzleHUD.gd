@@ -56,8 +56,8 @@ func _resize_toolbar() -> void:
 	var texture: Texture2D = $SafeMargin/Layout/Toolbar/Artwork.texture
 	toolbar.custom_minimum_size.y = toolbar.size.x * texture.get_height() / texture.get_width()
 
-func set_progress(saved_results: Dictionary) -> void:
-	var score := 0
+func set_progress(saved_results: Dictionary, hint_points_spent: int = 0) -> void:
+	var score := -hint_points_spent
 	var stars := 0
 	for result: Dictionary in saved_results.values():
 		score += int(result["score"])

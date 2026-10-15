@@ -96,6 +96,11 @@ visible = false
 layout_mode = 2
 text_direction = 2
 
+[node name="HintPurchase" type="Button" parent="SafeMargin/Center/Panel/Padding/Content"]
+visible = false
+layout_mode = 2
+text_direction = 2
+
 [node name="Studio" type="VBoxContainer" parent="SafeMargin/Center/Panel/Padding/Content"]
 visible = false
 layout_mode = 2
