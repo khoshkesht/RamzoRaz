@@ -29,3 +29,6 @@ tools/android/*
 !/tests/test_chapter_four.gd.uid
 !/tools/author_chapter_four.py
 !/tools/author_chapter_four_backgrounds.py
+!/tools/author_chapter_five.py
+!/tests/test_chapter_five.gd
+!/tests/test_chapter_five.gd.uid

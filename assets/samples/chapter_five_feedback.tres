@@ -1,0 +1,76 @@
+[gd_resource type="AnimationLibrary" load_steps=6 format=3]
+
+[sub_resource type="Animation" id="wind"]
+resource_name = "wind"
+length = 10
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="leaves"]
+resource_name = "leaves"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.12, 0.12, -0.12]
+}
+
+[sub_resource type="Animation" id="shuffle_a"]
+resource_name = "shuffle_a"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.999, 2.0),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(400, -50), Vector2(800, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="shuffle_b"]
+resource_name = "shuffle_b"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.999, 2.0),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-400, 50), Vector2(-400, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="shuffle_c"]
+resource_name = "shuffle_c"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.999, 2.0),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-400, 0), Vector2(0, 0)]
+}
+
+[resource]
+_data = {
+"wind": SubResource("wind"),
+"leaves": SubResource("leaves"),
+"shuffle_a": SubResource("shuffle_a"),
+"shuffle_b": SubResource("shuffle_b"),
+"shuffle_c": SubResource("shuffle_c")
+}

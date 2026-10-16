@@ -412,7 +412,7 @@ func _validate_action(raw: Variant, path: String) -> void:
 		if not item.has("timeout_seconds"):
 			item["timeout_seconds"] = 30.0
 	match type:
-		"show", "hide", "complete_level":
+		"show", "hide", "complete_level", "fail_level":
 			pass
 		"move":
 			allowed.append("position")

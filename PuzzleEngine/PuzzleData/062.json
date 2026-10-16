@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "id": 62,
+  "question": "سه در: آتش، قاتل، شیری که سه سال غذا نخورده. کدام امن است؟",
+  "hint": "بی‌حرکتی شیر و نوشتهٔ سه سال بی‌غذایی را بررسی کن؛ سپس در همان قفس را باز کن.",
+  "answer": "در شیر",
+  "time_limit_seconds": 120,
+  "base_score": 155,
+  "background": "res://assets/samples/caravanserai_night_lit.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "lion_seen": false
+  },
+  "objects": [
+    {
+      "id": "door_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/door_fire.svg",
+      "position": [
+        550,
+        650
+      ],
+      "interactions": [
+        "hold",
+        "swipe"
+      ],
+      "scale": [
+        1.3,
+        1.3
+      ]
+    },
+    {
+      "id": "clue_0",
+      "scene": "TextObject",
+      "text": "آتش هنوز شعله دارد",
+      "position": [
+        550,
+        850
+      ],
+      "hit_size": [
+        380,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "door_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/door_killer.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [
+        "hold",
+        "swipe"
+      ],
+      "scale": [
+        1.3,
+        1.3
+      ]
+    },
+    {
+      "id": "clue_1",
+      "scene": "TextObject",
+      "text": "قاتل بیدار و مسلح است",
+      "position": [
+        960,
+        850
+      ],
+      "hit_size": [
+        380,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "door_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/door_lion.svg",
+      "position": [
+        1370,
+        650
+      ],
+      "interactions": [
+        "hold",
+        "swipe"
+      ],
+      "scale": [
+        1.3,
+        1.3
+      ]
+    },
+    {
+      "id": "clue_2",
+      "scene": "TextObject",
+      "text": "سه سال بی‌غذا؛ هیچ حرکتی ندارد",
+      "position": [
+        1370,
+        850
+      ],
+      "hit_size": [
+        380,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "water",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/water_bowl.svg",
+      "position": [
+        320,
+        930
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "fire_zone",
+      "scene": "DropZone",
+      "position": [
+        550,
+        650
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "water"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "steam",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/steam_plume.svg",
+      "position": [
+        550,
+        610
+      ],
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "shield",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/wooden_shield.svg",
+      "position": [
+        1650,
+        930
+      ],
+      "interactions": [
+        "hold"
+      ],
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "crack",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/shield_crack.svg",
+      "position": [
+        1650,
+        930
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "hold",
+      "source": "door_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "show",
+          "target": "clue_0"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "hold",
+      "source": "door_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "show",
+          "target": "clue_1"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "hold",
+      "source": "door_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "show",
+          "target": "clue_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "lion_seen",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "swipe",
+      "source": "door_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "lion_seen",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "door_2",
+          "sprite": "res://assets/samples/hidden_door.svg"
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "swipe",
+      "source": "door_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "door_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "swipe",
+      "source": "door_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "door_1",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "drop_on",
+      "source": "water",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "water",
+          "position": [
+            320,
+            930
+          ]
+        },
+        {
+          "type": "show",
+          "target": "steam"
+        },
+        {
+          "type": "play_animation",
+          "target": "steam",
+          "animation": "chapter_two/flash",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "fire_zone"
+    },
+    {
+      "id": "r0007",
+      "event": "custom:animation_finished",
+      "source": "steam",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "steam"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
+      "event": "hold",
+      "source": "shield",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "show",
+          "target": "crack"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

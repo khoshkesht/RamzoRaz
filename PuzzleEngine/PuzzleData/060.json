@@ -1,0 +1,6965 @@
+{
+  "schema_version": 1,
+  "id": 60,
+  "question": "۹ سکه، یکی سبک‌تر؛ با دو بار وزن کردن پیدایش کن.",
+  "hint": "سه سکه را با سه سکه بسنج؛ سپس از گروه مشکوک یکی را با یکی بسنج.",
+  "answer": "تقسیم ۳-۳-۳ و سپس ۱-۱",
+  "time_limit_seconds": 155,
+  "base_score": 175,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "balance": 0,
+    "count_diff": 0,
+    "weighings": 0,
+    "candidates": 9,
+    "outcome": 99,
+    "recording": false,
+    "placing": false,
+    "side_0": 0,
+    "candidate_0": true,
+    "side_1": 0,
+    "candidate_1": true,
+    "side_2": 0,
+    "candidate_2": true,
+    "side_3": 0,
+    "candidate_3": true,
+    "side_4": 0,
+    "candidate_4": true,
+    "side_5": 0,
+    "candidate_5": true,
+    "side_6": 0,
+    "candidate_6": true,
+    "side_7": 0,
+    "candidate_7": true,
+    "side_8": 0,
+    "candidate_8": true
+  },
+  "objects": [
+    {
+      "id": "instructions",
+      "scene": "TextObject",
+      "text": "هر تأیید یک توزین است؛ تعداد برابر روی کفه‌ها اطلاعات می‌دهد. لمس سکه یعنی انتخاب.",
+      "position": [
+        960,
+        430
+      ],
+      "hit_size": [
+        1550,
+        90
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "scale",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/weighing_scale.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        2,
+        2
+      ]
+    },
+    {
+      "id": "left",
+      "scene": "DropZone",
+      "position": [
+        700,
+        620
+      ],
+      "hit_size": [
+        360,
+        180
+      ],
+      "accepted_sources": [
+        "coin_0",
+        "coin_1",
+        "coin_2",
+        "coin_3",
+        "coin_4",
+        "coin_5",
+        "coin_6",
+        "coin_7",
+        "coin_8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "right",
+      "scene": "DropZone",
+      "position": [
+        1220,
+        620
+      ],
+      "hit_size": [
+        360,
+        180
+      ],
+      "accepted_sources": [
+        "coin_0",
+        "coin_1",
+        "coin_2",
+        "coin_3",
+        "coin_4",
+        "coin_5",
+        "coin_6",
+        "coin_7",
+        "coin_8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "tray",
+      "scene": "DropZone",
+      "position": [
+        960,
+        920
+      ],
+      "hit_size": [
+        360,
+        180
+      ],
+      "accepted_sources": [
+        "coin_0",
+        "coin_1",
+        "coin_2",
+        "coin_3",
+        "coin_4",
+        "coin_5",
+        "coin_6",
+        "coin_7",
+        "coin_8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "coin_0",
+      "scene": "TextObject",
+      "sprite": "res://assets/ui/score.png",
+      "position": [
+        360,
+        920
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "hit_size": [
+        100,
+        100
+      ],
+      "text": "۱",
+      "text_color": "#354f54"
+    },
+    {
+      "id": "coin_1",
+      "scene": "TextObject",
+      "sprite": "res://assets/ui/score.png",
+      "position": [
+        510,
+        920
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "hit_size": [
+        100,
+        100
+      ],
+      "text": "۲",
+      "text_color": "#354f54"
+    },
+    {
+      "id": "coin_2",
+      "scene": "TextObject",
+      "sprite": "res://assets/ui/score.png",
+      "position": [
+        660,
+        920
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "hit_size": [
+        100,
+        100
+      ],
+      "text": "۳",
+      "text_color": "#354f54"
+    },
+    {
+      "id": "coin_3",
+      "scene": "TextObject",
+      "sprite": "res://assets/ui/score.png",
+      "position": [
+        810,
+        920
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "hit_size": [
+        100,
+        100
+      ],
+      "text": "۴",
+      "text_color": "#354f54"
+    },
+    {
+      "id": "coin_4",
+      "scene": "TextObject",
+      "sprite": "res://assets/ui/score.png",
+      "position": [
+        960,
+        920
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "hit_size": [
+        100,
+        100
+      ],
+      "text": "۵",
+      "text_color": "#354f54"
+    },
+    {
+      "id": "coin_5",
+      "scene": "TextObject",
+      "sprite": "res://assets/ui/score.png",
+      "position": [
+        1110,
+        920
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "hit_size": [
+        100,
+        100
+      ],
+      "text": "۶",
+      "text_color": "#354f54"
+    },
+    {
+      "id": "coin_6",
+      "scene": "TextObject",
+      "sprite": "res://assets/ui/score.png",
+      "position": [
+        1260,
+        920
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "hit_size": [
+        100,
+        100
+      ],
+      "text": "۷",
+      "text_color": "#354f54"
+    },
+    {
+      "id": "coin_7",
+      "scene": "TextObject",
+      "sprite": "res://assets/ui/score.png",
+      "position": [
+        1410,
+        920
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "hit_size": [
+        100,
+        100
+      ],
+      "text": "۸",
+      "text_color": "#354f54"
+    },
+    {
+      "id": "coin_8",
+      "scene": "TextObject",
+      "sprite": "res://assets/ui/score.png",
+      "position": [
+        1560,
+        920
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "hit_size": [
+        100,
+        100
+      ],
+      "text": "۹",
+      "text_color": "#354f54"
+    },
+    {
+      "id": "weigh",
+      "scene": "TextObject",
+      "text": "توزین",
+      "position": [
+        960,
+        800
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "unequal_counts",
+      "scene": "TextObject",
+      "text": "تعداد دو کفه نابرابر است؛ سکهٔ سبک مشخص نمی‌شود.",
+      "position": [
+        960,
+        480
+      ],
+      "hit_size": [
+        1150,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "left_light",
+      "scene": "TextObject",
+      "text": "کفهٔ چپ سبک‌تر",
+      "position": [
+        960,
+        480
+      ],
+      "hit_size": [
+        700,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "equal",
+      "scene": "TextObject",
+      "text": "دو کفه برابر",
+      "position": [
+        960,
+        480
+      ],
+      "hit_size": [
+        700,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "right_light",
+      "scene": "TextObject",
+      "text": "کفهٔ راست سبک‌تر",
+      "position": [
+        960,
+        480
+      ],
+      "hit_size": [
+        700,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "magnifier",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/magnifying_glass.svg",
+      "position": [
+        280,
+        550
+      ],
+      "interactions": [
+        "hold"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "souvenir",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/ui/score.png",
+      "position": [
+        1640,
+        550
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.5,
+        1.5
+      ]
+    },
+    {
+      "id": "decorative_tray",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/test_tray.svg",
+      "position": [
+        1630,
+        760
+      ],
+      "interactions": [],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "decoration",
+      "scene": "DropZone",
+      "position": [
+        1630,
+        760
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "souvenir"
+      ],
+      "z_index": -1
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "coin_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_0",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_0",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_0",
+          "position": [
+            360,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "coin_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_0",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_0",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_0",
+          "position": [
+            1125,
+            560
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "coin_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_0",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_0",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_0",
+          "position": [
+            605,
+            560
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "coin_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_0",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_0",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_0",
+          "position": [
+            1125,
+            560
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "source": "coin_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_0",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_0",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_0",
+          "position": [
+            605,
+            560
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0005",
+      "event": "drop_on",
+      "source": "coin_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_0",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_0",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_0",
+          "position": [
+            360,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0006",
+      "event": "drop_on",
+      "source": "coin_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "tap",
+      "source": "coin_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "gt",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidates",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
+      "event": "drop_on",
+      "source": "coin_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_1",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_1",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_1",
+          "position": [
+            510,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0009",
+      "event": "drop_on",
+      "source": "coin_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_1",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_1",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_1",
+          "position": [
+            1220,
+            560
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0010",
+      "event": "drop_on",
+      "source": "coin_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_1",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_1",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_1",
+          "position": [
+            700,
+            560
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0011",
+      "event": "drop_on",
+      "source": "coin_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_1",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_1",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_1",
+          "position": [
+            1220,
+            560
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0012",
+      "event": "drop_on",
+      "source": "coin_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_1",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_1",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_1",
+          "position": [
+            700,
+            560
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0013",
+      "event": "drop_on",
+      "source": "coin_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_1",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_1",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_1",
+          "position": [
+            510,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0014",
+      "event": "drop_on",
+      "source": "coin_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0015",
+      "event": "tap",
+      "source": "coin_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "gt",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidates",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0016",
+      "event": "drop_on",
+      "source": "coin_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_2",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_2",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_2",
+          "position": [
+            660,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0017",
+      "event": "drop_on",
+      "source": "coin_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_2",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_2",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_2",
+          "position": [
+            1315,
+            560
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0018",
+      "event": "drop_on",
+      "source": "coin_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_2",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_2",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_2",
+          "position": [
+            795,
+            560
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0019",
+      "event": "drop_on",
+      "source": "coin_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_2",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_2",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_2",
+          "position": [
+            1315,
+            560
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0020",
+      "event": "drop_on",
+      "source": "coin_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_2",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_2",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_2",
+          "position": [
+            795,
+            560
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0021",
+      "event": "drop_on",
+      "source": "coin_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_2",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_2",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_2",
+          "position": [
+            660,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0022",
+      "event": "drop_on",
+      "source": "coin_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0023",
+      "event": "tap",
+      "source": "coin_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "gt",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidates",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0024",
+      "event": "drop_on",
+      "source": "coin_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_3",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_3",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_3",
+          "position": [
+            810,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0025",
+      "event": "drop_on",
+      "source": "coin_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_3",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_3",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_3",
+          "position": [
+            1125,
+            620
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0026",
+      "event": "drop_on",
+      "source": "coin_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_3",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_3",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_3",
+          "position": [
+            605,
+            620
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0027",
+      "event": "drop_on",
+      "source": "coin_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_3",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_3",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_3",
+          "position": [
+            1125,
+            620
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0028",
+      "event": "drop_on",
+      "source": "coin_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_3",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_3",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_3",
+          "position": [
+            605,
+            620
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0029",
+      "event": "drop_on",
+      "source": "coin_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_3",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_3",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_3",
+          "position": [
+            810,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0030",
+      "event": "drop_on",
+      "source": "coin_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0031",
+      "event": "tap",
+      "source": "coin_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "gt",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidates",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0032",
+      "event": "drop_on",
+      "source": "coin_4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_4",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_4",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_4",
+          "position": [
+            960,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0033",
+      "event": "drop_on",
+      "source": "coin_4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_4",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_4",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_4",
+          "position": [
+            1220,
+            620
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0034",
+      "event": "drop_on",
+      "source": "coin_4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_4",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_4",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_4",
+          "position": [
+            700,
+            620
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0035",
+      "event": "drop_on",
+      "source": "coin_4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_4",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_4",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_4",
+          "position": [
+            1220,
+            620
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0036",
+      "event": "drop_on",
+      "source": "coin_4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_4",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_4",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_4",
+          "position": [
+            700,
+            620
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0037",
+      "event": "drop_on",
+      "source": "coin_4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_4",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_4",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_4",
+          "position": [
+            960,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0038",
+      "event": "drop_on",
+      "source": "coin_4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0039",
+      "event": "tap",
+      "source": "coin_4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "gt",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidates",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0040",
+      "event": "drop_on",
+      "source": "coin_5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_5",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_5",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_5",
+          "position": [
+            1110,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0041",
+      "event": "drop_on",
+      "source": "coin_5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_5",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_5",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_5",
+          "position": [
+            1315,
+            620
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0042",
+      "event": "drop_on",
+      "source": "coin_5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_5",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_5",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_5",
+          "position": [
+            795,
+            620
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0043",
+      "event": "drop_on",
+      "source": "coin_5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_5",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_5",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_5",
+          "position": [
+            1315,
+            620
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0044",
+      "event": "drop_on",
+      "source": "coin_5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_5",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_5",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_5",
+          "position": [
+            795,
+            620
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0045",
+      "event": "drop_on",
+      "source": "coin_5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_5",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_5",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_5",
+          "position": [
+            1110,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0046",
+      "event": "drop_on",
+      "source": "coin_5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0047",
+      "event": "tap",
+      "source": "coin_5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "gt",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidates",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_5",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0048",
+      "event": "drop_on",
+      "source": "coin_6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_6",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 9,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_6",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_6",
+          "position": [
+            1260,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0049",
+      "event": "drop_on",
+      "source": "coin_6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_6",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 18,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_6",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_6",
+          "position": [
+            1125,
+            680
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0050",
+      "event": "drop_on",
+      "source": "coin_6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_6",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -9,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_6",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_6",
+          "position": [
+            605,
+            680
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0051",
+      "event": "drop_on",
+      "source": "coin_6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_6",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 9,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_6",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_6",
+          "position": [
+            1125,
+            680
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0052",
+      "event": "drop_on",
+      "source": "coin_6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_6",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -18,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_6",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_6",
+          "position": [
+            605,
+            680
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0053",
+      "event": "drop_on",
+      "source": "coin_6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_6",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -9,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_6",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_6",
+          "position": [
+            1260,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0054",
+      "event": "drop_on",
+      "source": "coin_6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0055",
+      "event": "tap",
+      "source": "coin_6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "gt",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidates",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_6",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0056",
+      "event": "drop_on",
+      "source": "coin_7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_7",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_7",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_7",
+          "position": [
+            1410,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0057",
+      "event": "drop_on",
+      "source": "coin_7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_7",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_7",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_7",
+          "position": [
+            1220,
+            680
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0058",
+      "event": "drop_on",
+      "source": "coin_7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_7",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_7",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_7",
+          "position": [
+            700,
+            680
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0059",
+      "event": "drop_on",
+      "source": "coin_7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_7",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_7",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_7",
+          "position": [
+            1220,
+            680
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0060",
+      "event": "drop_on",
+      "source": "coin_7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_7",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_7",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_7",
+          "position": [
+            700,
+            680
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0061",
+      "event": "drop_on",
+      "source": "coin_7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_7",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_7",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_7",
+          "position": [
+            1410,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0062",
+      "event": "drop_on",
+      "source": "coin_7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0063",
+      "event": "tap",
+      "source": "coin_7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "gt",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidates",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_7",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0064",
+      "event": "drop_on",
+      "source": "coin_8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_8",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_8",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_8",
+          "position": [
+            1560,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0065",
+      "event": "drop_on",
+      "source": "coin_8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_8",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_8",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_8",
+          "position": [
+            1315,
+            680
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0066",
+      "event": "drop_on",
+      "source": "coin_8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_8",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_8",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_8",
+          "position": [
+            795,
+            680
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0067",
+      "event": "drop_on",
+      "source": "coin_8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_8",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": 10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_8",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_8",
+          "position": [
+            1315,
+            680
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right"
+    },
+    {
+      "id": "r0068",
+      "event": "drop_on",
+      "source": "coin_8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_8",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -20,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -2,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_8",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_8",
+          "position": [
+            795,
+            680
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left"
+    },
+    {
+      "id": "r0069",
+      "event": "drop_on",
+      "source": "coin_8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "side_8",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "balance",
+          "value": -10,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "count_diff",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "side_8",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "coin_8",
+          "position": [
+            1560,
+            920
+          ]
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0070",
+      "event": "drop_on",
+      "source": "coin_8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placing",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "placing",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0071",
+      "event": "tap",
+      "source": "coin_8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "gt",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidates",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_8",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0072",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "lt",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "count_diff",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "balance",
+          "operator": "gt",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "recording",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "outcome",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "weighings",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0073",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "lt",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "count_diff",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "balance",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "recording",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "outcome",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "weighings",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0074",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "lt",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "count_diff",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "balance",
+          "operator": "lt",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "recording",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "outcome",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "weighings",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0075",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "weighings",
+          "operator": "lt",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "count_diff",
+          "operator": "ne",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "weighings",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "show",
+          "target": "unequal_counts"
+        },
+        {
+          "type": "hide",
+          "target": "left_light"
+        },
+        {
+          "type": "hide",
+          "target": "equal"
+        },
+        {
+          "type": "hide",
+          "target": "right_light"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0076",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_0",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_0",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0077",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_0",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_0",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0078",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_0",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_0",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0079",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_0",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_0",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0080",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_0",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_0",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0081",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_0",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_0",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0082",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_1",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_1",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0083",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_1",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_1",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0084",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_1",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_1",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0085",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_1",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_1",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0086",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_1",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_1",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0087",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_1",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_1",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0088",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_2",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_2",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0089",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_2",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_2",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0090",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_2",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_2",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0091",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_2",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_2",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0092",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_2",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_2",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0093",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_2",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_2",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0094",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_3",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_3",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0095",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_3",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_3",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0096",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_3",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_3",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0097",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_3",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_3",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0098",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_3",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_3",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0099",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_3",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_3",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0100",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_4",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_4",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_4",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0101",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_4",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_4",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_4",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0102",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_4",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_4",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_4",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0103",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_4",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_4",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_4",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0104",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_4",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_4",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_4",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0105",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_4",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_4",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_4",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0106",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_5",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_5",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0107",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_5",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_5",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0108",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_5",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_5",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0109",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_5",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_5",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0110",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_5",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_5",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0111",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_5",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_5",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0112",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_6",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_6",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_6",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0113",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_6",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_6",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_6",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0114",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_6",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_6",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_6",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0115",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_6",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_6",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_6",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0116",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_6",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_6",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_6",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0117",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_6",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_6",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_6",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0118",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_7",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_7",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_7",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0119",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_7",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_7",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_7",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0120",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_7",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_7",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_7",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0121",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_7",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_7",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_7",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0122",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_7",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_7",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_7",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0123",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_7",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_7",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_7",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0124",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_8",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_8",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_8",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0125",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "side_8",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_8",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_8",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0126",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_8",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_8",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_8",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0127",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "side_8",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_8",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_8",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0128",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_8",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "candidate_8",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_8",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0129",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "side_8",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "candidate_8",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "candidate_8",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "candidates",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0130",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": -1
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "left_light"
+        },
+        {
+          "type": "hide",
+          "target": "equal"
+        },
+        {
+          "type": "hide",
+          "target": "right_light"
+        },
+        {
+          "type": "hide",
+          "target": "unequal_counts"
+        },
+        {
+          "type": "show",
+          "target": "left_light"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0131",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "left_light"
+        },
+        {
+          "type": "hide",
+          "target": "equal"
+        },
+        {
+          "type": "hide",
+          "target": "right_light"
+        },
+        {
+          "type": "hide",
+          "target": "unequal_counts"
+        },
+        {
+          "type": "show",
+          "target": "equal"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0132",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "outcome",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "left_light"
+        },
+        {
+          "type": "hide",
+          "target": "equal"
+        },
+        {
+          "type": "hide",
+          "target": "right_light"
+        },
+        {
+          "type": "hide",
+          "target": "unequal_counts"
+        },
+        {
+          "type": "show",
+          "target": "right_light"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0133",
+      "event": "tap",
+      "source": "weigh",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "recording",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "recording",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0134",
+      "event": "hold",
+      "source": "magnifier",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "magnifier",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0135",
+      "event": "drop_on",
+      "source": "souvenir",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "souvenir",
+          "position": [
+            1630,
+            760
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "souvenir",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "decoration"
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "counters": [
+    {
+      "label": "وزن‌کشی",
+      "variable": "weighings",
+      "target": 2
+    }
+  ]
+}

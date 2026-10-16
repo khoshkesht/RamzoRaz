@@ -50,10 +50,10 @@ func show_result(result: Dictionary, last_level: bool, answer: String = "") -> v
 	retry_button.hide()
 	show()
 
-func show_failure() -> void:
+func show_failure(timed_out: bool = true) -> void:
 	_reset_buttons()
-	title.text = "زمان تمام شد"
-	details.text = "دوباره تلاش کنید و پاسخ معما را پیدا کنید."
+	title.text = "زمان تمام شد" if timed_out else "دوباره تلاش کن"
+	details.text = "دوباره تلاش کنید و پاسخ معما را پیدا کنید." if timed_out else "این حرکت با شرط معما سازگار نبود. دوباره تلاش کنید."
 	continue_button.hide()
 	retry_button.show()
 	show()

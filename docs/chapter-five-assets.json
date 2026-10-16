@@ -1,0 +1,536 @@
+{
+  "note": "گزارش نویسندگی و منابع؛ تأیید اجرایی یا آزمون تصویری نیست. فایل‌های تصویری و صوتی قبلی تغییر نکردند.",
+  "new_assets": {
+    "res://assets/samples/bell_rope_paths.svg": "اتصال آشکار طناب‌های درهم با تقاطع فاقد اتصال.",
+    "res://assets/samples/boat_empty.svg": "قایق قابل جابه‌جایی با یک جای محموله؛ منبع مناسب موجود نبود.",
+    "res://assets/samples/bookshelf.svg": "قفسهٔ مستقلِ قابل حرکت و چرخش برای راه مخفی.",
+    "res://assets/samples/bridge_broken.svg": "پل شکستهٔ دام با شکاف روشن؛ مسیر قابل عبور نیست.",
+    "res://assets/samples/bridge_crossing_night.svg": "رود و پل دوطرفهٔ شبانه با سطح عبور روشن؛ محیط مناسب موجود نبود.",
+    "res://assets/samples/brothers_portrait.svg": "عکس دو برادر برای نسبت دام، متمایز از زنجیرهٔ نسل‌ها.",
+    "res://assets/samples/cabbage.svg": "هویت کلم به‌عنوان محمولهٔ خوراکی؛ منبع مناسب موجود نبود.",
+    "res://assets/samples/cup_red_label.svg": "همان شکل فنجان با برچسب قرمزِ دام، بدون تغییر هویت حامل سکه.",
+    "res://assets/samples/door_fire.svg": "سه در با خطر آتش/قاتل/شیرِ بی‌حرکت و نشانه‌های متمایز.",
+    "res://assets/samples/door_killer.svg": "سه در با خطر آتش/قاتل/شیرِ بی‌حرکت و نشانه‌های متمایز.",
+    "res://assets/samples/door_lion.svg": "سه در با خطر آتش/قاتل/شیرِ بی‌حرکت و نشانه‌های متمایز.",
+    "res://assets/samples/family_grandfather.svg": "تمایز سه نسل و پیوند والد/فرزند برای فرد مشترک؛ منبع مناسب موجود نبود.",
+    "res://assets/samples/family_link.svg": "تمایز سه نسل و پیوند والد/فرزند برای فرد مشترک؛ منبع مناسب موجود نبود.",
+    "res://assets/samples/family_son.svg": "تمایز سه نسل و پیوند والد/فرزند برای فرد مشترک؛ منبع مناسب موجود نبود.",
+    "res://assets/samples/five_window_room_day.svg": "اتاق بدون پنجرهٔ تزئینی اضافی برای دقیقاً پنج قابِ تعاملی.",
+    "res://assets/samples/fixed_brick.svg": "آجر ثابتِ هم‌اندازه با آجر لق، بدون غبار لبه.",
+    "res://assets/samples/floor_scrape.svg": "رد ساییدگی واقعی زیر قفسه، مستقل از پس‌زمینه.",
+    "res://assets/samples/fruit_crate.svg": "سه جعبهٔ میوهٔ هم‌شکل با برچسب مستقل؛ منبع مناسب موجود نبود.",
+    "res://assets/samples/goat.svg": "هویت بز در مسئلهٔ رود؛ گوسفند موجود نقش بز را پوشش نمی‌داد.",
+    "res://assets/samples/guard_opaque.svg": "محافظ ماتِ دام؛ محافظ شفاف موجود بدون تغییر بازاستفاده می‌شود.",
+    "res://assets/samples/hidden_door.svg": "ورودی پشت قفسه/آجر که ابتدا مخفی است؛ دریچهٔ کف مناسب نبود.",
+    "res://assets/samples/hourglass_clear.svg": "محفظهٔ شفاف بدون شن ثابت برای نمایش مقدار واقعی باقی‌مانده.",
+    "res://assets/samples/inverted_book.svg": "کتاب وارونه با جهت نشان قابل تشخیص برای اهرم.",
+    "res://assets/samples/jug_body_leak.svg": "ترک و قطرهٔ بدنه، مستقل از قطرهٔ دهانه و لکهٔ کف.",
+    "res://assets/samples/jug_shadow_target.svg": "سایهٔ هدف منطبق با هندسهٔ کوزهٔ درست.",
+    "res://assets/samples/lantern_unlit.svg": "فانوس خاموش با دسته و قاب؛ نمونهٔ مناسب موجود نبود.",
+    "res://assets/samples/leaf_pair.svg": "برگ مستقل برای حرکت زندهٔ قاب سوم، بدون تغییر تصویر پنجره‌های قبلی.",
+    "res://assets/samples/library_map_old.svg": "نقشهٔ قدیمی با نشانهٔ قفسهٔ چپ، متمایز از رد فعلیِ قفسهٔ راست.",
+    "res://assets/samples/library_room_day.svg": "محیط کتابخانهٔ روز/شب بدون قفسه یا ورودی ثابت؛ سرنخ‌ها اشیای مستقل‌اند.",
+    "res://assets/samples/library_room_night.svg": "محیط کتابخانهٔ روز/شب بدون قفسه یا ورودی ثابت؛ سرنخ‌ها اشیای مستقل‌اند.",
+    "res://assets/samples/loose_brick.svg": "آجر لق با غبار زیر لبه؛ نیازمند سرنخ مستقل از دیوار بود.",
+    "res://assets/samples/magnifying_glass.svg": "ذره‌بین آزمایش سکه‌ها؛ عینکِ دوچشمی مناسب این عمل نبود.",
+    "res://assets/samples/oil_lamp_unlit.svg": "چراغ نفتی خاموش؛ چراغ برقی موجود جای این وسیله را نمی‌گیرد.",
+    "res://assets/samples/orange_fruit.svg": "پرتقالِ نمونه‌برداری؛ سیب موجود بدون تغییر بازاستفاده شد.",
+    "res://assets/samples/pattern_tile_0.svg": "اتصال چهار لبه و قطع پیوستگی خط؛ منابع قبلی جدول اتصال نداشتند.",
+    "res://assets/samples/pattern_tile_1.svg": "اتصال چهار لبه و قطع پیوستگی خط؛ منابع قبلی جدول اتصال نداشتند.",
+    "res://assets/samples/pattern_tile_2.svg": "اتصال چهار لبه و قطع پیوستگی خط؛ منابع قبلی جدول اتصال نداشتند.",
+    "res://assets/samples/pattern_tile_3.svg": "اتصال چهار لبه و قطع پیوستگی خط؛ منابع قبلی جدول اتصال نداشتند.",
+    "res://assets/samples/puzzle_workbench_day.svg": "میز آزمون خالیِ روز/شب با سطح کار روشن؛ زمینهٔ متناسب برای معماهای رومیزی موجود نبود.",
+    "res://assets/samples/puzzle_workbench_night.svg": "میز آزمون خالیِ روز/شب با سطح کار روشن؛ زمینهٔ متناسب برای معماهای رومیزی موجود نبود.",
+    "res://assets/samples/river_crossing_day.svg": "دو ساحل و رود با عرض کافی برای قایق و محموله؛ محیط مناسب موجود نبود.",
+    "res://assets/samples/rope_pull.svg": "دستهٔ قابل کشیدن طناب، مستقل از مسیر ثابت بالا.",
+    "res://assets/samples/rug_missing.svg": "تقارن، خانهٔ خالی و جهت نقشِ مستقل؛ منابع قبلی جدول انطباق نداشتند.",
+    "res://assets/samples/rug_motif.svg": "تقارن، خانهٔ خالی و جهت نقشِ مستقل؛ منابع قبلی جدول انطباق نداشتند.",
+    "res://assets/samples/rug_motif_reversed.svg": "تقارن، خانهٔ خالی و جهت نقشِ مستقل؛ منابع قبلی جدول انطباق نداشتند.",
+    "res://assets/samples/rug_symmetric.svg": "تقارن، خانهٔ خالی و جهت نقشِ مستقل؛ منابع قبلی جدول انطباق نداشتند.",
+    "res://assets/samples/sand_lower.svg": "شن مستقلِ بالا/پایین که با زمان شبیه‌سازی تغییر می‌کند.",
+    "res://assets/samples/sand_upper.svg": "شن مستقلِ بالا/پایین که با زمان شبیه‌سازی تغییر می‌کند.",
+    "res://assets/samples/shadow_jug_0.svg": "پروفایل گردن/دسته با معیار ثابت؛ کوزهٔ قبلی این گزینه‌ها را نداشت.",
+    "res://assets/samples/shadow_jug_1.svg": "پروفایل گردن/دسته با معیار ثابت؛ کوزهٔ قبلی این گزینه‌ها را نداشت.",
+    "res://assets/samples/shadow_jug_2.svg": "پروفایل گردن/دسته با معیار ثابت؛ کوزهٔ قبلی این گزینه‌ها را نداشت.",
+    "res://assets/samples/shield_crack.svg": "حالت ترکِ سپر مستقل از منبع پایه.",
+    "res://assets/samples/tea_glass_empty.svg": "بدنه‌های شفافِ هم‌اندازهٔ پُر/خالی یا قاشق؛ فنجان مات و قلم مناسب نبودند.",
+    "res://assets/samples/tea_glass_full.svg": "بدنه‌های شفافِ هم‌اندازهٔ پُر/خالی یا قاشق؛ فنجان مات و قلم مناسب نبودند.",
+    "res://assets/samples/tea_spoon.svg": "بدنه‌های شفافِ هم‌اندازهٔ پُر/خالی یا قاشق؛ فنجان مات و قلم مناسب نبودند.",
+    "res://assets/samples/tile_stencil.svg": "محیط چهار لبه یا شابلون دو لبهٔ کاشی؛ هندسه با گزینه‌ها هماهنگ است.",
+    "res://assets/samples/tile_surround.svg": "محیط چهار لبه یا شابلون دو لبهٔ کاشی؛ هندسه با گزینه‌ها هماهنگ است.",
+    "res://assets/samples/upright_book.svg": "کتاب هم‌رنگ با نشانِ مستقیم برای مقایسهٔ جهت.",
+    "res://assets/samples/wind_arrow.svg": "جهت باد و بادسنجِ قابل تشخیص برای مهلت حفاظت شعله.",
+    "res://assets/samples/window_living.svg": "دو قاب هم‌اندازه با منظرهٔ زنده و منظرهٔ نقاشی‌شده؛ تمایز هندسی سرنخ.",
+    "res://assets/samples/window_painted.svg": "دو قاب هم‌اندازه با منظرهٔ زنده و منظرهٔ نقاشی‌شده؛ تمایز هندسی سرنخ.",
+    "res://assets/samples/wolf.svg": "هویت گرگ در مسئلهٔ رود؛ حیوان موجود نقش گرگ را پوشش نمی‌داد.",
+    "res://assets/samples/wooden_shield.svg": "سپر چوبیِ دام؛ درپوش ظرف شکل و نقش سپر را ندارد.",
+    "res://assets/samples/chapter_five_feedback.tres": "مهلت باد، حرکت برگ و دو تعویض هویتی فنجان؛ انیمیشن‌های موجود این مسیرها را نداشتند."
+  },
+  "stages": {
+    "51": {
+      "background": "res://assets/samples/courtyard_night_lit.svg",
+      "lighting": "night_lit",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/candle_body.svg",
+        "res://assets/samples/candle_flame.svg",
+        "res://assets/samples/courtyard_night_lit.svg",
+        "res://assets/samples/glass_wind_guard.svg"
+      ],
+      "new": [
+        "res://assets/samples/chapter_five_feedback.tres",
+        "res://assets/samples/guard_opaque.svg",
+        "res://assets/samples/lantern_unlit.svg",
+        "res://assets/samples/oil_lamp_unlit.svg",
+        "res://assets/samples/wind_arrow.svg"
+      ]
+    },
+    "52": {
+      "background": "res://assets/samples/five_window_room_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/curtains_closed.svg",
+        "res://assets/samples/lamp_off.svg",
+        "res://assets/samples/lamp_on.svg"
+      ],
+      "new": [
+        "res://assets/samples/chapter_five_feedback.tres",
+        "res://assets/samples/five_window_room_day.svg",
+        "res://assets/samples/leaf_pair.svg",
+        "res://assets/samples/window_living.svg",
+        "res://assets/samples/window_painted.svg"
+      ]
+    },
+    "53": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://assets/samples/chapter_two_feedback.tres"
+      ],
+      "new": [
+        "res://assets/samples/pattern_tile_0.svg",
+        "res://assets/samples/pattern_tile_1.svg",
+        "res://assets/samples/pattern_tile_2.svg",
+        "res://assets/samples/pattern_tile_3.svg",
+        "res://assets/samples/puzzle_workbench_day.svg",
+        "res://assets/samples/tile_stencil.svg",
+        "res://assets/samples/tile_surround.svg"
+      ]
+    },
+    "54": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/bottle_cap.svg",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/milk_ripple.svg",
+        "res://assets/samples/puzzle_tile.svg",
+        "res://assets/samples/towel_wet.svg",
+        "res://assets/samples/water_drops.svg",
+        "res://assets/samples/water_jug.svg"
+      ],
+      "new": [
+        "res://assets/samples/jug_body_leak.svg",
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ]
+    },
+    "55": {
+      "background": "res://assets/samples/family_picnic_background.svg",
+      "lighting": "day",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/family_picnic_background.svg",
+        "res://assets/samples/hat.svg",
+        "res://assets/samples/man.svg"
+      ],
+      "new": [
+        "res://assets/samples/brothers_portrait.svg",
+        "res://assets/samples/family_grandfather.svg",
+        "res://assets/samples/family_link.svg",
+        "res://assets/samples/family_son.svg"
+      ]
+    },
+    "56": {
+      "background": "res://assets/samples/library_room_night.svg",
+      "lighting": "night_lit",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://assets/samples/chest_closed.svg"
+      ],
+      "new": [
+        "res://assets/samples/bookshelf.svg",
+        "res://assets/samples/floor_scrape.svg",
+        "res://assets/samples/hidden_door.svg",
+        "res://assets/samples/library_map_old.svg",
+        "res://assets/samples/library_room_night.svg"
+      ]
+    },
+    "57": {
+      "background": "res://assets/samples/tea_house_night_lit.svg",
+      "lighting": "night_lit",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/puzzle_tile.svg",
+        "res://assets/samples/tea_house_night_lit.svg"
+      ],
+      "new": [
+        "res://assets/samples/tea_glass_empty.svg",
+        "res://assets/samples/tea_glass_full.svg",
+        "res://assets/samples/tea_spoon.svg"
+      ]
+    },
+    "58": {
+      "background": "res://assets/samples/bridge_crossing_night.svg",
+      "lighting": "night_lit",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/flashlight.svg",
+        "res://assets/samples/lamp_off.svg",
+        "res://assets/samples/lamp_on.svg",
+        "res://assets/samples/man.svg",
+        "res://assets/samples/puzzle_tile.svg",
+        "res://assets/samples/yarn_unrolled.svg"
+      ],
+      "new": [
+        "res://assets/samples/bridge_crossing_night.svg"
+      ]
+    },
+    "59": {
+      "background": "res://assets/samples/fruit_market_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/apple.svg",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/fruit_market_day.svg",
+        "res://assets/samples/pomegranate.svg",
+        "res://assets/samples/puzzle_tile.svg"
+      ],
+      "new": [
+        "res://assets/samples/fruit_crate.svg",
+        "res://assets/samples/orange_fruit.svg"
+      ]
+    },
+    "60": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/puzzle_tile.svg",
+        "res://assets/samples/test_tray.svg",
+        "res://assets/samples/weighing_scale.svg",
+        "res://assets/ui/score.png"
+      ],
+      "new": [
+        "res://assets/samples/magnifying_glass.svg",
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ]
+    },
+    "61": {
+      "background": "res://assets/samples/river_crossing_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/bush.svg",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/puzzle_tile.svg"
+      ],
+      "new": [
+        "res://assets/samples/boat_empty.svg",
+        "res://assets/samples/bridge_broken.svg",
+        "res://assets/samples/cabbage.svg",
+        "res://assets/samples/goat.svg",
+        "res://assets/samples/river_crossing_day.svg",
+        "res://assets/samples/wolf.svg"
+      ]
+    },
+    "62": {
+      "background": "res://assets/samples/caravanserai_night_lit.svg",
+      "lighting": "night_lit",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/caravanserai_night_lit.svg",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/steam_plume.svg",
+        "res://assets/samples/water_bowl.svg"
+      ],
+      "new": [
+        "res://assets/samples/door_fire.svg",
+        "res://assets/samples/door_killer.svg",
+        "res://assets/samples/door_lion.svg",
+        "res://assets/samples/hidden_door.svg",
+        "res://assets/samples/shield_crack.svg",
+        "res://assets/samples/wooden_shield.svg"
+      ]
+    },
+    "63": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/clock_face.svg",
+        "res://assets/samples/height_ruler.svg",
+        "res://assets/samples/puzzle_tile.svg"
+      ],
+      "new": [
+        "res://assets/samples/hourglass_clear.svg",
+        "res://assets/samples/puzzle_workbench_night.svg",
+        "res://assets/samples/sand_lower.svg",
+        "res://assets/samples/sand_upper.svg"
+      ]
+    },
+    "64": {
+      "background": "res://assets/samples/caravanserai_night_lit.svg",
+      "lighting": "night_lit",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://assets/samples/broom.svg",
+        "res://assets/samples/caravanserai_night_lit.svg",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/dust_motes.svg"
+      ],
+      "new": [
+        "res://assets/samples/fixed_brick.svg",
+        "res://assets/samples/hidden_door.svg",
+        "res://assets/samples/loose_brick.svg"
+      ]
+    },
+    "65": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/cup.svg",
+        "res://assets/samples/mirror_frame.svg",
+        "res://assets/samples/ribbon.svg",
+        "res://assets/ui/score.png"
+      ],
+      "new": [
+        "res://assets/samples/chapter_five_feedback.tres",
+        "res://assets/samples/cup_red_label.svg",
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ]
+    },
+    "66": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://assets/samples/bell.svg",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/clock_hands.svg",
+        "res://assets/samples/radio_chime.wav",
+        "res://assets/samples/stone.svg"
+      ],
+      "new": [
+        "res://assets/samples/bell_rope_paths.svg",
+        "res://assets/samples/puzzle_workbench_day.svg",
+        "res://assets/samples/rope_pull.svg"
+      ]
+    },
+    "67": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/lamp_on.svg",
+        "res://assets/samples/wall_switch.svg"
+      ],
+      "new": [
+        "res://assets/samples/jug_shadow_target.svg",
+        "res://assets/samples/puzzle_workbench_day.svg",
+        "res://assets/samples/shadow_jug_0.svg",
+        "res://assets/samples/shadow_jug_1.svg",
+        "res://assets/samples/shadow_jug_2.svg"
+      ]
+    },
+    "68": {
+      "background": "res://assets/samples/library_room_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/face_frame.svg"
+      ],
+      "new": [
+        "res://assets/samples/bookshelf.svg",
+        "res://assets/samples/hidden_door.svg",
+        "res://assets/samples/inverted_book.svg",
+        "res://assets/samples/library_room_day.svg",
+        "res://assets/samples/upright_book.svg"
+      ]
+    },
+    "69": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/height_ruler.svg"
+      ],
+      "new": [
+        "res://assets/samples/puzzle_workbench_night.svg",
+        "res://assets/samples/rug_missing.svg",
+        "res://assets/samples/rug_motif.svg",
+        "res://assets/samples/rug_motif_reversed.svg",
+        "res://assets/samples/rug_symmetric.svg"
+      ]
+    },
+    "70": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/chapter_two_feedback.tres",
+        "res://assets/samples/postal_seal.svg",
+        "res://assets/samples/puzzle_tile.svg"
+      ],
+      "new": [
+        "res://assets/samples/puzzle_workbench_day.svg"
+      ]
+    }
+  },
+  "matching": {
+    "tile_53": {
+      "order": "N,E,S,W",
+      "target": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "options": [
+        {
+          "id": 0,
+          "edges": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "continuous": true
+        },
+        {
+          "id": 1,
+          "edges": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "continuous": false,
+          "break_edge": "W"
+        },
+        {
+          "id": 2,
+          "edges": [
+            1,
+            0,
+            2,
+            3
+          ],
+          "continuous": true
+        },
+        {
+          "id": 3,
+          "edges": [
+            0,
+            3,
+            2,
+            1
+          ],
+          "continuous": true
+        }
+      ]
+    },
+    "rug_69": {
+      "axis": "vertical",
+      "missing_rug": 1,
+      "local_missing_center": [
+        235,
+        240
+      ],
+      "motif_direction": "up",
+      "false_motif_direction": "down"
+    },
+    "shadow_67": {
+      "neck_width": 50,
+      "handle": "right",
+      "correct": 0,
+      "wrong_neck_width": 85,
+      "wrong_handle": "absent",
+      "light_distance": "fixed"
+    }
+  }
+}

@@ -1,0 +1,5815 @@
+{
+  "schema_version": 1,
+  "id": 61,
+  "question": "گرگ، بز و کلم را سالم از رود عبور بده.",
+  "hint": "بز را ببر؛ گرگ را ببر و بز را برگردان؛ کلم را ببر و در پایان بز را منتقل کن.",
+  "answer": "بز؛ برگشت، گرگ؛ بز برگردد، کلم؛ برگشت، بز",
+  "time_limit_seconds": 165,
+  "base_score": 175,
+  "background": "res://assets/samples/river_crossing_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "bank": 0,
+    "mask": 0,
+    "cargo": -1,
+    "transition": false
+  },
+  "objects": [
+    {
+      "id": "instructions",
+      "scene": "TextObject",
+      "text": "یک محموله را داخل قایق بگذار؛ قایق را به ساحل دیگر بکش. قایق خالی هم برمی‌گردد.",
+      "position": [
+        960,
+        430
+      ],
+      "hit_size": [
+        1550,
+        90
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "cargo_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/wolf.svg",
+      "position": [
+        380,
+        550
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "cargo_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/goat.svg",
+      "position": [
+        380,
+        710
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "cargo_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/cabbage.svg",
+      "position": [
+        380,
+        870
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "boat",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/boat_empty.svg",
+      "position": [
+        590,
+        940
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "id": "boat_load",
+      "scene": "DropZone",
+      "position": [
+        590,
+        940
+      ],
+      "hit_size": [
+        270,
+        140
+      ],
+      "accepted_sources": [
+        "cargo_0",
+        "cargo_1",
+        "cargo_2"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "left_bank",
+      "scene": "DropZone",
+      "position": [
+        590,
+        940
+      ],
+      "hit_size": [
+        300,
+        160
+      ],
+      "accepted_sources": [
+        "boat"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "right_bank",
+      "scene": "DropZone",
+      "position": [
+        1330,
+        940
+      ],
+      "hit_size": [
+        300,
+        160
+      ],
+      "accepted_sources": [
+        "boat"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "boat_load_right",
+      "scene": "DropZone",
+      "position": [
+        1330,
+        940
+      ],
+      "hit_size": [
+        270,
+        140
+      ],
+      "accepted_sources": [
+        "cargo_0",
+        "cargo_1",
+        "cargo_2"
+      ],
+      "z_index": -1,
+      "visible": false
+    },
+    {
+      "id": "unload",
+      "scene": "TextObject",
+      "text": "خالی‌کردن قایق",
+      "position": [
+        960,
+        500
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "bush",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bush.svg",
+      "position": [
+        1700,
+        530
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "goat_trap",
+      "scene": "DropZone",
+      "position": [
+        370,
+        710
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "bush"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "broken_bridge",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bridge_broken.svg",
+      "position": [
+        960,
+        800
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drag_start",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "drag_end",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            380,
+            550
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "drag_end",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1530,
+            550
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "drag_end",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            380,
+            550
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "drag_end",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 3
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1530,
+            550
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "drag_end",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 4
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            380,
+            550
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "drag_end",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 5
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1530,
+            550
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "drag_end",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 6
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            380,
+            550
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
+      "event": "drag_end",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1530,
+            550
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0009",
+      "event": "drag_start",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0010",
+      "event": "drag_end",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            380,
+            710
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0011",
+      "event": "drag_end",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            380,
+            710
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0012",
+      "event": "drag_end",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1530,
+            710
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0013",
+      "event": "drag_end",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 3
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1530,
+            710
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0014",
+      "event": "drag_end",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 4
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            380,
+            710
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0015",
+      "event": "drag_end",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 5
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            380,
+            710
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0016",
+      "event": "drag_end",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 6
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1530,
+            710
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0017",
+      "event": "drag_end",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1530,
+            710
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0018",
+      "event": "drag_start",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0019",
+      "event": "drag_end",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            380,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0020",
+      "event": "drag_end",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            380,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0021",
+      "event": "drag_end",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            380,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0022",
+      "event": "drag_end",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 3
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            380,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0023",
+      "event": "drag_end",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 4
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1530,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0024",
+      "event": "drag_end",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 5
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1530,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0025",
+      "event": "drag_end",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 6
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1530,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0026",
+      "event": "drag_end",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1530,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0027",
+      "event": "drop_on",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            590,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load"
+    },
+    {
+      "id": "r0028",
+      "event": "drop_on",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            590,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load"
+    },
+    {
+      "id": "r0029",
+      "event": "drop_on",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            590,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load"
+    },
+    {
+      "id": "r0030",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0031",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1530,
+            550
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0032",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1530,
+            710
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0033",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1530,
+            870
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0034",
+      "event": "drop_on",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            590,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load"
+    },
+    {
+      "id": "r0035",
+      "event": "drop_on",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            590,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load"
+    },
+    {
+      "id": "r0036",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0037",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1530,
+            710
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0038",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1530,
+            870
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0039",
+      "event": "drop_on",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            590,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load"
+    },
+    {
+      "id": "r0040",
+      "event": "drop_on",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            590,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load"
+    },
+    {
+      "id": "r0041",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0042",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1530,
+            550
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0043",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1530,
+            870
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0044",
+      "event": "drop_on",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            590,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load"
+    },
+    {
+      "id": "r0045",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0046",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1530,
+            870
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0047",
+      "event": "drop_on",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            590,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load"
+    },
+    {
+      "id": "r0048",
+      "event": "drop_on",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            590,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load"
+    },
+    {
+      "id": "r0049",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0050",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1530,
+            550
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0051",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1530,
+            710
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0052",
+      "event": "drop_on",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            590,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load"
+    },
+    {
+      "id": "r0053",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0054",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1530,
+            710
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0055",
+      "event": "drop_on",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            590,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load"
+    },
+    {
+      "id": "r0056",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0057",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1530,
+            550
+          ]
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0058",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            1330,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load"
+        },
+        {
+          "type": "show",
+          "target": "boat_load_right"
+        }
+      ],
+      "once": false,
+      "target": "right_bank"
+    },
+    {
+      "id": "r0059",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0060",
+      "event": "drop_on",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1330,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load_right"
+    },
+    {
+      "id": "r0061",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0062",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            380,
+            550
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0063",
+      "event": "drop_on",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1330,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load_right"
+    },
+    {
+      "id": "r0064",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0065",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            380,
+            710
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0066",
+      "event": "drop_on",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1330,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load_right"
+    },
+    {
+      "id": "r0067",
+      "event": "drop_on",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1330,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load_right"
+    },
+    {
+      "id": "r0068",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0069",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            380,
+            550
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0070",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 3
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            380,
+            710
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0071",
+      "event": "drop_on",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1330,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load_right"
+    },
+    {
+      "id": "r0072",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0073",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 4
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            380,
+            870
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0074",
+      "event": "drop_on",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1330,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load_right"
+    },
+    {
+      "id": "r0075",
+      "event": "drop_on",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1330,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load_right"
+    },
+    {
+      "id": "r0076",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0077",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            380,
+            550
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0078",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 5
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            380,
+            870
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0079",
+      "event": "drop_on",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1330,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load_right"
+    },
+    {
+      "id": "r0080",
+      "event": "drop_on",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1330,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load_right"
+    },
+    {
+      "id": "r0081",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0082",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            380,
+            710
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0083",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 6
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            380,
+            870
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0084",
+      "event": "drop_on",
+      "source": "cargo_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1330,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load_right"
+    },
+    {
+      "id": "r0085",
+      "event": "drop_on",
+      "source": "cargo_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1330,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load_right"
+    },
+    {
+      "id": "r0086",
+      "event": "drop_on",
+      "source": "cargo_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1330,
+            875
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boat_load_right"
+    },
+    {
+      "id": "r0087",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": -1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0088",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 6,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            380,
+            550
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0089",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 5,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            380,
+            710
+          ]
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0090",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "cargo",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "bank",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "mask",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "boat",
+          "position": [
+            590,
+            940
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "boat_load_right"
+        },
+        {
+          "type": "show",
+          "target": "boat_load"
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            380,
+            870
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "left_bank"
+    },
+    {
+      "id": "r0091",
+      "event": "drop_on",
+      "source": "boat",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0092",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        },
+        {
+          "type": "variable",
+          "name": "bank",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0093",
+      "event": "tap",
+      "source": "unload",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            380,
+            550
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            380,
+            710
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            380,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0094",
+      "event": "tap",
+      "source": "unload",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1530,
+            550
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            380,
+            710
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            380,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0095",
+      "event": "tap",
+      "source": "unload",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            380,
+            550
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1530,
+            710
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            380,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0096",
+      "event": "tap",
+      "source": "unload",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 3
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1530,
+            550
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1530,
+            710
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            380,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0097",
+      "event": "tap",
+      "source": "unload",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 4
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            380,
+            550
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            380,
+            710
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1530,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0098",
+      "event": "tap",
+      "source": "unload",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 5
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1530,
+            550
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            380,
+            710
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1530,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0099",
+      "event": "tap",
+      "source": "unload",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 6
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            380,
+            550
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1530,
+            710
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1530,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0100",
+      "event": "tap",
+      "source": "unload",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "mask",
+          "operator": "eq",
+          "value": 7
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "cargo",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cargo_0",
+          "position": [
+            1530,
+            550
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_1",
+          "position": [
+            1530,
+            710
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cargo_2",
+          "position": [
+            1530,
+            870
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0101",
+      "event": "drop_on",
+      "source": "bush",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "bush",
+          "position": [
+            1700,
+            530
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "cargo_1",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "goat_trap"
+    },
+    {
+      "id": "r0102",
+      "event": "drag_end",
+      "source": "broken_bridge",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "broken_bridge",
+          "position": [
+            960,
+            800
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "broken_bridge",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "id": 68,
+  "question": "در قفسه کتاب‌ها یک کتاب وارونه است؛ چرا مهم است؟",
+  "hint": "نشانِ کتاب وارونه را پیدا کن؛ همان کتاب را از قفسه بیرون بکش.",
+  "answer": "اهرم مخفی است",
+  "time_limit_seconds": 115,
+  "base_score": 155,
+  "background": "res://assets/samples/library_room_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "door",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/hidden_door.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -3
+    },
+    {
+      "id": "shelf",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/bookshelf.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        1.8,
+        1.2
+      ]
+    },
+    {
+      "id": "book_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/upright_book.svg",
+      "position": [
+        800,
+        650
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            500,
+            550,
+            1100,
+            380
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "book_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/inverted_book.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            500,
+            550,
+            1100,
+            380
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "book_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/upright_book.svg",
+      "position": [
+        1120,
+        650
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            500,
+            550,
+            1100,
+            380
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "frame",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/face_frame.svg",
+      "position": [
+        1500,
+        800
+      ],
+      "interactions": [
+        "hold"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "door_sketch",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/hidden_door.svg",
+      "position": [
+        1500,
+        800
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.3,
+        0.3
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drag_end",
+      "source": "book_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "book_0",
+          "position": [
+            800,
+            650
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "book_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "drag_end",
+      "source": "book_1",
+      "conditions": [
+        {
+          "type": "moved_distance_at_least",
+          "value": 170
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "shelf",
+          "position": [
+            1500,
+            680
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "book_0"
+        },
+        {
+          "type": "hide",
+          "target": "book_2"
+        },
+        {
+          "type": "show",
+          "target": "door"
+        },
+        {
+          "type": "rotate",
+          "target": "shelf",
+          "degrees": 80
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "drag_end",
+      "source": "book_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "book_2",
+          "position": [
+            1120,
+            650
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "book_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "hold",
+      "source": "frame",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "show",
+          "target": "door_sketch"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

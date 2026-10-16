@@ -1,0 +1,474 @@
+{
+  "schema_version": 1,
+  "id": 70,
+  "question": "چهار کارت A، D، 4، 7؛ قانون: اگر یک طرف حرف صدادار باشد، طرف دیگر عدد زوج است. کدام کارت‌ها باید برگردند؟",
+  "hint": "باید هم صدادارِ ناقض و هم فردِ پشتِ عدد فرد را بررسی کنی: A و ۷.",
+  "answer": "A و 7",
+  "time_limit_seconds": 145,
+  "base_score": 180,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "flips": 0,
+    "flipped_0": false,
+    "flipped_1": false,
+    "flipped_2": false,
+    "flipped_3": false
+  },
+  "objects": [
+    {
+      "id": "instructions",
+      "scene": "TextObject",
+      "text": "قانون: صدادار ← عدد زوج. فقط دو کارت را می‌توانی برگردانی.",
+      "position": [
+        960,
+        430
+      ],
+      "hit_size": [
+        1550,
+        90
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "card_0",
+      "scene": "TextObject",
+      "text": "A",
+      "position": [
+        420,
+        660
+      ],
+      "hit_size": [
+        280,
+        150
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "swipe"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "back_0",
+      "scene": "TextObject",
+      "text": "۳",
+      "position": [
+        420,
+        660
+      ],
+      "hit_size": [
+        280,
+        150
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/puzzle_tile.svg",
+      "visible": false
+    },
+    {
+      "id": "card_1",
+      "scene": "TextObject",
+      "text": "D",
+      "position": [
+        780,
+        660
+      ],
+      "hit_size": [
+        280,
+        150
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "swipe"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "back_1",
+      "scene": "TextObject",
+      "text": "۴",
+      "position": [
+        780,
+        660
+      ],
+      "hit_size": [
+        280,
+        150
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/puzzle_tile.svg",
+      "visible": false
+    },
+    {
+      "id": "card_2",
+      "scene": "TextObject",
+      "text": "۴",
+      "position": [
+        1140,
+        660
+      ],
+      "hit_size": [
+        280,
+        150
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "swipe"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "back_2",
+      "scene": "TextObject",
+      "text": "A",
+      "position": [
+        1140,
+        660
+      ],
+      "hit_size": [
+        280,
+        150
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/puzzle_tile.svg",
+      "visible": false
+    },
+    {
+      "id": "card_3",
+      "scene": "TextObject",
+      "text": "۷",
+      "position": [
+        1500,
+        660
+      ],
+      "hit_size": [
+        280,
+        150
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "swipe"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "back_3",
+      "scene": "TextObject",
+      "text": "D",
+      "position": [
+        1500,
+        660
+      ],
+      "hit_size": [
+        280,
+        150
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/puzzle_tile.svg",
+      "visible": false
+    },
+    {
+      "id": "reverse_rule",
+      "scene": "TextObject",
+      "text": "زوج ← صدادار؟",
+      "position": [
+        570,
+        930
+      ],
+      "hit_size": [
+        430,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "stamp",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/postal_seal.svg",
+      "position": [
+        1440,
+        930
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "swipe",
+      "source": "card_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flips",
+          "operator": "lt",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "flipped_0",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "flips",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "hide",
+          "target": "card_0"
+        },
+        {
+          "type": "show",
+          "target": "back_0"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0001",
+      "event": "swipe",
+      "source": "card_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flips",
+          "operator": "lt",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "flipped_1",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "flips",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "hide",
+          "target": "card_1"
+        },
+        {
+          "type": "show",
+          "target": "back_1"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0002",
+      "event": "swipe",
+      "source": "card_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flips",
+          "operator": "lt",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "flipped_2",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "flips",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "hide",
+          "target": "card_2"
+        },
+        {
+          "type": "show",
+          "target": "back_2"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0003",
+      "event": "swipe",
+      "source": "card_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flips",
+          "operator": "lt",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "flipped_3",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "flips",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "hide",
+          "target": "card_3"
+        },
+        {
+          "type": "show",
+          "target": "back_3"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0004",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flips",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "flipped_0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "flipped_3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flips",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "not",
+          "condition": {
+            "type": "all",
+            "conditions": [
+              {
+                "type": "variable",
+                "name": "flipped_0",
+                "operator": "eq",
+                "value": true
+              },
+              {
+                "type": "variable",
+                "name": "flipped_3",
+                "operator": "eq",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "actions": [
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "hold",
+      "source": "reverse_rule",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "reverse_rule",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "tap",
+      "source": "stamp",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "stamp",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "counters": [
+    {
+      "label": "کارت برگشته",
+      "variable": "flips",
+      "target": 2
+    }
+  ]
+}

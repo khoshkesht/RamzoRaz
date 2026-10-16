@@ -1,0 +1,456 @@
+{
+  "schema_version": 1,
+  "id": 52,
+  "question": "در اتاق پنج پنجره است اما فقط یکی رو به بیرون باز می‌شود. کدام؟",
+  "hint": "پرده را کنار بزن؛ برگ‌های قاب سوم زنده حرکت می‌کنند.",
+  "answer": "پنجره‌ای که نور طبیعی و حرکت برگ‌ها دارد",
+  "time_limit_seconds": 120,
+  "base_score": 145,
+  "background": "res://assets/samples/five_window_room_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "open_0": false,
+    "open_1": false,
+    "open_2": false,
+    "open_3": false,
+    "open_4": false
+  },
+  "objects": [
+    {
+      "id": "instructions",
+      "scene": "TextObject",
+      "text": "پرده‌ها را به کنار بکش، سپس پنجرهٔ واقعی را لمس کن.",
+      "position": [
+        960,
+        430
+      ],
+      "hit_size": [
+        1550,
+        90
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "window_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/window_painted.svg",
+      "position": [
+        340,
+        650
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "curtain_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/curtains_closed.svg",
+      "position": [
+        340,
+        650
+      ],
+      "interactions": [
+        "swipe"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "window_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/window_painted.svg",
+      "position": [
+        650,
+        650
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "curtain_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/curtains_closed.svg",
+      "position": [
+        650,
+        650
+      ],
+      "interactions": [
+        "swipe"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "window_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/window_living.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "leaves",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/leaf_pair.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        0.55,
+        0.55
+      ],
+      "visible": false
+    },
+    {
+      "id": "curtain_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/curtains_closed.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [
+        "swipe"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "window_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/window_painted.svg",
+      "position": [
+        1270,
+        650
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "curtain_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/curtains_closed.svg",
+      "position": [
+        1270,
+        650
+      ],
+      "interactions": [
+        "swipe"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "window_4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/window_painted.svg",
+      "position": [
+        1580,
+        650
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "curtain_4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/curtains_closed.svg",
+      "position": [
+        1580,
+        650
+      ],
+      "interactions": [
+        "swipe"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ],
+      "z_index": 2
+    },
+    {
+      "id": "yellow_light",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/lamp_off.svg",
+      "position": [
+        450,
+        900
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "photo",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/window_painted.svg",
+      "position": [
+        1450,
+        900
+      ],
+      "interactions": [
+        "hold"
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "swipe",
+      "source": "curtain_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "curtain_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "open_0",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "tap",
+      "source": "window_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "window_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "swipe",
+      "source": "curtain_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "curtain_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "open_1",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "tap",
+      "source": "window_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "window_1",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "swipe",
+      "source": "curtain_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "curtain_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "open_2",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "show",
+          "target": "leaves"
+        },
+        {
+          "type": "play_animation",
+          "target": "leaves",
+          "animation": "chapter_five/leaves",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
+      "source": "window_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "open_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "swipe",
+      "source": "curtain_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "curtain_3"
+        },
+        {
+          "type": "set_variable",
+          "name": "open_3",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "tap",
+      "source": "window_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "window_3",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
+      "event": "swipe",
+      "source": "curtain_4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "curtain_4"
+        },
+        {
+          "type": "set_variable",
+          "name": "open_4",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0009",
+      "event": "tap",
+      "source": "window_4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "window_4",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0010",
+      "event": "tap",
+      "source": "yellow_light",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "yellow_light",
+          "sprite": "res://assets/samples/lamp_on.svg"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0011",
+      "event": "hold",
+      "source": "photo",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "scale",
+          "target": "photo",
+          "value": [
+            0.75,
+            0.75
+          ]
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

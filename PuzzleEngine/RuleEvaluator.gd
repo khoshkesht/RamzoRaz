@@ -2,6 +2,7 @@ class_name PuzzleRuleEvaluator
 extends Node
 
 signal level_completed(level_id: int, run_id: int)
+signal level_failed(level_id: int, run_id: int)
 signal runtime_error(error: Dictionary)
 signal debug_trace(entry: Dictionary)
 
@@ -136,6 +137,12 @@ func _process_event(event: Dictionary) -> void:
 			var result := action_runner.run_action(action, puzzle_state.run_id)
 			if not result["ok"]:
 				_fail(result["error"])
+				return
+			if result.get("failure_requested", false):
+				var failed_level := puzzle_state.level_id
+				var failed_run := puzzle_state.run_id
+				stop()
+				level_failed.emit(failed_level, failed_run)
 				return
 			for generated: Dictionary in result["events"]:
 				_queue.append(generated)

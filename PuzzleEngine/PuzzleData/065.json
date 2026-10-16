@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "id": 65,
+  "question": "سه فنجان، یک سکه زیر یکی؛ پس از جابه‌جایی سریع سکه کجاست؟",
+  "hint": "سکه همراه همان فنجان حرکت می‌کند؛ پس از دو جابه‌جایی محل نهایی آن را لمس کن.",
+  "answer": "زیر فنجانی که مسیرش را درست دنبال کرده‌ای",
+  "time_limit_seconds": 120,
+  "base_score": 155,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "ready": false
+  },
+  "objects": [
+    {
+      "id": "instructions",
+      "scene": "TextObject",
+      "text": "سکه زیر فنجان چپ است. برای آغاز جابه‌جایی‌ها، سکه را لمس کن.",
+      "position": [
+        960,
+        430
+      ],
+      "hit_size": [
+        1550,
+        90
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "cup_a",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/cup.svg",
+      "position": [
+        560,
+        690
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "cup_b",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/cup.svg",
+      "position": [
+        960,
+        690
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "cup_c",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/cup.svg",
+      "position": [
+        1360,
+        690
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "coin",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/ui/score.png",
+      "position": [
+        560,
+        850
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "red_label",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/ribbon.svg",
+      "position": [
+        1650,
+        600
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "mirror",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/mirror_frame.svg",
+      "position": [
+        350,
+        930
+      ],
+      "interactions": [
+        "hold"
+      ],
+      "scale": [
+        0.45,
+        0.45
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "tap",
+      "source": "coin",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "coin"
+        },
+        {
+          "type": "play_animation",
+          "target": "cup_a",
+          "animation": "chapter_five/shuffle_a",
+          "wait": false
+        },
+        {
+          "type": "play_animation",
+          "target": "cup_b",
+          "animation": "chapter_five/shuffle_b",
+          "wait": false
+        },
+        {
+          "type": "play_animation",
+          "target": "cup_c",
+          "animation": "chapter_five/shuffle_c",
+          "wait": false
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0001",
+      "event": "custom:animation_finished",
+      "source": "cup_a",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cup_a",
+          "position": [
+            1360,
+            690
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cup_b",
+          "position": [
+            560,
+            690
+          ]
+        },
+        {
+          "type": "move",
+          "target": "cup_c",
+          "position": [
+            960,
+            690
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "ready",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "cup_a",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "ready",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "coin"
+        },
+        {
+          "type": "move",
+          "target": "coin",
+          "position": [
+            1360,
+            780
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "tap",
+      "source": "cup_b",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "ready",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "cup_b",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "tap",
+      "source": "cup_c",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "ready",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "cup_c",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
+      "source": "red_label",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "cup_b",
+          "sprite": "res://assets/samples/cup_red_label.svg"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "hold",
+      "source": "mirror",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "mirror",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

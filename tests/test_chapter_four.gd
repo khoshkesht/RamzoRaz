@@ -305,7 +305,7 @@ func _result_delay_and_hint_price(c: PuzzleController) -> void:
 		var store := PuzzleProgressStore.new()
 		store.manifest = c.manifest
 		store.persistent = false
-		var saved := {"save_version": 1, "manifest_version": 8, "current_level_id": 3, "pending_result_level_id": null, "unlocked_hints": [1], "hint_points_spent": 100, "results": {
+		var saved := {"save_version": 1, "manifest_version": c.manifest["manifest_version"], "current_level_id": 3, "pending_result_level_id": null, "unlocked_hints": [1], "hint_points_spent": 100, "results": {
 			"1": {"level_id": 1, "score": 200, "stars": 3, "elapsed_seconds": 1, "hint_received": true},
 			"2": {"level_id": 2, "score": gross - 200, "stars": 3, "elapsed_seconds": 1, "hint_received": false}}}
 		check(store.commit(saved), "Legacy purchases retain their original cost")
@@ -476,7 +476,7 @@ func _progression() -> void:
 		check(c.progress_store.data["pending_result_level_id"] == id, "Result is saved once at %d" % id)
 		c._process(2.0)
 		c.continue_to_next_level()
-	check(c.progress_store.data["current_level_id"] == null and c.progress_store.data["results"].size() == 50, "Continue after fifty completes the catalog")
+	check(c.progress_store.data["current_level_id"] == 51 and c.progress_store.data["results"].size() == 50, "Continue after fifty unlocks fifty-one")
 	check(not c.load_level_index(30), "Normal play cannot replay a completed level")
 	c.free()
 
@@ -488,7 +488,7 @@ func _migration() -> void:
 		for pending: bool in [false, true]:
 			var old := _old_progress(config[0], config[1], pending)
 			var expanded := store._migrate_main_progress(old)
-			check(store.valid(expanded) and expanded["manifest_version"] == 8, "Known catalogs migrate to eight")
+			check(store.valid(expanded) and expanded["manifest_version"] == store.manifest["manifest_version"], "Known catalogs migrate to the packaged version")
 			check(expanded["results"] == old["results"] and expanded["unlocked_hints"] == old["unlocked_hints"] and expanded["hint_points_spent"] == 100, "Migration retains scores, times, stars, hints and purchases")
 			store.data = expanded
 			if pending:

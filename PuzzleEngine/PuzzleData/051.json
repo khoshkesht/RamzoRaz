@@ -1,0 +1,275 @@
+{
+  "schema_version": 1,
+  "id": 51,
+  "question": "یک چراغ نفتی، یک شمع و یک فانوس داری اما باد می‌وزد؛ کدام را اول باید محافظت کنی؟",
+  "hint": "فقط شمع روشن است؛ محافظ شفاف را پیش از ده ثانیه روی شعله بگذار.",
+  "answer": "شعله‌ای که از قبل روشن است",
+  "time_limit_seconds": 95,
+  "base_score": 135,
+  "background": "res://assets/samples/courtyard_night_lit.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "lamp",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/oil_lamp_unlit.svg",
+      "position": [
+        520,
+        650
+      ],
+      "interactions": []
+    },
+    {
+      "id": "lantern",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/lantern_unlit.svg",
+      "position": [
+        1400,
+        650
+      ],
+      "interactions": []
+    },
+    {
+      "id": "candle",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/candle_body.svg",
+      "position": [
+        960,
+        720
+      ],
+      "interactions": []
+    },
+    {
+      "id": "flame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/candle_flame.svg",
+      "position": [
+        960,
+        590
+      ],
+      "interactions": []
+    },
+    {
+      "id": "wind",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/wind_arrow.svg",
+      "position": [
+        950,
+        490
+      ],
+      "interactions": []
+    },
+    {
+      "id": "guard",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/glass_wind_guard.svg",
+      "position": [
+        500,
+        880
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "candle_zone",
+      "scene": "DropZone",
+      "position": [
+        960,
+        640
+      ],
+      "hit_size": [
+        210,
+        230
+      ],
+      "accepted_sources": [
+        "guard"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "opaque",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/guard_opaque.svg",
+      "position": [
+        1450,
+        880
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "lantern_zone",
+      "scene": "DropZone",
+      "position": [
+        1400,
+        650
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "opaque"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "vane",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/wind_arrow.svg",
+      "position": [
+        1700,
+        590
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "down"
+        }
+      ],
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "instructions",
+      "scene": "TextObject",
+      "text": "شعله تا ده ثانیه دیگر خاموش می‌شود؛ محافظ را جابه‌جا کن.",
+      "position": [
+        960,
+        430
+      ],
+      "hit_size": [
+        1550,
+        90
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "level_started",
+      "source": "$level",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "wind",
+          "animation": "chapter_five/wind",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "custom:animation_finished",
+      "source": "wind",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "flame"
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "opaque",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "opaque",
+          "position": [
+            1400,
+            650
+          ]
+        }
+      ],
+      "once": false,
+      "target": "lantern_zone"
+    },
+    {
+      "id": "r0003",
+      "event": "swipe",
+      "source": "vane",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "vane",
+          "degrees": 90
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "source": "guard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "guard",
+          "position": [
+            960,
+            640
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "candle_zone"
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

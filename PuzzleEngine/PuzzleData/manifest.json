@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "manifest_version": 8,
+  "manifest_version": 9,
   "levels": [
     { "id": 1, "path": "res://PuzzleEngine/PuzzleData/001.json" },
     { "id": 2, "path": "res://PuzzleEngine/PuzzleData/002.json" },
@@ -51,6 +51,26 @@
     { "id": 47, "path": "res://PuzzleEngine/PuzzleData/047.json" },
     { "id": 48, "path": "res://PuzzleEngine/PuzzleData/048.json" },
     { "id": 49, "path": "res://PuzzleEngine/PuzzleData/049.json" },
-    { "id": 50, "path": "res://PuzzleEngine/PuzzleData/050.json" }
+    { "id": 50, "path": "res://PuzzleEngine/PuzzleData/050.json" },
+    { "id": 51, "path": "res://PuzzleEngine/PuzzleData/051.json" },
+    { "id": 52, "path": "res://PuzzleEngine/PuzzleData/052.json" },
+    { "id": 53, "path": "res://PuzzleEngine/PuzzleData/053.json" },
+    { "id": 54, "path": "res://PuzzleEngine/PuzzleData/054.json" },
+    { "id": 55, "path": "res://PuzzleEngine/PuzzleData/055.json" },
+    { "id": 56, "path": "res://PuzzleEngine/PuzzleData/056.json" },
+    { "id": 57, "path": "res://PuzzleEngine/PuzzleData/057.json" },
+    { "id": 58, "path": "res://PuzzleEngine/PuzzleData/058.json" },
+    { "id": 59, "path": "res://PuzzleEngine/PuzzleData/059.json" },
+    { "id": 60, "path": "res://PuzzleEngine/PuzzleData/060.json" },
+    { "id": 61, "path": "res://PuzzleEngine/PuzzleData/061.json" },
+    { "id": 62, "path": "res://PuzzleEngine/PuzzleData/062.json" },
+    { "id": 63, "path": "res://PuzzleEngine/PuzzleData/063.json" },
+    { "id": 64, "path": "res://PuzzleEngine/PuzzleData/064.json" },
+    { "id": 65, "path": "res://PuzzleEngine/PuzzleData/065.json" },
+    { "id": 66, "path": "res://PuzzleEngine/PuzzleData/066.json" },
+    { "id": 67, "path": "res://PuzzleEngine/PuzzleData/067.json" },
+    { "id": 68, "path": "res://PuzzleEngine/PuzzleData/068.json" },
+    { "id": 69, "path": "res://PuzzleEngine/PuzzleData/069.json" },
+    { "id": 70, "path": "res://PuzzleEngine/PuzzleData/070.json" }
   ]
 }

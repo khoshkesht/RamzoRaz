@@ -65,6 +65,7 @@ func _ready() -> void:
 	ad_adapter.event_received.connect(_on_ad_event)
 	ad_adapter.show_guard = can_process_gameplay
 	action_runner.event_generated.connect(_on_interaction_event)
+	rule_evaluator.level_failed.connect(_on_puzzle_failed)
 	interaction_manager.input_guard = can_process_gameplay
 	rule_evaluator.execution_guard = can_process_gameplay
 	var result := loader.load_manifest()
@@ -183,6 +184,17 @@ func _on_level_completed(completed_level_id: int, completed_run_id: int) -> void
 	_save_operation = "result"
 	_retry_save()
 	level_completed.emit(completed_level_id, completed_run_id)
+
+func _on_puzzle_failed(failed_level_id: int, failed_run_id: int) -> void:
+	if failed_run_id != state.run_id or not can_process_gameplay():
+		return
+	run_status = STATUS_FAILED
+	clock.stop()
+	interaction_manager.set_gameplay_enabled(false)
+	rule_evaluator.stop()
+	hud.hint_button.disabled = true
+	overlay.show_failure(false)
+	level_failed.emit(failed_level_id, failed_run_id)
 
 func _on_runtime_error(error: Dictionary) -> void:
 	if run_status != STATUS_PLAYING or error.get("run_id") != state.run_id:

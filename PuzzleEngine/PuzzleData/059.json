@@ -1,0 +1,805 @@
+{
+  "schema_version": 1,
+  "id": 59,
+  "question": "سه جعبه با برچسب سیب، پرتقال، مخلوط و همه برچسب‌ها غلط‌اند. با یک برداشت برچسب‌ها را درست کن.",
+  "hint": "فقط از جعبهٔ با برچسب مخلوط بردار؛ همهٔ برچسب‌ها غلط‌اند.",
+  "answer": "از جعبه «مخلوط» یک میوه بردار و بقیه را با حذف حالت‌ها تعیین کن",
+  "time_limit_seconds": 140,
+  "base_score": 165,
+  "background": "res://assets/samples/fruit_market_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "drawn": false,
+    "evidence": false,
+    "label_0": 0,
+    "label_1": 1,
+    "label_2": 2
+  },
+  "objects": [
+    {
+      "id": "box_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/fruit_crate.svg",
+      "position": [
+        550,
+        620
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "label_0",
+      "scene": "TextObject",
+      "text": "سیب",
+      "position": [
+        550,
+        850
+      ],
+      "hit_size": [
+        280,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            300,
+            550,
+            1350,
+            410
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "label_zone_0",
+      "scene": "DropZone",
+      "position": [
+        550,
+        620
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "label_0",
+        "label_1",
+        "label_2",
+        "unknown"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "drawn_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/orange_fruit.svg",
+      "position": [
+        550,
+        510
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "id": "box_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/fruit_crate.svg",
+      "position": [
+        960,
+        620
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "label_1",
+      "scene": "TextObject",
+      "text": "پرتقال",
+      "position": [
+        960,
+        850
+      ],
+      "hit_size": [
+        280,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            300,
+            550,
+            1350,
+            410
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "label_zone_1",
+      "scene": "DropZone",
+      "position": [
+        960,
+        620
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "label_0",
+        "label_1",
+        "label_2",
+        "unknown"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "drawn_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/orange_fruit.svg",
+      "position": [
+        960,
+        510
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "id": "box_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/fruit_crate.svg",
+      "position": [
+        1370,
+        620
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "label_2",
+      "scene": "TextObject",
+      "text": "مخلوط",
+      "position": [
+        1370,
+        850
+      ],
+      "hit_size": [
+        280,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            300,
+            550,
+            1350,
+            410
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "label_zone_2",
+      "scene": "DropZone",
+      "position": [
+        1370,
+        620
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "label_0",
+        "label_1",
+        "label_2",
+        "unknown"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "drawn_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/apple.svg",
+      "position": [
+        1370,
+        510
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "id": "unknown",
+      "scene": "TextObject",
+      "text": "نامعلوم",
+      "position": [
+        320,
+        950
+      ],
+      "hit_size": [
+        300,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            500,
+            1500,
+            480
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "color_stamp",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/pomegranate.svg",
+      "position": [
+        1650,
+        900
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "tap",
+      "source": "box_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "drawn",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "drawn",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "evidence",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "show",
+          "target": "drawn_0"
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "tap",
+      "source": "box_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "drawn",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "drawn",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "evidence",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "show",
+          "target": "drawn_1"
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "box_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "drawn",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "drawn",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "evidence",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "show",
+          "target": "drawn_2"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "label_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "drawn",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "label_0",
+          "position": [
+            550,
+            740
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "label_0",
+          "value": 0,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "label_zone_0"
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "source": "label_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "drawn",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "label_0",
+          "position": [
+            960,
+            740
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "label_0",
+          "value": 1,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "label_zone_1"
+    },
+    {
+      "id": "r0005",
+      "event": "drop_on",
+      "source": "label_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "drawn",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "label_0",
+          "position": [
+            1370,
+            740
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "label_0",
+          "value": 2,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "label_zone_2"
+    },
+    {
+      "id": "r0006",
+      "event": "drop_on",
+      "source": "label_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "drawn",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "label_1",
+          "position": [
+            550,
+            740
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "label_1",
+          "value": 0,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "label_zone_0"
+    },
+    {
+      "id": "r0007",
+      "event": "drop_on",
+      "source": "label_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "drawn",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "label_1",
+          "position": [
+            960,
+            740
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "label_1",
+          "value": 1,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "label_zone_1"
+    },
+    {
+      "id": "r0008",
+      "event": "drop_on",
+      "source": "label_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "drawn",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "label_1",
+          "position": [
+            1370,
+            740
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "label_1",
+          "value": 2,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "label_zone_2"
+    },
+    {
+      "id": "r0009",
+      "event": "drop_on",
+      "source": "label_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "drawn",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "label_2",
+          "position": [
+            550,
+            740
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "label_2",
+          "value": 0,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "label_zone_0"
+    },
+    {
+      "id": "r0010",
+      "event": "drop_on",
+      "source": "label_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "drawn",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "label_2",
+          "position": [
+            960,
+            740
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "label_2",
+          "value": 1,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "label_zone_1"
+    },
+    {
+      "id": "r0011",
+      "event": "drop_on",
+      "source": "label_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "drawn",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "label_2",
+          "position": [
+            1370,
+            740
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "label_2",
+          "value": 2,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "label_zone_2"
+    },
+    {
+      "id": "r0012",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "evidence",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "label_0",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "label_1",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "label_2",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0013",
+      "event": "drop_on",
+      "source": "unknown",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "unknown",
+          "position": [
+            320,
+            950
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "box_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "label_zone_0"
+    },
+    {
+      "id": "r0014",
+      "event": "drop_on",
+      "source": "unknown",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "unknown",
+          "position": [
+            320,
+            950
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "box_1",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "label_zone_1"
+    },
+    {
+      "id": "r0015",
+      "event": "drop_on",
+      "source": "unknown",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "unknown",
+          "position": [
+            320,
+            950
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "box_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "label_zone_2"
+    },
+    {
+      "id": "r0016",
+      "event": "tap",
+      "source": "color_stamp",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "color_stamp",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

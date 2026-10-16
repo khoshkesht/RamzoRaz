@@ -1,0 +1,1385 @@
+{
+  "schema_version": 1,
+  "id": 57,
+  "question": "روی میز ۶ استکان چای است؛ سه تا پر و سه تا خالی. با جابه‌جایی فقط یک استکان، پر و خالی را یکی‌درمیان کن.",
+  "hint": "استکان دوم را روی پنجم ببر تا چای بریزد و بدنه به جای قبلی برگردد.",
+  "answer": "چای استکان دومِ پر را داخل استکان پنجمِ خالی بریز",
+  "time_limit_seconds": 125,
+  "base_score": 160,
+  "background": "res://assets/samples/tea_house_night_lit.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "lifts": 0
+  },
+  "objects": [
+    {
+      "id": "instructions",
+      "scene": "TextObject",
+      "text": "شش استکان از چپ به راست؛ تنها یک استکان را می‌توانی برداری.",
+      "position": [
+        960,
+        430
+      ],
+      "hit_size": [
+        1550,
+        90
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "glass_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/tea_glass_full.svg",
+      "position": [
+        350,
+        650
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "glass_zone_0",
+      "scene": "DropZone",
+      "position": [
+        350,
+        650
+      ],
+      "hit_size": [
+        160,
+        190
+      ],
+      "accepted_sources": [
+        "glass_1",
+        "glass_2",
+        "glass_3",
+        "glass_4",
+        "glass_5"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "index_0",
+      "scene": "TextObject",
+      "text": "۱",
+      "position": [
+        350,
+        800
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "glass_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/tea_glass_full.svg",
+      "position": [
+        590,
+        650
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "glass_zone_1",
+      "scene": "DropZone",
+      "position": [
+        590,
+        650
+      ],
+      "hit_size": [
+        160,
+        190
+      ],
+      "accepted_sources": [
+        "glass_0",
+        "glass_2",
+        "glass_3",
+        "glass_4",
+        "glass_5"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "index_1",
+      "scene": "TextObject",
+      "text": "۲",
+      "position": [
+        590,
+        800
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "glass_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/tea_glass_full.svg",
+      "position": [
+        830,
+        650
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "glass_zone_2",
+      "scene": "DropZone",
+      "position": [
+        830,
+        650
+      ],
+      "hit_size": [
+        160,
+        190
+      ],
+      "accepted_sources": [
+        "glass_0",
+        "glass_1",
+        "glass_3",
+        "glass_4",
+        "glass_5"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "index_2",
+      "scene": "TextObject",
+      "text": "۳",
+      "position": [
+        830,
+        800
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "glass_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/tea_glass_empty.svg",
+      "position": [
+        1070,
+        650
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "glass_zone_3",
+      "scene": "DropZone",
+      "position": [
+        1070,
+        650
+      ],
+      "hit_size": [
+        160,
+        190
+      ],
+      "accepted_sources": [
+        "glass_0",
+        "glass_1",
+        "glass_2",
+        "glass_4",
+        "glass_5"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "index_3",
+      "scene": "TextObject",
+      "text": "۴",
+      "position": [
+        1070,
+        800
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "glass_4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/tea_glass_empty.svg",
+      "position": [
+        1310,
+        650
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "glass_zone_4",
+      "scene": "DropZone",
+      "position": [
+        1310,
+        650
+      ],
+      "hit_size": [
+        160,
+        190
+      ],
+      "accepted_sources": [
+        "glass_0",
+        "glass_1",
+        "glass_2",
+        "glass_3",
+        "glass_5"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "index_4",
+      "scene": "TextObject",
+      "text": "۵",
+      "position": [
+        1310,
+        800
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "glass_5",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/tea_glass_empty.svg",
+      "position": [
+        1550,
+        650
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "glass_zone_5",
+      "scene": "DropZone",
+      "position": [
+        1550,
+        650
+      ],
+      "hit_size": [
+        160,
+        190
+      ],
+      "accepted_sources": [
+        "glass_0",
+        "glass_1",
+        "glass_2",
+        "glass_3",
+        "glass_4"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "index_5",
+      "scene": "TextObject",
+      "text": "۶",
+      "position": [
+        1550,
+        800
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "coaster",
+      "scene": "TextObject",
+      "sprite": "res://assets/samples/puzzle_tile.svg",
+      "position": [
+        520,
+        950
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.5,
+        0.5
+      ],
+      "text": "۲",
+      "text_color": "#354f54",
+      "hit_size": [
+        280,
+        110
+      ]
+    },
+    {
+      "id": "coaster_zone",
+      "scene": "DropZone",
+      "position": [
+        1110,
+        850
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "coaster"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "spoon",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/tea_spoon.svg",
+      "position": [
+        1450,
+        950
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "spoon_zone",
+      "scene": "DropZone",
+      "position": [
+        590,
+        650
+      ],
+      "hit_size": [
+        160,
+        190
+      ],
+      "accepted_sources": [
+        "spoon"
+      ],
+      "z_index": -1
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drag_start",
+      "source": "glass_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "lifts",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "drag_start",
+      "source": "glass_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "lifts",
+          "operator": "gt",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "glass_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_0",
+          "position": [
+            350,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_1"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "glass_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_0",
+          "position": [
+            350,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_2"
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "source": "glass_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_0",
+          "position": [
+            350,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_3"
+    },
+    {
+      "id": "r0005",
+      "event": "drop_on",
+      "source": "glass_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_0",
+          "position": [
+            350,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_4"
+    },
+    {
+      "id": "r0006",
+      "event": "drop_on",
+      "source": "glass_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_0",
+          "position": [
+            350,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_5"
+    },
+    {
+      "id": "r0007",
+      "event": "drag_start",
+      "source": "glass_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "lifts",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
+      "event": "drag_start",
+      "source": "glass_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "lifts",
+          "operator": "gt",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0009",
+      "event": "drop_on",
+      "source": "glass_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_1",
+          "position": [
+            590,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_0"
+    },
+    {
+      "id": "r0010",
+      "event": "drop_on",
+      "source": "glass_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_1",
+          "position": [
+            590,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_2"
+    },
+    {
+      "id": "r0011",
+      "event": "drop_on",
+      "source": "glass_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_1",
+          "position": [
+            590,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_3"
+    },
+    {
+      "id": "r0012",
+      "event": "drop_on",
+      "source": "glass_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "lifts",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_1",
+          "position": [
+            590,
+            650
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "glass_1",
+          "sprite": "res://assets/samples/tea_glass_empty.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "glass_4",
+          "sprite": "res://assets/samples/tea_glass_full.svg"
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_4"
+    },
+    {
+      "id": "r0013",
+      "event": "drop_on",
+      "source": "glass_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_1",
+          "position": [
+            590,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_5"
+    },
+    {
+      "id": "r0014",
+      "event": "drag_start",
+      "source": "glass_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "lifts",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0015",
+      "event": "drag_start",
+      "source": "glass_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "lifts",
+          "operator": "gt",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0016",
+      "event": "drop_on",
+      "source": "glass_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_2",
+          "position": [
+            830,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_0"
+    },
+    {
+      "id": "r0017",
+      "event": "drop_on",
+      "source": "glass_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_2",
+          "position": [
+            830,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_1"
+    },
+    {
+      "id": "r0018",
+      "event": "drop_on",
+      "source": "glass_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_2",
+          "position": [
+            830,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_3"
+    },
+    {
+      "id": "r0019",
+      "event": "drop_on",
+      "source": "glass_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_2",
+          "position": [
+            830,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_4"
+    },
+    {
+      "id": "r0020",
+      "event": "drop_on",
+      "source": "glass_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_2",
+          "position": [
+            830,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_5"
+    },
+    {
+      "id": "r0021",
+      "event": "drag_start",
+      "source": "glass_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "lifts",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0022",
+      "event": "drag_start",
+      "source": "glass_3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "lifts",
+          "operator": "gt",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0023",
+      "event": "drop_on",
+      "source": "glass_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_3",
+          "position": [
+            1070,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_0"
+    },
+    {
+      "id": "r0024",
+      "event": "drop_on",
+      "source": "glass_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_3",
+          "position": [
+            1070,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_1"
+    },
+    {
+      "id": "r0025",
+      "event": "drop_on",
+      "source": "glass_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_3",
+          "position": [
+            1070,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_2"
+    },
+    {
+      "id": "r0026",
+      "event": "drop_on",
+      "source": "glass_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_3",
+          "position": [
+            1070,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_4"
+    },
+    {
+      "id": "r0027",
+      "event": "drop_on",
+      "source": "glass_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_3",
+          "position": [
+            1070,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_5"
+    },
+    {
+      "id": "r0028",
+      "event": "drag_start",
+      "source": "glass_4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "lifts",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0029",
+      "event": "drag_start",
+      "source": "glass_4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "lifts",
+          "operator": "gt",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0030",
+      "event": "drop_on",
+      "source": "glass_4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_4",
+          "position": [
+            1310,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_0"
+    },
+    {
+      "id": "r0031",
+      "event": "drop_on",
+      "source": "glass_4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_4",
+          "position": [
+            1310,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_1"
+    },
+    {
+      "id": "r0032",
+      "event": "drop_on",
+      "source": "glass_4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_4",
+          "position": [
+            1310,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_2"
+    },
+    {
+      "id": "r0033",
+      "event": "drop_on",
+      "source": "glass_4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_4",
+          "position": [
+            1310,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_3"
+    },
+    {
+      "id": "r0034",
+      "event": "drop_on",
+      "source": "glass_4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_4",
+          "position": [
+            1310,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_5"
+    },
+    {
+      "id": "r0035",
+      "event": "drag_start",
+      "source": "glass_5",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "lifts",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0036",
+      "event": "drag_start",
+      "source": "glass_5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "lifts",
+          "operator": "gt",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0037",
+      "event": "drop_on",
+      "source": "glass_5",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_5",
+          "position": [
+            1550,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_0"
+    },
+    {
+      "id": "r0038",
+      "event": "drop_on",
+      "source": "glass_5",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_5",
+          "position": [
+            1550,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_1"
+    },
+    {
+      "id": "r0039",
+      "event": "drop_on",
+      "source": "glass_5",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_5",
+          "position": [
+            1550,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_2"
+    },
+    {
+      "id": "r0040",
+      "event": "drop_on",
+      "source": "glass_5",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_5",
+          "position": [
+            1550,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_3"
+    },
+    {
+      "id": "r0041",
+      "event": "drop_on",
+      "source": "glass_5",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "glass_5",
+          "position": [
+            1550,
+            650
+          ]
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "glass_zone_4"
+    },
+    {
+      "id": "r0042",
+      "event": "drop_on",
+      "source": "coaster",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "coaster",
+          "position": [
+            1110,
+            850
+          ]
+        }
+      ],
+      "once": false,
+      "target": "coaster_zone"
+    },
+    {
+      "id": "r0043",
+      "event": "drop_on",
+      "source": "spoon",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "spoon",
+          "position": [
+            1450,
+            950
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "glass_1",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "spoon_zone"
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "counters": [
+    {
+      "label": "برداشتن استکان",
+      "variable": "lifts",
+      "target": 1
+    }
+  ]
+}

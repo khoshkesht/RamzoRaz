@@ -1,0 +1,1021 @@
+{
+  "schema_version": 1,
+  "id": 55,
+  "question": "دو پدر و دو پسر با سه کلاه؛ هر نفر یک کلاه دارد. چگونه؟",
+  "hint": "سه نسل داریم؛ فرد میانی هم پسرِ پدربزرگ است و هم پدرِ پسر.",
+  "answer": "سه نفر: پدربزرگ، پدر، پسر",
+  "time_limit_seconds": 125,
+  "base_score": 150,
+  "background": "res://assets/samples/family_picnic_background.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "hatted_0": false,
+    "hatted_1": false,
+    "hatted_2": false,
+    "linked_0": false,
+    "linked_1": false
+  },
+  "objects": [
+    {
+      "id": "person_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/family_grandfather.svg",
+      "position": [
+        560,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "name_0",
+      "scene": "TextObject",
+      "text": "پدربزرگ",
+      "position": [
+        560,
+        790
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "hat_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/hat.svg",
+      "position": [
+        470,
+        950
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "head_0",
+      "scene": "DropZone",
+      "position": [
+        560,
+        535
+      ],
+      "hit_size": [
+        200,
+        100
+      ],
+      "accepted_sources": [
+        "hat_0",
+        "hat_1",
+        "hat_2",
+        "hat_3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "worn_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/hat.svg",
+      "position": [
+        560,
+        535
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "person_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/man.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "name_1",
+      "scene": "TextObject",
+      "text": "پدر",
+      "position": [
+        960,
+        790
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "hat_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/hat.svg",
+      "position": [
+        900,
+        950
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "head_1",
+      "scene": "DropZone",
+      "position": [
+        960,
+        535
+      ],
+      "hit_size": [
+        200,
+        100
+      ],
+      "accepted_sources": [
+        "hat_0",
+        "hat_1",
+        "hat_2",
+        "hat_3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "worn_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/hat.svg",
+      "position": [
+        960,
+        535
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "person_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/family_son.svg",
+      "position": [
+        1360,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "name_2",
+      "scene": "TextObject",
+      "text": "پسر",
+      "position": [
+        1360,
+        790
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "hat_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/hat.svg",
+      "position": [
+        1330,
+        950
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "head_2",
+      "scene": "DropZone",
+      "position": [
+        1360,
+        535
+      ],
+      "hit_size": [
+        200,
+        100
+      ],
+      "accepted_sources": [
+        "hat_0",
+        "hat_1",
+        "hat_2",
+        "hat_3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "worn_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/hat.svg",
+      "position": [
+        1360,
+        535
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.55,
+        0.55
+      ]
+    },
+    {
+      "id": "link_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/family_link.svg",
+      "position": [
+        760,
+        860
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "relation_0",
+      "scene": "DropZone",
+      "position": [
+        760,
+        650
+      ],
+      "hit_size": [
+        160,
+        170
+      ],
+      "accepted_sources": [
+        "link_0"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "connected_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/family_link.svg",
+      "position": [
+        760,
+        650
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "role_0",
+      "scene": "TextObject",
+      "text": "پدر ← پسر",
+      "position": [
+        760,
+        565
+      ],
+      "hit_size": [
+        220,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "link_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/family_link.svg",
+      "position": [
+        1160,
+        860
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "relation_1",
+      "scene": "DropZone",
+      "position": [
+        1160,
+        650
+      ],
+      "hit_size": [
+        160,
+        170
+      ],
+      "accepted_sources": [
+        "link_1"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "connected_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/family_link.svg",
+      "position": [
+        1160,
+        650
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "role_1",
+      "scene": "TextObject",
+      "text": "پدر ← پسر",
+      "position": [
+        1160,
+        565
+      ],
+      "hit_size": [
+        220,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "hat_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/hat.svg",
+      "position": [
+        1660,
+        900
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "empty_person",
+      "scene": "DropZone",
+      "position": [
+        1650,
+        650
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "hat_3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "brothers",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/brothers_portrait.svg",
+      "position": [
+        290,
+        620
+      ],
+      "interactions": [
+        "hold"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "brothers_label",
+      "scene": "TextObject",
+      "text": "دو برادر",
+      "position": [
+        290,
+        750
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "hat_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "hatted_0",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "hat_0",
+          "position": [
+            560,
+            535
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "hat_0"
+        },
+        {
+          "type": "show",
+          "target": "worn_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "hatted_0",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "head_0"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "hat_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "hatted_0",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "hat_1",
+          "position": [
+            560,
+            535
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "hat_1"
+        },
+        {
+          "type": "show",
+          "target": "worn_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "hatted_0",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "head_0"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "hat_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "hatted_0",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "hat_2",
+          "position": [
+            560,
+            535
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "hat_2"
+        },
+        {
+          "type": "show",
+          "target": "worn_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "hatted_0",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "head_0"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "hat_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "hatted_1",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "hat_0",
+          "position": [
+            960,
+            535
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "hat_0"
+        },
+        {
+          "type": "show",
+          "target": "worn_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "hatted_1",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "head_1"
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "source": "hat_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "hatted_1",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "hat_1",
+          "position": [
+            960,
+            535
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "hat_1"
+        },
+        {
+          "type": "show",
+          "target": "worn_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "hatted_1",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "head_1"
+    },
+    {
+      "id": "r0005",
+      "event": "drop_on",
+      "source": "hat_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "hatted_1",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "hat_2",
+          "position": [
+            960,
+            535
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "hat_2"
+        },
+        {
+          "type": "show",
+          "target": "worn_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "hatted_1",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "head_1"
+    },
+    {
+      "id": "r0006",
+      "event": "drop_on",
+      "source": "hat_0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "hatted_2",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "hat_0",
+          "position": [
+            1360,
+            535
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "hat_0"
+        },
+        {
+          "type": "show",
+          "target": "worn_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "hatted_2",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "head_2"
+    },
+    {
+      "id": "r0007",
+      "event": "drop_on",
+      "source": "hat_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "hatted_2",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "hat_1",
+          "position": [
+            1360,
+            535
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "hat_1"
+        },
+        {
+          "type": "show",
+          "target": "worn_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "hatted_2",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "head_2"
+    },
+    {
+      "id": "r0008",
+      "event": "drop_on",
+      "source": "hat_2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "hatted_2",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "hat_2",
+          "position": [
+            1360,
+            535
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "hat_2"
+        },
+        {
+          "type": "show",
+          "target": "worn_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "hatted_2",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "head_2"
+    },
+    {
+      "id": "r0009",
+      "event": "drop_on",
+      "source": "link_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "link_0",
+          "position": [
+            760,
+            650
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "link_0"
+        },
+        {
+          "type": "show",
+          "target": "connected_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "linked_0",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "relation_0"
+    },
+    {
+      "id": "r0010",
+      "event": "drop_on",
+      "source": "link_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "link_1",
+          "position": [
+            1160,
+            650
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "link_1"
+        },
+        {
+          "type": "show",
+          "target": "connected_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "linked_1",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "relation_1"
+    },
+    {
+      "id": "r0011",
+      "event": "drop_on",
+      "source": "hat_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "hat_3",
+          "position": [
+            1660,
+            900
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "hat_3",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "empty_person"
+    },
+    {
+      "id": "r0012",
+      "event": "hold",
+      "source": "brothers",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brothers",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0013",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "hatted_0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "hatted_1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "hatted_2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "linked_0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "linked_1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

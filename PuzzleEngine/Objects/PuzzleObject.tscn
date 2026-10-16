@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://PuzzleEngine/Objects/PuzzleObject.gd" id="1"]
 [ext_resource type="FontFile" path="res://assets/fonts/Vazirmatn-Regular.ttf" id="2"]
 [ext_resource type="AnimationLibrary" path="res://assets/samples/puzzle_feedback.tres" id="3"]
 [ext_resource type="AnimationLibrary" path="res://assets/samples/chapter_two_feedback.tres" id="4"]
 [ext_resource type="AnimationLibrary" path="res://assets/samples/chapter_three_feedback.tres" id="5"]
+[ext_resource type="AnimationLibrary" path="res://assets/samples/chapter_five_feedback.tres" id="6"]
 
 [sub_resource type="Animation" id="Animation_tilt"]
 resource_name = "tilt"
@@ -46,6 +47,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_feedback"),
 &"puzzles": ExtResource("3"),
 &"chapter_two": ExtResource("4"),
-&"chapter_three": ExtResource("5")
+&"chapter_three": ExtResource("5"),
+&"chapter_five": ExtResource("6")
 }
 

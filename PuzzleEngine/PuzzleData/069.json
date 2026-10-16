@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "id": 69,
+  "question": "کدام فرش الگوی ناقص دارد؟",
+  "hint": "نقش پایینِ سمت راستِ فرش میانی کم است؛ جهت نقش را هم بررسی کن.",
+  "answer": "فرشی که یک نقش در تقارنش کم است",
+  "time_limit_seconds": 135,
+  "base_score": 165,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "rug_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/rug_symmetric.svg",
+      "position": [
+        490,
+        660
+      ],
+      "interactions": []
+    },
+    {
+      "id": "rug_gap_0",
+      "scene": "DropZone",
+      "position": [
+        565,
+        730
+      ],
+      "hit_size": [
+        90,
+        90
+      ],
+      "accepted_sources": [
+        "piece",
+        "false_piece"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "rug_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/rug_missing.svg",
+      "position": [
+        960,
+        660
+      ],
+      "interactions": []
+    },
+    {
+      "id": "rug_gap_1",
+      "scene": "DropZone",
+      "position": [
+        1035,
+        730
+      ],
+      "hit_size": [
+        90,
+        90
+      ],
+      "accepted_sources": [
+        "piece",
+        "false_piece"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "rug_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/rug_symmetric.svg",
+      "position": [
+        1430,
+        660
+      ],
+      "interactions": []
+    },
+    {
+      "id": "rug_gap_2",
+      "scene": "DropZone",
+      "position": [
+        1505,
+        730
+      ],
+      "hit_size": [
+        90,
+        90
+      ],
+      "accepted_sources": [
+        "piece",
+        "false_piece"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "piece",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/rug_motif.svg",
+      "position": [
+        730,
+        950
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.4,
+        1.4
+      ]
+    },
+    {
+      "id": "false_piece",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/rug_motif_reversed.svg",
+      "position": [
+        1170,
+        950
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.4,
+        1.4
+      ]
+    },
+    {
+      "id": "axis_stencil",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/height_ruler.svg",
+      "position": [
+        1700,
+        900
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "piece",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "piece",
+          "position": [
+            1035,
+            730
+          ]
+        },
+        {
+          "type": "scale",
+          "target": "piece",
+          "value": [
+            1,
+            1
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "rug_gap_1"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "false_piece",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "false_piece",
+          "position": [
+            1170,
+            950
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "rug_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "rug_gap_0"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "piece",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "piece",
+          "position": [
+            730,
+            950
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "rug_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "rug_gap_0"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "false_piece",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "false_piece",
+          "position": [
+            1170,
+            950
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "rug_1",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "rug_gap_1"
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "source": "false_piece",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "false_piece",
+          "position": [
+            1170,
+            950
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "rug_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "rug_gap_2"
+    },
+    {
+      "id": "r0005",
+      "event": "drop_on",
+      "source": "piece",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "piece",
+          "position": [
+            730,
+            950
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "rug_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "rug_gap_2"
+    },
+    {
+      "id": "r0006",
+      "event": "tap",
+      "source": "axis_stencil",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "axis_stencil",
+          "degrees": 45
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

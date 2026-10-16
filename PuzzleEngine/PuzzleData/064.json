@@ -1,0 +1,501 @@
+{
+  "schema_version": 1,
+  "id": 64,
+  "question": "کدام آجر دیوار لق است؟",
+  "hint": "گردِ زیر آجر لق را ببین و همان آجر را نگه دار تا فرو برود.",
+  "answer": "آجری که گردوخاک یا حرکت ریز دارد",
+  "time_limit_seconds": 115,
+  "base_score": 155,
+  "background": "res://assets/samples/caravanserai_night_lit.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "door",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/hidden_door.svg",
+      "position": [
+        960,
+        670
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": -4
+    },
+    {
+      "id": "brick_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/fixed_brick.svg",
+      "position": [
+        650,
+        550
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ]
+    },
+    {
+      "id": "brick_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/fixed_brick.svg",
+      "position": [
+        960,
+        550
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ]
+    },
+    {
+      "id": "brick_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/fixed_brick.svg",
+      "position": [
+        1270,
+        550
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ]
+    },
+    {
+      "id": "brick_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/fixed_brick.svg",
+      "position": [
+        650,
+        720
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ]
+    },
+    {
+      "id": "brick_4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/loose_brick.svg",
+      "position": [
+        960,
+        720
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ]
+    },
+    {
+      "id": "brick_5",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/fixed_brick.svg",
+      "position": [
+        1270,
+        720
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ]
+    },
+    {
+      "id": "brick_6",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/fixed_brick.svg",
+      "position": [
+        650,
+        890
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ]
+    },
+    {
+      "id": "brick_7",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/fixed_brick.svg",
+      "position": [
+        960,
+        890
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ]
+    },
+    {
+      "id": "brick_8",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/fixed_brick.svg",
+      "position": [
+        1270,
+        890
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ]
+    },
+    {
+      "id": "painted_dust",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/dust_motes.svg",
+      "position": [
+        650,
+        605
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "brush",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/broom.svg",
+      "position": [
+        1600,
+        850
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "right"
+        }
+      ],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "hold",
+      "source": "brick_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "tap",
+      "source": "brick_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "hold",
+      "source": "brick_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_1",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "tap",
+      "source": "brick_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_1",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "hold",
+      "source": "brick_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
+      "source": "brick_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "hold",
+      "source": "brick_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_3",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "tap",
+      "source": "brick_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_3",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
+      "event": "hold",
+      "source": "brick_4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "scale",
+          "target": "brick_4",
+          "value": [
+            0.7,
+            0.7
+          ]
+        },
+        {
+          "type": "show",
+          "target": "door"
+        },
+        {
+          "type": "hide",
+          "target": "brick_4"
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0009",
+      "event": "tap",
+      "source": "brick_4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_4",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0010",
+      "event": "hold",
+      "source": "brick_5",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_5",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0011",
+      "event": "tap",
+      "source": "brick_5",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_5",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0012",
+      "event": "hold",
+      "source": "brick_6",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_6",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0013",
+      "event": "tap",
+      "source": "brick_6",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_6",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0014",
+      "event": "hold",
+      "source": "brick_7",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_7",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0015",
+      "event": "tap",
+      "source": "brick_7",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_7",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0016",
+      "event": "hold",
+      "source": "brick_8",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_8",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0017",
+      "event": "tap",
+      "source": "brick_8",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "brick_8",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0018",
+      "event": "tap",
+      "source": "brick_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "show",
+          "target": "painted_dust"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0019",
+      "event": "swipe",
+      "source": "brush",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "painted_dust"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

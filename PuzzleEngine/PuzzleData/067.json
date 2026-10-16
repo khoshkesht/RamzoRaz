@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "id": 67,
+  "question": "از روی سایه‌ها، کدام کوزه متعلق به شکل وسط است؟",
+  "hint": "گردن باریک و دستهٔ سمت راست باید هر دو با سایهٔ هدف منطبق باشند.",
+  "answer": "کوزه‌ای با پروفایل منطبق",
+  "time_limit_seconds": 135,
+  "base_score": 160,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "target",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/jug_shadow_target.svg",
+      "position": [
+        960,
+        620
+      ],
+      "interactions": []
+    },
+    {
+      "id": "light_position",
+      "scene": "DropZone",
+      "position": [
+        960,
+        620
+      ],
+      "hit_size": [
+        245,
+        220
+      ],
+      "accepted_sources": [
+        "jug_0",
+        "jug_1",
+        "jug_2",
+        "jug_3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "lamp",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/lamp_on.svg",
+      "position": [
+        500,
+        600
+      ],
+      "interactions": []
+    },
+    {
+      "id": "jug_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/shadow_jug_0.svg",
+      "position": [
+        450,
+        900
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "jug_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/shadow_jug_1.svg",
+      "position": [
+        800,
+        900
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "jug_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/shadow_jug_2.svg",
+      "position": [
+        1150,
+        900
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.7,
+        0.7
+      ]
+    },
+    {
+      "id": "jug_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/shadow_jug_1.svg",
+      "position": [
+        1500,
+        900
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.45,
+        0.45
+      ]
+    },
+    {
+      "id": "lever",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/wall_switch.svg",
+      "position": [
+        1550,
+        560
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "up"
+        }
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "test_shadow",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/jug_shadow_target.svg",
+      "position": [
+        1560,
+        690
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.4,
+        0.7
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "jug_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "jug_0",
+          "position": [
+            960,
+            620
+          ]
+        },
+        {
+          "type": "scale",
+          "target": "jug_0",
+          "value": [
+            1,
+            1
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "light_position"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "jug_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "jug_1",
+          "position": [
+            800,
+            900
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "target",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "light_position"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "jug_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "jug_2",
+          "position": [
+            1150,
+            900
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "target",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "light_position"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "jug_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "jug_3",
+          "position": [
+            1500,
+            900
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "target",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "light_position"
+    },
+    {
+      "id": "r0004",
+      "event": "swipe",
+      "source": "lever",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "show",
+          "target": "test_shadow"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

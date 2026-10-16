@@ -1,0 +1,508 @@
+{
+  "schema_version": 1,
+  "id": 54,
+  "question": "کدام تنگ ترک دارد؟",
+  "hint": "هر سه تنگ را پر کن؛ آزمایش سه‌ثانیه‌ای نشتی بدنه را نشان می‌دهد.",
+  "answer": "تنگی که قطره آب از آن خارج می‌شود",
+  "time_limit_seconds": 120,
+  "base_score": 145,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "tested": false,
+    "filled_0": false,
+    "filled_1": false,
+    "filled_2": false
+  },
+  "objects": [
+    {
+      "id": "water",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/water_jug.svg",
+      "position": [
+        300,
+        850
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "jug_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/water_jug.svg",
+      "position": [
+        600,
+        650
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "fill_0",
+      "scene": "DropZone",
+      "position": [
+        600,
+        650
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "water"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "water_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/milk_ripple.svg",
+      "position": [
+        600,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ],
+      "visible": false
+    },
+    {
+      "id": "jug_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/water_jug.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "fill_1",
+      "scene": "DropZone",
+      "position": [
+        960,
+        650
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "water"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "water_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/milk_ripple.svg",
+      "position": [
+        960,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ],
+      "visible": false
+    },
+    {
+      "id": "jug_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/water_jug.svg",
+      "position": [
+        1320,
+        650
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "fill_2",
+      "scene": "DropZone",
+      "position": [
+        1320,
+        650
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "water"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "water_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/milk_ripple.svg",
+      "position": [
+        1320,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.5,
+        0.5
+      ],
+      "visible": false
+    },
+    {
+      "id": "leak",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/jug_body_leak.svg",
+      "position": [
+        1060,
+        730
+      ],
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "test",
+      "scene": "TextObject",
+      "text": "آزمایش: سه ثانیه نگه دار",
+      "position": [
+        960,
+        920
+      ],
+      "hit_size": [
+        620,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "hold",
+          "duration": 3.0
+        }
+      ],
+      "sprite": "res://assets/samples/puzzle_tile.svg"
+    },
+    {
+      "id": "cloth",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/towel_wet.svg",
+      "position": [
+        1600,
+        850
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "floor",
+      "scene": "DropZone",
+      "position": [
+        650,
+        790
+      ],
+      "hit_size": [
+        230,
+        160
+      ],
+      "accepted_sources": [
+        "cloth"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "puddle",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/water_drops.svg",
+      "position": [
+        650,
+        790
+      ],
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "cap",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bottle_cap.svg",
+      "position": [
+        1600,
+        550
+      ],
+      "interactions": [
+        "tap"
+      ]
+    },
+    {
+      "id": "mouth_drop",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/water_drops.svg",
+      "position": [
+        1380,
+        580
+      ],
+      "interactions": [],
+      "visible": false,
+      "scale": [
+        0.4,
+        0.4
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "water",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "water",
+          "position": [
+            300,
+            850
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "filled_0",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "show",
+          "target": "water_0"
+        }
+      ],
+      "once": false,
+      "target": "fill_0"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "water",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "water",
+          "position": [
+            300,
+            850
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "filled_1",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "show",
+          "target": "water_1"
+        }
+      ],
+      "once": false,
+      "target": "fill_1"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "water",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "water",
+          "position": [
+            300,
+            850
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "filled_2",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "show",
+          "target": "water_2"
+        }
+      ],
+      "once": false,
+      "target": "fill_2"
+    },
+    {
+      "id": "r0003",
+      "event": "hold",
+      "source": "test",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "filled_0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "filled_1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "filled_2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "tested",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "show",
+          "target": "leak"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "tap",
+      "source": "jug_1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tested",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
+      "source": "jug_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "jug_0",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "tap",
+      "source": "jug_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "jug_2",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "drop_on",
+      "source": "cloth",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "cloth",
+          "position": [
+            1600,
+            850
+          ]
+        },
+        {
+          "type": "show",
+          "target": "puddle"
+        }
+      ],
+      "once": false,
+      "target": "floor"
+    },
+    {
+      "id": "r0008",
+      "event": "tap",
+      "source": "cap",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mouth_drop"
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

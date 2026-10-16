@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "id": 66,
+  "question": "کدام طناب زنگ را به صدا درمی‌آورد؟",
+  "hint": "مسیر طناب‌ها را تا زنگ اصلی دنبال کن؛ طناب وسط را به پایین بکش.",
+  "answer": "طنابی که واقعاً به زنگ وصل است",
+  "time_limit_seconds": 130,
+  "base_score": 160,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "paths",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/bell_rope_paths.svg",
+      "position": [
+        960,
+        680
+      ],
+      "interactions": [],
+      "scale": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "id": "main_bell",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/bell.svg",
+      "position": [
+        1120,
+        500
+      ],
+      "interactions": [],
+      "scale": [
+        0.6,
+        0.6
+      ]
+    },
+    {
+      "id": "left_weight",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/stone.svg",
+      "position": [
+        800,
+        500
+      ],
+      "interactions": [],
+      "scale": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "id": "right_weight",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/stone.svg",
+      "position": [
+        960,
+        500
+      ],
+      "interactions": [],
+      "scale": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "id": "rope_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/rope_pull.svg",
+      "position": [
+        800,
+        930
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            800,
+            870,
+            1,
+            140
+          ],
+          "return_on_invalid": true,
+          "axis": "y"
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "rope_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/rope_pull.svg",
+      "position": [
+        960,
+        930
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            960,
+            870,
+            1,
+            140
+          ],
+          "return_on_invalid": true,
+          "axis": "y"
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "rope_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/rope_pull.svg",
+      "position": [
+        1120,
+        930
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            1120,
+            870,
+            1,
+            140
+          ],
+          "return_on_invalid": true,
+          "axis": "y"
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "pulley",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/clock_hands.svg",
+      "position": [
+        1540,
+        620
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "right"
+        }
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "small_bell",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/bell.svg",
+      "position": [
+        370,
+        900
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "scale": [
+        0.4,
+        0.4
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drag_end",
+      "source": "rope_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "rope_0",
+          "position": [
+            800,
+            930
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "left_weight",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "drag_end",
+      "source": "rope_1",
+      "conditions": [
+        {
+          "type": "moved_distance_at_least",
+          "value": 80
+        }
+      ],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "main_bell",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        },
+        {
+          "type": "play_sound",
+          "sound": "res://assets/samples/radio_chime.wav",
+          "wait": false
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "drag_end",
+      "source": "rope_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "rope_2",
+          "position": [
+            1120,
+            930
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "right_weight",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "swipe",
+      "source": "pulley",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "pulley",
+          "degrees": 90
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "tap",
+      "source": "small_bell",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "small_bell",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        },
+        {
+          "type": "play_sound",
+          "sound": "res://assets/samples/radio_chime.wav",
+          "wait": false
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

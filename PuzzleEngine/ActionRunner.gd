@@ -143,6 +143,10 @@ func run_action(action: Dictionary, expected_run_id: int) -> Dictionary:
 			if item != null:
 				item.definition["state"][action["key"]] = _copy_value(action["value"])
 			return _ok()
+		"fail_level":
+			var result := _ok()
+			result["failure_requested"] = true
+			return result
 		"complete_level":
 			var result := _ok()
 			result["success_requested"] = true

@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "id": 53,
+  "question": "از میان چهار کاشی ایرانی، کدام قطعه الگو را کامل می‌کند؟",
+  "hint": "ادامهٔ چهار خط رنگی را با چهار لبهٔ قطعه تطبیق بده.",
+  "answer": "کاشی با ادامه درست خطوط و تقارن",
+  "time_limit_seconds": 105,
+  "base_score": 140,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false
+  },
+  "objects": [
+    {
+      "id": "frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/tile_surround.svg",
+      "position": [
+        960,
+        620
+      ],
+      "interactions": []
+    },
+    {
+      "id": "gap",
+      "scene": "DropZone",
+      "position": [
+        960,
+        620
+      ],
+      "hit_size": [
+        225,
+        225
+      ],
+      "accepted_sources": [
+        "tile_0",
+        "tile_1",
+        "tile_2",
+        "tile_3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "tile_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/pattern_tile_0.svg",
+      "position": [
+        390,
+        900
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.75,
+        0.75
+      ]
+    },
+    {
+      "id": "tile_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/pattern_tile_1.svg",
+      "position": [
+        770,
+        900
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.75,
+        0.75
+      ]
+    },
+    {
+      "id": "tile_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/pattern_tile_2.svg",
+      "position": [
+        1150,
+        900
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.75,
+        0.75
+      ]
+    },
+    {
+      "id": "tile_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/pattern_tile_3.svg",
+      "position": [
+        1530,
+        900
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            160,
+            460,
+            1600,
+            510
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.75,
+        0.75
+      ]
+    },
+    {
+      "id": "stencil",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/tile_stencil.svg",
+      "position": [
+        1500,
+        590
+      ],
+      "interactions": [
+        "hold"
+      ],
+      "scale": [
+        0.7,
+        0.7
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "tile_0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "tile_0",
+          "position": [
+            960,
+            620
+          ]
+        },
+        {
+          "type": "scale",
+          "target": "tile_0",
+          "value": [
+            1,
+            1
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "gap"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "tile_1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "tile_1",
+          "position": [
+            770,
+            900
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "frame",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "gap"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "tile_2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "tile_2",
+          "position": [
+            1150,
+            900
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "frame",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "gap"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "tile_3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "tile_3",
+          "position": [
+            1530,
+            900
+          ]
+        },
+        {
+          "type": "play_animation",
+          "target": "frame",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false,
+      "target": "gap"
+    },
+    {
+      "id": "r0004",
+      "event": "hold",
+      "source": "stencil",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "play_animation",
+          "target": "stencil",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}
