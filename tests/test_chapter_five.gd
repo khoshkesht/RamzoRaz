@@ -161,7 +161,9 @@ func _trap(c: PuzzleController, id: int, second: bool) -> void:
 		69:
 			if second: _drop(c, "piece_2", "gap_0")
 			else: _drop(c, "piece_0", "gap_0")
-		70: _swipe(c, "card_0" if second else "card_4")
+		70:
+			if second: _swipe(c, "card_0", Vector2(0, 110))
+			else: _tap(c, "card_4")
 	_feedback(c)
 
 func _run() -> void:
@@ -422,8 +424,10 @@ func _finish() -> void:
 	quit(0 if failures.is_empty() else 1)
 
 func _inspect_card(c: PuzzleController, index: int) -> void:
-	_drop(c, "card_%d" % index, "reader_zone")
-	_swipe(c, "flip_%d" % index)
+	_swipe(c, "card_%d" % index, Vector2(-100, 0))
+	# Each half starts only after the preceding animation's completion event.
+	c.action_runner._process(0.2)
+	c.action_runner._process(0.2)
 
 func _slide_shelf(c: PuzzleController, destination: Vector2) -> void:
 	var manager := c.interaction_manager
@@ -489,8 +493,23 @@ func _redesign_transitions(c: PuzzleController) -> void:
 	c.retry_level()
 	check(not c.state.variables["placed_0"] and c.state.variables["angle_0"] == 270, "Retry restores the original motif orientation")
 	c.load_level_index(69)
-	_drop(c, "card_0", "reader_zone")
-	_drop(c, "card_1", "reader_zone")
-	check(c.state.variables["reader"] == 0 and c.state.variables["scans"] == 0, "The occupied reader accepts only one card")
-	_swipe(c, "flip_0")
-	check(c.state.variables["scans"] == 1 and c.object_nodes["back_0"].visible and not c.object_nodes["card_0"].visible, "Inspection returns a revealed card and records one scan")
+	_swipe(c, "card_0", Vector2(100, 0))
+	_swipe(c, "card_0", Vector2(-30, 0))
+	check(c.state.variables["flipping"] == -1 and c.state.variables["scans"] == 0, "Wrong-direction and short gestures do not spend an inspection")
+	_swipe(c, "card_0", Vector2(-100, 0))
+	_swipe(c, "card_1", Vector2(-100, 0))
+	check(c.state.variables["flipping"] == 0 and c.state.variables["scans"] == 0, "A turning card reserves the inspection until the reveal finishes")
+	c.action_runner._process(0.2)
+	check(c.object_nodes["back_0"].visible and not c.object_nodes["card_0"].visible and c.state.variables["scans"] == 0, "The reverse opens before the inspection is counted")
+	c.action_runner._process(0.2)
+	check(c.state.variables["scans"] == 1 and c.object_nodes["back_0"].position == Vector2(420, 500) and c.object_nodes["check_0"].visible, "A revealed card stays at home and records one scan")
+	var revealed_point := c.interaction_manager.stage_to_viewport(c.object_nodes["back_0"].position)
+	check(not c.interaction_manager.pointer_pressed(revealed_point, 0) and c.state.variables["scans"] == 1, "A revealed card cannot spend another inspection")
+	_swipe(c, "card_1", Vector2(-100, 0))
+	var stale := {"type": "custom:animation_finished", "source": "card_1", "payload": {"animation": "card_flip/close"}, "run_id": c.state.run_id}
+	c.clock.elapsed_usec = c.clock.limit_usec
+	c._process(0.0)
+	c.retry_level()
+	c.rule_evaluator.enqueue_event(stale)
+	c.action_runner._process(0.4)
+	check(c.state.variables["scans"] == 0 and c.state.variables["flipping"] == -1 and c.object_nodes["card_1"].visible and not c.object_nodes["back_1"].visible, "Retry cancels an unfinished turn and ignores its stale completion")

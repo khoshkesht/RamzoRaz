@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "id": 70,
-  "question": "کارت‌های A، E، D، K، ۴، ۸، ۷، ۹؛ اگر یک طرف صدادار باشد، طرف دیگر زوج است. کدام کارتها باید بررسی شوند؟",
-  "hint": "قانون فقط می‌گوید پشت حرف صدادار باید عدد زوج باشد؛ پشت حرف بی‌صدا یا عدد زوج محدودیتی ندارد. باید A و E را بررسی کنی تا پشتشان زوج باشد، و ۷ و ۹ را تا پشت عدد فرد، حرف صدادار نباشد. هر کارت را روی سینی ذره‌بینِ وسط بکش و رها کن، سپس روی همان کارت بکش تا برگردد و به جای خود برود. فقط چهار بررسی داری: A، E، ۷ و ۹؛ ترتیبشان مهم نیست.",
+  "question": "کارت‌های A، E، D، K، ۴، ۸، ۷، ۹؛ اگر یک طرف صدادار باشد، طرف دیگر زوج است. کدام چهار کارت باید بررسی شوند؟",
+  "hint": "قانون فقط می‌گوید پشت حرف صدادار باید عدد زوج باشد؛ پشت حرف بی‌صدا یا عدد زوج محدودیتی ندارد. کارت‌های A و E را بررسی کن تا ببینی پشتشان زوج است یا نه، و ۷ و ۹ را تا ببینی پشت عدد فرد حرف صدادار هست یا نه. برای برگرداندن هر کارت، روی خودش به چپ بکش و رها کن؛ پشت کارت در همان جا آشکار می‌شود. فقط چهار بررسی داری: A، E، ۷ و ۹؛ ترتیبشان مهم نیست و هر کارت فقط یک بار بررسی می‌شود.",
   "answer": "A و E و ۷ و ۹؛ صدادارها و عددهای فرد، حالت‌های لازم برای پیدا کردن نقض قانون‌اند.",
   "time_limit_seconds": 170,
   "base_score": 180,
@@ -13,7 +13,7 @@
   "variables": {
     "solved": false,
     "scans": 0,
-    "reader": -1,
+    "flipping": -1,
     "inspected_0": false,
     "inspected_1": false,
     "inspected_2": false,
@@ -25,57 +25,19 @@
   },
   "objects": [
     {
-      "id": "reader_frame",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/puzzle_tile.svg",
-      "position": [
-        960,
-        700
-      ],
-      "interactions": [],
-      "scale": [
-        1.4,
-        1.8
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "reader_glass",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/magnifying_glass.svg",
-      "position": [
-        1220,
-        700
-      ],
-      "interactions": [],
-      "scale": [
-        0.5,
-        0.5
-      ]
-    },
-    {
-      "id": "reader_zone",
-      "scene": "DropZone",
+      "id": "flip_instruction",
+      "scene": "TextObject",
+      "text": "فقط ۴ کارت؛ برای ورق‌زدن به چپ بکش",
       "position": [
         960,
         700
       ],
       "hit_size": [
-        330,
-        180
+        1260,
+        70
       ],
-      "accepted_sources": [
-        "card_0",
-        "card_1",
-        "card_2",
-        "card_3",
-        "card_4",
-        "card_5",
-        "card_6",
-        "card_7"
-      ],
-      "z_index": -2,
-      "visible": true
+      "text_color": "#354f54",
+      "interactions": []
     },
     {
       "id": "card_0",
@@ -92,39 +54,14 @@
       "text_color": "#354f54",
       "interactions": [
         {
-          "type": "drag",
-          "bounds": [
-            250,
-            430,
-            1400,
-            540
-          ],
-          "return_on_invalid": false
-        },
-        "drop_on"
+          "type": "swipe",
+          "direction": "left",
+          "min_distance": 60,
+          "max_duration": 1
+        }
       ],
       "sprite": "res://assets/samples/puzzle_tile.svg",
       "z_index": 5
-    },
-    {
-      "id": "flip_0",
-      "scene": "TextObject",
-      "text": "A",
-      "position": [
-        960,
-        700
-      ],
-      "hit_size": [
-        260,
-        130
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        "swipe"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg",
-      "visible": false,
-      "z_index": 8
     },
     {
       "id": "back_0",
@@ -174,39 +111,14 @@
       "text_color": "#354f54",
       "interactions": [
         {
-          "type": "drag",
-          "bounds": [
-            250,
-            430,
-            1400,
-            540
-          ],
-          "return_on_invalid": false
-        },
-        "drop_on"
+          "type": "swipe",
+          "direction": "left",
+          "min_distance": 60,
+          "max_duration": 1
+        }
       ],
       "sprite": "res://assets/samples/puzzle_tile.svg",
       "z_index": 5
-    },
-    {
-      "id": "flip_1",
-      "scene": "TextObject",
-      "text": "E",
-      "position": [
-        960,
-        700
-      ],
-      "hit_size": [
-        260,
-        130
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        "swipe"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg",
-      "visible": false,
-      "z_index": 8
     },
     {
       "id": "back_1",
@@ -256,39 +168,14 @@
       "text_color": "#354f54",
       "interactions": [
         {
-          "type": "drag",
-          "bounds": [
-            250,
-            430,
-            1400,
-            540
-          ],
-          "return_on_invalid": false
-        },
-        "drop_on"
+          "type": "swipe",
+          "direction": "left",
+          "min_distance": 60,
+          "max_duration": 1
+        }
       ],
       "sprite": "res://assets/samples/puzzle_tile.svg",
       "z_index": 5
-    },
-    {
-      "id": "flip_2",
-      "scene": "TextObject",
-      "text": "D",
-      "position": [
-        960,
-        700
-      ],
-      "hit_size": [
-        260,
-        130
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        "swipe"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg",
-      "visible": false,
-      "z_index": 8
     },
     {
       "id": "back_2",
@@ -338,39 +225,14 @@
       "text_color": "#354f54",
       "interactions": [
         {
-          "type": "drag",
-          "bounds": [
-            250,
-            430,
-            1400,
-            540
-          ],
-          "return_on_invalid": false
-        },
-        "drop_on"
+          "type": "swipe",
+          "direction": "left",
+          "min_distance": 60,
+          "max_duration": 1
+        }
       ],
       "sprite": "res://assets/samples/puzzle_tile.svg",
       "z_index": 5
-    },
-    {
-      "id": "flip_3",
-      "scene": "TextObject",
-      "text": "K",
-      "position": [
-        960,
-        700
-      ],
-      "hit_size": [
-        260,
-        130
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        "swipe"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg",
-      "visible": false,
-      "z_index": 8
     },
     {
       "id": "back_3",
@@ -420,39 +282,14 @@
       "text_color": "#354f54",
       "interactions": [
         {
-          "type": "drag",
-          "bounds": [
-            250,
-            430,
-            1400,
-            540
-          ],
-          "return_on_invalid": false
-        },
-        "drop_on"
+          "type": "swipe",
+          "direction": "left",
+          "min_distance": 60,
+          "max_duration": 1
+        }
       ],
       "sprite": "res://assets/samples/puzzle_tile.svg",
       "z_index": 5
-    },
-    {
-      "id": "flip_4",
-      "scene": "TextObject",
-      "text": "۴",
-      "position": [
-        960,
-        700
-      ],
-      "hit_size": [
-        260,
-        130
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        "swipe"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg",
-      "visible": false,
-      "z_index": 8
     },
     {
       "id": "back_4",
@@ -502,39 +339,14 @@
       "text_color": "#354f54",
       "interactions": [
         {
-          "type": "drag",
-          "bounds": [
-            250,
-            430,
-            1400,
-            540
-          ],
-          "return_on_invalid": false
-        },
-        "drop_on"
+          "type": "swipe",
+          "direction": "left",
+          "min_distance": 60,
+          "max_duration": 1
+        }
       ],
       "sprite": "res://assets/samples/puzzle_tile.svg",
       "z_index": 5
-    },
-    {
-      "id": "flip_5",
-      "scene": "TextObject",
-      "text": "۸",
-      "position": [
-        960,
-        700
-      ],
-      "hit_size": [
-        260,
-        130
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        "swipe"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg",
-      "visible": false,
-      "z_index": 8
     },
     {
       "id": "back_5",
@@ -584,39 +396,14 @@
       "text_color": "#354f54",
       "interactions": [
         {
-          "type": "drag",
-          "bounds": [
-            250,
-            430,
-            1400,
-            540
-          ],
-          "return_on_invalid": false
-        },
-        "drop_on"
+          "type": "swipe",
+          "direction": "left",
+          "min_distance": 60,
+          "max_duration": 1
+        }
       ],
       "sprite": "res://assets/samples/puzzle_tile.svg",
       "z_index": 5
-    },
-    {
-      "id": "flip_6",
-      "scene": "TextObject",
-      "text": "۷",
-      "position": [
-        960,
-        700
-      ],
-      "hit_size": [
-        260,
-        130
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        "swipe"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg",
-      "visible": false,
-      "z_index": 8
     },
     {
       "id": "back_6",
@@ -666,39 +453,14 @@
       "text_color": "#354f54",
       "interactions": [
         {
-          "type": "drag",
-          "bounds": [
-            250,
-            430,
-            1400,
-            540
-          ],
-          "return_on_invalid": false
-        },
-        "drop_on"
+          "type": "swipe",
+          "direction": "left",
+          "min_distance": 60,
+          "max_duration": 1
+        }
       ],
       "sprite": "res://assets/samples/puzzle_tile.svg",
       "z_index": 5
-    },
-    {
-      "id": "flip_7",
-      "scene": "TextObject",
-      "text": "۹",
-      "position": [
-        960,
-        700
-      ],
-      "hit_size": [
-        260,
-        130
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        "swipe"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg",
-      "visible": false,
-      "z_index": 8
     },
     {
       "id": "back_7",
@@ -737,27 +499,25 @@
   "rules": [
     {
       "id": "r0000",
-      "event": "drop_on",
+      "event": "swipe",
       "actions": [
         {
-          "type": "hide",
-          "target": "card_0"
-        },
-        {
-          "type": "show",
-          "target": "flip_0"
-        },
-        {
           "type": "set_variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 0,
           "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "card_0",
+          "animation": "card_flip/close",
+          "wait": false
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": -1,
           "operator": "eq"
         },
@@ -766,75 +526,57 @@
           "name": "scans",
           "value": 4,
           "operator": "lt"
-        }
-      ],
-      "once": false,
-      "source": "card_0",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0001",
-      "event": "drop_on",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_0",
-          "position": [
-            420,
-            500
-          ]
-        }
-      ],
-      "conditions": [
+        },
         {
           "type": "variable",
-          "name": "reader",
-          "value": -1,
-          "operator": "ne"
+          "name": "inspected_0",
+          "value": false,
+          "operator": "eq"
         }
       ],
-      "once": false,
-      "source": "card_0",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0002",
-      "event": "drag_end",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_0",
-          "position": [
-            420,
-            500
-          ]
-        }
-      ],
-      "conditions": [
-        {
-          "type": "not",
-          "condition": {
-            "type": "inside",
-            "target": "card_0",
-            "zone": "reader_zone"
-          }
-        }
-      ],
-      "once": false,
+      "once": true,
       "source": "card_0"
     },
     {
-      "id": "r0003",
-      "event": "swipe",
+      "id": "r0001",
+      "event": "custom:animation_finished",
       "actions": [
         {
           "type": "hide",
-          "target": "flip_0"
+          "target": "card_0"
         },
         {
           "type": "show",
           "target": "back_0"
         },
+        {
+          "type": "play_animation",
+          "target": "back_0",
+          "animation": "card_flip/open",
+          "wait": false
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flipping",
+          "value": 0,
+          "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/close"
+        }
+      ],
+      "once": true,
+      "source": "card_0"
+    },
+    {
+      "id": "r0002",
+      "event": "custom:animation_finished",
+      "actions": [
         {
           "type": "show",
           "target": "check_0"
@@ -847,51 +589,55 @@
         },
         {
           "type": "set_variable",
+          "name": "flipping",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
           "name": "scans",
           "value": 1,
           "operation": "increment"
-        },
-        {
-          "type": "set_variable",
-          "name": "reader",
-          "value": -1,
-          "operation": "assign"
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 0,
           "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/open"
         }
       ],
       "once": true,
-      "source": "flip_0"
+      "source": "back_0"
     },
     {
-      "id": "r0004",
-      "event": "drop_on",
+      "id": "r0003",
+      "event": "swipe",
       "actions": [
         {
-          "type": "hide",
-          "target": "card_1"
-        },
-        {
-          "type": "show",
-          "target": "flip_1"
-        },
-        {
           "type": "set_variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 1,
           "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "card_1",
+          "animation": "card_flip/close",
+          "wait": false
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": -1,
           "operator": "eq"
         },
@@ -900,75 +646,57 @@
           "name": "scans",
           "value": 4,
           "operator": "lt"
-        }
-      ],
-      "once": false,
-      "source": "card_1",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0005",
-      "event": "drop_on",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_1",
-          "position": [
-            780,
-            500
-          ]
-        }
-      ],
-      "conditions": [
+        },
         {
           "type": "variable",
-          "name": "reader",
-          "value": -1,
-          "operator": "ne"
+          "name": "inspected_1",
+          "value": false,
+          "operator": "eq"
         }
       ],
-      "once": false,
-      "source": "card_1",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0006",
-      "event": "drag_end",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_1",
-          "position": [
-            780,
-            500
-          ]
-        }
-      ],
-      "conditions": [
-        {
-          "type": "not",
-          "condition": {
-            "type": "inside",
-            "target": "card_1",
-            "zone": "reader_zone"
-          }
-        }
-      ],
-      "once": false,
+      "once": true,
       "source": "card_1"
     },
     {
-      "id": "r0007",
-      "event": "swipe",
+      "id": "r0004",
+      "event": "custom:animation_finished",
       "actions": [
         {
           "type": "hide",
-          "target": "flip_1"
+          "target": "card_1"
         },
         {
           "type": "show",
           "target": "back_1"
         },
+        {
+          "type": "play_animation",
+          "target": "back_1",
+          "animation": "card_flip/open",
+          "wait": false
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flipping",
+          "value": 1,
+          "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/close"
+        }
+      ],
+      "once": true,
+      "source": "card_1"
+    },
+    {
+      "id": "r0005",
+      "event": "custom:animation_finished",
+      "actions": [
         {
           "type": "show",
           "target": "check_1"
@@ -981,51 +709,55 @@
         },
         {
           "type": "set_variable",
+          "name": "flipping",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
           "name": "scans",
           "value": 1,
           "operation": "increment"
-        },
-        {
-          "type": "set_variable",
-          "name": "reader",
-          "value": -1,
-          "operation": "assign"
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 1,
           "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/open"
         }
       ],
       "once": true,
-      "source": "flip_1"
+      "source": "back_1"
     },
     {
-      "id": "r0008",
-      "event": "drop_on",
+      "id": "r0006",
+      "event": "swipe",
       "actions": [
         {
-          "type": "hide",
-          "target": "card_2"
-        },
-        {
-          "type": "show",
-          "target": "flip_2"
-        },
-        {
           "type": "set_variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 2,
           "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "card_2",
+          "animation": "card_flip/close",
+          "wait": false
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": -1,
           "operator": "eq"
         },
@@ -1034,75 +766,57 @@
           "name": "scans",
           "value": 4,
           "operator": "lt"
-        }
-      ],
-      "once": false,
-      "source": "card_2",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0009",
-      "event": "drop_on",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_2",
-          "position": [
-            1140,
-            500
-          ]
-        }
-      ],
-      "conditions": [
+        },
         {
           "type": "variable",
-          "name": "reader",
-          "value": -1,
-          "operator": "ne"
+          "name": "inspected_2",
+          "value": false,
+          "operator": "eq"
         }
       ],
-      "once": false,
-      "source": "card_2",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0010",
-      "event": "drag_end",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_2",
-          "position": [
-            1140,
-            500
-          ]
-        }
-      ],
-      "conditions": [
-        {
-          "type": "not",
-          "condition": {
-            "type": "inside",
-            "target": "card_2",
-            "zone": "reader_zone"
-          }
-        }
-      ],
-      "once": false,
+      "once": true,
       "source": "card_2"
     },
     {
-      "id": "r0011",
-      "event": "swipe",
+      "id": "r0007",
+      "event": "custom:animation_finished",
       "actions": [
         {
           "type": "hide",
-          "target": "flip_2"
+          "target": "card_2"
         },
         {
           "type": "show",
           "target": "back_2"
         },
+        {
+          "type": "play_animation",
+          "target": "back_2",
+          "animation": "card_flip/open",
+          "wait": false
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flipping",
+          "value": 2,
+          "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/close"
+        }
+      ],
+      "once": true,
+      "source": "card_2"
+    },
+    {
+      "id": "r0008",
+      "event": "custom:animation_finished",
+      "actions": [
         {
           "type": "show",
           "target": "check_2"
@@ -1115,51 +829,55 @@
         },
         {
           "type": "set_variable",
+          "name": "flipping",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
           "name": "scans",
           "value": 1,
           "operation": "increment"
-        },
-        {
-          "type": "set_variable",
-          "name": "reader",
-          "value": -1,
-          "operation": "assign"
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 2,
           "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/open"
         }
       ],
       "once": true,
-      "source": "flip_2"
+      "source": "back_2"
     },
     {
-      "id": "r0012",
-      "event": "drop_on",
+      "id": "r0009",
+      "event": "swipe",
       "actions": [
         {
-          "type": "hide",
-          "target": "card_3"
-        },
-        {
-          "type": "show",
-          "target": "flip_3"
-        },
-        {
           "type": "set_variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 3,
           "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "card_3",
+          "animation": "card_flip/close",
+          "wait": false
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": -1,
           "operator": "eq"
         },
@@ -1168,75 +886,57 @@
           "name": "scans",
           "value": 4,
           "operator": "lt"
-        }
-      ],
-      "once": false,
-      "source": "card_3",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0013",
-      "event": "drop_on",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_3",
-          "position": [
-            1500,
-            500
-          ]
-        }
-      ],
-      "conditions": [
+        },
         {
           "type": "variable",
-          "name": "reader",
-          "value": -1,
-          "operator": "ne"
+          "name": "inspected_3",
+          "value": false,
+          "operator": "eq"
         }
       ],
-      "once": false,
-      "source": "card_3",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0014",
-      "event": "drag_end",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_3",
-          "position": [
-            1500,
-            500
-          ]
-        }
-      ],
-      "conditions": [
-        {
-          "type": "not",
-          "condition": {
-            "type": "inside",
-            "target": "card_3",
-            "zone": "reader_zone"
-          }
-        }
-      ],
-      "once": false,
+      "once": true,
       "source": "card_3"
     },
     {
-      "id": "r0015",
-      "event": "swipe",
+      "id": "r0010",
+      "event": "custom:animation_finished",
       "actions": [
         {
           "type": "hide",
-          "target": "flip_3"
+          "target": "card_3"
         },
         {
           "type": "show",
           "target": "back_3"
         },
+        {
+          "type": "play_animation",
+          "target": "back_3",
+          "animation": "card_flip/open",
+          "wait": false
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flipping",
+          "value": 3,
+          "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/close"
+        }
+      ],
+      "once": true,
+      "source": "card_3"
+    },
+    {
+      "id": "r0011",
+      "event": "custom:animation_finished",
+      "actions": [
         {
           "type": "show",
           "target": "check_3"
@@ -1249,51 +949,55 @@
         },
         {
           "type": "set_variable",
+          "name": "flipping",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
           "name": "scans",
           "value": 1,
           "operation": "increment"
-        },
-        {
-          "type": "set_variable",
-          "name": "reader",
-          "value": -1,
-          "operation": "assign"
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 3,
           "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/open"
         }
       ],
       "once": true,
-      "source": "flip_3"
+      "source": "back_3"
     },
     {
-      "id": "r0016",
-      "event": "drop_on",
+      "id": "r0012",
+      "event": "swipe",
       "actions": [
         {
-          "type": "hide",
-          "target": "card_4"
-        },
-        {
-          "type": "show",
-          "target": "flip_4"
-        },
-        {
           "type": "set_variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 4,
           "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "card_4",
+          "animation": "card_flip/close",
+          "wait": false
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": -1,
           "operator": "eq"
         },
@@ -1302,75 +1006,57 @@
           "name": "scans",
           "value": 4,
           "operator": "lt"
-        }
-      ],
-      "once": false,
-      "source": "card_4",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0017",
-      "event": "drop_on",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_4",
-          "position": [
-            420,
-            900
-          ]
-        }
-      ],
-      "conditions": [
+        },
         {
           "type": "variable",
-          "name": "reader",
-          "value": -1,
-          "operator": "ne"
+          "name": "inspected_4",
+          "value": false,
+          "operator": "eq"
         }
       ],
-      "once": false,
-      "source": "card_4",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0018",
-      "event": "drag_end",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_4",
-          "position": [
-            420,
-            900
-          ]
-        }
-      ],
-      "conditions": [
-        {
-          "type": "not",
-          "condition": {
-            "type": "inside",
-            "target": "card_4",
-            "zone": "reader_zone"
-          }
-        }
-      ],
-      "once": false,
+      "once": true,
       "source": "card_4"
     },
     {
-      "id": "r0019",
-      "event": "swipe",
+      "id": "r0013",
+      "event": "custom:animation_finished",
       "actions": [
         {
           "type": "hide",
-          "target": "flip_4"
+          "target": "card_4"
         },
         {
           "type": "show",
           "target": "back_4"
         },
+        {
+          "type": "play_animation",
+          "target": "back_4",
+          "animation": "card_flip/open",
+          "wait": false
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flipping",
+          "value": 4,
+          "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/close"
+        }
+      ],
+      "once": true,
+      "source": "card_4"
+    },
+    {
+      "id": "r0014",
+      "event": "custom:animation_finished",
+      "actions": [
         {
           "type": "show",
           "target": "check_4"
@@ -1383,51 +1069,55 @@
         },
         {
           "type": "set_variable",
+          "name": "flipping",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
           "name": "scans",
           "value": 1,
           "operation": "increment"
-        },
-        {
-          "type": "set_variable",
-          "name": "reader",
-          "value": -1,
-          "operation": "assign"
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 4,
           "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/open"
         }
       ],
       "once": true,
-      "source": "flip_4"
+      "source": "back_4"
     },
     {
-      "id": "r0020",
-      "event": "drop_on",
+      "id": "r0015",
+      "event": "swipe",
       "actions": [
         {
-          "type": "hide",
-          "target": "card_5"
-        },
-        {
-          "type": "show",
-          "target": "flip_5"
-        },
-        {
           "type": "set_variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 5,
           "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "card_5",
+          "animation": "card_flip/close",
+          "wait": false
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": -1,
           "operator": "eq"
         },
@@ -1436,75 +1126,57 @@
           "name": "scans",
           "value": 4,
           "operator": "lt"
-        }
-      ],
-      "once": false,
-      "source": "card_5",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0021",
-      "event": "drop_on",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_5",
-          "position": [
-            780,
-            900
-          ]
-        }
-      ],
-      "conditions": [
+        },
         {
           "type": "variable",
-          "name": "reader",
-          "value": -1,
-          "operator": "ne"
+          "name": "inspected_5",
+          "value": false,
+          "operator": "eq"
         }
       ],
-      "once": false,
-      "source": "card_5",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0022",
-      "event": "drag_end",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_5",
-          "position": [
-            780,
-            900
-          ]
-        }
-      ],
-      "conditions": [
-        {
-          "type": "not",
-          "condition": {
-            "type": "inside",
-            "target": "card_5",
-            "zone": "reader_zone"
-          }
-        }
-      ],
-      "once": false,
+      "once": true,
       "source": "card_5"
     },
     {
-      "id": "r0023",
-      "event": "swipe",
+      "id": "r0016",
+      "event": "custom:animation_finished",
       "actions": [
         {
           "type": "hide",
-          "target": "flip_5"
+          "target": "card_5"
         },
         {
           "type": "show",
           "target": "back_5"
         },
+        {
+          "type": "play_animation",
+          "target": "back_5",
+          "animation": "card_flip/open",
+          "wait": false
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flipping",
+          "value": 5,
+          "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/close"
+        }
+      ],
+      "once": true,
+      "source": "card_5"
+    },
+    {
+      "id": "r0017",
+      "event": "custom:animation_finished",
+      "actions": [
         {
           "type": "show",
           "target": "check_5"
@@ -1517,51 +1189,55 @@
         },
         {
           "type": "set_variable",
+          "name": "flipping",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
           "name": "scans",
           "value": 1,
           "operation": "increment"
-        },
-        {
-          "type": "set_variable",
-          "name": "reader",
-          "value": -1,
-          "operation": "assign"
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 5,
           "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/open"
         }
       ],
       "once": true,
-      "source": "flip_5"
+      "source": "back_5"
     },
     {
-      "id": "r0024",
-      "event": "drop_on",
+      "id": "r0018",
+      "event": "swipe",
       "actions": [
         {
-          "type": "hide",
-          "target": "card_6"
-        },
-        {
-          "type": "show",
-          "target": "flip_6"
-        },
-        {
           "type": "set_variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 6,
           "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "card_6",
+          "animation": "card_flip/close",
+          "wait": false
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": -1,
           "operator": "eq"
         },
@@ -1570,75 +1246,57 @@
           "name": "scans",
           "value": 4,
           "operator": "lt"
-        }
-      ],
-      "once": false,
-      "source": "card_6",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0025",
-      "event": "drop_on",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_6",
-          "position": [
-            1140,
-            900
-          ]
-        }
-      ],
-      "conditions": [
+        },
         {
           "type": "variable",
-          "name": "reader",
-          "value": -1,
-          "operator": "ne"
+          "name": "inspected_6",
+          "value": false,
+          "operator": "eq"
         }
       ],
-      "once": false,
-      "source": "card_6",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0026",
-      "event": "drag_end",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_6",
-          "position": [
-            1140,
-            900
-          ]
-        }
-      ],
-      "conditions": [
-        {
-          "type": "not",
-          "condition": {
-            "type": "inside",
-            "target": "card_6",
-            "zone": "reader_zone"
-          }
-        }
-      ],
-      "once": false,
+      "once": true,
       "source": "card_6"
     },
     {
-      "id": "r0027",
-      "event": "swipe",
+      "id": "r0019",
+      "event": "custom:animation_finished",
       "actions": [
         {
           "type": "hide",
-          "target": "flip_6"
+          "target": "card_6"
         },
         {
           "type": "show",
           "target": "back_6"
         },
+        {
+          "type": "play_animation",
+          "target": "back_6",
+          "animation": "card_flip/open",
+          "wait": false
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flipping",
+          "value": 6,
+          "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/close"
+        }
+      ],
+      "once": true,
+      "source": "card_6"
+    },
+    {
+      "id": "r0020",
+      "event": "custom:animation_finished",
+      "actions": [
         {
           "type": "show",
           "target": "check_6"
@@ -1651,51 +1309,55 @@
         },
         {
           "type": "set_variable",
+          "name": "flipping",
+          "value": -1,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
           "name": "scans",
           "value": 1,
           "operation": "increment"
-        },
-        {
-          "type": "set_variable",
-          "name": "reader",
-          "value": -1,
-          "operation": "assign"
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 6,
           "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/open"
         }
       ],
       "once": true,
-      "source": "flip_6"
+      "source": "back_6"
     },
     {
-      "id": "r0028",
-      "event": "drop_on",
+      "id": "r0021",
+      "event": "swipe",
       "actions": [
         {
-          "type": "hide",
-          "target": "card_7"
-        },
-        {
-          "type": "show",
-          "target": "flip_7"
-        },
-        {
           "type": "set_variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 7,
           "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "card_7",
+          "animation": "card_flip/close",
+          "wait": false
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": -1,
           "operator": "eq"
         },
@@ -1704,75 +1366,57 @@
           "name": "scans",
           "value": 4,
           "operator": "lt"
-        }
-      ],
-      "once": false,
-      "source": "card_7",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0029",
-      "event": "drop_on",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_7",
-          "position": [
-            1500,
-            900
-          ]
-        }
-      ],
-      "conditions": [
+        },
         {
           "type": "variable",
-          "name": "reader",
-          "value": -1,
-          "operator": "ne"
+          "name": "inspected_7",
+          "value": false,
+          "operator": "eq"
         }
       ],
-      "once": false,
-      "source": "card_7",
-      "target": "reader_zone"
-    },
-    {
-      "id": "r0030",
-      "event": "drag_end",
-      "actions": [
-        {
-          "type": "move",
-          "target": "card_7",
-          "position": [
-            1500,
-            900
-          ]
-        }
-      ],
-      "conditions": [
-        {
-          "type": "not",
-          "condition": {
-            "type": "inside",
-            "target": "card_7",
-            "zone": "reader_zone"
-          }
-        }
-      ],
-      "once": false,
+      "once": true,
       "source": "card_7"
     },
     {
-      "id": "r0031",
-      "event": "swipe",
+      "id": "r0022",
+      "event": "custom:animation_finished",
       "actions": [
         {
           "type": "hide",
-          "target": "flip_7"
+          "target": "card_7"
         },
         {
           "type": "show",
           "target": "back_7"
         },
+        {
+          "type": "play_animation",
+          "target": "back_7",
+          "animation": "card_flip/open",
+          "wait": false
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "flipping",
+          "value": 7,
+          "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/close"
+        }
+      ],
+      "once": true,
+      "source": "card_7"
+    },
+    {
+      "id": "r0023",
+      "event": "custom:animation_finished",
+      "actions": [
         {
           "type": "show",
           "target": "check_7"
@@ -1785,30 +1429,36 @@
         },
         {
           "type": "set_variable",
-          "name": "scans",
-          "value": 1,
-          "operation": "increment"
+          "name": "flipping",
+          "value": -1,
+          "operation": "assign"
         },
         {
           "type": "set_variable",
-          "name": "reader",
-          "value": -1,
-          "operation": "assign"
+          "name": "scans",
+          "value": 1,
+          "operation": "increment"
         }
       ],
       "conditions": [
         {
           "type": "variable",
-          "name": "reader",
+          "name": "flipping",
           "value": 7,
           "operator": "eq"
+        },
+        {
+          "type": "event_value",
+          "field": "animation",
+          "operator": "eq",
+          "value": "card_flip/open"
         }
       ],
       "once": true,
-      "source": "flip_7"
+      "source": "back_7"
     },
     {
-      "id": "r0032",
+      "id": "r0024",
       "event": "variable_changed",
       "actions": [
         {
@@ -1854,7 +1504,7 @@
       "source": "$level"
     },
     {
-      "id": "r0033",
+      "id": "r0025",
       "event": "variable_changed",
       "actions": [
         {

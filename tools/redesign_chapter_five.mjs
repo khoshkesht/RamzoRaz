@@ -229,29 +229,26 @@ class Stage{
  s.win('variable_changed','$level',[v('placed_0'),v('placed_1'),v('placed_2')]);s.save();
 }
 
-// 70: inspect eight real double-sided cards with a four-card budget.
+// 70: flip cards directly in place; reserve one inspection until both halves finish.
 {
- const s=new Stage(70,'قانون فقط می‌گوید پشت حرف صدادار باید عدد زوج باشد؛ پشت حرف بی‌صدا یا عدد زوج محدودیتی ندارد. باید A و E را بررسی کنی تا پشتشان زوج باشد، و ۷ و ۹ را تا پشت عدد فرد، حرف صدادار نباشد. هر کارت را روی سینی ذره‌بینِ وسط بکش و رها کن، سپس روی همان کارت بکش تا برگردد و به جای خود برود. فقط چهار بررسی داری: A، E، ۷ و ۹؛ ترتیبشان مهم نیست.');
+ assets[P+'card_flip_feedback.tres']='انیمیشن مستقل جمع‌شدن روی کارت و بازشدن پشت آن در همان محل؛ انیمیشن‌های موجود ورق‌زدن کارت را پوشش نمی‌دادند و منابع قبلی حفظ شدند.';
+ const s=new Stage(70,'قانون فقط می‌گوید پشت حرف صدادار باید عدد زوج باشد؛ پشت حرف بی‌صدا یا عدد زوج محدودیتی ندارد. کارت‌های A و E را بررسی کن تا ببینی پشتشان زوج است یا نه، و ۷ و ۹ را تا ببینی پشت عدد فرد حرف صدادار هست یا نه. برای برگرداندن هر کارت، روی خودش به چپ بکش و رها کن؛ پشت کارت در همان جا آشکار می‌شود. فقط چهار بررسی داری: A، E، ۷ و ۹؛ ترتیبشان مهم نیست و هر کارت فقط یک بار بررسی می‌شود.');
  s.d.question='کارت‌های A، E، D، K، ۴، ۸، ۷، ۹؛ اگر یک طرف صدادار باشد، طرف دیگر زوج است. کدام چهار کارت باید بررسی شوند؟';
  s.d.answer='A و E و ۷ و ۹؛ صدادارها و عددهای فرد، حالت‌های لازم برای پیدا کردن نقض قانون‌اند.';
- s.vars({scans:0,reader:-1,...Object.fromEntries(Array.from({length:8},(_,i)=>['inspected_'+i,false]))});
+ s.vars({scans:0,flipping:-1,...Object.fromEntries(Array.from({length:8},(_,i)=>['inspected_'+i,false]))});
  s.d.counters=[{label:'کارت بررسی‌شده',variable:'scans',target:4}];
- s.image('reader_frame','puzzle_tile',960,700,[],{scale:[1.4,1.8],z_index:-1});
- s.image('reader_glass','magnifying_glass',1220,700,[],{scale:[.5,.5]});
- s.zone('reader_zone',960,700,Array.from({length:8},(_,i)=>'card_'+i),[330,180]);
+ s.text('flip_instruction','فقط ۴ کارت؛ برای ورق‌زدن به چپ بکش',960,700,[1260,70]);
  const fronts=['A','E','D','K','۴','۸','۷','۹'],backs=['۳','۲','۴','۷','A','D','D','E'];
+ const animate=(target,animation)=>({type:'play_animation',target,animation:'card_flip/'+animation,wait:false});
+ const ended=animation=>({type:'event_value',field:'animation',operator:'eq',value:'card_flip/'+animation});
  for(let i=0;i<8;i++){
   const x=420+i%4*360,y=i<4?500:900;
-  s.text('card_'+i,fronts[i],x,y,[260,130],[{type:'drag',bounds:[250,430,1400,540],return_on_invalid:false},'drop_on','swipe'],{sprite:P+'puzzle_tile.svg',z_index:5});
-  // Drag and Swipe cannot share an object: a separate flip surface appears only in the reader.
-  s.d.objects.at(-1).interactions=s.d.objects.at(-1).interactions.filter(t=>t!=='swipe');
-  s.text('flip_'+i,fronts[i],960,700,[260,130],['swipe'],{sprite:P+'puzzle_tile.svg',visible:false,z_index:8});
+  s.text('card_'+i,fronts[i],x,y,[260,130],[{type:'swipe',direction:'left',min_distance:60,max_duration:1}],{sprite:P+'puzzle_tile.svg',z_index:5});
   s.text('back_'+i,backs[i],x,y,[260,130],[],{sprite:P+'puzzle_tile.svg',visible:false});
   s.image('check_'+i,'selection_check',x+95,y-45,[],{scale:[.5,.5],visible:false,z_index:7});
-  s.drop('card_'+i,'reader_zone',[hide('card_'+i),show('flip_'+i),sv('reader',i)],[v('reader',-1),v('scans',4,'lt')]);
-  s.drop('card_'+i,'reader_zone',[move('card_'+i,x,y)],[v('reader',-1,'ne')]);
-  s.rule('drag_end','card_'+i,[move('card_'+i,x,y)],[not(inside('card_'+i,'reader_zone'))]);
-  s.rule('swipe','flip_'+i,[hide('flip_'+i),show('back_'+i),show('check_'+i),sv('inspected_'+i),sv('scans',1,'increment'),sv('reader',-1)],[v('reader',i)],true);
+  s.rule('swipe','card_'+i,[sv('flipping',i),animate('card_'+i,'close')],[v('flipping',-1),v('scans',4,'lt'),v('inspected_'+i,false)],true);
+  s.rule('custom:animation_finished','card_'+i,[hide('card_'+i),show('back_'+i),animate('back_'+i,'open')],[v('flipping',i),ended('close')],true);
+  s.rule('custom:animation_finished','back_'+i,[show('check_'+i),sv('inspected_'+i),sv('flipping',-1),sv('scans',1,'increment')],[v('flipping',i),ended('open')],true);
  }
  s.win('variable_changed','$level',[v('scans',4),v('inspected_0'),v('inspected_1'),v('inspected_6'),v('inspected_7')]);
  s.rule('variable_changed','$level',[fail],[v('scans',4),not({type:'all',conditions:[v('inspected_0'),v('inspected_1'),v('inspected_6'),v('inspected_7')]})]);
@@ -265,7 +262,7 @@ function resources(value,out=new Set()){
  else if(Array.isArray(value))value.forEach(v=>resources(v,out));
  else if(value&&typeof value==='object')Object.values(value).forEach(v=>resources(v,out));return out;
 }
-for(const n of changed){const d=read(n),paths=resources(d);paths.add('res://PuzzleEngine/Objects/PuzzleObject.tscn');for(const o of d.objects)paths.add('res://PuzzleEngine/Objects/'+o.scene+'.tscn');for(const r of d.rules)for(const a of r.actions)if(a.animation==='chapter_two/rattle')paths.add(P+'chapter_two_feedback.tres');stages[n]={background:d.background,lighting:d.background.includes('night')?'night_lit':'day',reused:[...paths].filter(p=>!assets[p]).sort(),new:[...paths].filter(p=>assets[p]).sort()};}
+for(const n of changed){const d=read(n),paths=resources(d);paths.add('res://PuzzleEngine/Objects/PuzzleObject.tscn');for(const o of d.objects)paths.add('res://PuzzleEngine/Objects/'+o.scene+'.tscn');for(const r of d.rules)for(const a of r.actions){if(a.animation==='chapter_two/rattle')paths.add(P+'chapter_two_feedback.tres');if(a.animation?.startsWith('card_flip/'))paths.add(P+'card_flip_feedback.tres');}stages[n]={background:d.background,lighting:d.background.includes('night')?'night_lit':'day',reused:[...paths].filter(p=>!assets[p]).sort(),new:[...paths].filter(p=>assets[p]).sort()};}
 fs.writeFileSync(file('docs/chapter-five-redesign-assets.json'),JSON.stringify({note:'منابع بازطراحی؛ بررسی اجرایی یا تصویری نیست. منابع قبلی حفظ شدند.',new_assets:assets,stages},null,2)+'\n');
 
 const catalogFile=file('docs/chapter-five-assets.json');
@@ -274,5 +271,5 @@ Object.assign(catalog.new_assets,assets);Object.assign(catalog.stages,stages);
 for(const n of changed){const entry=catalog.stages[n],paths=[...entry.reused,...entry.new];entry.reused=paths.filter(p=>!catalog.new_assets[p]).sort();entry.new=paths.filter(p=>catalog.new_assets[p]).sort();}
 catalog.matching.rug_69={axis:'vertical',missing_rug:1,rows:[540,650,760],target_angles:[0,0,0],initial_angles:[270,0,180]};
 catalog.matching.shadow_67={body_required:true,neck_width:50,handle:'right',light_test_required:true};
-catalog.matching.cards_70={fronts:['A','E','D','K','4','8','7','9'],backs:['3','2','4','7','A','D','D','E'],required:[0,1,6,7],budget:4};
+catalog.matching.cards_70={fronts:['A','E','D','K','4','8','7','9'],backs:['3','2','4','7','A','D','D','E'],required:[0,1,6,7],budget:4,interaction:'swipe_left_in_place'};
 fs.writeFileSync(catalogFile,JSON.stringify(catalog,null,2)+'\n');

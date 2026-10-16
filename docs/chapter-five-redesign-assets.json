@@ -21,7 +21,8 @@
     "res://assets/samples/rug_repair_motif_1.svg": "نقش‌های متفاوت و جهت‌دار برای ترمیم سه ردیف و تشخیص جهت.",
     "res://assets/samples/rug_repair_motif_2.svg": "نقش‌های متفاوت و جهت‌دار برای ترمیم سه ردیف و تشخیص جهت.",
     "res://assets/samples/rug_repair_complete.svg": "فرش با سه ردیف نقش و سه جای خالیِ قرینه؛ فرش قبلی فقط یک نقش کم داشت.",
-    "res://assets/samples/rug_repair_missing.svg": "فرش با سه ردیف نقش و سه جای خالیِ قرینه؛ فرش قبلی فقط یک نقش کم داشت."
+    "res://assets/samples/rug_repair_missing.svg": "فرش با سه ردیف نقش و سه جای خالیِ قرینه؛ فرش قبلی فقط یک نقش کم داشت.",
+    "res://assets/samples/card_flip_feedback.tres": "انیمیشن مستقل جمع‌شدن روی کارت و بازشدن پشت آن در همان محل؛ انیمیشن‌های موجود ورق‌زدن کارت را پوشش نمی‌دادند و منابع قبلی حفظ شدند."
   },
   "stages": {
     "60": {
@@ -207,16 +208,16 @@
       "background": "res://assets/samples/puzzle_workbench_day.svg",
       "lighting": "day",
       "reused": [
-        "res://PuzzleEngine/Objects/DropZone.tscn",
         "res://PuzzleEngine/Objects/ImageObject.tscn",
         "res://PuzzleEngine/Objects/PuzzleObject.tscn",
         "res://PuzzleEngine/Objects/TextObject.tscn",
-        "res://assets/samples/magnifying_glass.svg",
         "res://assets/samples/puzzle_tile.svg",
         "res://assets/samples/puzzle_workbench_day.svg",
         "res://assets/samples/selection_check.svg"
       ],
-      "new": []
+      "new": [
+        "res://assets/samples/card_flip_feedback.tres"
+      ]
     }
   }
 }
