@@ -27,7 +27,7 @@
     "res://assets/samples/jug_body_leak.svg": "ترک و قطرهٔ بدنه، مستقل از قطرهٔ دهانه و لکهٔ کف.",
     "res://assets/samples/jug_shadow_target.svg": "سایهٔ هدف منطبق با هندسهٔ کوزهٔ درست.",
     "res://assets/samples/lantern_unlit.svg": "فانوس خاموش با دسته و قاب؛ نمونهٔ مناسب موجود نبود.",
-    "res://assets/samples/leaf_pair.svg": "برگ مستقل برای حرکت زندهٔ قاب سوم، بدون تغییر تصویر پنجره‌های قبلی.",
+    "res://assets/samples/leaf_pair.svg": "برگ مستقل برای حرکت زندهٔ قاب سمت راست، بدون تغییر تصویر پنجره‌های قبلی.",
     "res://assets/samples/library_map_old.svg": "نقشهٔ قدیمی با نشانهٔ قفسهٔ چپ، متمایز از رد فعلیِ قفسهٔ راست.",
     "res://assets/samples/library_room_day.svg": "محیط کتابخانهٔ روز/شب بدون قفسه یا ورودی ثابت؛ سرنخ‌ها اشیای مستقل‌اند.",
     "res://assets/samples/library_room_night.svg": "محیط کتابخانهٔ روز/شب بدون قفسه یا ورودی ثابت؛ سرنخ‌ها اشیای مستقل‌اند.",
@@ -64,7 +64,14 @@
     "res://assets/samples/window_painted.svg": "دو قاب هم‌اندازه با منظرهٔ زنده و منظرهٔ نقاشی‌شده؛ تمایز هندسی سرنخ.",
     "res://assets/samples/wolf.svg": "هویت گرگ در مسئلهٔ رود؛ حیوان موجود نقش گرگ را پوشش نمی‌داد.",
     "res://assets/samples/wooden_shield.svg": "سپر چوبیِ دام؛ درپوش ظرف شکل و نقش سپر را ندارد.",
-    "res://assets/samples/chapter_five_feedback.tres": "مهلت باد، حرکت برگ و دو تعویض هویتی فنجان؛ انیمیشن‌های موجود این مسیرها را نداشتند."
+    "res://assets/samples/chapter_five_feedback.tres": "مهلت باد، حرکت برگ و دو تعویض هویتی فنجان؛ انیمیشن‌های موجود این مسیرها را نداشتند.",
+    "res://assets/samples/glass_bowl_empty.svg": "تنگ شیشه‌ای گرد بدون دسته و درجه‌بندی در دو حالت خالی و پر؛ منابع موجود ظرف مدرج یا تنگ دارای ماهی بودند.",
+    "res://assets/samples/glass_bowl_full.svg": "تنگ شیشه‌ای گرد بدون دسته و درجه‌بندی در دو حالت خالی و پر؛ منابع موجود ظرف مدرج یا تنگ دارای ماهی بودند.",
+    "res://assets/samples/cup_challenge_feedback.tres": "پنج تعویض سریع با مسیر جدا برای سه فنجان و هویت پایدار؛ انیمیشن قبلی فقط دو تعویض داشت.",
+    "res://assets/samples/floor_latch_closed.svg": "ضامن کف با دستگیره و جهت کشیدن در دو حالت بسته و آزاد؛ دارایی ضامن مناسب موجود نبود.",
+    "res://assets/samples/floor_latch_open.svg": "ضامن کف با دستگیره و جهت کشیدن در دو حالت بسته و آزاد؛ دارایی ضامن مناسب موجود نبود.",
+    "res://assets/samples/bridge_lantern_lit.svg": "فانوس روشن قابل حمل و همراه گروه؛ چراغ‌های موجود خاموش یا رومیزی بودند.",
+    "res://assets/samples/bridge_lantern_feedback.tres": "حرکت هم‌زمان گروه و چراغ در دو جهت با پایان مشترک و پشتیبانی مکث/لغو؛ منبع مناسب موجود نبود."
   },
   "stages": {
     "51": {
@@ -141,13 +148,14 @@
         "res://PuzzleEngine/Objects/TextObject.tscn",
         "res://assets/samples/bottle_cap.svg",
         "res://assets/samples/chapter_two_feedback.tres",
-        "res://assets/samples/milk_ripple.svg",
         "res://assets/samples/puzzle_tile.svg",
         "res://assets/samples/towel_wet.svg",
         "res://assets/samples/water_drops.svg",
         "res://assets/samples/water_jug.svg"
       ],
       "new": [
+        "res://assets/samples/glass_bowl_empty.svg",
+        "res://assets/samples/glass_bowl_full.svg",
         "res://assets/samples/jug_body_leak.svg",
         "res://assets/samples/puzzle_workbench_night.svg"
       ]
@@ -178,16 +186,21 @@
       "lighting": "night_lit",
       "reused": [
         "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
         "res://PuzzleEngine/Objects/ImageObject.tscn",
         "res://PuzzleEngine/Objects/PuzzleObject.tscn",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
         "res://assets/samples/chest_closed.svg"
       ],
       "new": [
         "res://assets/samples/bookshelf.svg",
+        "res://assets/samples/floor_latch_closed.svg",
+        "res://assets/samples/floor_latch_open.svg",
         "res://assets/samples/floor_scrape.svg",
         "res://assets/samples/hidden_door.svg",
         "res://assets/samples/library_map_old.svg",
-        "res://assets/samples/library_room_night.svg"
+        "res://assets/samples/library_room_night.svg",
+        "res://assets/samples/rug_symmetric.svg"
       ]
     },
     "57": {
@@ -213,19 +226,18 @@
       "lighting": "night_lit",
       "reused": [
         "res://PuzzleEngine/Objects/ClickableObject.tscn",
-        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
         "res://PuzzleEngine/Objects/PuzzleObject.tscn",
         "res://PuzzleEngine/Objects/TextObject.tscn",
-        "res://assets/samples/chapter_two_feedback.tres",
-        "res://assets/samples/flashlight.svg",
-        "res://assets/samples/lamp_off.svg",
-        "res://assets/samples/lamp_on.svg",
-        "res://assets/samples/man.svg",
+        "res://assets/samples/left_arrow.svg",
         "res://assets/samples/puzzle_tile.svg",
-        "res://assets/samples/yarn_unrolled.svg"
+        "res://assets/samples/selection_check.svg",
+        "res://assets/samples/walking_person.svg"
       ],
       "new": [
-        "res://assets/samples/bridge_crossing_night.svg"
+        "res://assets/samples/bridge_crossing_night.svg",
+        "res://assets/samples/bridge_lantern_feedback.tres",
+        "res://assets/samples/bridge_lantern_lit.svg"
       ]
     },
     "59": {
@@ -357,15 +369,11 @@
         "res://PuzzleEngine/Objects/ClickableObject.tscn",
         "res://PuzzleEngine/Objects/PuzzleObject.tscn",
         "res://PuzzleEngine/Objects/TextObject.tscn",
-        "res://assets/samples/chapter_two_feedback.tres",
         "res://assets/samples/cup.svg",
-        "res://assets/samples/mirror_frame.svg",
-        "res://assets/samples/ribbon.svg",
         "res://assets/ui/score.png"
       ],
       "new": [
-        "res://assets/samples/chapter_five_feedback.tres",
-        "res://assets/samples/cup_red_label.svg",
+        "res://assets/samples/cup_challenge_feedback.tres",
         "res://assets/samples/puzzle_workbench_night.svg"
       ]
     },

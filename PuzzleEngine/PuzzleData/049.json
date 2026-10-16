@@ -2,79 +2,303 @@
   "schema_version": 1,
   "id": 49,
   "question": "یک عدد دو رقمی؛ مجموع ارقام ۹ و با جابه‌جایی ارقام ۲۷ کمتر می‌شود.",
-  "hint": "هر دو شرط را بررسی کن: مجموع رقم‌ها و اختلاف عدد با وارونهٔ آن.",
-  "answer": "۶۳",
+  "hint": "۹ سنگ، مجموع دو رقم را همیشه ۹ نگه می‌دارند. هر سنگ را لمس کن تا به ستون مقابل برود؛ تعداد سنگ‌های چپ دهگان و راست یکان است. اختلاف عدد با وارونه، ۹ برابر اختلاف رقم‌هاست؛ پس برای اختلاف ۲۷، دهگان باید ۳ بیشتر باشد. با مجموع ۹، رقم‌ها ۶ و ۳ هستند. از چیدمان آغازین، دو سنگ سمت راست را لمس کن تا چپ ۶ و راست ۳ شود؛ عدد ۶۳ و وارونهٔ آن ۳۶ است.",
+  "answer": "۶۳؛ مجموع رقم‌ها ۹ است و با جابه‌جایی آن‌ها، ۳۶ به دست می‌آید که ۲۷ کمتر است.",
   "time_limit_seconds": 115,
   "base_score": 145,
-  "background": "res://assets/samples/bright_room.svg",
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
   "success": {
-    "result_delay_seconds": 1.0
+    "result_delay_seconds": 1
   },
   "variables": {
     "solved": false,
-    "tens": 0,
-    "units": 0
+    "tens": 4,
+    "units": 5,
+    "transferred": false
   },
   "objects": [
     {
       "id": "instructions",
       "scene": "TextObject",
-      "text": "عدد اصلی − وارونه = ۲۷؛ مجموع دو رقم = ۹",
+      "text": "هر سنگ را لمس کن تا به ستون مقابل برود؛ تعداد سنگ‌ها رقم آن ستون است.",
       "position": [
         960,
         350
       ],
       "hit_size": [
-        1500,
+        1550,
         100
       ],
       "text_color": "#354f54",
-      "interactions": []
+      "interactions": [],
+      "visible": true
     },
     {
-      "id": "tens",
-      "scene": "DropZone",
-      "position": [
-        790,
-        580
-      ],
-      "hit_size": [
-        260,
-        150
-      ],
-      "accepted_sources": [
-        "six",
-        "three",
-        "four",
-        "five"
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "tens_label",
+      "id": "goal",
       "scene": "TextObject",
-      "text": "دهگان",
+      "text": "هدف: مجموع رقم‌ها ۹؛ عدد اصلی ۲۷ بیشتر از وارونه",
       "position": [
-        790,
-        470
+        960,
+        420
       ],
       "hit_size": [
-        300,
+        1500,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "tens_0",
+      "scene": "TextObject",
+      "text": "دهگان (چپ): ۰",
+      "position": [
+        670,
+        485
+      ],
+      "hit_size": [
+        450,
         70
       ],
       "text_color": "#354f54",
-      "interactions": []
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_0",
+      "scene": "TextObject",
+      "text": "یکان (راست): ۹",
+      "position": [
+        1250,
+        485
+      ],
+      "hit_size": [
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "number_0",
+      "scene": "TextObject",
+      "text": "عدد اصلی: ۰۹     |     وارونه: ۹۰",
+      "position": [
+        960,
+        925
+      ],
+      "hit_size": [
+        1400,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "difference_0",
+      "scene": "TextObject",
+      "text": "دهگان صفر است؛ عدد اصلی باید دو رقمی باشد.",
+      "position": [
+        960,
+        995
+      ],
+      "hit_size": [
+        1540,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_1",
+      "scene": "TextObject",
+      "text": "دهگان (چپ): ۱",
+      "position": [
+        670,
+        485
+      ],
+      "hit_size": [
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_1",
+      "scene": "TextObject",
+      "text": "یکان (راست): ۸",
+      "position": [
+        1250,
+        485
+      ],
+      "hit_size": [
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "number_1",
+      "scene": "TextObject",
+      "text": "عدد اصلی: ۱۸     |     وارونه: ۸۱",
+      "position": [
+        960,
+        925
+      ],
+      "hit_size": [
+        1400,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "difference_1",
+      "scene": "TextObject",
+      "text": "عدد اصلی ۶۳ واحد کمتر از وارونه است؛ هدف: ۲۷ واحد بیشتر",
+      "position": [
+        960,
+        995
+      ],
+      "hit_size": [
+        1540,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_2",
+      "scene": "TextObject",
+      "text": "دهگان (چپ): ۲",
+      "position": [
+        670,
+        485
+      ],
+      "hit_size": [
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_2",
+      "scene": "TextObject",
+      "text": "یکان (راست): ۷",
+      "position": [
+        1250,
+        485
+      ],
+      "hit_size": [
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "number_2",
+      "scene": "TextObject",
+      "text": "عدد اصلی: ۲۷     |     وارونه: ۷۲",
+      "position": [
+        960,
+        925
+      ],
+      "hit_size": [
+        1400,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "difference_2",
+      "scene": "TextObject",
+      "text": "عدد اصلی ۴۵ واحد کمتر از وارونه است؛ هدف: ۲۷ واحد بیشتر",
+      "position": [
+        960,
+        995
+      ],
+      "hit_size": [
+        1540,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     },
     {
       "id": "tens_3",
       "scene": "TextObject",
-      "text": "۳",
+      "text": "دهگان (چپ): ۳",
       "position": [
-        790,
-        580
+        670,
+        485
       ],
       "hit_size": [
-        300,
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_3",
+      "scene": "TextObject",
+      "text": "یکان (راست): ۶",
+      "position": [
+        1250,
+        485
+      ],
+      "hit_size": [
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "number_3",
+      "scene": "TextObject",
+      "text": "عدد اصلی: ۳۶     |     وارونه: ۶۳",
+      "position": [
+        960,
+        925
+      ],
+      "hit_size": [
+        1400,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "difference_3",
+      "scene": "TextObject",
+      "text": "عدد اصلی ۲۷ واحد کمتر از وارونه است؛ هدف: ۲۷ واحد بیشتر",
+      "position": [
+        960,
+        995
+      ],
+      "hit_size": [
+        1540,
         70
       ],
       "text_color": "#354f54",
@@ -84,111 +308,77 @@
     {
       "id": "tens_4",
       "scene": "TextObject",
-      "text": "۴",
+      "text": "دهگان (چپ): ۴",
       "position": [
-        790,
-        580
+        670,
+        485
       ],
       "hit_size": [
-        300,
+        450,
         70
       ],
       "text_color": "#354f54",
       "interactions": [],
-      "visible": false
-    },
-    {
-      "id": "tens_5",
-      "scene": "TextObject",
-      "text": "۵",
-      "position": [
-        790,
-        580
-      ],
-      "hit_size": [
-        300,
-        70
-      ],
-      "text_color": "#354f54",
-      "interactions": [],
-      "visible": false
-    },
-    {
-      "id": "tens_6",
-      "scene": "TextObject",
-      "text": "۶",
-      "position": [
-        790,
-        580
-      ],
-      "hit_size": [
-        300,
-        70
-      ],
-      "text_color": "#354f54",
-      "interactions": [],
-      "visible": false
-    },
-    {
-      "id": "units",
-      "scene": "DropZone",
-      "position": [
-        1130,
-        580
-      ],
-      "hit_size": [
-        260,
-        150
-      ],
-      "accepted_sources": [
-        "six",
-        "three",
-        "four",
-        "five"
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "units_label",
-      "scene": "TextObject",
-      "text": "یکان",
-      "position": [
-        1130,
-        470
-      ],
-      "hit_size": [
-        300,
-        70
-      ],
-      "text_color": "#354f54",
-      "interactions": []
-    },
-    {
-      "id": "units_3",
-      "scene": "TextObject",
-      "text": "۳",
-      "position": [
-        1130,
-        580
-      ],
-      "hit_size": [
-        300,
-        70
-      ],
-      "text_color": "#354f54",
-      "interactions": [],
-      "visible": false
+      "visible": true
     },
     {
       "id": "units_4",
       "scene": "TextObject",
-      "text": "۴",
+      "text": "یکان (راست): ۵",
       "position": [
-        1130,
-        580
+        1250,
+        485
       ],
       "hit_size": [
-        300,
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "number_4",
+      "scene": "TextObject",
+      "text": "عدد اصلی: ۴۵     |     وارونه: ۵۴",
+      "position": [
+        960,
+        925
+      ],
+      "hit_size": [
+        1400,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "difference_4",
+      "scene": "TextObject",
+      "text": "عدد اصلی ۹ واحد کمتر از وارونه است؛ هدف: ۲۷ واحد بیشتر",
+      "position": [
+        960,
+        995
+      ],
+      "hit_size": [
+        1540,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "tens_5",
+      "scene": "TextObject",
+      "text": "دهگان (چپ): ۵",
+      "position": [
+        670,
+        485
+      ],
+      "hit_size": [
+        450,
         70
       ],
       "text_color": "#354f54",
@@ -198,13 +388,61 @@
     {
       "id": "units_5",
       "scene": "TextObject",
-      "text": "۵",
+      "text": "یکان (راست): ۴",
       "position": [
-        1130,
-        580
+        1250,
+        485
       ],
       "hit_size": [
-        300,
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "number_5",
+      "scene": "TextObject",
+      "text": "عدد اصلی: ۵۴     |     وارونه: ۴۵",
+      "position": [
+        960,
+        925
+      ],
+      "hit_size": [
+        1400,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "difference_5",
+      "scene": "TextObject",
+      "text": "عدد اصلی ۹ واحد بیشتر از وارونه است؛ هدف: ۲۷ واحد بیشتر",
+      "position": [
+        960,
+        995
+      ],
+      "hit_size": [
+        1540,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_6",
+      "scene": "TextObject",
+      "text": "دهگان (چپ): ۶",
+      "position": [
+        670,
+        485
+      ],
+      "hit_size": [
+        450,
         70
       ],
       "text_color": "#354f54",
@@ -214,141 +452,13 @@
     {
       "id": "units_6",
       "scene": "TextObject",
-      "text": "۶",
+      "text": "یکان (راست): ۳",
       "position": [
-        1130,
-        580
+        1250,
+        485
       ],
       "hit_size": [
-        300,
-        70
-      ],
-      "text_color": "#354f54",
-      "interactions": [],
-      "visible": false
-    },
-    {
-      "id": "six",
-      "scene": "TextObject",
-      "text": "۶",
-      "position": [
         450,
-        840
-      ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "three",
-      "scene": "TextObject",
-      "text": "۳",
-      "position": [
-        790,
-        840
-      ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "four",
-      "scene": "TextObject",
-      "text": "۴",
-      "position": [
-        1130,
-        840
-      ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "five",
-      "scene": "TextObject",
-      "text": "۵",
-      "position": [
-        1470,
-        840
-      ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            200,
-            460,
-            1500,
-            440
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "partial",
-      "scene": "TextObject",
-      "text": "مجموع ۹؛ اختلاف ۹ است",
-      "position": [
-        960,
-        700
-      ],
-      "hit_size": [
-        300,
         70
       ],
       "text_color": "#354f54",
@@ -356,32 +466,15 @@
       "visible": false
     },
     {
-      "id": "confirm",
+      "id": "number_6",
       "scene": "TextObject",
-      "text": "بررسی دو شرط",
+      "text": "عدد اصلی: ۶۳     |     وارونه: ۳۶",
       "position": [
         960,
-        940
+        925
       ],
       "hit_size": [
-        300,
-        70
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        "tap"
-      ]
-    },
-    {
-      "id": "reversed",
-      "scene": "TextObject",
-      "text": "۶۳ − ۳۶ = ۲۷؛ ۶ + ۳ = ۹",
-      "position": [
-        960,
-        700
-      ],
-      "hit_size": [
-        300,
+        1400,
         70
       ],
       "text_color": "#354f54",
@@ -389,445 +482,3300 @@
       "visible": false
     },
     {
-      "id": "mirror",
+      "id": "difference_6",
+      "scene": "TextObject",
+      "text": "هر دو شرط برقرار است: مجموع ۹ و اختلاف ۲۷؛ پاسخ ۶۳",
+      "position": [
+        960,
+        995
+      ],
+      "hit_size": [
+        1540,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_7",
+      "scene": "TextObject",
+      "text": "دهگان (چپ): ۷",
+      "position": [
+        670,
+        485
+      ],
+      "hit_size": [
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_7",
+      "scene": "TextObject",
+      "text": "یکان (راست): ۲",
+      "position": [
+        1250,
+        485
+      ],
+      "hit_size": [
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "number_7",
+      "scene": "TextObject",
+      "text": "عدد اصلی: ۷۲     |     وارونه: ۲۷",
+      "position": [
+        960,
+        925
+      ],
+      "hit_size": [
+        1400,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "difference_7",
+      "scene": "TextObject",
+      "text": "عدد اصلی ۴۵ واحد بیشتر از وارونه است؛ هدف: ۲۷ واحد بیشتر",
+      "position": [
+        960,
+        995
+      ],
+      "hit_size": [
+        1540,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_8",
+      "scene": "TextObject",
+      "text": "دهگان (چپ): ۸",
+      "position": [
+        670,
+        485
+      ],
+      "hit_size": [
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_8",
+      "scene": "TextObject",
+      "text": "یکان (راست): ۱",
+      "position": [
+        1250,
+        485
+      ],
+      "hit_size": [
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "number_8",
+      "scene": "TextObject",
+      "text": "عدد اصلی: ۸۱     |     وارونه: ۱۸",
+      "position": [
+        960,
+        925
+      ],
+      "hit_size": [
+        1400,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "difference_8",
+      "scene": "TextObject",
+      "text": "عدد اصلی ۶۳ واحد بیشتر از وارونه است؛ هدف: ۲۷ واحد بیشتر",
+      "position": [
+        960,
+        995
+      ],
+      "hit_size": [
+        1540,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "tens_9",
+      "scene": "TextObject",
+      "text": "دهگان (چپ): ۹",
+      "position": [
+        670,
+        485
+      ],
+      "hit_size": [
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "units_9",
+      "scene": "TextObject",
+      "text": "یکان (راست): ۰",
+      "position": [
+        1250,
+        485
+      ],
+      "hit_size": [
+        450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "number_9",
+      "scene": "TextObject",
+      "text": "عدد اصلی: ۹۰     |     وارونه: ۰۹",
+      "position": [
+        960,
+        925
+      ],
+      "hit_size": [
+        1400,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "difference_9",
+      "scene": "TextObject",
+      "text": "عدد اصلی ۸۱ واحد بیشتر از وارونه است؛ هدف: ۲۷ واحد بیشتر",
+      "position": [
+        960,
+        995
+      ],
+      "hit_size": [
+        1540,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "counter_0",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/mirror_frame.svg",
+      "sprite": "res://assets/samples/stone.svg",
       "position": [
-        1630,
+        520,
         570
       ],
       "interactions": [
         "tap"
       ],
+      "state": {
+        "left": true
+      },
       "scale": [
-        0.5,
-        0.5
+        0.65,
+        0.9
+      ],
+      "hit_size": [
+        190,
+        130
+      ]
+    },
+    {
+      "id": "counter_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/stone.svg",
+      "position": [
+        670,
+        570
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "left": true
+      },
+      "scale": [
+        0.65,
+        0.9
+      ],
+      "hit_size": [
+        190,
+        130
+      ]
+    },
+    {
+      "id": "counter_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/stone.svg",
+      "position": [
+        820,
+        570
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "left": true
+      },
+      "scale": [
+        0.65,
+        0.9
+      ],
+      "hit_size": [
+        190,
+        130
+      ]
+    },
+    {
+      "id": "counter_3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/stone.svg",
+      "position": [
+        520,
+        700
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "left": true
+      },
+      "scale": [
+        0.65,
+        0.9
+      ],
+      "hit_size": [
+        190,
+        130
+      ]
+    },
+    {
+      "id": "counter_4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/stone.svg",
+      "position": [
+        1250,
+        700
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "left": false
+      },
+      "scale": [
+        0.65,
+        0.9
+      ],
+      "hit_size": [
+        190,
+        130
+      ]
+    },
+    {
+      "id": "counter_5",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/stone.svg",
+      "position": [
+        1400,
+        700
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "left": false
+      },
+      "scale": [
+        0.65,
+        0.9
+      ],
+      "hit_size": [
+        190,
+        130
+      ]
+    },
+    {
+      "id": "counter_6",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/stone.svg",
+      "position": [
+        1100,
+        830
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "left": false
+      },
+      "scale": [
+        0.65,
+        0.9
+      ],
+      "hit_size": [
+        190,
+        130
+      ]
+    },
+    {
+      "id": "counter_7",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/stone.svg",
+      "position": [
+        1250,
+        830
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "left": false
+      },
+      "scale": [
+        0.65,
+        0.9
+      ],
+      "hit_size": [
+        190,
+        130
+      ]
+    },
+    {
+      "id": "counter_8",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/stone.svg",
+      "position": [
+        1400,
+        830
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "state": {
+        "left": false
+      },
+      "scale": [
+        0.65,
+        0.9
+      ],
+      "hit_size": [
+        190,
+        130
       ]
     }
   ],
   "rules": [
     {
       "id": "r0000",
-      "event": "drop_on",
-      "source": "six",
-      "conditions": [],
-      "actions": [
+      "event": "tap",
+      "conditions": [
         {
-          "type": "set_variable",
-          "name": "tens",
-          "value": 6,
-          "operation": "assign"
+          "type": "object_state",
+          "target": "counter_0",
+          "key": "left",
+          "operator": "eq",
+          "value": true
         },
         {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
           "type": "move",
-          "target": "six",
+          "target": "counter_0",
           "position": [
-            450,
-            840
+            1100,
+            570
           ]
         },
         {
-          "type": "hide",
-          "target": "tens_3"
+          "type": "set_state",
+          "target": "counter_0",
+          "key": "left",
+          "value": false
         },
         {
-          "type": "hide",
-          "target": "tens_4"
+          "type": "set_variable",
+          "name": "tens",
+          "value": -1,
+          "operation": "increment"
         },
         {
-          "type": "hide",
-          "target": "tens_5"
+          "type": "set_variable",
+          "name": "units",
+          "value": 1,
+          "operation": "increment"
         },
         {
-          "type": "hide",
-          "target": "tens_6"
-        },
-        {
-          "type": "show",
-          "target": "tens_6"
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
         }
       ],
       "once": false,
-      "target": "tens"
+      "source": "counter_0"
     },
     {
       "id": "r0001",
-      "event": "drop_on",
-      "source": "six",
-      "conditions": [],
-      "actions": [
+      "event": "tap",
+      "conditions": [
         {
-          "type": "set_variable",
-          "name": "units",
-          "value": 6,
-          "operation": "assign"
+          "type": "object_state",
+          "target": "counter_0",
+          "key": "left",
+          "operator": "eq",
+          "value": false
         },
         {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
           "type": "move",
-          "target": "six",
+          "target": "counter_0",
           "position": [
-            450,
-            840
+            520,
+            570
           ]
         },
         {
-          "type": "hide",
-          "target": "units_3"
+          "type": "set_state",
+          "target": "counter_0",
+          "key": "left",
+          "value": true
         },
         {
-          "type": "hide",
-          "target": "units_4"
+          "type": "set_variable",
+          "name": "tens",
+          "value": 1,
+          "operation": "increment"
         },
         {
-          "type": "hide",
-          "target": "units_5"
+          "type": "set_variable",
+          "name": "units",
+          "value": -1,
+          "operation": "increment"
         },
         {
-          "type": "hide",
-          "target": "units_6"
-        },
-        {
-          "type": "show",
-          "target": "units_6"
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
         }
       ],
       "once": false,
-      "target": "units"
+      "source": "counter_0"
     },
     {
       "id": "r0002",
-      "event": "drop_on",
-      "source": "three",
+      "event": "tap",
       "conditions": [],
       "actions": [
         {
           "type": "set_variable",
-          "name": "tens",
-          "value": 3,
+          "name": "transferred",
+          "value": false,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "three",
-          "position": [
-            790,
-            840
-          ]
-        },
-        {
-          "type": "hide",
-          "target": "tens_3"
-        },
-        {
-          "type": "hide",
-          "target": "tens_4"
-        },
-        {
-          "type": "hide",
-          "target": "tens_5"
-        },
-        {
-          "type": "hide",
-          "target": "tens_6"
-        },
-        {
-          "type": "show",
-          "target": "tens_3"
         }
       ],
       "once": false,
-      "target": "tens"
+      "source": "counter_0"
     },
     {
       "id": "r0003",
-      "event": "drop_on",
-      "source": "three",
-      "conditions": [],
-      "actions": [
+      "event": "tap",
+      "conditions": [
         {
-          "type": "set_variable",
-          "name": "units",
-          "value": 3,
-          "operation": "assign"
+          "type": "object_state",
+          "target": "counter_1",
+          "key": "left",
+          "operator": "eq",
+          "value": true
         },
         {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
           "type": "move",
-          "target": "three",
+          "target": "counter_1",
           "position": [
-            790,
-            840
+            1250,
+            570
           ]
         },
         {
-          "type": "hide",
-          "target": "units_3"
+          "type": "set_state",
+          "target": "counter_1",
+          "key": "left",
+          "value": false
         },
         {
-          "type": "hide",
-          "target": "units_4"
+          "type": "set_variable",
+          "name": "tens",
+          "value": -1,
+          "operation": "increment"
         },
         {
-          "type": "hide",
-          "target": "units_5"
+          "type": "set_variable",
+          "name": "units",
+          "value": 1,
+          "operation": "increment"
         },
         {
-          "type": "hide",
-          "target": "units_6"
-        },
-        {
-          "type": "show",
-          "target": "units_3"
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
         }
       ],
       "once": false,
-      "target": "units"
+      "source": "counter_1"
     },
     {
       "id": "r0004",
-      "event": "drop_on",
-      "source": "four",
-      "conditions": [],
-      "actions": [
+      "event": "tap",
+      "conditions": [
         {
-          "type": "set_variable",
-          "name": "tens",
-          "value": 4,
-          "operation": "assign"
+          "type": "object_state",
+          "target": "counter_1",
+          "key": "left",
+          "operator": "eq",
+          "value": false
         },
         {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
           "type": "move",
-          "target": "four",
+          "target": "counter_1",
           "position": [
-            1130,
-            840
+            670,
+            570
           ]
         },
         {
-          "type": "hide",
-          "target": "tens_3"
+          "type": "set_state",
+          "target": "counter_1",
+          "key": "left",
+          "value": true
         },
         {
-          "type": "hide",
-          "target": "tens_4"
+          "type": "set_variable",
+          "name": "tens",
+          "value": 1,
+          "operation": "increment"
         },
         {
-          "type": "hide",
-          "target": "tens_5"
+          "type": "set_variable",
+          "name": "units",
+          "value": -1,
+          "operation": "increment"
         },
         {
-          "type": "hide",
-          "target": "tens_6"
-        },
-        {
-          "type": "show",
-          "target": "tens_4"
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
         }
       ],
       "once": false,
-      "target": "tens"
+      "source": "counter_1"
     },
     {
       "id": "r0005",
-      "event": "drop_on",
-      "source": "four",
+      "event": "tap",
       "conditions": [],
       "actions": [
         {
           "type": "set_variable",
-          "name": "units",
-          "value": 4,
+          "name": "transferred",
+          "value": false,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "four",
-          "position": [
-            1130,
-            840
-          ]
-        },
-        {
-          "type": "hide",
-          "target": "units_3"
-        },
-        {
-          "type": "hide",
-          "target": "units_4"
-        },
-        {
-          "type": "hide",
-          "target": "units_5"
-        },
-        {
-          "type": "hide",
-          "target": "units_6"
-        },
-        {
-          "type": "show",
-          "target": "units_4"
         }
       ],
       "once": false,
-      "target": "units"
+      "source": "counter_1"
     },
     {
       "id": "r0006",
-      "event": "drop_on",
-      "source": "five",
-      "conditions": [],
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_2",
+          "key": "left",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
       "actions": [
+        {
+          "type": "move",
+          "target": "counter_2",
+          "position": [
+            1400,
+            570
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_2",
+          "key": "left",
+          "value": false
+        },
         {
           "type": "set_variable",
           "name": "tens",
-          "value": 5,
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            1470,
-            840
-          ]
-        },
-        {
-          "type": "hide",
-          "target": "tens_3"
-        },
-        {
-          "type": "hide",
-          "target": "tens_4"
-        },
-        {
-          "type": "hide",
-          "target": "tens_5"
-        },
-        {
-          "type": "hide",
-          "target": "tens_6"
-        },
-        {
-          "type": "show",
-          "target": "tens_5"
         }
       ],
       "once": false,
-      "target": "tens"
+      "source": "counter_2"
     },
     {
       "id": "r0007",
-      "event": "drop_on",
-      "source": "five",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_2",
+          "key": "left",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "counter_2",
+          "position": [
+            820,
+            570
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_2",
+          "key": "left",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_2"
+    },
+    {
+      "id": "r0008",
+      "event": "tap",
       "conditions": [],
       "actions": [
         {
           "type": "set_variable",
-          "name": "units",
-          "value": 5,
+          "name": "transferred",
+          "value": false,
           "operation": "assign"
-        },
-        {
-          "type": "move",
-          "target": "five",
-          "position": [
-            1470,
-            840
-          ]
-        },
-        {
-          "type": "hide",
-          "target": "units_3"
-        },
-        {
-          "type": "hide",
-          "target": "units_4"
-        },
-        {
-          "type": "hide",
-          "target": "units_5"
-        },
-        {
-          "type": "hide",
-          "target": "units_6"
-        },
-        {
-          "type": "show",
-          "target": "units_5"
         }
       ],
       "once": false,
-      "target": "units"
-    },
-    {
-      "id": "r0008",
-      "event": "variable_changed",
-      "source": "$level",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "hide",
-          "target": "partial"
-        }
-      ],
-      "once": false
+      "source": "counter_2"
     },
     {
       "id": "r0009",
-      "event": "variable_changed",
-      "source": "$level",
+      "event": "tap",
       "conditions": [
         {
-          "type": "any",
-          "conditions": [
-            {
-              "type": "all",
-              "conditions": [
-                {
-                  "type": "variable",
-                  "name": "tens",
-                  "operator": "eq",
-                  "value": 4
-                },
-                {
-                  "type": "variable",
-                  "name": "units",
-                  "operator": "eq",
-                  "value": 5
-                }
-              ]
-            },
-            {
-              "type": "all",
-              "conditions": [
-                {
-                  "type": "variable",
-                  "name": "tens",
-                  "operator": "eq",
-                  "value": 5
-                },
-                {
-                  "type": "variable",
-                  "name": "units",
-                  "operator": "eq",
-                  "value": 4
-                }
-              ]
-            }
-          ]
+          "type": "object_state",
+          "target": "counter_3",
+          "key": "left",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
         }
       ],
       "actions": [
         {
-          "type": "show",
-          "target": "partial"
+          "type": "move",
+          "target": "counter_3",
+          "position": [
+            1100,
+            700
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_3",
+          "key": "left",
+          "value": false
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
         }
       ],
-      "once": false
+      "once": false,
+      "source": "counter_3"
     },
     {
       "id": "r0010",
       "event": "tap",
-      "source": "confirm",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_3",
+          "key": "left",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "counter_3",
+          "position": [
+            520,
+            700
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_3",
+          "key": "left",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_3"
+    },
+    {
+      "id": "r0011",
+      "event": "tap",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_3"
+    },
+    {
+      "id": "r0012",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_4",
+          "key": "left",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "counter_4",
+          "position": [
+            1250,
+            700
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_4",
+          "key": "left",
+          "value": false
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_4"
+    },
+    {
+      "id": "r0013",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_4",
+          "key": "left",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "counter_4",
+          "position": [
+            670,
+            700
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_4",
+          "key": "left",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_4"
+    },
+    {
+      "id": "r0014",
+      "event": "tap",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_4"
+    },
+    {
+      "id": "r0015",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_5",
+          "key": "left",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "counter_5",
+          "position": [
+            1400,
+            700
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_5",
+          "key": "left",
+          "value": false
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_5"
+    },
+    {
+      "id": "r0016",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_5",
+          "key": "left",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "counter_5",
+          "position": [
+            820,
+            700
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_5",
+          "key": "left",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_5"
+    },
+    {
+      "id": "r0017",
+      "event": "tap",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_5"
+    },
+    {
+      "id": "r0018",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_6",
+          "key": "left",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "counter_6",
+          "position": [
+            1100,
+            830
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_6",
+          "key": "left",
+          "value": false
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_6"
+    },
+    {
+      "id": "r0019",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_6",
+          "key": "left",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "counter_6",
+          "position": [
+            520,
+            830
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_6",
+          "key": "left",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_6"
+    },
+    {
+      "id": "r0020",
+      "event": "tap",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_6"
+    },
+    {
+      "id": "r0021",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_7",
+          "key": "left",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "counter_7",
+          "position": [
+            1250,
+            830
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_7",
+          "key": "left",
+          "value": false
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_7"
+    },
+    {
+      "id": "r0022",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_7",
+          "key": "left",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "counter_7",
+          "position": [
+            670,
+            830
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_7",
+          "key": "left",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_7"
+    },
+    {
+      "id": "r0023",
+      "event": "tap",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_7"
+    },
+    {
+      "id": "r0024",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_8",
+          "key": "left",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "counter_8",
+          "position": [
+            1400,
+            830
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_8",
+          "key": "left",
+          "value": false
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_8"
+    },
+    {
+      "id": "r0025",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "object_state",
+          "target": "counter_8",
+          "key": "left",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "transferred",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "counter_8",
+          "position": [
+            820,
+            830
+          ]
+        },
+        {
+          "type": "set_state",
+          "target": "counter_8",
+          "key": "left",
+          "value": true
+        },
+        {
+          "type": "set_variable",
+          "name": "tens",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "units",
+          "value": -1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_8"
+    },
+    {
+      "id": "r0026",
+      "event": "tap",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transferred",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "source": "counter_8"
+    },
+    {
+      "id": "r0027",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_9"
+        },
+        {
+          "type": "show",
+          "target": "units_0"
+        },
+        {
+          "type": "hide",
+          "target": "number_1"
+        },
+        {
+          "type": "hide",
+          "target": "number_2"
+        },
+        {
+          "type": "hide",
+          "target": "number_3"
+        },
+        {
+          "type": "hide",
+          "target": "number_4"
+        },
+        {
+          "type": "hide",
+          "target": "number_5"
+        },
+        {
+          "type": "hide",
+          "target": "number_6"
+        },
+        {
+          "type": "hide",
+          "target": "number_7"
+        },
+        {
+          "type": "hide",
+          "target": "number_8"
+        },
+        {
+          "type": "hide",
+          "target": "number_9"
+        },
+        {
+          "type": "show",
+          "target": "number_0"
+        },
+        {
+          "type": "hide",
+          "target": "difference_1"
+        },
+        {
+          "type": "hide",
+          "target": "difference_2"
+        },
+        {
+          "type": "hide",
+          "target": "difference_3"
+        },
+        {
+          "type": "hide",
+          "target": "difference_4"
+        },
+        {
+          "type": "hide",
+          "target": "difference_5"
+        },
+        {
+          "type": "hide",
+          "target": "difference_6"
+        },
+        {
+          "type": "hide",
+          "target": "difference_7"
+        },
+        {
+          "type": "hide",
+          "target": "difference_8"
+        },
+        {
+          "type": "hide",
+          "target": "difference_9"
+        },
+        {
+          "type": "show",
+          "target": "difference_0"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0028",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_9"
+        },
+        {
+          "type": "show",
+          "target": "units_1"
+        },
+        {
+          "type": "hide",
+          "target": "number_0"
+        },
+        {
+          "type": "hide",
+          "target": "number_2"
+        },
+        {
+          "type": "hide",
+          "target": "number_3"
+        },
+        {
+          "type": "hide",
+          "target": "number_4"
+        },
+        {
+          "type": "hide",
+          "target": "number_5"
+        },
+        {
+          "type": "hide",
+          "target": "number_6"
+        },
+        {
+          "type": "hide",
+          "target": "number_7"
+        },
+        {
+          "type": "hide",
+          "target": "number_8"
+        },
+        {
+          "type": "hide",
+          "target": "number_9"
+        },
+        {
+          "type": "show",
+          "target": "number_1"
+        },
+        {
+          "type": "hide",
+          "target": "difference_0"
+        },
+        {
+          "type": "hide",
+          "target": "difference_2"
+        },
+        {
+          "type": "hide",
+          "target": "difference_3"
+        },
+        {
+          "type": "hide",
+          "target": "difference_4"
+        },
+        {
+          "type": "hide",
+          "target": "difference_5"
+        },
+        {
+          "type": "hide",
+          "target": "difference_6"
+        },
+        {
+          "type": "hide",
+          "target": "difference_7"
+        },
+        {
+          "type": "hide",
+          "target": "difference_8"
+        },
+        {
+          "type": "hide",
+          "target": "difference_9"
+        },
+        {
+          "type": "show",
+          "target": "difference_1"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0029",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 2
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_9"
+        },
+        {
+          "type": "show",
+          "target": "units_2"
+        },
+        {
+          "type": "hide",
+          "target": "number_0"
+        },
+        {
+          "type": "hide",
+          "target": "number_1"
+        },
+        {
+          "type": "hide",
+          "target": "number_3"
+        },
+        {
+          "type": "hide",
+          "target": "number_4"
+        },
+        {
+          "type": "hide",
+          "target": "number_5"
+        },
+        {
+          "type": "hide",
+          "target": "number_6"
+        },
+        {
+          "type": "hide",
+          "target": "number_7"
+        },
+        {
+          "type": "hide",
+          "target": "number_8"
+        },
+        {
+          "type": "hide",
+          "target": "number_9"
+        },
+        {
+          "type": "show",
+          "target": "number_2"
+        },
+        {
+          "type": "hide",
+          "target": "difference_0"
+        },
+        {
+          "type": "hide",
+          "target": "difference_1"
+        },
+        {
+          "type": "hide",
+          "target": "difference_3"
+        },
+        {
+          "type": "hide",
+          "target": "difference_4"
+        },
+        {
+          "type": "hide",
+          "target": "difference_5"
+        },
+        {
+          "type": "hide",
+          "target": "difference_6"
+        },
+        {
+          "type": "hide",
+          "target": "difference_7"
+        },
+        {
+          "type": "hide",
+          "target": "difference_8"
+        },
+        {
+          "type": "hide",
+          "target": "difference_9"
+        },
+        {
+          "type": "show",
+          "target": "difference_2"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0030",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 3
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_9"
+        },
+        {
+          "type": "show",
+          "target": "units_3"
+        },
+        {
+          "type": "hide",
+          "target": "number_0"
+        },
+        {
+          "type": "hide",
+          "target": "number_1"
+        },
+        {
+          "type": "hide",
+          "target": "number_2"
+        },
+        {
+          "type": "hide",
+          "target": "number_4"
+        },
+        {
+          "type": "hide",
+          "target": "number_5"
+        },
+        {
+          "type": "hide",
+          "target": "number_6"
+        },
+        {
+          "type": "hide",
+          "target": "number_7"
+        },
+        {
+          "type": "hide",
+          "target": "number_8"
+        },
+        {
+          "type": "hide",
+          "target": "number_9"
+        },
+        {
+          "type": "show",
+          "target": "number_3"
+        },
+        {
+          "type": "hide",
+          "target": "difference_0"
+        },
+        {
+          "type": "hide",
+          "target": "difference_1"
+        },
+        {
+          "type": "hide",
+          "target": "difference_2"
+        },
+        {
+          "type": "hide",
+          "target": "difference_4"
+        },
+        {
+          "type": "hide",
+          "target": "difference_5"
+        },
+        {
+          "type": "hide",
+          "target": "difference_6"
+        },
+        {
+          "type": "hide",
+          "target": "difference_7"
+        },
+        {
+          "type": "hide",
+          "target": "difference_8"
+        },
+        {
+          "type": "hide",
+          "target": "difference_9"
+        },
+        {
+          "type": "show",
+          "target": "difference_3"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0031",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 4
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_9"
+        },
+        {
+          "type": "show",
+          "target": "units_4"
+        },
+        {
+          "type": "hide",
+          "target": "number_0"
+        },
+        {
+          "type": "hide",
+          "target": "number_1"
+        },
+        {
+          "type": "hide",
+          "target": "number_2"
+        },
+        {
+          "type": "hide",
+          "target": "number_3"
+        },
+        {
+          "type": "hide",
+          "target": "number_5"
+        },
+        {
+          "type": "hide",
+          "target": "number_6"
+        },
+        {
+          "type": "hide",
+          "target": "number_7"
+        },
+        {
+          "type": "hide",
+          "target": "number_8"
+        },
+        {
+          "type": "hide",
+          "target": "number_9"
+        },
+        {
+          "type": "show",
+          "target": "number_4"
+        },
+        {
+          "type": "hide",
+          "target": "difference_0"
+        },
+        {
+          "type": "hide",
+          "target": "difference_1"
+        },
+        {
+          "type": "hide",
+          "target": "difference_2"
+        },
+        {
+          "type": "hide",
+          "target": "difference_3"
+        },
+        {
+          "type": "hide",
+          "target": "difference_5"
+        },
+        {
+          "type": "hide",
+          "target": "difference_6"
+        },
+        {
+          "type": "hide",
+          "target": "difference_7"
+        },
+        {
+          "type": "hide",
+          "target": "difference_8"
+        },
+        {
+          "type": "hide",
+          "target": "difference_9"
+        },
+        {
+          "type": "show",
+          "target": "difference_4"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0032",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 5
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_9"
+        },
+        {
+          "type": "show",
+          "target": "units_5"
+        },
+        {
+          "type": "hide",
+          "target": "number_0"
+        },
+        {
+          "type": "hide",
+          "target": "number_1"
+        },
+        {
+          "type": "hide",
+          "target": "number_2"
+        },
+        {
+          "type": "hide",
+          "target": "number_3"
+        },
+        {
+          "type": "hide",
+          "target": "number_4"
+        },
+        {
+          "type": "hide",
+          "target": "number_6"
+        },
+        {
+          "type": "hide",
+          "target": "number_7"
+        },
+        {
+          "type": "hide",
+          "target": "number_8"
+        },
+        {
+          "type": "hide",
+          "target": "number_9"
+        },
+        {
+          "type": "show",
+          "target": "number_5"
+        },
+        {
+          "type": "hide",
+          "target": "difference_0"
+        },
+        {
+          "type": "hide",
+          "target": "difference_1"
+        },
+        {
+          "type": "hide",
+          "target": "difference_2"
+        },
+        {
+          "type": "hide",
+          "target": "difference_3"
+        },
+        {
+          "type": "hide",
+          "target": "difference_4"
+        },
+        {
+          "type": "hide",
+          "target": "difference_6"
+        },
+        {
+          "type": "hide",
+          "target": "difference_7"
+        },
+        {
+          "type": "hide",
+          "target": "difference_8"
+        },
+        {
+          "type": "hide",
+          "target": "difference_9"
+        },
+        {
+          "type": "show",
+          "target": "difference_5"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0033",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 6
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_9"
+        },
+        {
+          "type": "show",
+          "target": "units_6"
+        },
+        {
+          "type": "hide",
+          "target": "number_0"
+        },
+        {
+          "type": "hide",
+          "target": "number_1"
+        },
+        {
+          "type": "hide",
+          "target": "number_2"
+        },
+        {
+          "type": "hide",
+          "target": "number_3"
+        },
+        {
+          "type": "hide",
+          "target": "number_4"
+        },
+        {
+          "type": "hide",
+          "target": "number_5"
+        },
+        {
+          "type": "hide",
+          "target": "number_7"
+        },
+        {
+          "type": "hide",
+          "target": "number_8"
+        },
+        {
+          "type": "hide",
+          "target": "number_9"
+        },
+        {
+          "type": "show",
+          "target": "number_6"
+        },
+        {
+          "type": "hide",
+          "target": "difference_0"
+        },
+        {
+          "type": "hide",
+          "target": "difference_1"
+        },
+        {
+          "type": "hide",
+          "target": "difference_2"
+        },
+        {
+          "type": "hide",
+          "target": "difference_3"
+        },
+        {
+          "type": "hide",
+          "target": "difference_4"
+        },
+        {
+          "type": "hide",
+          "target": "difference_5"
+        },
+        {
+          "type": "hide",
+          "target": "difference_7"
+        },
+        {
+          "type": "hide",
+          "target": "difference_8"
+        },
+        {
+          "type": "hide",
+          "target": "difference_9"
+        },
+        {
+          "type": "show",
+          "target": "difference_6"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0034",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 7
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_8"
+        },
+        {
+          "type": "hide",
+          "target": "tens_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_9"
+        },
+        {
+          "type": "show",
+          "target": "units_7"
+        },
+        {
+          "type": "hide",
+          "target": "number_0"
+        },
+        {
+          "type": "hide",
+          "target": "number_1"
+        },
+        {
+          "type": "hide",
+          "target": "number_2"
+        },
+        {
+          "type": "hide",
+          "target": "number_3"
+        },
+        {
+          "type": "hide",
+          "target": "number_4"
+        },
+        {
+          "type": "hide",
+          "target": "number_5"
+        },
+        {
+          "type": "hide",
+          "target": "number_6"
+        },
+        {
+          "type": "hide",
+          "target": "number_8"
+        },
+        {
+          "type": "hide",
+          "target": "number_9"
+        },
+        {
+          "type": "show",
+          "target": "number_7"
+        },
+        {
+          "type": "hide",
+          "target": "difference_0"
+        },
+        {
+          "type": "hide",
+          "target": "difference_1"
+        },
+        {
+          "type": "hide",
+          "target": "difference_2"
+        },
+        {
+          "type": "hide",
+          "target": "difference_3"
+        },
+        {
+          "type": "hide",
+          "target": "difference_4"
+        },
+        {
+          "type": "hide",
+          "target": "difference_5"
+        },
+        {
+          "type": "hide",
+          "target": "difference_6"
+        },
+        {
+          "type": "hide",
+          "target": "difference_8"
+        },
+        {
+          "type": "hide",
+          "target": "difference_9"
+        },
+        {
+          "type": "show",
+          "target": "difference_7"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0035",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 8
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_9"
+        },
+        {
+          "type": "show",
+          "target": "tens_8"
+        },
+        {
+          "type": "hide",
+          "target": "units_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_9"
+        },
+        {
+          "type": "show",
+          "target": "units_8"
+        },
+        {
+          "type": "hide",
+          "target": "number_0"
+        },
+        {
+          "type": "hide",
+          "target": "number_1"
+        },
+        {
+          "type": "hide",
+          "target": "number_2"
+        },
+        {
+          "type": "hide",
+          "target": "number_3"
+        },
+        {
+          "type": "hide",
+          "target": "number_4"
+        },
+        {
+          "type": "hide",
+          "target": "number_5"
+        },
+        {
+          "type": "hide",
+          "target": "number_6"
+        },
+        {
+          "type": "hide",
+          "target": "number_7"
+        },
+        {
+          "type": "hide",
+          "target": "number_9"
+        },
+        {
+          "type": "show",
+          "target": "number_8"
+        },
+        {
+          "type": "hide",
+          "target": "difference_0"
+        },
+        {
+          "type": "hide",
+          "target": "difference_1"
+        },
+        {
+          "type": "hide",
+          "target": "difference_2"
+        },
+        {
+          "type": "hide",
+          "target": "difference_3"
+        },
+        {
+          "type": "hide",
+          "target": "difference_4"
+        },
+        {
+          "type": "hide",
+          "target": "difference_5"
+        },
+        {
+          "type": "hide",
+          "target": "difference_6"
+        },
+        {
+          "type": "hide",
+          "target": "difference_7"
+        },
+        {
+          "type": "hide",
+          "target": "difference_9"
+        },
+        {
+          "type": "show",
+          "target": "difference_8"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0036",
+      "event": "tap",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "tens",
+          "operator": "eq",
+          "value": 9
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "tens_0"
+        },
+        {
+          "type": "hide",
+          "target": "tens_1"
+        },
+        {
+          "type": "hide",
+          "target": "tens_2"
+        },
+        {
+          "type": "hide",
+          "target": "tens_3"
+        },
+        {
+          "type": "hide",
+          "target": "tens_4"
+        },
+        {
+          "type": "hide",
+          "target": "tens_5"
+        },
+        {
+          "type": "hide",
+          "target": "tens_6"
+        },
+        {
+          "type": "hide",
+          "target": "tens_7"
+        },
+        {
+          "type": "hide",
+          "target": "tens_8"
+        },
+        {
+          "type": "show",
+          "target": "tens_9"
+        },
+        {
+          "type": "hide",
+          "target": "units_0"
+        },
+        {
+          "type": "hide",
+          "target": "units_1"
+        },
+        {
+          "type": "hide",
+          "target": "units_2"
+        },
+        {
+          "type": "hide",
+          "target": "units_3"
+        },
+        {
+          "type": "hide",
+          "target": "units_4"
+        },
+        {
+          "type": "hide",
+          "target": "units_5"
+        },
+        {
+          "type": "hide",
+          "target": "units_6"
+        },
+        {
+          "type": "hide",
+          "target": "units_7"
+        },
+        {
+          "type": "hide",
+          "target": "units_8"
+        },
+        {
+          "type": "show",
+          "target": "units_9"
+        },
+        {
+          "type": "hide",
+          "target": "number_0"
+        },
+        {
+          "type": "hide",
+          "target": "number_1"
+        },
+        {
+          "type": "hide",
+          "target": "number_2"
+        },
+        {
+          "type": "hide",
+          "target": "number_3"
+        },
+        {
+          "type": "hide",
+          "target": "number_4"
+        },
+        {
+          "type": "hide",
+          "target": "number_5"
+        },
+        {
+          "type": "hide",
+          "target": "number_6"
+        },
+        {
+          "type": "hide",
+          "target": "number_7"
+        },
+        {
+          "type": "hide",
+          "target": "number_8"
+        },
+        {
+          "type": "show",
+          "target": "number_9"
+        },
+        {
+          "type": "hide",
+          "target": "difference_0"
+        },
+        {
+          "type": "hide",
+          "target": "difference_1"
+        },
+        {
+          "type": "hide",
+          "target": "difference_2"
+        },
+        {
+          "type": "hide",
+          "target": "difference_3"
+        },
+        {
+          "type": "hide",
+          "target": "difference_4"
+        },
+        {
+          "type": "hide",
+          "target": "difference_5"
+        },
+        {
+          "type": "hide",
+          "target": "difference_6"
+        },
+        {
+          "type": "hide",
+          "target": "difference_7"
+        },
+        {
+          "type": "hide",
+          "target": "difference_8"
+        },
+        {
+          "type": "show",
+          "target": "difference_9"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0037",
+      "event": "tap",
       "conditions": [
         {
           "type": "variable",
@@ -844,29 +3792,10 @@
       ],
       "actions": [
         {
-          "type": "show",
-          "target": "reversed"
-        },
-        {
           "type": "set_variable",
           "name": "solved",
           "value": true,
           "operation": "assign"
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0011",
-      "event": "tap",
-      "source": "mirror",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "play_animation",
-          "target": "mirror",
-          "animation": "chapter_two/rattle",
-          "wait": false
         }
       ],
       "once": false

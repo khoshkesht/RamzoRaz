@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "id": 57,
-  "question": "روی میز ۶ استکان چای است؛ سه تا پر و سه تا خالی. با جابه‌جایی فقط یک استکان، پر و خالی را یکی‌درمیان کن.",
+  "question": "روی میز ۶ استکان پر و خالی روز میز است. با جابه‌جایی فقط یک استکان، پر و خالی را یکی‌درمیان کن.",
   "hint": "استکان دوم را روی پنجم ببر تا چای بریزد و بدنه به جای قبلی برگردد.",
   "answer": "چای استکان دومِ پر را داخل استکان پنجمِ خالی بریز",
-  "time_limit_seconds": 125,
-  "base_score": 160,
+  "time_limit_seconds": 35,
+  "base_score": 100,
   "background": "res://assets/samples/tea_house_night_lit.svg",
   "success": {
     "result_delay_seconds": 1

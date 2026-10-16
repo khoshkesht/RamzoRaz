@@ -69,6 +69,7 @@ class Level:
 
 
 def author_assets():
+    svg('bridge_lantern_lit','<ellipse cx="120" cy="111" rx="108" ry="87" fill="#ffe39a" opacity=".12" stroke="none"/><ellipse cx="120" cy="111" rx="80" ry="69" fill="#ffe39a" opacity=".18" stroke="none"/><path d="M87 39V25Q120-10 153 25V39" fill="none" stroke="#d4bb7f" stroke-width="9"/><rect x="75" y="36" width="90" height="133" rx="14" fill="#c4a86e"/><path d="M85 52H155V148H85Z" fill="#ffe6a0"/><path d="M120 132Q93 112 121 81Q119 99 134 105Q147 125 120 132Z" fill="#efa24e" stroke="#d58c46" stroke-width="3"/><path d="M88 40V165M152 40V165M72 172H168M104 150H136" fill="none" stroke="#8b7753" stroke-width="7"/>')
     for name,night in [('five_window_room_day',False),('library_room_night',True),('library_room_day',False)]:
         svg(name,f'<rect width="1920" height="1080" fill="{"#a1a9aa" if night else "#e9e2cc"}"/><path d="M0 880H1920V1080H0Z" fill="#c2a681"/><path d="M0 875H1920" stroke="#917e63" stroke-width="14"/>'
             + ('<circle cx="1700" cy="260" r="45" fill="#ffe4a0"/><ellipse cx="960" cy="700" rx="860" ry="330" fill="#ffe6b4" opacity=".15"/>' if night else ''),1920,1080)
@@ -143,7 +144,21 @@ def author_assets():
     svg('rope_pull','<path d="M65 5v120" stroke="#c0a273" stroke-width="14"/><ellipse cx="65" cy="146" rx="32" ry="25" fill="#c0a273"/>',130,180)
 
 
+    # Floor latch states for the hidden passage in stage 56.
+    latch_base='<rect x="12" y="8" width="96" height="124" rx="12" fill="#a4b1a7"/><path d="M60 30V110" stroke="#526b6d" stroke-width="20"/><path d="M60 32V108" stroke="#e2cf97" stroke-width="10"/><circle cx="26" cy="22" r="4" fill="#586d6b"/><circle cx="94" cy="118" r="4" fill="#586d6b"/>'
+    svg('floor_latch_closed',latch_base+'<rect x="31" y="32" width="58" height="25" rx="7" fill="#dfbd75"/><path d="m41 79 19 19 19-19" fill="none" stroke="#f1e6c9" stroke-width="7"/>',120,140)
+    svg('floor_latch_open',latch_base+'<rect x="31" y="83" width="58" height="25" rx="7" fill="#dfbd75"/>',120,140)
+    # Separate glass bowls for stage 54; measuring jugs and earlier assets stay intact.
+    glass_base='<defs><clipPath id="bowl"><path d="M70 54C30 100 20 165 40 218C57 270 107 291 160 291C213 291 263 270 280 218C300 165 290 100 250 54Z"/></clipPath></defs><ellipse cx="160" cy="291" rx="73" ry="10" fill="#5b7476" opacity=".18" stroke="none"/><path d="M70 54C30 100 20 165 40 218C57 270 107 291 160 291C213 291 263 270 280 218C300 165 290 100 250 54Z" fill="#d5eff0" fill-opacity=".2" stroke="#668b8d" stroke-width="5"/>'
+    glass_water='<g clip-path="url(#bowl)" stroke="none"><path d="M20 104H300V300H20Z" fill="#72bed4" fill-opacity=".9"/><ellipse cx="160" cy="104" rx="121" ry="15" fill="#b4e4ec"/><path d="M39 104Q160 132 281 104" fill="none" stroke="#e0f6f4" stroke-width="3"/></g>'
+    glass_finish='<path d="M70 54C30 100 20 165 40 218C57 270 107 291 160 291C213 291 263 270 280 218C300 165 290 100 250 54Z" fill="none" stroke="#668b8d" stroke-width="5"/><ellipse cx="160" cy="54" rx="90" ry="17" fill="#d4e9e4" fill-opacity=".35" stroke="#668b8d" stroke-width="5"/><ellipse cx="160" cy="54" rx="76" ry="9" fill="none" stroke="#effaf3" stroke-width="3"/><path d="M71 98Q41 158 61 207" fill="none" stroke="#f4fff9" stroke-width="12" opacity=".8"/><path d="M79 229Q108 261 146 264M253 112Q268 155 259 188" fill="none" stroke="#e7f8f1" stroke-width="6" opacity=".65"/><path d="M116 284Q160 293 204 284" fill="none" stroke="#aacaca" stroke-width="7"/>'
+    for full in [False,True]:
+        svg('glass_bowl_'+('full' if full else 'empty'),glass_base+(glass_water if full else '')+glass_finish,320,320)
+
+
 def author_animations():
+    (ASSETS/'bridge_lantern_feedback.tres').write_text("[gd_resource type=\"AnimationLibrary\" load_steps=5 format=3]\n\n[sub_resource type=\"Animation\" id=\"walk_right\"]\nresource_name = \"walk_right\"\nlength = 0.9\ntracks/0/type = \"value\"\ntracks/0/path = NodePath(\"Sprite:position\")\ntracks/0/interp = 1\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0, 0.899, 0.9),\n\"transitions\": PackedFloat32Array(1, 1, 1),\n\"update\": 0,\n\"values\": [Vector2(0, 0), Vector2(1155.5555555555554, 0), Vector2(0, 0)]\n}\n\n[sub_resource type=\"Animation\" id=\"walk_left\"]\nresource_name = \"walk_left\"\nlength = 0.9\ntracks/0/type = \"value\"\ntracks/0/path = NodePath(\"Sprite:position\")\ntracks/0/interp = 1\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0, 0.899, 0.9),\n\"transitions\": PackedFloat32Array(1, 1, 1),\n\"update\": 0,\n\"values\": [Vector2(0, 0), Vector2(-1155.5555555555554, 0), Vector2(0, 0)]\n}\n\n[sub_resource type=\"Animation\" id=\"lamp_right\"]\nresource_name = \"lamp_right\"\nlength = 0.9\ntracks/0/type = \"value\"\ntracks/0/path = NodePath(\"Sprite:position\")\ntracks/0/interp = 1\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0, 0.899, 0.9),\n\"transitions\": PackedFloat32Array(1, 1, 1),\n\"update\": 0,\n\"values\": [Vector2(0, 0), Vector2(945.4545454545454, 0), Vector2(0, 0)]\n}\n\n[sub_resource type=\"Animation\" id=\"lamp_left\"]\nresource_name = \"lamp_left\"\nlength = 0.9\ntracks/0/type = \"value\"\ntracks/0/path = NodePath(\"Sprite:position\")\ntracks/0/interp = 1\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0, 0.899, 0.9),\n\"transitions\": PackedFloat32Array(1, 1, 1),\n\"update\": 0,\n\"values\": [Vector2(0, 0), Vector2(-945.4545454545454, 0), Vector2(0, 0)]\n}\n\n[resource]\n_data = {\n\"walk_right\": SubResource(\"walk_right\"),\n\"walk_left\": SubResource(\"walk_left\"),\n\"lamp_right\": SubResource(\"lamp_right\"),\n\"lamp_left\": SubResource(\"lamp_left\")\n}\n",encoding='utf-8')
+    (ASSETS/'cup_challenge_feedback.tres').write_text("[gd_resource type=\"AnimationLibrary\" load_steps=4 format=3]\n\n[sub_resource type=\"Animation\" id=\"shuffle_a\"]\nresource_name = \"shuffle_a\"\nlength = 2.9\ntracks/0/type = \"value\"\ntracks/0/path = NodePath(\"Sprite:position\")\ntracks/0/interp = 1\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0, 0.29, 0.58, 0.87, 1.16, 1.45, 1.74, 2.03, 2.32, 2.61, 2.899, 2.9),\n\"transitions\": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),\n\"update\": 0,\n\"values\": [Vector2(0, 0), Vector2(200, -105), Vector2(400, 0), Vector2(600, -105), Vector2(800, 0), Vector2(400, 105), Vector2(0, 0), Vector2(200, -105), Vector2(400, 0), Vector2(600, -105), Vector2(800, 0), Vector2(0, 0)]\n}\n\n[sub_resource type=\"Animation\" id=\"shuffle_b\"]\nresource_name = \"shuffle_b\"\nlength = 2.9\ntracks/0/type = \"value\"\ntracks/0/path = NodePath(\"Sprite:position\")\ntracks/0/interp = 1\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0, 0.29, 0.58, 0.87, 1.16, 1.45, 1.74, 2.03, 2.32, 2.61, 2.899, 2.9),\n\"transitions\": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),\n\"update\": 0,\n\"values\": [Vector2(0, 0), Vector2(-200, 105), Vector2(-400, 0), Vector2(-400, 0), Vector2(-400, 0), Vector2(0, -105), Vector2(400, 0), Vector2(400, 0), Vector2(400, 0), Vector2(200, 105), Vector2(0, 0), Vector2(0, 0)]\n}\n\n[sub_resource type=\"Animation\" id=\"shuffle_c\"]\nresource_name = \"shuffle_c\"\nlength = 2.9\ntracks/0/type = \"value\"\ntracks/0/path = NodePath(\"Sprite:position\")\ntracks/0/interp = 1\ntracks/0/keys = {\n\"times\": PackedFloat32Array(0, 0.29, 0.58, 0.87, 1.16, 1.45, 1.74, 2.03, 2.32, 2.61, 2.899, 2.9),\n\"transitions\": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),\n\"update\": 0,\n\"values\": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(-200, 105), Vector2(-400, 0), Vector2(-400, 0), Vector2(-400, 0), Vector2(-600, 105), Vector2(-800, 0), Vector2(-800, 0), Vector2(-800, 0), Vector2(0, 0)]\n}\n\n[resource]\n_data = {\n\"shuffle_a\": SubResource(\"shuffle_a\"),\n\"shuffle_b\": SubResource(\"shuffle_b\"),\n\"shuffle_c\": SubResource(\"shuffle_c\")\n}\n",encoding='utf-8')
     # All animations run through ActionRunner's pause/cancel/run guard.
     animations = {
         'wind': (10, 'Sprite:rotation', [0,10], [0.,0.]),
@@ -176,10 +191,10 @@ def author_simple_levels():
     l.rule('swipe','vane',[act('rotate','vane',degrees=90)])
     l.win('drop_on','guard',[move('guard',960,640)],target='candle_zone'); l.save()
 
-    l=Level(52,'پرده را کنار بزن؛ برگ‌های قاب سوم زنده حرکت می‌کنند.','five_window_room_day')
+    l=Level(52,'پرده را کنار بزن؛ برگ‌های پنجرهٔ سمت راست زنده حرکت می‌کنند.','five_window_room_day')
     l.note('پرده‌ها را به کنار بکش، سپس پنجرهٔ واقعی را لمس کن.')
     for i in range(5):
-        x=340+i*310; l.variable(**{f'open_{i}':False})
+        x=[340,650,1580,1270,960][i]; l.variable(**{f'open_{i}':False})
         l.image(f'window_{i}','window_living' if i==2 else 'window_painted',x,650,['tap'])
         if i==2: l.image('leaves','leaf_pair',x,650,scale=[.55,.55],visible=False)
         l.image(f'curtain_{i}','curtains_closed',x,650,['swipe'],scale=[.65,.65],z_index=2)
@@ -197,15 +212,20 @@ def author_simple_levels():
         else: l.drop(f'tile_{i}','gap',[move(f'tile_{i}',x,900),feedback('frame')])
     l.image('stencil','tile_stencil',1500,590,['hold'],scale=[.7,.7]); l.rule('hold','stencil',[feedback('stencil')]); l.save()
 
-    l=Level(54,'هر سه تنگ را پر کن؛ آزمایش سه‌ثانیه‌ای نشتی بدنه را نشان می‌دهد.','puzzle_workbench_night')
+    l=Level(54,'پارچ آبِ سمت چپ را روی هر سه تنگ بکش و رها کن؛ آب آبی و نوشتهٔ «پر شد» پر شدن را نشان می‌دهند. سپس انگشتت را روی خودِ دکمهٔ «آزمایش نشتی» پایین صفحه، ۳ ثانیه بدون رها کردن نگه دار. بعد از ظاهر شدن ترک و قطره از بدنهٔ تنگ میانی، همان تنگ را لمس کن.','puzzle_workbench_night')
     l.variable(tested=False)
     l.drag('water','water_jug',300,850,scale=[.65,.65])
+    l.text('water_label','پارچ آب؛ بکش و بریز',300,965,size=(430,70))
     for i,x in enumerate([600,960,1320]):
-        l.variable(**{f'filled_{i}':False}); l.image(f'jug_{i}','water_jug',x,650,['tap'])
-        l.zone(f'fill_{i}',x,650,['water']); l.drop('water',f'fill_{i}',[move('water',300,850),setv(f'filled_{i}'),show(f'water_{i}')])
-        l.image(f'water_{i}','milk_ripple',x,600,scale=[.5,.5],visible=False)
-    l.image('leak','jug_body_leak',1060,730,visible=False)
-    l.button('test','آزمایش: سه ثانیه نگه دار',960,920,[dict(type='hold',duration=3.)],(620,110))
+        l.variable(**{f'filled_{i}':False})
+        l.image(f'jug_{i}','glass_bowl_empty',x,650,['tap'],scale=[.8,.8])
+        l.zone(f'fill_{i}',x,650,['water'])
+        l.drop('water',f'fill_{i}',[move('water',300,850),replace(f'jug_{i}','glass_bowl_full'),setv(f'filled_{i}'),hide(f'empty_{i}'),show(f'water_{i}')])
+        l.text(f'empty_{i}','خالی',x,815,size=(300,60))
+        l.text(f'water_{i}','پر شد',x,815,size=(300,60),visible=False)
+    l.image('leak','jug_body_leak',1050,730,visible=False,scale=[.65,.65])
+    l.image('test_frame','puzzle_tile',960,930,scale=[2.25,1.25],z_index=-1)
+    l.text('test','آزمایش نشتی\nاینجا را ۳ ثانیه نگه دار',960,930,[dict(type='hold',duration=3.)],size=(620,110))
     l.rule('hold','test',[setv('tested'),show('leak')],[var(f'filled_{i}') for i in range(3)])
     l.win('tap','jug_1',conditions=[var('tested')])
     for i in [0,2]: l.rule('tap',f'jug_{i}',[feedback(f'jug_{i}')])
@@ -228,11 +248,24 @@ def author_simple_levels():
     l.image('brothers','brothers_portrait',290,620,['hold'],scale=[.6,.6]); l.text('brothers_label','دو برادر',290,750); l.rule('hold','brothers',[feedback('brothers')])
     l.win('variable_changed','$level',conditions=[*[var(f'hatted_{i}') for i in range(3)],var('linked_0'),var('linked_1')]); l.save()
 
-    l=Level(56,'رد ساییدگی زیر قفسهٔ راست را دنبال کن؛ آن را به راست بکش.','library_room_night')
-    l.image('door','hidden_door',1250,650,visible=False,z_index=-3)
-    l.image('scrape','floor_scrape',1300,850,z_index=-2)
-    l.drag('shelf_left','bookshelf',600,650,bounds=(350,520,400,260)); l.drag('shelf_right','bookshelf',1250,650,bounds=(1100,520,540,260))
-    l.win('drag_end','shelf_right',[show('door')],[dict(type='moved_distance_at_least',value=270)])
+    l=Level(56,'لبهٔ قالیچهٔ جلوی قفسهٔ راست را به چپ بکش تا رد ساییدگی و ضامن کف آشکار شوند. ضامن را به پایین بکش تا قفسه آزاد شود. سپس قفسهٔ راست را تا انتهای رد به راست بکش و ورودی آشکارشده را لمس کن. نقشهٔ قدیمی، وضعیت امروز اتاق را نشان نمی‌دهد.','library_room_night')
+    l.variable(unlocked=False,opened=False)
+    l.image('door','hidden_door',1250,650,['tap'],visible=False,z_index=-3)
+    l.image('scrape','floor_scrape',1320,900,visible=False,z_index=-2)
+    l.image('latch','floor_latch_closed',1120,900,[dict(type='swipe',direction='down')],visible=False,hit_size=[150,150])
+    l.image('rug','rug_symmetric',1250,900,[dict(type='swipe',direction='left')],scale=[1.8,.4],z_index=6)
+    l.rule('swipe','rug',[move('rug',850,950),act('scale','rug',value=[.5,.3]),show('latch'),show('scrape')],once=True)
+    l.rule('swipe','latch',[setv('unlocked'),replace('latch','floor_latch_open'),hide('jammed')],once=True)
+    l.text('jammed','قفسه به کف گیر دارد؛ اول ضامنش را پیدا کن.',960,380,size=(1500,80),visible=False)
+    l.drag('shelf_left','bookshelf',600,650,bounds=(350,520,400,260))
+    l.image('shelf_right','bookshelf',1250,650,[dict(type='drag',axis='x',bounds=[1050,650,540,1],return_on_invalid=False)],z_index=5)
+    l.zone('slide_end',1590,650,[],(120,340))
+    l.rule('drag_end','shelf_right',[move('shelf_right',1250,650),show('jammed')],[var('unlocked',False)])
+    at_end=dict(type='inside',target='shelf_right',zone='slide_end')
+    l.rule('drag_end','shelf_right',[move('shelf_right',1250,650)],[var('unlocked'),var('opened',False),dict(type='not',condition=at_end)])
+    l.rule('drag_end','shelf_right',[move('shelf_right',1590,650),show('door'),setv('opened')],[var('unlocked'),var('opened',False),at_end])
+    l.rule('drag_end','shelf_right',[move('shelf_right',1590,650)],[var('opened')])
+    l.win('tap','door',conditions=[var('opened'),var('unlocked')])
     l.rule('drag_end','shelf_left',[move('shelf_left',600,650)])
     l.drag('chest','chest_closed',320,900,scale=[.55,.55]); l.rule('drag_end','chest',[move('chest',320,900)])
     l.image('old_map','library_map_old',1630,900,[dict(type='swipe',direction='up')],scale=[.6,.6]); l.rule('swipe','old_map',[act('scale','old_map',value=[.85,.85])]); l.save()
@@ -265,50 +298,79 @@ def author_simple_levels():
 
 
 def author_bridge():
-    l=Level(58,'دو سریع را بفرست؛ یک برگردد، دو کند بروند، دو برگردد، سپس دو سریع بروند.','bridge_crossing_night')
-    l.variable(bank=0,people=0,aboard=0,selection=0,minutes=0,transition=False)
+    l=Level(58,'پل تاریک است؛ هر بار یک یا دو نفر باید چراغ را همراه ببرند. فقط افرادِ سمت چراغ می‌توانند عبور کنند و تا وقتی کسی جا مانده، یک نفر باید چراغ را برگرداند. زمان هر عبور برابر زمان نفر کندتر است. راه حل: ۱ و ۲ بروند، ۱ با چراغ برگردد، ۷ و ۱۰ بروند، ۲ با چراغ برگردد، سپس ۱ و ۲ بروند؛ مجموع ۱۷ دقیقه.','bridge_crossing_night')
+    l.variable(bank=0,people=0,aboard=0,selection=0,minutes=0,transition=False,crossing=False)
     l.counter('دقیقهٔ شبیه‌سازی','minutes',17)
-    l.note('افراد همان ساحل را روی پل ببر؛ چراغ اصلی را به ساحل مقابل بکش.')
     times=[1,2,7,10]
+    for slot,x in enumerate([850,1070]):
+        l.image(f'slot_{slot}','puzzle_tile',x,650,scale=[.65,1.9],z_index=-1)
     for i in range(4):
-        l.drag(f'person_{i}','man',370,530+i*115,scale=[.23,.23]); l.text(f'time_{i}',str(times[i])+' دقیقه',225,530+i*115,size=(180,70))
-    l.zone('bridge',960,720,[f'person_{i}' for i in range(4)],(600,190))
-    l.drag('lamp','flashlight',500,950,scale=[.7,.7]); l.zone('left_bank',480,950,['lamp'],(300,130)); l.zone('right_bank',1450,950,['lamp'],(300,130))
-    # Enumerate legal banks, selections and crossings, not a single scripted solution.
+        l.image(f'person_{i}','walking_person',370,500+i*145,['tap'],scale=[.45,.45],hit_size=[280,300],z_index=5)
+        l.text(f'time_{i}',str(times[i])+' دقیقه',225,500+i*145,['tap'],size=(180,70))
+        l.image(f'selected_{i}','selection_check',905,600,visible=False,scale=[.6,.6],z_index=6)
+    l.image('lamp','bridge_lantern_lit',520,730,scale=[.55,.55],z_index=7)
+    l.image('cross_frame','puzzle_tile',960,930,scale=[1.5,1.18],z_index=-1)
+    l.text('cross_idle','عبور',960,930,size=(420,130))
+    l.d['objects'][-1]['text_color']='#78807a'
+    l.text('cross','عبور',960,930,['tap'],size=(420,130),visible=False)
+    l.image('direction','left_arrow',1100,930,rotation_degrees=180,scale=[.4,.4],visible=False)
+    for cost in times:
+        l.text(f'cost_{cost}',str(cost)+' دقیقه',960,835,size=(500,60),visible=False)
+    # One tap toggles a traveller; a latch prevents matching another state on that tap.
     for bank,mask,selection in itertools.product(range(2),range(16),range(16)):
         selected=[i for i in range(4) if selection>>i&1]
         if len(selected)>2 or any((mask>>i&1)!=bank for i in selected): continue
-        cond=[var('bank',bank),var('people',mask),var('selection',selection),var('transition',False)]
+        cond=[var('bank',bank),var('people',mask),var('selection',selection)]
         for i in range(4):
-            if (mask>>i&1)!=bank or i in selected or len(selected)==2: continue
-            l.drop(f'person_{i}','bridge',[move(f'person_{i}',850+len(selected)*220,690),move(f'time_{i}',850+len(selected)*220,790),setv('selection',selection|(1<<i)),setv('aboard',len(selected)+1)],cond)
-        if not selected: continue
-        dest=1-bank; nextmask=mask^selection
-        actions=[setv('transition'),setv('people',nextmask),setv('bank',dest),setv('selection',0),setv('aboard',0),inc('minutes',max(times[i] for i in selected)),move('lamp',1450 if dest else 500,950)]
-        actions += [move(f'person_{i}',1550 if dest else 370,530+i*115) for i in selected]
-        actions += [move(f'time_{i}',1700 if dest else 225,530+i*115) for i in selected]
-        l.drop('lamp','right_bank' if dest else 'left_bank',actions,cond)
-    l.rule('drop_on','lamp',[setv('transition',False)],[var('transition')])
-    # Invalid capacity/wrong bank loads and cancelled selections return to their bank.
-    for mask in range(16):
-        for i in range(4):
-            l.rule('drag_end',f'person_{i}',[move(f'person_{i}',1550 if mask>>i&1 else 370,530+i*115),move(f'time_{i}',1700 if mask>>i&1 else 225,530+i*115)],[var('people',mask)])
+            if (mask>>i&1)!=bank or (i not in selected and len(selected)==2): continue
+            next_selection=selection^(1<<i)
+            actions=[setv('selection',next_selection),setv('aboard',next_selection.bit_count()),setv('transition')]
+            for source in [f'person_{i}',f'time_{i}']:
+                l.rule('tap',source,actions,[*cond,var('transition',False),var('crossing',False)])
+        if selected:
+            dest=1-bank
+            direction='left' if bank else 'right'
+            crossing=[setv('transition'),setv('crossing'),hide('cross'),hide('cross_idle'),hide('cross_frame'),hide('direction'),*[hide(f'cost_{cost}') for cost in times]]
+            for slot,i in enumerate(selected):
+                crossing += [move(f'person_{i}',1270-slot*200 if bank else 650+slot*200,690),hide(f'time_{i}'),hide(f'selected_{i}'),act('play_animation',f'person_{i}',animation='bridge_lantern/walk_'+direction,wait=False)]
+            crossing += [move('lamp',1170 if bank else 750,730),act('play_animation','lamp',animation='bridge_lantern/lamp_'+direction,wait=False)]
+            l.rule('tap','cross',crossing,[*cond,var('transition',False),var('crossing',False)])
+            l.rule('custom:animation_finished','lamp',[setv('transition'),setv('people',mask^selection),setv('bank',dest),setv('selection',0),setv('aboard',0),inc('minutes',max(times[i] for i in selected)),setv('crossing',False)],[*cond,var('transition',False),var('crossing'),dict(type='event_value',field='animation',operator='eq',value='bridge_lantern/lamp_'+direction)])
+    l.rule('tap','$level',[setv('transition',False)])
+    l.d['rules'][-1].pop('source')
+    l.rule('custom:animation_finished','lamp',[setv('transition',False)])
+    # Refresh independent pieces without duplicating every combination of banks.
+    def refresh(actions,conditions):
+        l.rule('tap','$level',actions,[*conditions,var('crossing',False)])
+        l.d['rules'][-1].pop('source')
+        l.rule('custom:animation_finished','lamp',actions,[*conditions,var('crossing',False)])
+    for bank in range(2):
+        refresh([move('lamp',1400 if bank else 520,730),act('rotate','direction',degrees=0 if bank else 180)],[var('bank',bank)])
     for selection in range(16):
-        if selection.bit_count()>2: continue
+        selected=[i for i in range(4) if selection>>i&1]
+        if len(selected)>2: continue
+        view=[show('cross'),hide('cross_idle'),show('direction')] if selected else [hide('cross'),show('cross_idle'),hide('direction')]
+        for cost in times: view.append(show(f'cost_{cost}') if selected and cost==max(times[i] for i in selected) else hide(f'cost_{cost}'))
         for i in range(4):
-            if selection>>i&1:
-                l.rule('drag_start',f'person_{i}',[setv('selection',selection^(1<<i)),setv('aboard',selection.bit_count()-1)],[var('selection',selection)])
+            if i in selected:
+                x=850+selected.index(i)*220
+                view += [move(f'person_{i}',x,650),move(f'time_{i}',x,760),move(f'selected_{i}',x+55,600),show(f'selected_{i}')]
+            else: view.append(hide(f'selected_{i}'))
+        view=[show('cross_frame'),*[show(f'time_{i}') for i in range(4)],*view]
+        if selected: view.append(move('lamp',960,690))
+        refresh(view,[var('selection',selection)])
+    for i in range(4):
+        unselected=dict(type='any',conditions=[var('selection',n) for n in range(16) if n.bit_count()<=2 and not (n>>i&1)])
+        for right in range(2):
+            side=dict(type='any',conditions=[var('people',mask) for mask in range(16) if (mask>>i&1)==right])
+            refresh([move(f'person_{i}',1550 if right else 370,500+i*145),move(f'time_{i}',1700 if right else 225,500+i*145)],[side,unselected])
     l.win('variable_changed','$level',conditions=[var('people',15),var('minutes',17)])
     l.rule('variable_changed','$level',[FAIL],[var('minutes',17,'gt')])
-    l.button('unload','بازگرداندن افراد از پل',960,900)
-    for mask in range(16):
-        l.rule('tap','unload',[*[move(f'person_{i}',1550 if mask>>i&1 else 370,530+i*115) for i in range(4)],*[move(f'time_{i}',1700 if mask>>i&1 else 225,530+i*115) for i in range(4)],setv('selection',0),setv('aboard',0)],[var('people',mask)])
-    l.image('decorative_lamp','lamp_off',1710,550,['hold'],scale=[.6,.6]); l.rule('hold','decorative_lamp',[replace('decorative_lamp','lamp_on')])
-    l.drag('short_rope','yarn_unrolled',960,550,scale=[.5,.5]); l.rule('drag_end','short_rope',[move('short_rope',960,550),feedback('short_rope')]); l.save()
+    l.save()
 
 
 def author_boxes():
-    l=Level(59,'فقط از جعبهٔ با برچسب مخلوط بردار؛ همهٔ برچسب‌ها غلط‌اند.','fruit_market_day')
+    l=Level(59,'همهٔ برچسب‌ها غلط‌اند؛ پس جعبهٔ «مخلوط» نمی‌تواند مخلوط باشد و فقط یک نوع میوه دارد.\n۱. پیش از جابه‌جایی برچسب‌ها، جعبهٔ «مخلوط» در سمت راست را لمس کن؛ سیب بیرون می‌آید، پس این جعبه فقط سیب دارد.\n۲. برچسب «سیب» را روی جعبهٔ سمت راست بکش و رها کن.\n۳. برچسب «مخلوط» را روی جعبهٔ وسط بگذار: این جعبه ابتدا «پرتقال» نوشته بود، پس پرتقال نیست؛ سیب هم در جعبهٔ راست است، بنابراین وسط مخلوط است.\n۴. برچسب «پرتقال» را روی جعبهٔ سمت چپ بگذار؛ این تنها حالت باقی‌مانده است.','fruit_market_day')
     l.variable(drawn=False,evidence=False)
     labels=['سیب','پرتقال','مخلوط']
     for i,x in enumerate([550,960,1370]):
@@ -477,17 +539,18 @@ def author_remaining():
     l.image('painted_dust','dust_motes',650,605,visible=False,scale=[.5,.5]); l.rule('tap','brick_0',[show('painted_dust')])
     l.image('brush','broom',1600,850,[dict(type='swipe',direction='right')],scale=[.6,.6]); l.rule('swipe','brush',[hide('painted_dust')]); l.save()
 
-    l=Level(65,'سکه همراه همان فنجان حرکت می‌کند؛ پس از دو جابه‌جایی محل نهایی آن را لمس کن.','puzzle_workbench_night')
-    l.variable(ready=False)
-    l.note('سکه زیر فنجان چپ است. برای آغاز جابه‌جایی‌ها، سکه را لمس کن.')
+    l=Level(65,'سکه همراه فنجانِ آغازین حرکت می‌کند. پنج بار جای دو فنجان عوض می‌شود؛ مسیر همان فنجان را در هر عبور دنبال کن، نه جای اولیه یا نزدیک‌ترین فنجان را. تا پایان حرکت‌ها صبر کن؛ فقط یک انتخاب داری و انتخاب اشتباه نیاز به تلاش دوباره دارد.','puzzle_workbench_night')
+    l.variable(ready=False,started=False)
+    l.note('پنج جابه‌جایی، فقط یک انتخاب؛ برای آغاز، سکهٔ زیر فنجان چپ را لمس کن.')
+    l.text('tracking','فنجانِ حامل سکه را دنبال کن؛ تا پایان حرکت‌ها صبر کن.',960,430,size=(1550,90),visible=False)
+    l.text('choose','سکه کجاست؟ فقط یک فنجان را انتخاب کن.',960,430,size=(1550,90),visible=False)
     for i,letter in enumerate('abc'): l.image('cup_'+letter,'cup',560+i*400,690,['tap'],scale=[1,1])
     l.image('coin','puzzle_tile',560,850,['tap']); l.d['objects'][-1]['sprite']='res://assets/ui/score.png'
-    l.rule('tap','coin',[hide('coin'),anim('cup_a','shuffle_a'),anim('cup_b','shuffle_b'),anim('cup_c','shuffle_c')],once=True)
-    l.rule('custom:animation_finished','cup_a',[move('cup_a',1360,690),move('cup_b',560,690),move('cup_c',960,690),setv('ready')])
+    l.rule('tap','coin',[setv('started'),hide('instructions'),show('tracking'),hide('coin'),*[act('play_animation','cup_'+letter,animation='cup_challenge/shuffle_'+letter,wait=False) for letter in 'abc']],[var('started',False)],once=True)
+    l.rule('custom:animation_finished','cup_a',[move('cup_a',1360,690),move('cup_b',960,690),move('cup_c',560,690),setv('ready'),hide('tracking'),show('choose')],[var('started'),var('ready',False),dict(type='event_value',field='animation',operator='eq',value='cup_challenge/shuffle_a')])
     l.win('tap','cup_a',[show('coin'),move('coin',1360,780)],conditions=[var('ready')])
-    for letter in 'bc': l.rule('tap','cup_'+letter,[feedback('cup_'+letter)],[var('ready')])
-    l.image('red_label','ribbon',1650,600,['tap'],scale=[.5,.5]); l.rule('tap','red_label',[replace('cup_b','cup_red_label')])
-    l.image('mirror','mirror_frame',350,930,['hold'],scale=[.45,.45]); l.rule('hold','mirror',[feedback('mirror')]); l.save()
+    for letter in 'bc': l.rule('tap','cup_'+letter,[FAIL],[var('ready')])
+    l.save()
 
     l=Level(66,'مسیر طناب‌ها را تا زنگ اصلی دنبال کن؛ طناب وسط را به پایین بکش.','puzzle_workbench_day')
     l.image('paths','bell_rope_paths',960,680,scale=[.8,.8])
@@ -549,15 +612,18 @@ def write_asset_report():
         'library_room': 'محیط کتابخانهٔ روز/شب بدون قفسه یا ورودی ثابت؛ سرنخ‌ها اشیای مستقل‌اند.',
         'library_map': 'نقشهٔ قدیمی با نشانهٔ قفسهٔ چپ، متمایز از رد فعلیِ قفسهٔ راست.',
         'river_crossing': 'دو ساحل و رود با عرض کافی برای قایق و محموله؛ محیط مناسب موجود نبود.',
+        'bridge_lantern': 'فانوس روشن قابل حمل و همراه گروه؛ چراغ‌های موجود خاموش یا رومیزی بودند.',
         'bridge_crossing': 'رود و پل دوطرفهٔ شبانه با سطح عبور روشن؛ محیط مناسب موجود نبود.',
         'wind_arrow': 'جهت باد و بادسنجِ قابل تشخیص برای مهلت حفاظت شعله.',
         'oil_lamp': 'چراغ نفتی خاموش؛ چراغ برقی موجود جای این وسیله را نمی‌گیرد.',
         'lantern': 'فانوس خاموش با دسته و قاب؛ نمونهٔ مناسب موجود نبود.',
         'guard_opaque': 'محافظ ماتِ دام؛ محافظ شفاف موجود بدون تغییر بازاستفاده می‌شود.',
         'window_': 'دو قاب هم‌اندازه با منظرهٔ زنده و منظرهٔ نقاشی‌شده؛ تمایز هندسی سرنخ.',
-        'leaf_': 'برگ مستقل برای حرکت زندهٔ قاب سوم، بدون تغییر تصویر پنجره‌های قبلی.',
+        'leaf_': 'برگ مستقل برای حرکت زندهٔ قاب سمت راست، بدون تغییر تصویر پنجره‌های قبلی.',
         'pattern_tile': 'اتصال چهار لبه و قطع پیوستگی خط؛ منابع قبلی جدول اتصال نداشتند.',
         'tile_': 'محیط چهار لبه یا شابلون دو لبهٔ کاشی؛ هندسه با گزینه‌ها هماهنگ است.',
+        'glass_bowl': 'تنگ شیشه‌ای گرد بدون دسته و درجه‌بندی در دو حالت خالی و پر؛ منابع موجود ظرف مدرج یا تنگ دارای ماهی بودند.',
+        'floor_latch': 'ضامن کف با دستگیره و جهت کشیدن در دو حالت بسته و آزاد؛ دارایی ضامن مناسب موجود نبود.',
         'jug_body': 'ترک و قطرهٔ بدنه، مستقل از قطرهٔ دهانه و لکهٔ کف.',
         'family_': 'تمایز سه نسل و پیوند والد/فرزند برای فرد مشترک؛ منبع مناسب موجود نبود.',
         'brothers_': 'عکس دو برادر برای نسبت دام، متمایز از زنجیرهٔ نسل‌ها.',
@@ -590,6 +656,8 @@ def write_asset_report():
         'cup_red': 'همان شکل فنجان با برچسب قرمزِ دام، بدون تغییر هویت حامل سکه.',
     }
     new = {path: next(reason for prefix,reason in purposes.items() if Path(path).stem.startswith(prefix)) for path in sorted(NEW_ASSETS)}
+    new[P+'bridge_lantern_feedback.tres']='حرکت هم‌زمان گروه و چراغ در دو جهت با پایان مشترک و پشتیبانی مکث/لغو؛ منبع مناسب موجود نبود.'
+    new[P+'cup_challenge_feedback.tres']='پنج تعویض سریع با مسیر جدا برای سه فنجان و هویت پایدار؛ انیمیشن قبلی فقط دو تعویض داشت.'
     new[P+'chapter_five_feedback.tres']='مهلت باد، حرکت برگ و دو تعویض هویتی فنجان؛ انیمیشن‌های موجود این مسیرها را نداشتند.'
     def resources(value):
         if isinstance(value,str): return {value} if value.startswith('res://') else set()
@@ -606,7 +674,7 @@ def write_asset_report():
             for action in rule['actions']:
                 if action['type']=='play_animation':
                     library=action['animation'].split('/')[0]
-                    if library in ['chapter_five','chapter_two']:
+                    if library in ['chapter_five','chapter_two','cup_challenge','bridge_lantern']:
                         paths.add(P+library+'_feedback.tres')
         stages[str(number)]=dict(background=level['background'],lighting='night_lit' if 'night' in level['background'] else 'day',reused=sorted(paths-set(new)),new=sorted(paths&set(new)))
     report=dict(note='گزارش نویسندگی و منابع؛ تأیید اجرایی یا آزمون تصویری نیست. فایل‌های تصویری و صوتی قبلی تغییر نکردند.',new_assets=new,stages=stages,

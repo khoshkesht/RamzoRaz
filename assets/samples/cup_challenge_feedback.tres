@@ -1,0 +1,47 @@
+[gd_resource type="AnimationLibrary" load_steps=4 format=3]
+
+[sub_resource type="Animation" id="shuffle_a"]
+resource_name = "shuffle_a"
+length = 2.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.29, 0.58, 0.87, 1.16, 1.45, 1.74, 2.03, 2.32, 2.61, 2.899, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(200, -105), Vector2(400, 0), Vector2(600, -105), Vector2(800, 0), Vector2(400, 105), Vector2(0, 0), Vector2(200, -105), Vector2(400, 0), Vector2(600, -105), Vector2(800, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="shuffle_b"]
+resource_name = "shuffle_b"
+length = 2.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.29, 0.58, 0.87, 1.16, 1.45, 1.74, 2.03, 2.32, 2.61, 2.899, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-200, 105), Vector2(-400, 0), Vector2(-400, 0), Vector2(-400, 0), Vector2(0, -105), Vector2(400, 0), Vector2(400, 0), Vector2(400, 0), Vector2(200, 105), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="shuffle_c"]
+resource_name = "shuffle_c"
+length = 2.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.29, 0.58, 0.87, 1.16, 1.45, 1.74, 2.03, 2.32, 2.61, 2.899, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(-200, 105), Vector2(-400, 0), Vector2(-400, 0), Vector2(-400, 0), Vector2(-600, 105), Vector2(-800, 0), Vector2(-800, 0), Vector2(-800, 0), Vector2(0, 0)]
+}
+
+[resource]
+_data = {
+"shuffle_a": SubResource("shuffle_a"),
+"shuffle_b": SubResource("shuffle_b"),
+"shuffle_c": SubResource("shuffle_c")
+}

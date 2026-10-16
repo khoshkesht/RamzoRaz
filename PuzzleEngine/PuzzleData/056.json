@@ -2,7 +2,7 @@
   "schema_version": 1,
   "id": 56,
   "question": "راه مخفی در اتاق کجاست؟",
-  "hint": "رد ساییدگی زیر قفسهٔ راست را دنبال کن؛ آن را به راست بکش.",
+  "hint": "لبهٔ قالیچهٔ جلوی قفسهٔ راست را به چپ بکش تا رد ساییدگی و ضامن کف آشکار شوند. ضامن را به پایین بکش تا قفسه آزاد شود. سپس قفسهٔ راست را تا انتهای رد به راست بکش و ورودی آشکارشده را لمس کن. نقشهٔ قدیمی، وضعیت امروز اتاق را نشان نمی‌دهد.",
   "answer": "پشت کتابخانه‌ای که روی زمین رد ساییدگی دارد",
   "time_limit_seconds": 105,
   "base_score": 135,
@@ -11,7 +11,9 @@
     "result_delay_seconds": 1
   },
   "variables": {
-    "solved": false
+    "solved": false,
+    "unlocked": false,
+    "opened": false
   },
   "objects": [
     {
@@ -22,7 +24,9 @@
         1250,
         650
       ],
-      "interactions": [],
+      "interactions": [
+        "tap"
+      ],
       "visible": false,
       "z_index": -3
     },
@@ -31,11 +35,12 @@
       "scene": "ImageObject",
       "sprite": "res://assets/samples/floor_scrape.svg",
       "position": [
-        1300,
-        850
+        1320,
+        900
       ],
       "interactions": [],
-      "z_index": -2
+      "z_index": -2,
+      "visible": false
     },
     {
       "id": "shelf_left",
@@ -71,15 +76,15 @@
       "interactions": [
         {
           "type": "drag",
+          "axis": "x",
           "bounds": [
-            1100,
-            520,
+            1050,
+            650,
             540,
-            260
+            1
           ],
-          "return_on_invalid": true
-        },
-        "drop_on"
+          "return_on_invalid": false
+        }
       ],
       "z_index": 5
     },
@@ -128,24 +133,290 @@
         0.6,
         0.6
       ]
+    },
+    {
+      "id": "latch",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/floor_latch_closed.svg",
+      "position": [
+        1120,
+        900
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "down"
+        }
+      ],
+      "visible": false,
+      "hit_size": [
+        150,
+        150
+      ]
+    },
+    {
+      "id": "rug",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/rug_symmetric.svg",
+      "position": [
+        1250,
+        900
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "scale": [
+        1.8,
+        0.4
+      ],
+      "z_index": 6
+    },
+    {
+      "id": "jammed",
+      "scene": "TextObject",
+      "text": "قفسه به کف گیر دارد؛ اول ضامنش را پیدا کن.",
+      "position": [
+        960,
+        380
+      ],
+      "hit_size": [
+        1500,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "slide_end",
+      "scene": "DropZone",
+      "position": [
+        1590,
+        650
+      ],
+      "hit_size": [
+        120,
+        340
+      ],
+      "accepted_sources": [],
+      "z_index": -1
     }
   ],
   "rules": [
     {
       "id": "r0000",
+      "event": "swipe",
+      "source": "rug",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "rug",
+          "position": [
+            850,
+            950
+          ]
+        },
+        {
+          "type": "scale",
+          "target": "rug",
+          "value": [
+            0.5,
+            0.3
+          ]
+        },
+        {
+          "type": "show",
+          "target": "latch"
+        },
+        {
+          "type": "show",
+          "target": "scrape"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0001",
+      "event": "swipe",
+      "source": "latch",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "unlocked",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "latch",
+          "sprite": "res://assets/samples/floor_latch_open.svg"
+        },
+        {
+          "type": "hide",
+          "target": "jammed"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0002",
       "event": "drag_end",
       "source": "shelf_right",
       "conditions": [
         {
-          "type": "moved_distance_at_least",
-          "value": 270
+          "type": "variable",
+          "name": "unlocked",
+          "operator": "eq",
+          "value": false
         }
       ],
       "actions": [
         {
+          "type": "move",
+          "target": "shelf_right",
+          "position": [
+            1250,
+            650
+          ]
+        },
+        {
+          "type": "show",
+          "target": "jammed"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "drag_end",
+      "source": "shelf_right",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "unlocked",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "opened",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "not",
+          "condition": {
+            "type": "inside",
+            "target": "shelf_right",
+            "zone": "slide_end"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "shelf_right",
+          "position": [
+            1250,
+            650
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "drag_end",
+      "source": "shelf_right",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "unlocked",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "opened",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "inside",
+          "target": "shelf_right",
+          "zone": "slide_end"
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "shelf_right",
+          "position": [
+            1590,
+            650
+          ]
+        },
+        {
           "type": "show",
           "target": "door"
         },
+        {
+          "type": "set_variable",
+          "name": "opened",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "drag_end",
+      "source": "shelf_right",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "opened",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "shelf_right",
+          "position": [
+            1590,
+            650
+          ]
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "tap",
+      "source": "door",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "opened",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "unlocked",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
         {
           "type": "set_variable",
           "name": "solved",
@@ -156,7 +427,7 @@
       "once": false
     },
     {
-      "id": "r0001",
+      "id": "r0007",
       "event": "drag_end",
       "source": "shelf_left",
       "conditions": [],
@@ -173,7 +444,7 @@
       "once": false
     },
     {
-      "id": "r0002",
+      "id": "r0008",
       "event": "drag_end",
       "source": "chest",
       "conditions": [],
@@ -190,7 +461,7 @@
       "once": false
     },
     {
-      "id": "r0003",
+      "id": "r0009",
       "event": "swipe",
       "source": "old_map",
       "conditions": [],

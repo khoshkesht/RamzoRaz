@@ -119,9 +119,8 @@ func _solve(c: PuzzleController, id: int) -> void:
 			for living in range(9): _tap(c, "sheep_%d" % living)
 			_tap(c, "confirm")
 		49:
-			_drop(c, "six", "tens")
-			_drop(c, "three", "units")
-			_tap(c, "confirm")
+			_tap(c, "counter_4")
+			_tap(c, "counter_5")
 		50:
 			for step in range(4): _swipe(c, "trail_%d" % step)
 			_tap(c, "chest_0")
@@ -189,11 +188,9 @@ func _trap(c: PuzzleController, id: int, second: bool) -> void:
 			if second: _swipe(c, "gate", Vector2(-100, 0))
 			else: _tap(c, "eight")
 		49:
-			if second: _tap(c, "mirror")
-			else:
-				_drop(c, "four", "tens")
-				_drop(c, "five", "units")
-				_tap(c, "confirm")
+			var counter: String = "counter_4" if second else "counter_0"
+			_tap(c, counter)
+			_tap(c, counter)
 		50:
 			if second: _drop(c, "stamp", "paper_zone")
 			else: _drop(c, "coin", "right_chest")
@@ -277,10 +274,9 @@ func _run() -> void:
 	_tap(c, "confirm")
 	check(c.run_status == "PLAYING", "Removing a dead sheep does not count any living sheep")
 	c.load_level_index(48)
-	_drop(c, "three", "tens")
-	_drop(c, "six", "units")
-	_tap(c, "confirm")
-	check(c.run_status == "PLAYING", "The reversed number has the wrong signed difference")
+	_tap(c, "counter_0")
+	check(c.run_status == "PLAYING" and c.object_nodes["difference_3"].visible, "The reversed number has the wrong signed difference")
+	_counter_controls(c)
 	c.load_level_index(49)
 	_swipe(c, "trail_3")
 	check(c.state.variables["trail"] == 0, "Following a disconnected last segment does not count")
@@ -521,3 +517,30 @@ func _finish() -> void:
 	for failure: String in failures: printerr(failure)
 	print("CHAPTER FOUR: %d checks, %d failures" % [checks, failures.size()])
 	quit(0 if failures.is_empty() else 1)
+
+func _counter_controls(c: PuzzleController) -> void:
+	c.load_level_index(48)
+	for item: Dictionary in c.current_definition["objects"]:
+		check(item["scene"] != "DropZone" and item["interactions"] in [[], ["tap"]], "Stage 49 uses direct counter taps")
+	for i in range(4):
+		_tap(c, "counter_%d" % i)
+	check(c.state.variables["tens"] == 0 and c.state.variables["units"] == 9, "Every transfer preserves all nine counters")
+	check(c.object_nodes["difference_0"].visible and c.run_status == "PLAYING", "Zero tens has clear feedback and cannot solve")
+	for i in range(4):
+		_tap(c, "counter_%d" % i)
+	check(c.state.variables["tens"] == 4 and c.object_nodes["number_4"].visible, "Tapping a moved counter reverses exactly one transfer")
+	_tap(c, "counter_8")
+	check(c.state.variables["tens"] == 5 and c.state.variables["units"] == 4 and c.run_status == "PLAYING", "A sum of nine alone does not solve")
+	c.clock.elapsed_usec = c.clock.limit_usec
+	c._process(0.0)
+	c.retry_level()
+	check(c.state.variables["tens"] == 4 and c.state.variables["units"] == 5 and not c.state.variables["transferred"], "Retry restores counter totals and latch")
+	for i in range(9):
+		check(c.state.objects["counter_%d" % i]["state"]["left"] == (i < 4), "Retry restores each counter side")
+	check(c.object_nodes["counter_8"].position == Vector2(1400, 830) and c.object_nodes["number_4"].visible and not c.object_nodes["number_5"].visible, "Retry restores positions and readouts")
+	for first in range(4, 9):
+		for second in range(first + 1, 9):
+			c.load_level_index(48)
+			_tap(c, "counter_%d" % first)
+			_tap(c, "counter_%d" % second)
+			check(c.run_status == "COMPLETED" and c.object_nodes["number_6"].visible and c.object_nodes["difference_6"].visible, "Any two right counters solve and show the final relationship")

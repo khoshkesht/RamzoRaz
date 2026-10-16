@@ -594,22 +594,46 @@ l.image('gate','stream_gate',1650,800,[dict(type='swipe',direction='left')],scal
 l.rule('swipe','gate',[feedback('gate'),*stage48_message('gate_feedback')])
 l.save()
 
-l=Level(49,'هر دو شرط را بررسی کن: مجموع رقم‌ها و اختلاف عدد با وارونهٔ آن.')
-l.variable(tens=0,units=0)
-l.note('عدد اصلی − وارونه = ۲۷؛ مجموع دو رقم = ۹')
-for id,x,label in [('tens',790,'دهگان'),('units',1130,'یکان')]:
-    l.zone(id,x,580,['six','three','four','five']); l.text(id+'_label',label,x,470)
-    for n in [3,4,5,6]: l.text(id+'_'+str(n),str(n),x,580,visible=False)
-for id,digit,x in [('six',6,450),('three',3,790),('four',4,1130),('five',5,1470)]:
-    l.card(id,str(digit),x,840)
-    for zone in ['tens','units']:
-        l.drop(id,zone,[setv(zone,digit),move(id,x,840),*[hide(zone+'_'+str(n)) for n in [3,4,5,6]],show(zone+'_'+str(digit))])
-l.text('partial','مجموع ۹؛ اختلاف ۹ است',960,700,visible=False)
-l.rule('variable_changed','$level',[hide('partial')])
-l.rule('variable_changed','$level',[show('partial')],[dict(type='any',conditions=[dict(type='all',conditions=[var('tens',4),var('units',5)]),dict(type='all',conditions=[var('tens',5),var('units',4)])])])
-l.text('confirm','بررسی دو شرط',960,940,['tap']); l.text('reversed','۶۳ − ۳۶ = ۲۷؛ ۶ + ۳ = ۹',960,700,visible=False)
-l.win('tap','confirm',[show('reversed')],conditions=[var('tens',6),var('units',3)])
-l.image('mirror','mirror_frame',1630,570,['tap'],scale=[.5,.5]); l.rule('tap','mirror',[feedback('mirror')]); l.save()
+# 49: distribute nine physical counters; taps transfer counters between digit columns.
+l=Level(49,'۹ سنگ، مجموع دو رقم را همیشه ۹ نگه می‌دارند. هر سنگ را لمس کن تا به ستون مقابل برود؛ تعداد سنگ‌های چپ دهگان و راست یکان است. اختلاف عدد با وارونه، ۹ برابر اختلاف رقم‌هاست؛ پس برای اختلاف ۲۷، دهگان باید ۳ بیشتر باشد. با مجموع ۹، رقم‌ها ۶ و ۳ هستند. از چیدمان آغازین، دو سنگ سمت راست را لمس کن تا چپ ۶ و راست ۳ شود؛ عدد ۶۳ و وارونهٔ آن ۳۶ است.','puzzle_workbench_day')
+l.d['answer']='۶۳؛ مجموع رقم‌ها ۹ است و با جابه‌جایی آن‌ها، ۳۶ به دست می‌آید که ۲۷ کمتر است.'
+l.variable(tens=4,units=5,transferred=False)
+fixed_text('instructions','هر سنگ را لمس کن تا به ستون مقابل برود؛ تعداد سنگ‌ها رقم آن ستون است.',960,350,1550,100)
+fixed_text('goal','هدف: مجموع رقم‌ها ۹؛ عدد اصلی ۲۷ بیشتر از وارونه',960,420,1500,60)
+for n in range(10):
+    fixed_text('tens_'+str(n),'دهگان (چپ): '+str(n),670,485,450,70,n==4)
+    fixed_text('units_'+str(n),'یکان (راست): '+str(9-n),1250,485,450,70,n==4)
+    fixed_text('number_'+str(n),'عدد اصلی: '+str(n)+str(9-n)+'     |     وارونه: '+str(9-n)+str(n),960,925,1400,70,n==4)
+    difference=9*(2*n-9)
+    message='عدد اصلی '+str(abs(difference))+' واحد '+('بیشتر' if difference>0 else 'کمتر')+' از وارونه است؛ هدف: ۲۷ واحد بیشتر'
+    if n==0: message='دهگان صفر است؛ عدد اصلی باید دو رقمی باشد.'
+    if n==6: message='هر دو شرط برقرار است: مجموع ۹ و اختلاف ۲۷؛ پاسخ ۶۳'
+    fixed_text('difference_'+str(n),message,960,995,1540,70,n==4)
+for i in range(9):
+    left=i<4
+    x=520+(i%3)*150
+    y=570+(i//3)*130
+    id='counter_'+str(i)
+    l.image(id,'stone',x if left else x+580,y,['tap'],state=dict(left=left),scale=[.65,.9],hit_size=[190,130])
+    # Latch prevents this tap matching the reverse transfer after changing state.
+    for was_left in [True,False]:
+        l.rule('tap',id,[move(id,x+580 if was_left else x,y),
+            act('set_state',id,key='left',value=not was_left),
+            setv('tens',-1 if was_left else 1,'increment'),
+            setv('units',1 if was_left else -1,'increment'),setv('transferred')],
+            [dict(type='object_state',target=id,key='left',operator='eq',value=was_left),var('transferred',False)])
+    l.rule('tap',id,[setv('transferred',False)])
+# Refresh before solving, so the completed arrangement remains visible.
+for n in range(10):
+    actions=[]
+    for prefix in ['tens_','units_','number_','difference_']:
+        actions += [hide(prefix+str(other)) for other in range(10) if other!=n]
+        actions += [show(prefix+str(n))]
+    l.rule('tap','$level',actions,[var('tens',n)])
+    l.d['rules'][-1].pop('source')
+l.win('tap','$level',conditions=[var('tens',6),var('units',3)])
+l.d['rules'][-1].pop('source')
+l.save()
 
 l=Level(50,'ردپا را از آغاز قدم‌به‌قدم دنبال کن؛ مقصد رد واقعی را انتخاب کن.')
 l.variable(trail=0)

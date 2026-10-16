@@ -2,7 +2,7 @@
   "schema_version": 1,
   "id": 52,
   "question": "در اتاق پنج پنجره است اما فقط یکی رو به بیرون باز می‌شود. کدام؟",
-  "hint": "پرده را کنار بزن؛ برگ‌های قاب سوم زنده حرکت می‌کنند.",
+  "hint": "پرده را کنار بزن؛ برگ‌های پنجرهٔ سمت راست زنده حرکت می‌کنند.",
   "answer": "پنجره‌ای که نور طبیعی و حرکت برگ‌ها دارد",
   "time_limit_seconds": 120,
   "base_score": 145,
@@ -97,7 +97,7 @@
       "scene": "ClickableObject",
       "sprite": "res://assets/samples/window_living.svg",
       "position": [
-        960,
+        1580,
         650
       ],
       "interactions": [
@@ -109,7 +109,7 @@
       "scene": "ImageObject",
       "sprite": "res://assets/samples/leaf_pair.svg",
       "position": [
-        960,
+        1580,
         650
       ],
       "interactions": [],
@@ -124,7 +124,7 @@
       "scene": "ClickableObject",
       "sprite": "res://assets/samples/curtains_closed.svg",
       "position": [
-        960,
+        1580,
         650
       ],
       "interactions": [
@@ -170,7 +170,7 @@
       "scene": "ClickableObject",
       "sprite": "res://assets/samples/window_painted.svg",
       "position": [
-        1580,
+        960,
         650
       ],
       "interactions": [
@@ -182,7 +182,7 @@
       "scene": "ClickableObject",
       "sprite": "res://assets/samples/curtains_closed.svg",
       "position": [
-        1580,
+        960,
         650
       ],
       "interactions": [

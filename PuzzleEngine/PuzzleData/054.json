@@ -2,7 +2,7 @@
   "schema_version": 1,
   "id": 54,
   "question": "کدام تنگ ترک دارد؟",
-  "hint": "هر سه تنگ را پر کن؛ آزمایش سه‌ثانیه‌ای نشتی بدنه را نشان می‌دهد.",
+  "hint": "پارچ آبِ سمت چپ را روی هر سه تنگ بکش و رها کن؛ آب آبی و نوشتهٔ «پر شد» پر شدن را نشان می‌دهند. سپس انگشتت را روی خودِ دکمهٔ «آزمایش نشتی» پایین صفحه، ۳ ثانیه بدون رها کردن نگه دار. بعد از ظاهر شدن ترک و قطره از بدنهٔ تنگ میانی، همان تنگ را لمس کن.",
   "answer": "تنگی که قطره آب از آن خارج می‌شود",
   "time_limit_seconds": 120,
   "base_score": 145,
@@ -48,13 +48,17 @@
     {
       "id": "jug_0",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/water_jug.svg",
+      "sprite": "res://assets/samples/glass_bowl_empty.svg",
       "position": [
         600,
         650
       ],
       "interactions": [
         "tap"
+      ],
+      "scale": [
+        0.8,
+        0.8
       ]
     },
     {
@@ -75,29 +79,34 @@
     },
     {
       "id": "water_0",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/milk_ripple.svg",
+      "scene": "TextObject",
       "position": [
         600,
-        600
+        815
       ],
       "interactions": [],
-      "scale": [
-        0.5,
-        0.5
+      "visible": false,
+      "text": "پر شد",
+      "hit_size": [
+        300,
+        60
       ],
-      "visible": false
+      "text_color": "#354f54"
     },
     {
       "id": "jug_1",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/water_jug.svg",
+      "sprite": "res://assets/samples/glass_bowl_empty.svg",
       "position": [
         960,
         650
       ],
       "interactions": [
         "tap"
+      ],
+      "scale": [
+        0.8,
+        0.8
       ]
     },
     {
@@ -118,29 +127,34 @@
     },
     {
       "id": "water_1",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/milk_ripple.svg",
+      "scene": "TextObject",
       "position": [
         960,
-        600
+        815
       ],
       "interactions": [],
-      "scale": [
-        0.5,
-        0.5
+      "visible": false,
+      "text": "پر شد",
+      "hit_size": [
+        300,
+        60
       ],
-      "visible": false
+      "text_color": "#354f54"
     },
     {
       "id": "jug_2",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/water_jug.svg",
+      "sprite": "res://assets/samples/glass_bowl_empty.svg",
       "position": [
         1320,
         650
       ],
       "interactions": [
         "tap"
+      ],
+      "scale": [
+        0.8,
+        0.8
       ]
     },
     {
@@ -161,37 +175,57 @@
     },
     {
       "id": "water_2",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/milk_ripple.svg",
+      "scene": "TextObject",
       "position": [
         1320,
-        600
+        815
       ],
       "interactions": [],
-      "scale": [
-        0.5,
-        0.5
+      "visible": false,
+      "text": "پر شد",
+      "hit_size": [
+        300,
+        60
       ],
-      "visible": false
+      "text_color": "#354f54"
     },
     {
       "id": "leak",
       "scene": "ImageObject",
       "sprite": "res://assets/samples/jug_body_leak.svg",
       "position": [
-        1060,
+        1050,
         730
       ],
       "interactions": [],
-      "visible": false
+      "visible": false,
+      "scale": [
+        0.65,
+        0.65
+      ]
+    },
+    {
+      "id": "test_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/puzzle_tile.svg",
+      "position": [
+        960,
+        930
+      ],
+      "interactions": [],
+      "scale": [
+        2.25,
+        1.25
+      ],
+      "z_index": -1
     },
     {
       "id": "test",
       "scene": "TextObject",
-      "text": "آزمایش: سه ثانیه نگه دار",
+      "text": "آزمایش نشتی\nاینجا را ۳ ثانیه نگه دار",
       "position": [
         960,
-        920
+        930
       ],
       "hit_size": [
         620,
@@ -201,10 +235,9 @@
       "interactions": [
         {
           "type": "hold",
-          "duration": 3.0
+          "duration": 3
         }
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
+      ]
     },
     {
       "id": "cloth",
@@ -286,6 +319,70 @@
         0.4,
         0.4
       ]
+    },
+    {
+      "id": "water_label",
+      "scene": "TextObject",
+      "text": "آب!",
+      "position": [
+        300,
+        965
+      ],
+      "hit_size": [
+        430,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "empty_0",
+      "scene": "TextObject",
+      "text": "خالی",
+      "position": [
+        600,
+        815
+      ],
+      "hit_size": [
+        300,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "empty_1",
+      "scene": "TextObject",
+      "text": "خالی",
+      "position": [
+        960,
+        815
+      ],
+      "hit_size": [
+        300,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "empty_2",
+      "scene": "TextObject",
+      "text": "خالی",
+      "position": [
+        1320,
+        815
+      ],
+      "hit_size": [
+        300,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
     }
   ],
   "rules": [
@@ -304,6 +401,11 @@
           ]
         },
         {
+          "type": "replace_sprite",
+          "target": "jug_0",
+          "sprite": "res://assets/samples/glass_bowl_full.svg"
+        },
+        {
           "type": "set_variable",
           "name": "filled_0",
           "value": true,
@@ -312,6 +414,10 @@
         {
           "type": "show",
           "target": "water_0"
+        },
+        {
+          "type": "hide",
+          "target": "empty_0"
         }
       ],
       "once": false,
@@ -332,6 +438,11 @@
           ]
         },
         {
+          "type": "replace_sprite",
+          "target": "jug_1",
+          "sprite": "res://assets/samples/glass_bowl_full.svg"
+        },
+        {
           "type": "set_variable",
           "name": "filled_1",
           "value": true,
@@ -340,6 +451,10 @@
         {
           "type": "show",
           "target": "water_1"
+        },
+        {
+          "type": "hide",
+          "target": "empty_1"
         }
       ],
       "once": false,
@@ -360,6 +475,11 @@
           ]
         },
         {
+          "type": "replace_sprite",
+          "target": "jug_2",
+          "sprite": "res://assets/samples/glass_bowl_full.svg"
+        },
+        {
           "type": "set_variable",
           "name": "filled_2",
           "value": true,
@@ -368,6 +488,10 @@
         {
           "type": "show",
           "target": "water_2"
+        },
+        {
+          "type": "hide",
+          "target": "empty_2"
         }
       ],
       "once": false,
