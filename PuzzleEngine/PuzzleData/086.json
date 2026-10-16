@@ -1,0 +1,620 @@
+{
+  "schema_version": 1,
+  "id": 86,
+  "question": "روی صفحه ۸×۸ چند مستطیل وجود دارد؟",
+  "hint": "دو خط عمودی متفاوت را با کشیدن گیره‌ها روی خط‌ها انتخاب کن؛ برای افقی‌ها هم همین کار را بکن. سپس خط‌کش ترکیب‌ها را نگه دار: از۹خط،۳۶جفت در هر جهت داریم؛۳۶×۳۶=۱۲۹۶. مربع‌ها هم مستطیل‌اند.",
+  "answer": "۱۲۹۶",
+  "time_limit_seconds": 175,
+  "base_score": 205,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"level\": 86, \"kind\": \"rectangles\", \"origin\": [650, 480], \"spacing\": 52, \"line_count\": 9}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "line0_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline0_0.svg",
+      "position": [
+        650,
+        688
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line0_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline0_1.svg",
+      "position": [
+        702,
+        688
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line0_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline0_2.svg",
+      "position": [
+        754,
+        688
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line0_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline0_3.svg",
+      "position": [
+        806,
+        688
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line0_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline0_4.svg",
+      "position": [
+        858,
+        688
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line0_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline0_5.svg",
+      "position": [
+        910,
+        688
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line0_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline0_6.svg",
+      "position": [
+        962,
+        688
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line0_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline0_7.svg",
+      "position": [
+        1014,
+        688
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line0_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline0_8.svg",
+      "position": [
+        1066,
+        688
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "clip0_0",
+      "scene": "TextObject",
+      "text": "↔",
+      "position": [
+        1350,
+        600
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": false
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "clip0_1",
+      "scene": "TextObject",
+      "text": "↔",
+      "position": [
+        1510,
+        600
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": false
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line1_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline1_0.svg",
+      "position": [
+        858,
+        480
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line1_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline1_1.svg",
+      "position": [
+        858,
+        532
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line1_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline1_2.svg",
+      "position": [
+        858,
+        584
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line1_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline1_3.svg",
+      "position": [
+        858,
+        636
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line1_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline1_4.svg",
+      "position": [
+        858,
+        688
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line1_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline1_5.svg",
+      "position": [
+        858,
+        740
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line1_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline1_6.svg",
+      "position": [
+        858,
+        792
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line1_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline1_7.svg",
+      "position": [
+        858,
+        844
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "line1_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_gridline1_8.svg",
+      "position": [
+        858,
+        896
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "clip1_0",
+      "scene": "TextObject",
+      "text": "↕",
+      "position": [
+        1350,
+        780
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": false
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "clip1_1",
+      "scene": "TextObject",
+      "text": "↕",
+      "position": [
+        1510,
+        780
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": false
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "combinations",
+      "scene": "TextObject",
+      "text": "خط‌کش ترکیب‌ها",
+      "position": [
+        1450,
+        460
+      ],
+      "hit_size": [
+        410,
+        90
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_410_90.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0",
+        "trap1"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "۲۰۴",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "۴۰۹۶",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "حذف مربع",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "۲۰۴فقط مربع‌هاست؛ سایر مستطیل‌ها هم باید شمرده شوند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap1",
+          "position": [
+            135,
+            690
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "جفت خانه‌ها مستطیل را مشخص نمی‌کنند؛ دو خط از هر جهت لازم است."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0002",
+      "event": "hold",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "مربع هم مستطیل است؛ حذف آن شمارش را به۱۰۹۲کاهش می‌دهد."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

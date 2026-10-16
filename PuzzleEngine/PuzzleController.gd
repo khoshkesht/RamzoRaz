@@ -113,7 +113,12 @@ func load_level_index(index: int) -> bool:
 	hud.hint_button.disabled = false
 	action_runner.configure(state, object_nodes)
 	action_runner.execution_guard = can_process_gameplay
-	rule_evaluator.configure(current_definition, state, object_nodes, action_runner)
+	if not rule_evaluator.configure(current_definition, state, object_nodes, action_runner):
+		run_status = STATUS_ERROR
+		hud.hint_button.disabled = true
+		overlay.show_error()
+		load_failed.emit([{"file": manifest["levels"][index]["path"], "level_id": state.level_id, "rule_id": "$custom", "path": "custom_handler", "message": "Custom handler could not be initialized."}])
+		return false
 	var ui_roots: Array[Control] = [hud, $OverlayLayer/OverlayRoot]
 	if get_parent().has_node("NavigationLayer/Root"):
 		ui_roots.append(get_parent().get_node("NavigationLayer/Root"))

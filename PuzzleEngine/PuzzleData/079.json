@@ -1,0 +1,836 @@
+{
+  "schema_version": 1,
+  "id": 79,
+  "question": "۱۰ کیسه سکه، یک کیسه سکه‌های ۱ گرم سبک‌تر؛ با یک وزن دیجیتال کیسه را پیدا کن.",
+  "hint": "زیر هر کیسه تعداد سکهٔ بستهٔ برداشت و تعداد نمونهٔ روی ترازو دیده می‌شود. لمس کیسه اندازهٔ بسته را۱تا۱۰تغییر می‌دهد؛ کشیدن آن روی سینی همان بسته را جایگزین نمونهٔ قبلی می‌کند. بسته‌های۱تا۱۰را از کیسه‌های۱تا۱۰بردار.۵۵سکهٔ سالم باید۵۵۰گرم باشد؛ یک توزین۵۴۳نشان می‌دهد. کمبود۷گرم یعنی کیسه۷؛ همان کیسه را نگه دار.",
+  "answer": "از کیسه‌های ۱ تا ۱۰ به تعداد شماره‌شان سکه بردار و اختلاف وزن شماره کیسه را می‌دهد",
+  "time_limit_seconds": 195,
+  "base_score": 200,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"level\": 79, \"kind\": \"bags\"}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "masses",
+      "scene": "TextObject",
+      "text": "سالم۱۰گرم؛ تقلبی۹گرم",
+      "position": [
+        960,
+        450
+      ],
+      "hit_size": [
+        1000,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "bag0",
+      "scene": "TextObject",
+      "text": "۱",
+      "position": [
+        350,
+        590
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap",
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5
+    },
+    {
+      "id": "count0",
+      "scene": "TextObject",
+      "text": "۱ → ۰",
+      "position": [
+        350,
+        660
+      ],
+      "hit_size": [
+        230,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "bag1",
+      "scene": "TextObject",
+      "text": "۲",
+      "position": [
+        640,
+        590
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap",
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5
+    },
+    {
+      "id": "count1",
+      "scene": "TextObject",
+      "text": "۲ → ۰",
+      "position": [
+        640,
+        660
+      ],
+      "hit_size": [
+        230,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "bag2",
+      "scene": "TextObject",
+      "text": "۳",
+      "position": [
+        930,
+        590
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap",
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5
+    },
+    {
+      "id": "count2",
+      "scene": "TextObject",
+      "text": "۳ → ۰",
+      "position": [
+        930,
+        660
+      ],
+      "hit_size": [
+        230,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "bag3",
+      "scene": "TextObject",
+      "text": "۴",
+      "position": [
+        1220,
+        590
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap",
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5
+    },
+    {
+      "id": "count3",
+      "scene": "TextObject",
+      "text": "۴ → ۰",
+      "position": [
+        1220,
+        660
+      ],
+      "hit_size": [
+        230,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "bag4",
+      "scene": "TextObject",
+      "text": "۵",
+      "position": [
+        1510,
+        590
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap",
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5
+    },
+    {
+      "id": "count4",
+      "scene": "TextObject",
+      "text": "۵ → ۰",
+      "position": [
+        1510,
+        660
+      ],
+      "hit_size": [
+        230,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "bag5",
+      "scene": "TextObject",
+      "text": "۶",
+      "position": [
+        350,
+        810
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap",
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5
+    },
+    {
+      "id": "count5",
+      "scene": "TextObject",
+      "text": "۶ → ۰",
+      "position": [
+        350,
+        880
+      ],
+      "hit_size": [
+        230,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "bag6",
+      "scene": "TextObject",
+      "text": "۷",
+      "position": [
+        640,
+        810
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap",
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5
+    },
+    {
+      "id": "count6",
+      "scene": "TextObject",
+      "text": "۷ → ۰",
+      "position": [
+        640,
+        880
+      ],
+      "hit_size": [
+        230,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "bag7",
+      "scene": "TextObject",
+      "text": "۸",
+      "position": [
+        930,
+        810
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap",
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5
+    },
+    {
+      "id": "count7",
+      "scene": "TextObject",
+      "text": "۸ → ۰",
+      "position": [
+        930,
+        880
+      ],
+      "hit_size": [
+        230,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "bag8",
+      "scene": "TextObject",
+      "text": "۹",
+      "position": [
+        1220,
+        810
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap",
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5
+    },
+    {
+      "id": "count8",
+      "scene": "TextObject",
+      "text": "۹ → ۰",
+      "position": [
+        1220,
+        880
+      ],
+      "hit_size": [
+        230,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "bag9",
+      "scene": "TextObject",
+      "text": "۱۰",
+      "position": [
+        1510,
+        810
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap",
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "z_index": 5
+    },
+    {
+      "id": "count9",
+      "scene": "TextObject",
+      "text": "۱۰ → ۰",
+      "position": [
+        1510,
+        880
+      ],
+      "hit_size": [
+        230,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "sample_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1650,
+        700
+      ],
+      "interactions": [],
+      "scale": [
+        1.4166666666666667,
+        1.5833333333333333
+      ]
+    },
+    {
+      "id": "sample",
+      "scene": "DropZone",
+      "position": [
+        1650,
+        700
+      ],
+      "hit_size": [
+        170,
+        190
+      ],
+      "accepted_sources": [
+        "bag0",
+        "bag1",
+        "bag2",
+        "bag3",
+        "bag4",
+        "bag5",
+        "bag6",
+        "bag7",
+        "bag8",
+        "bag9"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "sample_count",
+      "scene": "TextObject",
+      "text": "۰ سکه",
+      "position": [
+        1650,
+        700
+      ],
+      "hit_size": [
+        160,
+        140
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "weigh",
+      "scene": "TextObject",
+      "text": "توزین",
+      "position": [
+        1650,
+        880
+      ],
+      "hit_size": [
+        180,
+        90
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_180_90.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ]
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0",
+        "trap2"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "یکی از هرکیسه",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "کیسه سبک‌نما",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "آهنربا",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کمبود۱گرم فقط وجود کیسه تقلبی را نشان می‌دهد؛ شماره معلوم نمی‌شود."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0001",
+      "event": "hold",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "حجم و ظاهر کیسه، جرم تک‌سکه را معلوم نمی‌کند."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap2",
+          "position": [
+            135,
+            855
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "جنس سکه‌ها یکسان است؛ واکنش مغناطیسی شماره کیسه را جدا نمی‌کند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

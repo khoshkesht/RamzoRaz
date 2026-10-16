@@ -390,7 +390,7 @@ func _migration() -> void:
 				old["unlocked_hints"] = []
 				old["hint_points_spent"] = 0
 			var migrated := store._migrate_main_progress(old)
-			check(store.valid(migrated) and migrated.get("manifest_version") == 9, "Known catalog migrates to seventy stages")
+			check(store.valid(migrated) and migrated.get("manifest_version") == 10, "Known catalog migrates to the expanded catalog")
 			check(migrated.get("results") == old["results"] and migrated.get("unlocked_hints") == old["unlocked_hints"] and migrated.get("hint_points_spent") == old["hint_points_spent"], "Migration preserves earned and spent points and hints")
 			store.data = migrated
 			if pending: check(store.advance(), "Pending old result advances only on Continue")
@@ -414,7 +414,7 @@ func _progression() -> void:
 		check(c.progress_store.data["pending_result_level_id"] == id, "Result is saved once at %d" % id)
 		c._process(1.1)
 		c.continue_to_next_level()
-	check(c.progress_store.data["current_level_id"] == null and c.progress_store.data["results"].size() == 70, "Seventy results finish the catalog")
+	check(c.progress_store.data["current_level_id"] == 71 and c.progress_store.data["results"].size() == 70, "Continue after seventy unlocks seventy-one")
 	check(not c.load_level_index(50), "Completed appended stages cannot be replayed")
 	c.free()
 

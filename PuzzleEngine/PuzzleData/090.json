@@ -1,0 +1,509 @@
+{
+  "schema_version": 1,
+  "id": 90,
+  "question": "کدام قطعه آینه‌ای، نقش اسلیمی را کامل می‌کند؟",
+  "hint": "قطعهٔ بازتابی با رنگ لبه‌های بالا/راست/پایین/چپ مطابق قاب را پیدا کن. جهت اولیه‌اش۹۰درجه است؛ سه بار لمسش کن تا به جهت۰برگردد، سپس در قاب بگذار. قطعهٔ چرخیده، بازتاب نیست.",
+  "answer": "قطعه‌ای که با بازتاب هندسی بخش مقابل منطبق است",
+  "time_limit_seconds": 185,
+  "base_score": 210,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"kind\": \"fit\", \"slots\": [[960, 650]], \"pieces\": [[330.0, 820], [746.6666666666667, 820], [1163.3333333333335, 820], [1580.0, 820]], \"target\": [1], \"rotations\": [0, 0, 0, 0], \"initial\": [-1, -1, -1, -1], \"clues\": [], \"angles\": [0, 90, 180, 0], \"level\": 90}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "slot0_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        1.3333333333333333,
+        1.3333333333333333
+      ]
+    },
+    {
+      "id": "slot0",
+      "scene": "DropZone",
+      "position": [
+        960,
+        650
+      ],
+      "hit_size": [
+        160,
+        160
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "piece0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_motif_0.svg",
+      "position": [
+        330.0,
+        820
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.3,
+        1.3
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name0",
+      "scene": "TextObject",
+      "text": "A",
+      "position": [
+        330.0,
+        920
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_motif_1.svg",
+      "position": [
+        746.6666666666667,
+        820
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.3,
+        1.3
+      ],
+      "rotation_degrees": 90
+    },
+    {
+      "id": "name1",
+      "scene": "TextObject",
+      "text": "B",
+      "position": [
+        746.6666666666667,
+        920
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_motif_2.svg",
+      "position": [
+        1163.3333333333335,
+        820
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.3,
+        1.3
+      ],
+      "rotation_degrees": 180
+    },
+    {
+      "id": "name2",
+      "scene": "TextObject",
+      "text": "C",
+      "position": [
+        1163.3333333333335,
+        920
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_motif_3.svg",
+      "position": [
+        1580.0,
+        820
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.3,
+        1.3
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name3",
+      "scene": "TextObject",
+      "text": "D",
+      "position": [
+        1580.0,
+        920
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "reference",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_motif_0.svg",
+      "position": [
+        730,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        1.3,
+        1.3
+      ]
+    },
+    {
+      "id": "direction",
+      "scene": "TextObject",
+      "text": "↑",
+      "position": [
+        730,
+        540
+      ],
+      "hit_size": [
+        100,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "axis",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_reflection_axis.svg",
+      "position": [
+        845,
+        650
+      ],
+      "interactions": []
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ]
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap1"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "چرخش۱۸۰",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "روکش شفاف",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "آینه کج",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "tap",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "چرخش۱۸۰درجه، بازتاب نقش نامتقارن نیست."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap1",
+          "position": [
+            135,
+            690
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "پنهان‌کردن یک لبه، اتصال غلط زیر آن را اصلاح نمی‌کند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0002",
+      "event": "hold",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "محور واقعی بازتاب عمودی است؛ پیش‌نمایش مایل معیار نیست."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

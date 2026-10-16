@@ -16,6 +16,8 @@ var action_runner: PuzzleActionRunner
 var active: bool = false
 var execution_guard: Callable
 var debug_log: Array[Dictionary] = []
+var custom_handler: PuzzleCustomHandler
+var custom_context: PuzzleCustomContext
 
 var _queue: Array[Dictionary] = []
 var _processing: bool = false
@@ -23,8 +25,11 @@ var _event_count: int = 0
 var _action_count: int = 0
 var _current_rule_id: String = ""
 
+func _exit_tree() -> void:
+	stop()
 
-func configure(level_definition: Dictionary, state: PuzzleState, nodes: Dictionary, runner: PuzzleActionRunner) -> void:
+
+func configure(level_definition: Dictionary, state: PuzzleState, nodes: Dictionary, runner: PuzzleActionRunner) -> bool:
 	stop()
 	definition = level_definition
 	puzzle_state = state
@@ -32,6 +37,18 @@ func configure(level_definition: Dictionary, state: PuzzleState, nodes: Dictiona
 	action_runner = runner
 	active = true
 	debug_log.clear()
+	if definition.has("custom_handler"):
+		var script := load(definition["custom_handler"]) as Script
+		if script == null or not script.can_instantiate():
+			_fail("Custom handler script is unavailable.")
+			return false
+		custom_handler = script.new() as PuzzleCustomHandler
+		if custom_handler == null:
+			_fail("Custom handler must extend PuzzleCustomHandler.")
+			return false
+		custom_context = PuzzleCustomContext.new(state)
+		custom_handler.setup(custom_context)
+	return true
 
 
 func begin() -> void:
@@ -46,6 +63,12 @@ func resume_pending() -> void:
 
 func stop() -> void:
 	active = false
+	if custom_context != null:
+		custom_context.invalidate()
+	if custom_handler != null:
+		custom_handler.teardown()
+	custom_handler = null
+	custom_context = null
 	_queue.clear()
 	if is_instance_valid(action_runner):
 		action_runner.cancel_all()
@@ -110,7 +133,7 @@ func _process_queue() -> void:
 		var event: Dictionary = _queue.pop_front()
 		_trace("event", event.get("type", ""), event)
 		_process_event(event)
-		if _execution_allowed() and evaluate_condition(definition["win_condition"], event):
+		if _execution_allowed() and definition["win_condition"] != null and evaluate_condition(definition["win_condition"], event):
 			_complete()
 	_processing = false
 	_current_rule_id = ""
@@ -126,31 +149,44 @@ func _process_event(event: Dictionary) -> void:
 		if rule.get("once", true):
 			puzzle_state.consumed_rules[rule["id"]] = true
 		_trace("rule", rule["id"], event)
-		for action: Dictionary in rule["actions"]:
-			if not _execution_allowed():
-				return
-			_action_count += 1
-			if _action_count > MAX_CHAIN_ACTIONS:
-				_fail("Event chain exceeded %d actions." % MAX_CHAIN_ACTIONS)
-				return
-			_trace("action", action["type"], action)
-			var result := action_runner.run_action(action, puzzle_state.run_id)
-			if not result["ok"]:
-				_fail(result["error"])
-				return
-			if result.get("failure_requested", false):
-				var failed_level := puzzle_state.level_id
-				var failed_run := puzzle_state.run_id
-				stop()
-				level_failed.emit(failed_level, failed_run)
-				return
-			for generated: Dictionary in result["events"]:
-				_queue.append(generated)
-			if not _execution_allowed():
-				return
-			if result["success_requested"] or evaluate_condition(definition["win_condition"]):
-				_complete()
-				return
+		_run_actions(rule["actions"])
+	if _execution_allowed() and custom_handler != null:
+		custom_handler.on_event(event, custom_context)
+		var pending: Array[Dictionary] = custom_context._actions.duplicate(true)
+		var pending_events: Array[Dictionary] = custom_context._events.duplicate(true)
+		custom_context._actions.clear()
+		custom_context._events.clear()
+		_current_rule_id = "$custom"
+		_run_actions(pending)
+		if _execution_allowed():
+			_queue.append_array(pending_events)
+
+func _run_actions(actions: Array) -> void:
+	for action: Dictionary in actions:
+		if not _execution_allowed():
+			return
+		_action_count += 1
+		if _action_count > MAX_CHAIN_ACTIONS:
+			_fail("Event chain exceeded %d actions." % MAX_CHAIN_ACTIONS)
+			return
+		_trace("action", action["type"], action)
+		var result := action_runner.run_action(action, puzzle_state.run_id)
+		if not result["ok"]:
+			_fail(result["error"])
+			return
+		if result.get("failure_requested", false):
+			var failed_level := puzzle_state.level_id
+			var failed_run := puzzle_state.run_id
+			stop()
+			level_failed.emit(failed_level, failed_run)
+			return
+		for generated: Dictionary in result["events"]:
+			_queue.append(generated)
+		if not _execution_allowed():
+			return
+		if result["success_requested"] or (definition["win_condition"] != null and evaluate_condition(definition["win_condition"])):
+			_complete()
+			return
 
 
 func _rule_matches(rule: Dictionary, event: Dictionary) -> bool:
@@ -172,6 +208,8 @@ func _complete() -> void:
 	if not _execution_allowed():
 		return
 	active = false
+	if custom_context != null:
+		custom_context.invalidate()
 	_queue.clear()
 	action_runner.cancel_all()
 	_trace("complete", str(puzzle_state.level_id), {})
@@ -185,6 +223,8 @@ func _fail(message: String) -> void:
 	if not active:
 		return
 	active = false
+	if custom_context != null:
+		custom_context.invalidate()
 	_queue.clear()
 	action_runner.cancel_all()
 	var error := {

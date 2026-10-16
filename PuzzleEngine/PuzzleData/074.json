@@ -1,0 +1,2616 @@
+{
+  "schema_version": 1,
+  "id": 74,
+  "question": "در یک خانواده، هر پسر به تعداد خواهرانش برادر دارد و هر دختر دو برابر تعداد خواهرانش برادر دارد.",
+  "hint": "کارت‌های پسر را در ردیف بالا و دختر را پایین قرار بده. برای هر فرد خودش را نشمار:۴پسر و۳دختر، برای پسر۳برادر=۳خواهر و برای دختر۴برادر=۲×۲خواهر می‌دهد. افراد اضافه را به بیرون ردیف برگردان.",
+  "answer": "۴ پسر و ۳ دختر",
+  "time_limit_seconds": 170,
+  "base_score": 190,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "boys": 0,
+    "girls": 0,
+    "person0": false,
+    "person1": false,
+    "person2": false,
+    "person3": false,
+    "person4": false,
+    "person5": false,
+    "person6": false,
+    "person7": false,
+    "person8": false,
+    "person9": false
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "boys_label",
+      "scene": "TextObject",
+      "text": "پسرها",
+      "position": [
+        470,
+        500
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "girls_label",
+      "scene": "TextObject",
+      "text": "دخترها",
+      "position": [
+        1430,
+        500
+      ],
+      "hit_size": [
+        300,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "boys_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        520,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        5.416666666666667,
+        1.8333333333333333
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "boys",
+      "scene": "DropZone",
+      "position": [
+        520,
+        650
+      ],
+      "hit_size": [
+        650,
+        220
+      ],
+      "accepted_sources": [
+        "person0",
+        "person1",
+        "person2",
+        "person3",
+        "person4",
+        "person5",
+        "person6",
+        "person7",
+        "person8",
+        "person9"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "girls_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1400,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        5.416666666666667,
+        1.8333333333333333
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "girls",
+      "scene": "DropZone",
+      "position": [
+        1400,
+        650
+      ],
+      "hit_size": [
+        650,
+        220
+      ],
+      "accepted_sources": [
+        "person0",
+        "person1",
+        "person2",
+        "person3",
+        "person4",
+        "person5",
+        "person6",
+        "person7",
+        "person8",
+        "person9"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "outside_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        960,
+        865
+      ],
+      "interactions": [],
+      "scale": [
+        13.75,
+        1.0
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "outside",
+      "scene": "DropZone",
+      "position": [
+        960,
+        865
+      ],
+      "hit_size": [
+        1650,
+        120
+      ],
+      "accepted_sources": [
+        "person0",
+        "person1",
+        "person2",
+        "person3",
+        "person4",
+        "person5",
+        "person6",
+        "person7",
+        "person8",
+        "person9"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "person0",
+      "scene": "TextObject",
+      "text": "پسر",
+      "position": [
+        300,
+        865
+      ],
+      "hit_size": [
+        110,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_110_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "person1",
+      "scene": "TextObject",
+      "text": "پسر",
+      "position": [
+        445,
+        865
+      ],
+      "hit_size": [
+        110,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_110_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "person2",
+      "scene": "TextObject",
+      "text": "پسر",
+      "position": [
+        590,
+        865
+      ],
+      "hit_size": [
+        110,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_110_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "person3",
+      "scene": "TextObject",
+      "text": "پسر",
+      "position": [
+        735,
+        865
+      ],
+      "hit_size": [
+        110,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_110_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "person4",
+      "scene": "TextObject",
+      "text": "پسر",
+      "position": [
+        880,
+        865
+      ],
+      "hit_size": [
+        110,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_110_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "person5",
+      "scene": "TextObject",
+      "text": "دختر",
+      "position": [
+        1025,
+        865
+      ],
+      "hit_size": [
+        110,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_110_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "person6",
+      "scene": "TextObject",
+      "text": "دختر",
+      "position": [
+        1170,
+        865
+      ],
+      "hit_size": [
+        110,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_110_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "person7",
+      "scene": "TextObject",
+      "text": "دختر",
+      "position": [
+        1315,
+        865
+      ],
+      "hit_size": [
+        110,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_110_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "person8",
+      "scene": "TextObject",
+      "text": "دختر",
+      "position": [
+        1460,
+        865
+      ],
+      "hit_size": [
+        110,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_110_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "person9",
+      "scene": "TextObject",
+      "text": "دختر",
+      "position": [
+        1605,
+        865
+      ],
+      "hit_size": [
+        110,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_110_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0",
+        "trap1"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "خانواده۴+۴",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "خانواده۳+۲",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "شمارش خودم",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "person0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person0",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person0",
+          "position": [
+            300,
+            650
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person0",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "boys",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "person0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person0",
+          "position": [
+            300,
+            650
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "person0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person0",
+          "position": [
+            300,
+            865
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person0",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "boys",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "person0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person0",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person0",
+          "position": [
+            300,
+            865
+          ]
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "source": "person0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person0",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person0",
+          "position": [
+            300,
+            865
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0005",
+      "event": "drop_on",
+      "source": "person0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person0",
+          "position": [
+            300,
+            650
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0006",
+      "event": "drop_on",
+      "source": "person1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person1",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person1",
+          "position": [
+            405,
+            650
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person1",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "boys",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0007",
+      "event": "drop_on",
+      "source": "person1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person1",
+          "position": [
+            405,
+            650
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0008",
+      "event": "drop_on",
+      "source": "person1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person1",
+          "position": [
+            445,
+            865
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person1",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "boys",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0009",
+      "event": "drop_on",
+      "source": "person1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person1",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person1",
+          "position": [
+            445,
+            865
+          ]
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0010",
+      "event": "drop_on",
+      "source": "person1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person1",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person1",
+          "position": [
+            445,
+            865
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0011",
+      "event": "drop_on",
+      "source": "person1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person1",
+          "position": [
+            405,
+            650
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0012",
+      "event": "drop_on",
+      "source": "person2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person2",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person2",
+          "position": [
+            510,
+            650
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person2",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "boys",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0013",
+      "event": "drop_on",
+      "source": "person2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person2",
+          "position": [
+            510,
+            650
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0014",
+      "event": "drop_on",
+      "source": "person2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person2",
+          "position": [
+            590,
+            865
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person2",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "boys",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0015",
+      "event": "drop_on",
+      "source": "person2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person2",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person2",
+          "position": [
+            590,
+            865
+          ]
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0016",
+      "event": "drop_on",
+      "source": "person2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person2",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person2",
+          "position": [
+            590,
+            865
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0017",
+      "event": "drop_on",
+      "source": "person2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person2",
+          "position": [
+            510,
+            650
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0018",
+      "event": "drop_on",
+      "source": "person3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person3",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person3",
+          "position": [
+            615,
+            650
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person3",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "boys",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0019",
+      "event": "drop_on",
+      "source": "person3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person3",
+          "position": [
+            615,
+            650
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0020",
+      "event": "drop_on",
+      "source": "person3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person3",
+          "position": [
+            735,
+            865
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person3",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "boys",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0021",
+      "event": "drop_on",
+      "source": "person3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person3",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person3",
+          "position": [
+            735,
+            865
+          ]
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0022",
+      "event": "drop_on",
+      "source": "person3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person3",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person3",
+          "position": [
+            735,
+            865
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0023",
+      "event": "drop_on",
+      "source": "person3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person3",
+          "position": [
+            615,
+            650
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0024",
+      "event": "drop_on",
+      "source": "person4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person4",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person4",
+          "position": [
+            720,
+            650
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person4",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "boys",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0025",
+      "event": "drop_on",
+      "source": "person4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person4",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person4",
+          "position": [
+            720,
+            650
+          ]
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0026",
+      "event": "drop_on",
+      "source": "person4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person4",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person4",
+          "position": [
+            880,
+            865
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person4",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "boys",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0027",
+      "event": "drop_on",
+      "source": "person4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person4",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person4",
+          "position": [
+            880,
+            865
+          ]
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0028",
+      "event": "drop_on",
+      "source": "person4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person4",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person4",
+          "position": [
+            880,
+            865
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0029",
+      "event": "drop_on",
+      "source": "person4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person4",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person4",
+          "position": [
+            720,
+            650
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0030",
+      "event": "drop_on",
+      "source": "person5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person5",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person5",
+          "position": [
+            1180,
+            650
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person5",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "girls",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0031",
+      "event": "drop_on",
+      "source": "person5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person5",
+          "position": [
+            1180,
+            650
+          ]
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0032",
+      "event": "drop_on",
+      "source": "person5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person5",
+          "position": [
+            1025,
+            865
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person5",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "girls",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0033",
+      "event": "drop_on",
+      "source": "person5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person5",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person5",
+          "position": [
+            1025,
+            865
+          ]
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0034",
+      "event": "drop_on",
+      "source": "person5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person5",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person5",
+          "position": [
+            1025,
+            865
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0035",
+      "event": "drop_on",
+      "source": "person5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person5",
+          "position": [
+            1180,
+            650
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0036",
+      "event": "drop_on",
+      "source": "person6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person6",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person6",
+          "position": [
+            1285,
+            650
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person6",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "girls",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0037",
+      "event": "drop_on",
+      "source": "person6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person6",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person6",
+          "position": [
+            1285,
+            650
+          ]
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0038",
+      "event": "drop_on",
+      "source": "person6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person6",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person6",
+          "position": [
+            1170,
+            865
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person6",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "girls",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0039",
+      "event": "drop_on",
+      "source": "person6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person6",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person6",
+          "position": [
+            1170,
+            865
+          ]
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0040",
+      "event": "drop_on",
+      "source": "person6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person6",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person6",
+          "position": [
+            1170,
+            865
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0041",
+      "event": "drop_on",
+      "source": "person6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person6",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person6",
+          "position": [
+            1285,
+            650
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0042",
+      "event": "drop_on",
+      "source": "person7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person7",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person7",
+          "position": [
+            1390,
+            650
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person7",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "girls",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0043",
+      "event": "drop_on",
+      "source": "person7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person7",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person7",
+          "position": [
+            1390,
+            650
+          ]
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0044",
+      "event": "drop_on",
+      "source": "person7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person7",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person7",
+          "position": [
+            1315,
+            865
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person7",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "girls",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0045",
+      "event": "drop_on",
+      "source": "person7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person7",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person7",
+          "position": [
+            1315,
+            865
+          ]
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0046",
+      "event": "drop_on",
+      "source": "person7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person7",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person7",
+          "position": [
+            1315,
+            865
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0047",
+      "event": "drop_on",
+      "source": "person7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person7",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person7",
+          "position": [
+            1390,
+            650
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0048",
+      "event": "drop_on",
+      "source": "person8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person8",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person8",
+          "position": [
+            1495,
+            650
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person8",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "girls",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0049",
+      "event": "drop_on",
+      "source": "person8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person8",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person8",
+          "position": [
+            1495,
+            650
+          ]
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0050",
+      "event": "drop_on",
+      "source": "person8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person8",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person8",
+          "position": [
+            1460,
+            865
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person8",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "girls",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0051",
+      "event": "drop_on",
+      "source": "person8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person8",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person8",
+          "position": [
+            1460,
+            865
+          ]
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0052",
+      "event": "drop_on",
+      "source": "person8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person8",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person8",
+          "position": [
+            1460,
+            865
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0053",
+      "event": "drop_on",
+      "source": "person8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person8",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person8",
+          "position": [
+            1495,
+            650
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0054",
+      "event": "drop_on",
+      "source": "person9",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person9",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person9",
+          "position": [
+            1600,
+            650
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person9",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "girls",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0055",
+      "event": "drop_on",
+      "source": "person9",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person9",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person9",
+          "position": [
+            1600,
+            650
+          ]
+        }
+      ],
+      "once": false,
+      "target": "girls"
+    },
+    {
+      "id": "r0056",
+      "event": "drop_on",
+      "source": "person9",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person9",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person9",
+          "position": [
+            1605,
+            865
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "person9",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "girls",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0057",
+      "event": "drop_on",
+      "source": "person9",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person9",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person9",
+          "position": [
+            1605,
+            865
+          ]
+        }
+      ],
+      "once": false,
+      "target": "outside"
+    },
+    {
+      "id": "r0058",
+      "event": "drop_on",
+      "source": "person9",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person9",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person9",
+          "position": [
+            1605,
+            865
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0059",
+      "event": "drop_on",
+      "source": "person9",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "person9",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "person9",
+          "position": [
+            1600,
+            650
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کارت پسر در ردیف پسر و دختر در ردیف دختر قرار می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "boys"
+    },
+    {
+      "id": "r0060",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "برای پسر۳برادر و۴خواهر؛ رابطه اول نادرست است."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0061",
+      "event": "drop_on",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap1",
+          "position": [
+            135,
+            690
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "برای دختر۳برادر و۱خواهر؛ دوبرابر بودن برقرار نیست."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0062",
+      "event": "tap",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "خود فرد در تعداد خواهر و برادرش شمرده نمی‌شود."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "all",
+    "conditions": [
+      {
+        "type": "variable",
+        "name": "boys",
+        "operator": "eq",
+        "value": 4
+      },
+      {
+        "type": "variable",
+        "name": "girls",
+        "operator": "eq",
+        "value": 3
+      }
+    ]
+  },
+  "counters": [
+    {
+      "label": "پسر",
+      "variable": "boys",
+      "target": 4
+    },
+    {
+      "label": "دختر",
+      "variable": "girls",
+      "target": 3
+    }
+  ]
+}

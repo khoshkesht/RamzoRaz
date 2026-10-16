@@ -24,6 +24,7 @@ func configure(data: Dictionary, order: int) -> void:
 	z_index = int(data["z_index"])
 	z_as_relative = false
 	visible = data["visible"]
+	modulate = Color(data.get("tint", "#ffffff"))
 	interactive = data["interactive"]
 	sprite.texture = load(data["sprite"]) as Texture2D if data.has("sprite") else null
 	sprite.visible = sprite.texture != null

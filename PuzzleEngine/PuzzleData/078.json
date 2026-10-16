@@ -1,0 +1,1486 @@
+{
+  "schema_version": 1,
+  "id": 78,
+  "question": "تخته ۸×۸ با دو گوشه قطری حذف شده؛ آیا با ۳۱ دومینو پوشانده می‌شود؟",
+  "hint": "دو گوشهٔ حذف‌شده هم‌رنگ‌اند. دو مجموعهٔ رنگی را نگه دار تا۳۰و۳۲خانه معلوم شود. یک دومینو را روی جفت نمونه قرار بده: همیشه یکی از هر رنگ می‌پوشاند. سپس دومینو را روی دو خانهٔ هم‌رنگ باقی‌مانده ببر؛ نابرابری رنگ‌ها ناممکن‌بودن پوشش را ثابت می‌کند.",
+  "answer": "خیر",
+  "time_limit_seconds": 190,
+  "base_score": 195,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "black": false,
+    "white": false,
+    "pair": false
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "board0_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        710,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board0_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        770,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board0_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        830,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board0_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        890,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board0_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        950,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board0_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        1010,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board0_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        1070,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board1_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        650,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board1_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        710,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board1_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        770,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board1_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        830,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board1_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        890,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board1_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        950,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board1_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        1010,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board1_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        1070,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board2_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        650,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board2_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        710,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board2_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        770,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board2_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        830,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board2_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        890,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board2_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        950,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board2_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        1010,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board2_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        1070,
+        600
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board3_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        650,
+        660
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board3_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        710,
+        660
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board3_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        770,
+        660
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board3_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        830,
+        660
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board3_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        890,
+        660
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board3_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        950,
+        660
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board3_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        1010,
+        660
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board3_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        1070,
+        660
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board4_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        650,
+        720
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board4_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        710,
+        720
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board4_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        770,
+        720
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board4_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        830,
+        720
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board4_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        890,
+        720
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board4_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        950,
+        720
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board4_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        1010,
+        720
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board4_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        1070,
+        720
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board5_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        650,
+        780
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board5_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        710,
+        780
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board5_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        770,
+        780
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board5_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        830,
+        780
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board5_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        890,
+        780
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board5_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        950,
+        780
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board5_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        1010,
+        780
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board5_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        1070,
+        780
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board6_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        650,
+        840
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board6_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        710,
+        840
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board6_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        770,
+        840
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board6_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        830,
+        840
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board6_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        890,
+        840
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board6_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        950,
+        840
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board6_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        1010,
+        840
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board6_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        1070,
+        840
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board7_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        650,
+        900
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board7_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        710,
+        900
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board7_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        770,
+        900
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board7_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        830,
+        900
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board7_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        890,
+        900
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board7_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_dark.svg",
+      "position": [
+        950,
+        900
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "board7_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_board_light.svg",
+      "position": [
+        1010,
+        900
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "black",
+      "scene": "TextObject",
+      "text": "تیره",
+      "position": [
+        1350,
+        550
+      ],
+      "hit_size": [
+        180,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_180_100.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "white",
+      "scene": "TextObject",
+      "text": "روشن",
+      "position": [
+        1600,
+        550
+      ],
+      "hit_size": [
+        180,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_180_100.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "domino",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_domino.svg",
+      "position": [
+        1380,
+        850
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "pair_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1320,
+        710
+      ],
+      "interactions": [],
+      "scale": [
+        1.5,
+        0.8333333333333334
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "pair",
+      "scene": "DropZone",
+      "position": [
+        1320,
+        710
+      ],
+      "hit_size": [
+        180,
+        100
+      ],
+      "accepted_sources": [
+        "domino"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "residue_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1600,
+        710
+      ],
+      "interactions": [],
+      "scale": [
+        1.5,
+        0.8333333333333334
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "residue",
+      "scene": "DropZone",
+      "position": [
+        1600,
+        710
+      ],
+      "hit_size": [
+        180,
+        100
+      ],
+      "accepted_sources": [
+        "domino"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "pair_label",
+      "scene": "TextObject",
+      "text": "دو رنگ",
+      "position": [
+        1320,
+        640
+      ],
+      "hit_size": [
+        180,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "residue_label",
+      "scene": "TextObject",
+      "text": "دو هم‌رنگ",
+      "position": [
+        1600,
+        640
+      ],
+      "hit_size": [
+        200,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "دومینو مورب",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "سطل رنگ",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "۳۱قطعه",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "hold",
+      "source": "black",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "black",
+          "text": "تیره: ۳۰"
+        },
+        {
+          "type": "set_variable",
+          "name": "black",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "۳۰ خانهٔ تیره"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "hold",
+      "source": "white",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "white",
+          "text": "روشن: ۳۲"
+        },
+        {
+          "type": "set_variable",
+          "name": "white",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "۳۲ خانهٔ روشن"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "domino",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "pair",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "domino",
+          "position": [
+            1380,
+            850
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "هر دومینو یک خانه از هر رنگ می‌گیرد."
+        }
+      ],
+      "once": false,
+      "target": "pair"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "domino",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "black",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "white",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "pair",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "move",
+          "target": "domino",
+          "position": [
+            1380,
+            850
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "۳۰ ≠ ۳۲؛ دو خانهٔ هم‌رنگ جفت نمی‌شوند."
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "residue"
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "دومینو فقط دو همسایه افقی یا عمودی را می‌پوشاند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "رنگ تزئینی قاب، رنگ‌بندی منطقی خانه‌ها را تغییر نمی‌دهد."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "hold",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "مساحت۶۲برابر است؛ اما دو تعداد رنگ هم باید برابر باشند."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

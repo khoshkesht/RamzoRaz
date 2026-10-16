@@ -33,3 +33,10 @@ tools/android/*
 !/tests/test_chapter_five.gd
 !/tests/test_chapter_five.gd.uid
 !/tools/redesign_chapter_five.mjs
+!/tools/author_final_chapters.py
+!/tools/run_checks.ps1
+!/tests/test_foundation.gd
+!/tests/test_foundation.gd.uid
+!/tests/test_final_chapters.gd
+!/tests/test_final_chapters.gd.uid
+*.apk

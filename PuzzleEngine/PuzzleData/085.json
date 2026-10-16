@@ -1,0 +1,1550 @@
+{
+  "schema_version": 1,
+  "id": 85,
+  "question": "روی صفحه ۸×۸ چند مربع وجود دارد؟",
+  "hint": "قلم را از گوشهٔ بالاچپ شبکه به انتهای قطر مربع‌های ضلع۱تا۸ بکش. برای هر اندازه فقط یک مربع نمونه لازم است؛ تعداد همهٔ جایگاه‌ها (۹−ضلع)² است:۶۴،۴۹،۳۶،۲۵،۱۶،۹،۴،۱. هر۸اندازه را بساز تا جمع۲۰۴به دست آید.",
+  "answer": "۲۰۴",
+  "time_limit_seconds": 195,
+  "base_score": 215,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"level\": 85, \"kind\": \"path\", \"points\": [], \"tolerance\": 28, \"segment_tolerance\": 12, \"origin\": [650, 480], \"spacing\": 52}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "diagram",
+      "scene": "TextObject",
+      "text": "​",
+      "position": [
+        960,
+        700
+      ],
+      "hit_size": [
+        1,
+        1
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "z_index": 2,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "grid0_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        650,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid0_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        650,
+        532
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid0_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        650,
+        584
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid0_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        650,
+        636
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid0_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        650,
+        688
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid0_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        650,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid0_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        650,
+        792
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid0_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        650,
+        844
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid0_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        650,
+        896
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid1_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        702,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid1_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        702,
+        532
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid1_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        702,
+        584
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid1_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        702,
+        636
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid1_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        702,
+        688
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid1_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        702,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid1_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        702,
+        792
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid1_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        702,
+        844
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid1_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        702,
+        896
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid2_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        754,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid2_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        754,
+        532
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid2_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        754,
+        584
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid2_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        754,
+        636
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid2_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        754,
+        688
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid2_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        754,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid2_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        754,
+        792
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid2_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        754,
+        844
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid2_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        754,
+        896
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid3_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        806,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid3_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        806,
+        532
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid3_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        806,
+        584
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid3_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        806,
+        636
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid3_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        806,
+        688
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid3_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        806,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid3_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        806,
+        792
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid3_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        806,
+        844
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid3_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        806,
+        896
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid4_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        858,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid4_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        858,
+        532
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid4_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        858,
+        584
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid4_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        858,
+        636
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid4_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        858,
+        688
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid4_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        858,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid4_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        858,
+        792
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid4_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        858,
+        844
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid4_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        858,
+        896
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid5_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        910,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid5_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        910,
+        532
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid5_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        910,
+        584
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid5_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        910,
+        636
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid5_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        910,
+        688
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid5_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        910,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid5_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        910,
+        792
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid5_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        910,
+        844
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid5_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        910,
+        896
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid6_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        962,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid6_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        962,
+        532
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid6_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        962,
+        584
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid6_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        962,
+        636
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid6_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        962,
+        688
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid6_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        962,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid6_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        962,
+        792
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid6_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        962,
+        844
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid6_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        962,
+        896
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid7_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1014,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid7_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1014,
+        532
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid7_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1014,
+        584
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid7_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1014,
+        636
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid7_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1014,
+        688
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid7_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1014,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid7_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1014,
+        792
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid7_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1014,
+        844
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid7_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1014,
+        896
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid8_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1066,
+        480
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid8_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1066,
+        532
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid8_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1066,
+        584
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid8_3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1066,
+        636
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid8_4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1066,
+        688
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid8_5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1066,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid8_6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1066,
+        792
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid8_7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1066,
+        844
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "grid8_8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1066,
+        896
+      ],
+      "interactions": [],
+      "scale": [
+        0.22,
+        0.22
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "pen",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_trace_pen.svg",
+      "position": [
+        650,
+        480
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            460,
+            1420,
+            560
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "state": {
+        "trace": true
+      },
+      "scale": [
+        0.7,
+        0.7
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0",
+        "trap1"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "۶۴خانه",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "مستطیل۲×۳",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "۱۲۹۶",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "۶۴فقط مربع‌های ضلع۱است؛ هفت اندازه دیگر هم داریم."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap1",
+          "position": [
+            135,
+            690
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "عرض و ارتفاع برابر نیست؛ مربع محسوب نمی‌شود."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0002",
+      "event": "hold",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "۱۲۹۶تعداد همه مستطیل‌هاست؛ شرط مربع را اعمال نکرده است."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

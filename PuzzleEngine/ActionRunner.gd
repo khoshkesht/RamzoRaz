@@ -69,6 +69,25 @@ func run_action(action: Dictionary, expected_run_id: int) -> Dictionary:
 		return _error("Action belongs to an inactive run.")
 	var type: String = action["type"]
 	match type:
+		"set_lines":
+			var item := _object(action["target"])
+			if item == null:
+				return _error("Line target is unavailable.")
+			var previous := item.get_node_or_null("PuzzleLines")
+			if previous != null:
+				item.remove_child(previous)
+				previous.queue_free()
+			var group := Node2D.new()
+			group.name = "PuzzleLines"
+			item.add_child(group)
+			for segment: Array in action["segments"]:
+				var line := Line2D.new()
+				line.width = 7.0
+				line.default_color = Color(action.get("color", "#e4ba57"))
+				for point: Array in segment:
+					line.add_point(item.to_local(item.get_parent().to_global(_vector(point))))
+				group.add_child(line)
+			return _ok()
 		"show", "hide":
 			var item := _object(action["target"])
 			if item == null:
@@ -110,6 +129,14 @@ func run_action(action: Dictionary, expected_run_id: int) -> Dictionary:
 			item.scale = value
 			item.definition["scale"] = [value.x, value.y]
 			puzzle_state.set_object_property(item.object_id, "scale", [value.x, value.y])
+			return _ok()
+		"set_text":
+			var item := _object(action["target"])
+			if item == null or item.definition.get("scene") != "TextObject":
+				return _error("Text target is unavailable.")
+			item.text_label.text = action["text"]
+			item.definition["text"] = action["text"]
+			puzzle_state.set_object_property(item.object_id, "text", action["text"])
 			return _ok()
 		"replace_sprite":
 			var item := _object(action["target"])

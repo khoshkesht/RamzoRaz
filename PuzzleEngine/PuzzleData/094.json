@@ -1,0 +1,693 @@
+{
+  "schema_version": 1,
+  "id": 94,
+  "question": "سه فانوس و سه آینه؛ با کمترین جابه‌جایی نور را به هر سه نشان برسان.",
+  "hint": "هر فانوس یک پرتو افقی به راست می‌فرستد. سه آینهٔ / را به جایگاه‌های هم‌ردیف نور بکش تا پرتو عمودی به نشان بالای آن برسد. فقط دو آینه نیاز به تغییر دارند؛ آینهٔ میانی از ابتدا درست است. آینهٔ اول را جایگاه اول و سومی را جایگاه سوم بگذار؛ جابه‌جایی اضافی را می‌توانی با بازگرداندن اصلاح کنی.",
+  "answer": "چیدمان آینه‌ها با بازتاب زنجیره‌ای",
+  "time_limit_seconds": 210,
+  "base_score": 220,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"level\": 94, \"kind\": \"rays\", \"lanterns\": [[400, 660, 1, 0], [400, 760, 1, 0], [400, 860, 1, 0]], \"targets\": [[800, 500], [1100, 500], [1400, 500]], \"slots\": [[800, 660], [1100, 760], [1400, 860], [1550, 660], [1550, 860]], \"initial\": [3, 1, 4], \"orientations\": [\"/\", \"/\", \"/\"], \"obstacles\": []}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "diagram",
+      "scene": "TextObject",
+      "text": "​",
+      "position": [
+        960,
+        700
+      ],
+      "hit_size": [
+        1,
+        1
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "z_index": 2,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "target0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        800,
+        500
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "lit0",
+      "scene": "TextObject",
+      "text": "○",
+      "position": [
+        800,
+        445
+      ],
+      "hit_size": [
+        80,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "target1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1100,
+        500
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "lit1",
+      "scene": "TextObject",
+      "text": "○",
+      "position": [
+        1100,
+        445
+      ],
+      "hit_size": [
+        80,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "target2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        1400,
+        500
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "lit2",
+      "scene": "TextObject",
+      "text": "○",
+      "position": [
+        1400,
+        445
+      ],
+      "hit_size": [
+        80,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "lantern0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/bridge_lantern_lit.svg",
+      "position": [
+        400,
+        660
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "lantern1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/bridge_lantern_lit.svg",
+      "position": [
+        400,
+        760
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "lantern2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/bridge_lantern_lit.svg",
+      "position": [
+        400,
+        860
+      ],
+      "interactions": [],
+      "scale": [
+        0.45,
+        0.45
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "slot0_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        800,
+        660
+      ],
+      "interactions": [],
+      "scale": [
+        0.75,
+        0.75
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "slot0",
+      "scene": "DropZone",
+      "position": [
+        800,
+        660
+      ],
+      "hit_size": [
+        90,
+        90
+      ],
+      "accepted_sources": [
+        "mirror0",
+        "mirror1",
+        "mirror2"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "slot1_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1100,
+        760
+      ],
+      "interactions": [],
+      "scale": [
+        0.75,
+        0.75
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "slot1",
+      "scene": "DropZone",
+      "position": [
+        1100,
+        760
+      ],
+      "hit_size": [
+        90,
+        90
+      ],
+      "accepted_sources": [
+        "mirror0",
+        "mirror1",
+        "mirror2"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "slot2_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1400,
+        860
+      ],
+      "interactions": [],
+      "scale": [
+        0.75,
+        0.75
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "slot2",
+      "scene": "DropZone",
+      "position": [
+        1400,
+        860
+      ],
+      "hit_size": [
+        90,
+        90
+      ],
+      "accepted_sources": [
+        "mirror0",
+        "mirror1",
+        "mirror2"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "slot3_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1550,
+        660
+      ],
+      "interactions": [],
+      "scale": [
+        0.75,
+        0.75
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "slot3",
+      "scene": "DropZone",
+      "position": [
+        1550,
+        660
+      ],
+      "hit_size": [
+        90,
+        90
+      ],
+      "accepted_sources": [
+        "mirror0",
+        "mirror1",
+        "mirror2"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "slot4_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1550,
+        860
+      ],
+      "interactions": [],
+      "scale": [
+        0.75,
+        0.75
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "slot4",
+      "scene": "DropZone",
+      "position": [
+        1550,
+        860
+      ],
+      "hit_size": [
+        90,
+        90
+      ],
+      "accepted_sources": [
+        "mirror0",
+        "mirror1",
+        "mirror2"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mirror0",
+      "scene": "TextObject",
+      "text": "/",
+      "position": [
+        1550,
+        660
+      ],
+      "hit_size": [
+        80,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_80_80.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mirror1",
+      "scene": "TextObject",
+      "text": "/",
+      "position": [
+        1100,
+        760
+      ],
+      "hit_size": [
+        80,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_80_80.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mirror2",
+      "scene": "TextObject",
+      "text": "/",
+      "position": [
+        1550,
+        860
+      ],
+      "hit_size": [
+        80,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_80_80.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "light",
+      "scene": "TextObject",
+      "text": "روشن‌کردن",
+      "position": [
+        1650,
+        500
+      ],
+      "hit_size": [
+        220,
+        90
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_220_90.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "صفحه مات",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "راه کوتاه",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "منشور",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "برق سطح به معنی بازتاب پرتو تا گیرنده نیست."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0001",
+      "event": "hold",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "روشن‌شدن یک هدف کافی نیست؛ هر سه هدف لازم‌اند."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "پرتو رنگی نمایشی در محاسبهٔ گیرنده‌ها دخالت ندارد."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

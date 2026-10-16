@@ -1,0 +1,568 @@
+{
+  "schema_version": 1,
+  "id": 100,
+  "question": "سه صندوق و سه کلید با نشانه‌های رمزی؛ هر سرنخ یکی از تطبیق‌ها را رد می‌کند. تطبیق نهایی را پیدا کن.",
+  "hint": "خورشید نهA است نهB؛ پسC است. ماه نهA وCپر است، پسB است. ستاره را درA بگذار. هر کلید تنها یک صندوق را باز می‌کند.",
+  "answer": "تنها تطبیق سازگار با همه سرنخ‌ها",
+  "time_limit_seconds": 200,
+  "base_score": 230,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"kind\": \"fit\", \"slots\": [[440.0, 650], [960.0, 650], [1480.0, 650]], \"pieces\": [[330.0, 865], [955.0, 865], [1580.0, 865]], \"target\": [2, 1, 0], \"rotations\": [0, 0, 0], \"initial\": [-1, -1, -1], \"clues\": [], \"level\": 100}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "clues",
+      "scene": "TextObject",
+      "text": "خورشید ≠ A,B       ماه ≠ A",
+      "position": [
+        960,
+        480
+      ],
+      "hit_size": [
+        1200,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "slot0_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        440.0,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        0.9583333333333334,
+        0.9583333333333334
+      ]
+    },
+    {
+      "id": "slot0",
+      "scene": "DropZone",
+      "position": [
+        440.0,
+        650
+      ],
+      "hit_size": [
+        115,
+        115
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "box0",
+      "scene": "TextObject",
+      "text": "A",
+      "position": [
+        440.0,
+        550
+      ],
+      "hit_size": [
+        110,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "slot1_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        960.0,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        0.9583333333333334,
+        0.9583333333333334
+      ]
+    },
+    {
+      "id": "slot1",
+      "scene": "DropZone",
+      "position": [
+        960.0,
+        650
+      ],
+      "hit_size": [
+        115,
+        115
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "box1",
+      "scene": "TextObject",
+      "text": "B",
+      "position": [
+        960.0,
+        550
+      ],
+      "hit_size": [
+        110,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "slot2_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1480.0,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        0.9583333333333334,
+        0.9583333333333334
+      ]
+    },
+    {
+      "id": "slot2",
+      "scene": "DropZone",
+      "position": [
+        1480.0,
+        650
+      ],
+      "hit_size": [
+        115,
+        115
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "box2",
+      "scene": "TextObject",
+      "text": "C",
+      "position": [
+        1480.0,
+        550
+      ],
+      "hit_size": [
+        110,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/toothed_key_a.svg",
+      "position": [
+        330.0,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.72,
+        0.72
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name0",
+      "scene": "TextObject",
+      "text": "خورشید",
+      "position": [
+        330.0,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/toothed_key_b.svg",
+      "position": [
+        955.0,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.72,
+        0.72
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name1",
+      "scene": "TextObject",
+      "text": "ماه",
+      "position": [
+        955.0,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/toothed_key_c.svg",
+      "position": [
+        1580.0,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.72,
+        0.72
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name2",
+      "scene": "TextObject",
+      "text": "ستاره",
+      "position": [
+        1580.0,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ]
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0",
+        "trap2"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "کلید ترکیبی",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "ماه→A",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "قاب تعویض",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "این کلید عضو سه کلید خورشید،ماه،ستاره نیست."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0001",
+      "event": "hold",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "این برچسب سرنخ ماه≠Aرا نقض می‌کند."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap2",
+          "position": [
+            135,
+            855
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "هویت صندوقA/B/Cثابت است؛ جابه‌جایی برچسب، قفل را عوض نمی‌کند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

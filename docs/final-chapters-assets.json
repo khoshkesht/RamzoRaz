@@ -1,0 +1,850 @@
+{
+  "stages": {
+    "71": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_clock_0.svg": "Clock hand geometry including the 3:30 hour-hand error; existing clocks cannot encode these times.",
+        "res://assets/samples/final_clock_3.svg": "Clock hand geometry including the 3:30 hour-hand error; existing clocks cannot encode these times.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_clock_1.svg": "Clock hand geometry including the 3:30 hour-hand error; existing clocks cannot encode these times.",
+        "res://assets/samples/final_clock_2.svg": "Clock hand geometry including the 3:30 hour-hand error; existing clocks cannot encode these times."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "73": {
+      "background": "res://assets/samples/library_room_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/hidden_door.svg",
+        "res://assets/samples/library_room_night.svg",
+        "res://assets/samples/walking_person.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_220_90.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Two necessary operations (one question, opposite door); high reasoning load, score/time acceptance remains open."
+    },
+    "74": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_110_85.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "75": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_100_100.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_token_220_85.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "76": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_battery.svg": "Removable clock battery and polarity, no matching source.",
+        "res://assets/samples/final_token_270_120.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_clock_0.svg": "Clock hand geometry including the 3:30 hour-hand error; existing clocks cannot encode these times.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "78": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_180_100.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_board_dark.svg": "Original two checkerboard colors; removed diagonal corners are both dark.",
+        "res://assets/samples/final_board_light.svg": "Original two checkerboard colors; removed diagonal corners are both dark.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_domino.svg": "Two adjacent board cells in one legal domino."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "83": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_cube_211.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_021.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_121.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_110.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_000.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_122.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_100.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_010.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_002.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_202.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_210.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_token_260_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_cube_102.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_112.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_120.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_cube_200.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_212.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_101.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_221.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_011.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_222.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_201.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_022.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_220.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_001.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_020.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_cube_012.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "84": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_cube_shell.svg": "Painted 4×4 exterior slab for peeling the six original cube surfaces.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_cube_111.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "89": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/bulb_cold.svg",
+        "res://assets/samples/bulb_lit.svg",
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_battery.svg": "Removable clock battery and polarity, no matching source.",
+        "res://assets/samples/final_wire_good.svg": "Long supply wire spanning the battery/switch/lamp terminals.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_circuit_return.svg": "Fixed return wire from the target lamp to the battery; two supply gaps remain for real wires.",
+        "res://assets/samples/final_wire_broken.svg": "Visible internal break for the faulty supply wire; intact wire asset preserved.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_token_140_110.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "90": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_day.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_reflection_axis.svg": "Fixed vertical axis distinguishes reflection from rotation.",
+        "res://assets/samples/final_motif_1.svg": "Asymmetric oriented motif with recorded N/E/S/W signatures; preserved old motif sources.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_motif_2.svg": "Asymmetric oriented motif with recorded N/E/S/W signatures; preserved old motif sources.",
+        "res://assets/samples/final_motif_3.svg": "Asymmetric oriented motif with recorded N/E/S/W signatures; preserved old motif sources.",
+        "res://assets/samples/final_motif_0.svg": "Asymmetric oriented motif with recorded N/E/S/W signatures; preserved old motif sources.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "92": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_day.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_cell.svg": "Small square number token; existing puzzle_tile has a different aspect and oversized artwork.",
+        "res://assets/samples/final_token_200_110.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "93": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_day.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_symmetry_1.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+        "res://assets/samples/final_symmetry_3.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_symmetry_8.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+        "res://assets/samples/final_symmetry_0.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+        "res://assets/samples/final_symmetry_5.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+        "res://assets/samples/final_symmetry_7.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_symmetry_2.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+        "res://assets/samples/final_symmetry_6.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+        "res://assets/samples/final_symmetry_4.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "97": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_day.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_bowl_0.svg": "Asymmetric bowl pattern: A/C reuse the same image under rotation, B reflected, D has an extra colored detail.",
+        "res://assets/samples/final_bowl_1.svg": "Asymmetric bowl pattern: A/C reuse the same image under rotation, B reflected, D has an extra colored detail.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_bowl_3.svg": "Asymmetric bowl pattern: A/C reuse the same image under rotation, B reflected, D has an extra colored detail.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "98": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_day.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_jigsaw_2.svg": "Unique 2×2 seam signatures and a central reference motif; decoy shares edges but has a wrong center.",
+        "res://assets/samples/final_jigsaw_0.svg": "Unique 2×2 seam signatures and a central reference motif; decoy shares edges but has a wrong center.",
+        "res://assets/samples/final_jigsaw_1.svg": "Unique 2×2 seam signatures and a central reference motif; decoy shares edges but has a wrong center.",
+        "res://assets/samples/final_jigsaw_3.svg": "Unique 2×2 seam signatures and a central reference motif; decoy shares edges but has a wrong center.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_jigsaw_4.svg": "Unique 2×2 seam signatures and a central reference motif; decoy shares edges but has a wrong center.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "100": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_day.svg",
+        "res://assets/samples/toothed_key_a.svg",
+        "res://assets/samples/toothed_key_b.svg",
+        "res://assets/samples/toothed_key_c.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "72": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_180_95.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_160_60.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_85_85.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_150_60.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "77": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/egg_assumption.svg",
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_100_100.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_350_70.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "79": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_day.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_180_90.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_100_100.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "80": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_dot.svg": "Distinct high contrast tracing node.",
+        "res://assets/samples/final_trace_pen.svg": "Nib tip coincides with the registered center and has a square touch region; the existing long pen has an offset nib and a thin hit area."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "81": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_day.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_ring_2.svg": "Four ordered Hanoi ring diameters; existing sources are not rings.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_peg.svg": "Hanoi destination peg.",
+        "res://assets/samples/final_ring_3.svg": "Four ordered Hanoi ring diameters; existing sources are not rings.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_ring_1.svg": "Four ordered Hanoi ring diameters; existing sources are not rings.",
+        "res://assets/samples/final_ring_0.svg": "Four ordered Hanoi ring diameters; existing sources are not rings."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "82": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_150_150.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "85": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_dot.svg": "Distinct high contrast tracing node.",
+        "res://assets/samples/final_trace_pen.svg": "Nib tip coincides with the registered center and has a square touch region; the existing long pen has an offset nib and a thin hit area."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "86": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_gridline1_0.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline1_3.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline1_8.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline0_7.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline0_4.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline1_6.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline0_5.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline1_4.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_gridline0_2.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_token_410_90.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_gridline1_2.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_gridline1_1.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline1_7.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline0_1.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_token_100_100.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_gridline0_0.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline1_5.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline0_3.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline0_8.svg": "Grid selection lines with explicit nine-line boundaries.",
+        "res://assets/samples/final_gridline0_6.svg": "Grid selection lines with explicit nine-line boundaries."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "87": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/measuring_jug_3_0.svg",
+        "res://assets/samples/measuring_jug_3_1.svg",
+        "res://assets/samples/measuring_jug_3_2.svg",
+        "res://assets/samples/measuring_jug_3_3.svg",
+        "res://assets/samples/measuring_jug_5_0.svg",
+        "res://assets/samples/measuring_jug_5_1.svg",
+        "res://assets/samples/measuring_jug_5_2.svg",
+        "res://assets/samples/measuring_jug_5_3.svg",
+        "res://assets/samples/measuring_jug_5_4.svg",
+        "res://assets/samples/measuring_jug_5_5.svg",
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_jug8_7.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+        "res://assets/samples/final_jug8_5.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+        "res://assets/samples/final_jug8_6.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+        "res://assets/samples/final_jug8_0.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_jug8_2.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+        "res://assets/samples/final_jug8_8.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_jug8_4.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+        "res://assets/samples/final_jug8_1.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+        "res://assets/samples/final_jug8_3.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "88": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_day.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_edge1.svg": "Actual graph edge, independent from cosmetic traps.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_edge0.svg": "Actual graph edge, independent from cosmetic traps.",
+        "res://assets/samples/final_edge3.svg": "Actual graph edge, independent from cosmetic traps.",
+        "res://assets/samples/final_edge4.svg": "Actual graph edge, independent from cosmetic traps.",
+        "res://assets/samples/final_dot.svg": "Distinct high contrast tracing node.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_trace_pen.svg": "Nib tip coincides with the registered center and has a square touch region; the existing long pen has an offset nib and a thin hit area.",
+        "res://assets/samples/final_edge2.svg": "Actual graph edge, independent from cosmetic traps."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "91": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_day.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_180_95.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_85_85.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "94": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/bridge_lantern_lit.svg",
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_80_80.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_220_90.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_dot.svg": "Distinct high contrast tracing node."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "95": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+        "res://assets/samples/final_dot.svg": "Distinct high contrast tracing node.",
+        "res://assets/samples/final_trace_pen.svg": "Nib tip coincides with the registered center and has a square touch region; the existing long pen has an offset nib and a thin hit area.",
+        "res://assets/samples/final_path_carpet.svg": "Nine visible carpet cells aligned with the Hamilton path nodes, below the HUD."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "96": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_180_95.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_85_85.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "99": {
+      "background": "res://assets/samples/puzzle_workbench_night.svg",
+      "lighting": "night_lit: cool instance tint #d6e1f0 under existing ambient light",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_night.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_token_220_110.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_pipe_10.svg": "Pipe connector bitmask N/E/S/W, including closed unused cells; no matching full connector set.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_pipe_6.svg": "Pipe connector bitmask N/E/S/W, including closed unused cells; no matching full connector set.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    },
+    "101": {
+      "background": "res://assets/samples/puzzle_workbench_day.svg",
+      "lighting": "day",
+      "reused": [
+        "res://assets/samples/puzzle_workbench_day.svg"
+      ],
+      "new": {
+        "res://assets/samples/final_fixed_cell.svg": "Locked Latin clue cells have a persistent corner mark distinct from entered numbers.",
+        "res://assets/samples/final_token_105_95.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_token_95_85.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+        "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent."
+      },
+      "required_actions": "See authored rules/model and complete Persian hint; balance requires play evidence.",
+      "interaction_review": "Content operations implemented; play evidence required before accepting time/score."
+    }
+  },
+  "new_assets": {
+    "res://assets/samples/final_cell.svg": "Small square number token; existing puzzle_tile has a different aspect and oversized artwork.",
+    "res://assets/samples/final_socket.svg": "Visible square insertion destination matching token extent.",
+    "res://assets/samples/final_dot.svg": "Distinct high contrast tracing node.",
+    "res://assets/samples/final_trace_pen.svg": "Nib tip coincides with the registered center and has a square touch region; the existing long pen has an offset nib and a thin hit area.",
+    "res://assets/samples/final_battery.svg": "Removable clock battery and polarity, no matching source.",
+    "res://assets/samples/final_domino.svg": "Two adjacent board cells in one legal domino.",
+    "res://assets/samples/final_board_dark.svg": "Original two checkerboard colors; removed diagonal corners are both dark.",
+    "res://assets/samples/final_board_light.svg": "Original two checkerboard colors; removed diagonal corners are both dark.",
+    "res://assets/samples/final_fixed_cell.svg": "Locked Latin clue cells have a persistent corner mark distinct from entered numbers.",
+    "res://assets/samples/final_ring_0.svg": "Four ordered Hanoi ring diameters; existing sources are not rings.",
+    "res://assets/samples/final_ring_1.svg": "Four ordered Hanoi ring diameters; existing sources are not rings.",
+    "res://assets/samples/final_ring_2.svg": "Four ordered Hanoi ring diameters; existing sources are not rings.",
+    "res://assets/samples/final_ring_3.svg": "Four ordered Hanoi ring diameters; existing sources are not rings.",
+    "res://assets/samples/final_peg.svg": "Hanoi destination peg.",
+    "res://assets/samples/final_jug8_0.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+    "res://assets/samples/final_jug8_1.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+    "res://assets/samples/final_jug8_2.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+    "res://assets/samples/final_jug8_3.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+    "res://assets/samples/final_jug8_4.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+    "res://assets/samples/final_jug8_5.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+    "res://assets/samples/final_jug8_6.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+    "res://assets/samples/final_jug8_7.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+    "res://assets/samples/final_jug8_8.svg": "Graduated eight-liter vessel with conserved volume; existing jug series cover only capacities three and five.",
+    "res://assets/samples/final_cube_shell.svg": "Painted 4×4 exterior slab for peeling the six original cube surfaces.",
+    "res://assets/samples/final_wire_good.svg": "Long supply wire spanning the battery/switch/lamp terminals.",
+    "res://assets/samples/final_wire_broken.svg": "Visible internal break for the faulty supply wire; intact wire asset preserved.",
+    "res://assets/samples/final_path_carpet.svg": "Nine visible carpet cells aligned with the Hamilton path nodes, below the HUD.",
+    "res://assets/samples/final_clock_0.svg": "Clock hand geometry including the 3:30 hour-hand error; existing clocks cannot encode these times.",
+    "res://assets/samples/final_clock_1.svg": "Clock hand geometry including the 3:30 hour-hand error; existing clocks cannot encode these times.",
+    "res://assets/samples/final_clock_2.svg": "Clock hand geometry including the 3:30 hour-hand error; existing clocks cannot encode these times.",
+    "res://assets/samples/final_clock_3.svg": "Clock hand geometry including the 3:30 hour-hand error; existing clocks cannot encode these times.",
+    "res://assets/samples/final_motif_0.svg": "Asymmetric oriented motif with recorded N/E/S/W signatures; preserved old motif sources.",
+    "res://assets/samples/final_bowl_0.svg": "Asymmetric bowl pattern: A/C reuse the same image under rotation, B reflected, D has an extra colored detail.",
+    "res://assets/samples/final_motif_1.svg": "Asymmetric oriented motif with recorded N/E/S/W signatures; preserved old motif sources.",
+    "res://assets/samples/final_bowl_1.svg": "Asymmetric bowl pattern: A/C reuse the same image under rotation, B reflected, D has an extra colored detail.",
+    "res://assets/samples/final_motif_2.svg": "Asymmetric oriented motif with recorded N/E/S/W signatures; preserved old motif sources.",
+    "res://assets/samples/final_motif_3.svg": "Asymmetric oriented motif with recorded N/E/S/W signatures; preserved old motif sources.",
+    "res://assets/samples/final_bowl_3.svg": "Asymmetric bowl pattern: A/C reuse the same image under rotation, B reflected, D has an extra colored detail.",
+    "res://assets/samples/final_pipe_6.svg": "Pipe connector bitmask N/E/S/W, including closed unused cells; no matching full connector set.",
+    "res://assets/samples/final_pipe_10.svg": "Pipe connector bitmask N/E/S/W, including closed unused cells; no matching full connector set.",
+    "res://assets/samples/final_cube_000.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_001.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_002.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_010.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_011.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_012.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_020.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_021.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_022.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_100.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_101.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_102.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_110.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_111.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_112.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_120.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_121.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_122.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_200.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_201.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_202.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_210.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_211.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_212.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_220.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_221.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_cube_222.svg": "Exploded cubelet: original exterior colors for each axis; gray denotes unpainted internal faces.",
+    "res://assets/samples/final_jigsaw_0.svg": "Unique 2×2 seam signatures and a central reference motif; decoy shares edges but has a wrong center.",
+    "res://assets/samples/final_jigsaw_1.svg": "Unique 2×2 seam signatures and a central reference motif; decoy shares edges but has a wrong center.",
+    "res://assets/samples/final_jigsaw_2.svg": "Unique 2×2 seam signatures and a central reference motif; decoy shares edges but has a wrong center.",
+    "res://assets/samples/final_jigsaw_3.svg": "Unique 2×2 seam signatures and a central reference motif; decoy shares edges but has a wrong center.",
+    "res://assets/samples/final_jigsaw_4.svg": "Unique 2×2 seam signatures and a central reference motif; decoy shares edges but has a wrong center.",
+    "res://assets/samples/final_symmetry_0.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+    "res://assets/samples/final_symmetry_1.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+    "res://assets/samples/final_symmetry_2.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+    "res://assets/samples/final_symmetry_3.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+    "res://assets/samples/final_symmetry_4.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+    "res://assets/samples/final_symmetry_5.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+    "res://assets/samples/final_symmetry_6.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+    "res://assets/samples/final_symmetry_7.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+    "res://assets/samples/final_symmetry_8.svg": "3×3 rug path with vertical reflection and explicit N/E/S/W seams; middle left/right begin exchanged.",
+    "res://assets/samples/final_token_90_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_220_90.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_110_85.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_100_100.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_220_85.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_270_120.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_180_100.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_260_75.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_circuit_return.svg": "Fixed return wire from the target lamp to the battery; two supply gaps remain for real wires.",
+    "res://assets/samples/final_token_140_110.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_reflection_axis.svg": "Fixed vertical axis distinguishes reflection from rotation.",
+    "res://assets/samples/final_token_200_110.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_85_85.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_180_95.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_160_60.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_150_60.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_350_70.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_180_90.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_150_150.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_gridline0_0.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline0_1.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline0_2.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline0_3.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline0_4.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline0_5.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline0_6.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline0_7.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline0_8.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline1_0.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline1_1.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline1_2.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline1_3.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline1_4.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline1_5.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline1_6.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline1_7.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_gridline1_8.svg": "Grid selection lines with explicit nine-line boundaries.",
+    "res://assets/samples/final_token_410_90.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_edge0.svg": "Actual graph edge, independent from cosmetic traps.",
+    "res://assets/samples/final_edge1.svg": "Actual graph edge, independent from cosmetic traps.",
+    "res://assets/samples/final_edge2.svg": "Actual graph edge, independent from cosmetic traps.",
+    "res://assets/samples/final_edge3.svg": "Actual graph edge, independent from cosmetic traps.",
+    "res://assets/samples/final_edge4.svg": "Actual graph edge, independent from cosmetic traps.",
+    "res://assets/samples/final_token_80_80.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_220_110.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_105_95.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text.",
+    "res://assets/samples/final_token_95_85.svg": "Token silhouette matching the real hit rectangle without scaling its Persian text."
+  },
+  "matching": {
+    "order": "N,E,S,W",
+    "motifs": [
+      [
+        0,
+        1,
+        2,
+        3
+      ],
+      [
+        0,
+        3,
+        2,
+        1
+      ],
+      [
+        1,
+        2,
+        3,
+        0
+      ],
+      [
+        0,
+        1,
+        3,
+        2
+      ]
+    ],
+    "reflection": {
+      "source": 0,
+      "target": 1,
+      "axis": "vertical",
+      "chiral_center_mirrored": true
+    },
+    "bowls": {
+      "pair": [
+        "A",
+        "C"
+      ],
+      "C_initial_angle": 90,
+      "mirror_decoy": "B",
+      "detail_decoy": "D"
+    },
+    "jigsaw": [
+      [
+        4,
+        0,
+        1,
+        5
+      ],
+      [
+        6,
+        7,
+        2,
+        0
+      ],
+      [
+        1,
+        3,
+        8,
+        9
+      ],
+      [
+        2,
+        10,
+        11,
+        3
+      ],
+      [
+        4,
+        0,
+        1,
+        5
+      ]
+    ],
+    "jigsaw_center": [
+      "diamond",
+      "diamond",
+      "diamond",
+      "diamond",
+      "circle"
+    ],
+    "symmetry": [
+      [
+        null,
+        0,
+        1,
+        null
+      ],
+      [
+        null,
+        0,
+        null,
+        0
+      ],
+      [
+        null,
+        null,
+        1,
+        0
+      ],
+      [
+        1,
+        2,
+        3,
+        null
+      ],
+      [
+        null,
+        2,
+        null,
+        2
+      ],
+      [
+        1,
+        null,
+        3,
+        2
+      ],
+      [
+        3,
+        4,
+        null,
+        null
+      ],
+      [
+        null,
+        4,
+        null,
+        4
+      ],
+      [
+        3,
+        null,
+        null,
+        4
+      ]
+    ],
+    "symmetry_initial": [
+      0,
+      1,
+      2,
+      5,
+      4,
+      3,
+      6,
+      7,
+      8
+    ]
+  },
+  "acceptance": "Not run; explicit test instruction required."
+}

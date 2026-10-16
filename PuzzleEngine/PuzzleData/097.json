@@ -1,0 +1,456 @@
+{
+  "schema_version": 1,
+  "id": 97,
+  "question": "چهار کاسه با نقش‌های مختلف؛ با چرخاندن ذهنی باید جفت دقیق نقش را پیدا کنی.",
+  "hint": "فقط نقش کاسه‌هایAوC با چرخش منطبق است. کاسهC را سه بار۹۰درجه بچرخان و رویA بگذار؛ بازتابB و شاخهٔ متفاوتD جفت نیستند.",
+  "answer": "جفتی که پس از چرخش هندسی منطبق می‌شود",
+  "time_limit_seconds": 195,
+  "base_score": 230,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"kind\": \"fit\", \"slots\": [[960, 650]], \"pieces\": [[960, 650], [746.6666666666667, 865], [1163.3333333333335, 865], [1580.0, 865]], \"target\": [2], \"rotations\": [0, 0, 0, 0], \"initial\": [-1, -1, -1, -1], \"clues\": [], \"angles\": [0, 0, 90, 0], \"level\": 97}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "slot0_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        0.9583333333333334,
+        0.9583333333333334
+      ]
+    },
+    {
+      "id": "slot0",
+      "scene": "DropZone",
+      "position": [
+        960,
+        650
+      ],
+      "hit_size": [
+        115,
+        115
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "piece0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_bowl_0.svg",
+      "position": [
+        960,
+        650
+      ],
+      "interactions": [],
+      "z_index": 0,
+      "scale": [
+        0.72,
+        0.72
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name0",
+      "scene": "TextObject",
+      "text": "A",
+      "position": [
+        960,
+        550
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_bowl_1.svg",
+      "position": [
+        746.6666666666667,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.72,
+        0.72
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name1",
+      "scene": "TextObject",
+      "text": "B",
+      "position": [
+        746.6666666666667,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_bowl_0.svg",
+      "position": [
+        1163.3333333333335,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.72,
+        0.72
+      ],
+      "rotation_degrees": 90
+    },
+    {
+      "id": "name2",
+      "scene": "TextObject",
+      "text": "C",
+      "position": [
+        1163.3333333333335,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_bowl_3.svg",
+      "position": [
+        1580.0,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.72,
+        0.72
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name3",
+      "scene": "TextObject",
+      "text": "D",
+      "position": [
+        1580.0,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ]
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "نقش آینه‌ای",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "روکش گل",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "زاویه۴۵",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "بازتاب نقش نامتقارن با چرخش منطبق نمی‌شود."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0001",
+      "event": "hold",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "پنهان‌کردن اختلاف گل، خود نقش زیر آن را عوض نمی‌کند."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "زاویه‌های مجاز۰،۹۰،۱۸۰،۲۷۰درجه‌اند؛ این حلقه راهنمای آزمایشی است."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

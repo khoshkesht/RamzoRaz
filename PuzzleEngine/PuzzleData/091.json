@@ -1,0 +1,706 @@
+{
+  "schema_version": 1,
+  "id": 91,
+  "question": "چهار وزنه با جرم‌های متمایز و نامعلوم داری؛ با حداکثر پنج مقایسه دوکفه‌ای ترتیب وزنشان را پیدا کن.",
+  "hint": "حداکثر۵مقایسه داری. هر بار یک وزنه روی هر کفه و سپس توزین. نمونه: AباB،CباD،BباD،AباC،DباC. این پنج نتیجه ترتیبB,D,C,A را ثابت می‌کنند. وزنه‌ها را از چپ سبک به سنگین در چهار جایگاه بچین؛ حدس بدون مقایسه کافی نیست.",
+  "answer": "مرتب‌کردن دو جفت، مقایسه سبک‌ترهای دو جفت و درج وزنه باقی‌مانده با حداکثر دو مقایسه",
+  "time_limit_seconds": 215,
+  "base_score": 220,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"level\": 91, \"kind\": \"balance\", \"n\": 4, \"budget\": 5, \"masses\": [40, 10, 30, 20]}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "left_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        620,
+        580
+      ],
+      "interactions": [],
+      "scale": [
+        3.6666666666666665,
+        1.4166666666666667
+      ]
+    },
+    {
+      "id": "left",
+      "scene": "DropZone",
+      "position": [
+        620,
+        580
+      ],
+      "hit_size": [
+        440,
+        170
+      ],
+      "accepted_sources": [
+        "coin0",
+        "coin1",
+        "coin2",
+        "coin3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "right_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1260,
+        580
+      ],
+      "interactions": [],
+      "scale": [
+        3.6666666666666665,
+        1.4166666666666667
+      ]
+    },
+    {
+      "id": "right",
+      "scene": "DropZone",
+      "position": [
+        1260,
+        580
+      ],
+      "hit_size": [
+        440,
+        170
+      ],
+      "accepted_sources": [
+        "coin0",
+        "coin1",
+        "coin2",
+        "coin3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "tray_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        960,
+        845
+      ],
+      "interactions": [],
+      "scale": [
+        12.083333333333334,
+        1.1666666666666667
+      ]
+    },
+    {
+      "id": "tray",
+      "scene": "DropZone",
+      "position": [
+        960,
+        845
+      ],
+      "hit_size": [
+        1450,
+        140
+      ],
+      "accepted_sources": [
+        "coin0",
+        "coin1",
+        "coin2",
+        "coin3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "left_label",
+      "scene": "TextObject",
+      "text": "کفهٔ چپ",
+      "position": [
+        620,
+        465
+      ],
+      "hit_size": [
+        280,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "right_label",
+      "scene": "TextObject",
+      "text": "کفهٔ راست",
+      "position": [
+        1260,
+        465
+      ],
+      "hit_size": [
+        280,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "coin0",
+      "scene": "TextObject",
+      "text": "A",
+      "position": [
+        280.0,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5
+    },
+    {
+      "id": "coin1",
+      "scene": "TextObject",
+      "text": "B",
+      "position": [
+        733.3333333333333,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5
+    },
+    {
+      "id": "coin2",
+      "scene": "TextObject",
+      "text": "C",
+      "position": [
+        1186.6666666666665,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5
+    },
+    {
+      "id": "coin3",
+      "scene": "TextObject",
+      "text": "D",
+      "position": [
+        1640.0,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5
+    },
+    {
+      "id": "weigh",
+      "scene": "TextObject",
+      "text": "توزین",
+      "position": [
+        1610,
+        560
+      ],
+      "hit_size": [
+        180,
+        95
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_180_95.svg",
+      "z_index": 0
+    },
+    {
+      "id": "order0_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        620,
+        720
+      ],
+      "interactions": [],
+      "scale": [
+        0.8333333333333334,
+        0.8333333333333334
+      ]
+    },
+    {
+      "id": "order0",
+      "scene": "DropZone",
+      "position": [
+        620,
+        720
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "coin0",
+        "coin1",
+        "coin2",
+        "coin3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "order1_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        840,
+        720
+      ],
+      "interactions": [],
+      "scale": [
+        0.8333333333333334,
+        0.8333333333333334
+      ]
+    },
+    {
+      "id": "order1",
+      "scene": "DropZone",
+      "position": [
+        840,
+        720
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "coin0",
+        "coin1",
+        "coin2",
+        "coin3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "order2_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1060,
+        720
+      ],
+      "interactions": [],
+      "scale": [
+        0.8333333333333334,
+        0.8333333333333334
+      ]
+    },
+    {
+      "id": "order2",
+      "scene": "DropZone",
+      "position": [
+        1060,
+        720
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "coin0",
+        "coin1",
+        "coin2",
+        "coin3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "order3_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1280,
+        720
+      ],
+      "interactions": [],
+      "scale": [
+        0.8333333333333334,
+        0.8333333333333334
+      ]
+    },
+    {
+      "id": "order3",
+      "scene": "DropZone",
+      "position": [
+        1280,
+        720
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "coin0",
+        "coin1",
+        "coin2",
+        "coin3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "lightest",
+      "scene": "TextObject",
+      "text": "سبک",
+      "position": [
+        620,
+        650
+      ],
+      "hit_size": [
+        150,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "heaviest",
+      "scene": "TextObject",
+      "text": "سنگین",
+      "position": [
+        1280,
+        650
+      ],
+      "hit_size": [
+        180,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ]
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap1",
+        "trap2"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "برچسب اندازه",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "دو گروه",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "مرجع نامعلوم",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "hold",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "چگالی متفاوت است؛ اندازهٔ وزنه جرمش را مشخص نمی‌کند."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap1",
+          "position": [
+            135,
+            690
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "مقایسهٔ مجموع دوگروه، ترتیب همهٔ تک‌وزنه‌ها را معلوم نمی‌کند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap2",
+          "position": [
+            135,
+            855
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "وزنهٔ مرجع نامعلوم اطلاعات تضمین‌شده اضافه نمی‌کند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

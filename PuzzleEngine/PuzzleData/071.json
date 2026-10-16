@@ -1,0 +1,598 @@
+{
+  "schema_version": 1,
+  "id": 71,
+  "question": "در میان چند ساعت، یکی با بقیه سازگار نیست. کدام؟",
+  "hint": "هر ساعت را لمس کن و جای ساعت‌شمارش را با دقیقه مقایسه کن. در۳:۳۰ ساعت‌شمار باید نیمهٔ راه۳و۴ باشد؛ پس از بررسی چهار ساعت، ساعت دوم را نگه دار.",
+  "answer": "ساعتی که زاویه عقربه‌هایش با زمان نوشته‌شده جور نیست",
+  "time_limit_seconds": 145,
+  "base_score": 180,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "seen0": false,
+    "seen1": false,
+    "seen2": false,
+    "seen3": false
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "clock0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_clock_0.svg",
+      "position": [
+        450,
+        650
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ],
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "time0",
+      "scene": "TextObject",
+      "text": "۱:۰۰",
+      "position": [
+        450,
+        805
+      ],
+      "hit_size": [
+        220,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "clock1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_clock_1.svg",
+      "position": [
+        790,
+        650
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ],
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "time1",
+      "scene": "TextObject",
+      "text": "۳:۳۰",
+      "position": [
+        790,
+        805
+      ],
+      "hit_size": [
+        220,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "clock2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_clock_2.svg",
+      "position": [
+        1130,
+        650
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ],
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "time2",
+      "scene": "TextObject",
+      "text": "۶:۱۵",
+      "position": [
+        1130,
+        805
+      ],
+      "hit_size": [
+        220,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "clock3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_clock_3.svg",
+      "position": [
+        1470,
+        650
+      ],
+      "interactions": [
+        "tap",
+        "hold"
+      ],
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "time3",
+      "scene": "TextObject",
+      "text": "۹:۴۵",
+      "position": [
+        1470,
+        805
+      ],
+      "hit_size": [
+        220,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "کارت۳:۱۵",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↔",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "any",
+          "min_distance": 55
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "پیچ قاب",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "tap",
+      "source": "clock0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "seen0",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "ساعت‌شمار روی۱؛ سازگار است."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "hold",
+      "source": "clock0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "seen0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "seen1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "seen2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "seen3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "حرکت ساعت‌شمار با دقیقه سازگار است."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "clock1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "seen1",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "۳:۳۰؛ ساعت‌شمار هنوز دقیقاً روی۳ است."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "hold",
+      "source": "clock1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "seen0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "seen1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "seen2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "seen3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "tap",
+      "source": "clock2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "seen2",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "ساعت‌شمار کمی از۶گذشته؛ سازگار است."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "hold",
+      "source": "clock2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "seen0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "seen1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "seen2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "seen3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "حرکت ساعت‌شمار با دقیقه سازگار است."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "tap",
+      "source": "clock3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "seen3",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "ساعت‌شمار نزدیک۱۰؛ سازگار است."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "hold",
+      "source": "clock3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "seen0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "seen1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "seen2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "seen3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "حرکت ساعت‌شمار با دقیقه سازگار است."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "۳:۱۵درست است؛ ساعت۳:۳۰هنوز ساعت‌شمار ناسازگار دارد."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0009",
+      "event": "swipe",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "چرخاندن قاب، اختلاف نسبی عقربه‌ها و زمان را رفع نمی‌کند."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

@@ -1,0 +1,534 @@
+{
+  "schema_version": 1,
+  "id": 73,
+  "question": "دو در و دو نگهبان؛ یکی راستگو و یکی دروغگو. با یک سؤال در نجات را پیدا کن.",
+  "hint": "کارت «دیگری کدام در را امن می‌داند؟» را روی یکی از دو نگهبان بکش. هر دو به در راست اشاره می‌کنند؛ در مخالف، یعنی در چپ را به چپ بکش. سؤال مستقیم تضمین ندارد و فرصت یگانه را مصرف می‌کند.",
+  "answer": "از یکی بپرس دیگری کدام در را نجات می‌داند و در مخالف را انتخاب کن",
+  "time_limit_seconds": 150,
+  "base_score": 185,
+  "background": "res://assets/samples/library_room_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "asked": false,
+    "valid": false
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "door0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/hidden_door.svg",
+      "position": [
+        580,
+        640
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "scale": [
+        0.8,
+        0.8
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "guard0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        760,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        0.6,
+        0.6
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "guardzone0_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        760,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        1.25,
+        1.4166666666666667
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "guardzone0",
+      "scene": "DropZone",
+      "position": [
+        760,
+        740
+      ],
+      "hit_size": [
+        150,
+        170
+      ],
+      "accepted_sources": [
+        "question",
+        "direct"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "door1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/hidden_door.svg",
+      "position": [
+        1340,
+        640
+      ],
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "scale": [
+        0.8,
+        0.8
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "guard1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/walking_person.svg",
+      "position": [
+        1160,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        0.6,
+        0.6
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "guardzone1_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1160,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        1.25,
+        1.4166666666666667
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "guardzone1",
+      "scene": "DropZone",
+      "position": [
+        1160,
+        740
+      ],
+      "hit_size": [
+        150,
+        170
+      ],
+      "accepted_sources": [
+        "question",
+        "direct"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "question",
+      "scene": "TextObject",
+      "text": "دیگری؟",
+      "position": [
+        780,
+        885
+      ],
+      "hit_size": [
+        220,
+        90
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_220_90.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "direct",
+      "scene": "TextObject",
+      "text": "در امن؟",
+      "position": [
+        1130,
+        885
+      ],
+      "hit_size": [
+        220,
+        90
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_220_90.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "آینه نگهبان",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↔",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "any",
+          "min_distance": 55
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "سکه انتخاب",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "question",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "asked",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "asked",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "valid",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "question"
+        },
+        {
+          "type": "hide",
+          "target": "direct"
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "نگهبان به در راست اشاره می‌کند ← در مخالف را باز کن."
+        }
+      ],
+      "once": false,
+      "target": "guardzone0"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "direct",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "asked",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "asked",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "پاسخ مستقیم تضمین ندارد؛ فرصت سؤال تمام شد."
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "guardzone0"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "question",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "asked",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "asked",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "valid",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "question"
+        },
+        {
+          "type": "hide",
+          "target": "direct"
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "نگهبان به در راست اشاره می‌کند ← در مخالف را باز کن."
+        }
+      ],
+      "once": false,
+      "target": "guardzone1"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "direct",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "asked",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "asked",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "پاسخ مستقیم تضمین ندارد؛ فرصت سؤال تمام شد."
+        },
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false,
+      "target": "guardzone1"
+    },
+    {
+      "id": "r0004",
+      "event": "swipe",
+      "source": "door0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "valid",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "swipe",
+      "source": "door1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "asked",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "hold",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "برعکس‌کردن تصویر اشاره، پاسخ نگهبان دیگر را شبیه‌سازی نمی‌کند."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "swipe",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "پیشنهاد شانسی دلیل انتخاب در امن نیست."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  }
+}

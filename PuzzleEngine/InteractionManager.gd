@@ -22,11 +22,20 @@ var _dragging: bool = false
 var _drag_config: Dictionary = {}
 var _max_pointer_distance: float = 0.0
 var _hold_fired: bool = false
+var _path_points: Array = []
+var _path_overflow: bool = false
+var _trace_line: Line2D
 var time_source: Callable = func() -> int: return Time.get_ticks_usec()
 
 
 func configure(stage_root: Node2D, nodes: Dictionary, state: PuzzleState, controls: Array[Control]) -> void:
 	cancel_active_pointer()
+	if is_instance_valid(_trace_line):
+		if _trace_line.get_parent() != null:
+			_trace_line.get_parent().remove_child(_trace_line)
+		_trace_line.queue_free()
+	_trace_line = null
+	_path_points.clear()
 	object_root = stage_root
 	object_nodes = nodes
 	puzzle_state = state
@@ -102,6 +111,18 @@ func pointer_pressed(viewport_position: Vector2, pointer_id: int) -> bool:
 	_dragging = false
 	_drag_config = candidate.interaction("drag")
 	_max_pointer_distance = 0.0
+	_path_points = [[candidate.position.x, candidate.position.y]]
+	_path_overflow = false
+	if candidate.definition.get("state", {}).get("trace", false):
+		if not is_instance_valid(_trace_line):
+			_trace_line = Line2D.new()
+			_trace_line.width = 7.0
+			_trace_line.default_color = Color("#256f81")
+			_trace_line.z_index = 4
+			object_root.add_child(_trace_line)
+		_trace_line.clear_points()
+		_trace_line.modulate = candidate.modulate
+		_trace_line.add_point(candidate.position)
 	return true
 
 
@@ -112,6 +133,16 @@ func pointer_moved(viewport_position: Vector2, pointer_id: int) -> bool:
 		return false
 	var stage_position := viewport_to_stage(viewport_position)
 	_last_position = stage_position
+	if _active_object.definition.get("state", {}).get("trace", false):
+		var trace_delta := _constrain_delta(stage_position-_press_position,_drag_config.get("axis","both"))
+		var trace_position := _clamp_to_bounds(_object_start_position+trace_delta,_drag_config)
+		var sample_distance := Vector2(_path_points[-1][0],_path_points[-1][1]).distance_to(trace_position)
+		if _path_points.size()>=4096 and sample_distance>=2.0:
+			_path_overflow = true
+		if _path_points.size()<4096 and sample_distance>=2.0:
+			_path_points.append([trace_position.x,trace_position.y])
+			if is_instance_valid(_trace_line):
+				_trace_line.add_point(trace_position)
 	_max_pointer_distance = maxf(_max_pointer_distance, _press_position.distance_to(stage_position))
 	if _drag_config.is_empty():
 		return true
@@ -189,6 +220,8 @@ func _valid_swipe(item: PuzzleObject, movement: Vector2, duration: float) -> boo
 
 
 func cancel_active_pointer() -> void:
+	if _active_pointer != -2 and is_instance_valid(_trace_line):
+		_trace_line.clear_points()
 	_reset_pointer(true)
 
 func _input_allowed() -> bool:
@@ -305,6 +338,9 @@ func _emit_movement(type: String, source: PuzzleObject, start_position: Vector2,
 		"distance": start_position.distance_to(end_position),
 		"duration": actual_duration,
 	}
+	if type == "drag_end" and source.definition.get("state", {}).get("trace", false):
+		payload["path"] = _path_points.duplicate(true)
+		payload["path_overflow"] = _path_overflow
 	var event: Dictionary = {
 		"type": type,
 		"source": source.object_id,

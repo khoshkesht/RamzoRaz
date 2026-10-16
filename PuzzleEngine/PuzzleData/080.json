@@ -1,0 +1,570 @@
+{
+  "schema_version": 1,
+  "id": 80,
+  "question": "در یک شبکه ۳×۳، بدون برداشتن قلم با ۴ خط همه ۹ نقطه را رد کن.",
+  "hint": "قلم را در یک گرفتن حرکت بده: از نقطه بالاچپ، افقی تا یک فاصله بیرونِ راست؛ مورب به یک فاصله پایینِ پایین‌چپ؛ عمودی به بالاچپ؛ مورب به پایین‌راست. در هر گوشه مکث کوتاه کن و جهت را عوض کن؛ چهار خط متصل هر۹نقطه را می‌پوشاند. برداشتن قلم مسیر را از نو آغاز می‌کند.",
+  "answer": "خط‌ها را بیرون از مرز فرضی مربع امتداد بده",
+  "time_limit_seconds": 175,
+  "base_score": 190,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"level\": 80, \"kind\": \"path\", \"points\": [[650, 500], [790, 500], [930, 500], [650, 640], [790, 640], [930, 640], [650, 780], [790, 780], [930, 780]], \"tolerance\": 28, \"segment_tolerance\": 12}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "point0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        650,
+        500
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "label0",
+      "scene": "TextObject",
+      "text": "۱",
+      "position": [
+        615,
+        470
+      ],
+      "hit_size": [
+        60,
+        45
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "point1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        790,
+        500
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "label1",
+      "scene": "TextObject",
+      "text": "۲",
+      "position": [
+        755,
+        470
+      ],
+      "hit_size": [
+        60,
+        45
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "point2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        930,
+        500
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "label2",
+      "scene": "TextObject",
+      "text": "۳",
+      "position": [
+        895,
+        470
+      ],
+      "hit_size": [
+        60,
+        45
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "point3",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        650,
+        640
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "label3",
+      "scene": "TextObject",
+      "text": "۴",
+      "position": [
+        615,
+        610
+      ],
+      "hit_size": [
+        60,
+        45
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "point4",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        790,
+        640
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "label4",
+      "scene": "TextObject",
+      "text": "۵",
+      "position": [
+        755,
+        610
+      ],
+      "hit_size": [
+        60,
+        45
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "point5",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        930,
+        640
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "label5",
+      "scene": "TextObject",
+      "text": "۶",
+      "position": [
+        895,
+        610
+      ],
+      "hit_size": [
+        60,
+        45
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "point6",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        650,
+        780
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "label6",
+      "scene": "TextObject",
+      "text": "۷",
+      "position": [
+        615,
+        750
+      ],
+      "hit_size": [
+        60,
+        45
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "point7",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        790,
+        780
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "label7",
+      "scene": "TextObject",
+      "text": "۸",
+      "position": [
+        755,
+        750
+      ],
+      "hit_size": [
+        60,
+        45
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "point8",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_dot.svg",
+      "position": [
+        930,
+        780
+      ],
+      "interactions": [],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "label8",
+      "scene": "TextObject",
+      "text": "۹",
+      "position": [
+        895,
+        750
+      ],
+      "hit_size": [
+        60,
+        45
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "pen",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_trace_pen.svg",
+      "position": [
+        650,
+        500
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            460,
+            1420,
+            560
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "state": {
+        "trace": true
+      },
+      "scale": [
+        0.7,
+        0.7
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "gesture",
+      "scene": "TextObject",
+      "text": "قلم را پیوسته بکش",
+      "position": [
+        1420,
+        530
+      ],
+      "hit_size": [
+        500,
+        80
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "قاب مربع",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "خط‌کش۵خط",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "↔",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "any",
+          "min_distance": 55
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "پاک‌کن",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "مرز فرضی محدودیت نیست؛ خط‌ها می‌توانند بیرون مربع ادامه یابند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0001",
+      "event": "hold",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "پنج خط از سقف چهار خط بیشتر است."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "swipe",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "پاک‌کردن پیش‌نمایش، قطع یک گرفتن قلم را پیوسته نمی‌کند."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

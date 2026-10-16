@@ -1,0 +1,464 @@
+{
+  "schema_version": 1,
+  "id": 99,
+  "question": "در یک شبکه لوله‌کشی سنتی، آب باید از آب‌انبار به حوض برسد و هیچ لوله‌ای نشت نکند.",
+  "hint": "هر لوله را لمس کن تا۹۰درجه بچرخد. مسیر از ورودیِ چپِ بالاچپ، سطر بالا به راست، سطر وسط به چپ و سطر پایین به راست است و از راستِ پایین‌راست خارج می‌شود. هر اتصال باید همسایهٔ مقابل داشته باشد؛ شیر را لمس کن تا جریان واقعی و نشتی بررسی شود.",
+  "answer": "اتصال صحیح قطعات لوله",
+  "time_limit_seconds": 235,
+  "base_score": 245,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"level\": 99, \"kind\": \"pipes\", \"target\": [10, 10, 12, 6, 10, 9, 3, 10, 10], \"turns\": [1, 2, 3, 1, 2, 3, 1, 2, 3], \"base_angles\": [0, 0, 90, 0, 0, 180, 270, 0, 0]}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "diagram",
+      "scene": "TextObject",
+      "text": "​",
+      "position": [
+        960,
+        700
+      ],
+      "hit_size": [
+        1,
+        1
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "z_index": 2,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "pipe0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_pipe_10.svg",
+      "position": [
+        750,
+        540
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 90,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "pipe1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_pipe_10.svg",
+      "position": [
+        890,
+        540
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 180,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "pipe2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_pipe_6.svg",
+      "position": [
+        1030,
+        540
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "pipe3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_pipe_6.svg",
+      "position": [
+        750,
+        680
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 90,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "pipe4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_pipe_10.svg",
+      "position": [
+        890,
+        680
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 180,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "pipe5",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_pipe_6.svg",
+      "position": [
+        1030,
+        680
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 90,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "pipe6",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_pipe_6.svg",
+      "position": [
+        750,
+        820
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "pipe7",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_pipe_10.svg",
+      "position": [
+        890,
+        820
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 180,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "pipe8",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_pipe_10.svg",
+      "position": [
+        1030,
+        820
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "rotation_degrees": 270,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "inlet",
+      "scene": "TextObject",
+      "text": "آب →",
+      "position": [
+        480,
+        540
+      ],
+      "hit_size": [
+        220,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "outlet",
+      "scene": "TextObject",
+      "text": "→ حوض",
+      "position": [
+        1280,
+        820
+      ],
+      "hit_size": [
+        220,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "water",
+      "scene": "TextObject",
+      "text": "شیر آب",
+      "position": [
+        1450,
+        650
+      ],
+      "hit_size": [
+        220,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_220_110.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap1"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "لوله بن‌بست",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "درپوش آزمایش",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "شیر میان‌بُر",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "tap",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "بن‌بست براق خروجی را می‌بندد و مسیر کامل آب نیست."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap1",
+          "position": [
+            135,
+            690
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "قطره تزئینی قطع شد؛ نشتی اتصال‌های شبکه هنوز باید محاسبه شود."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0002",
+      "event": "hold",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "پرشدن حوض نمایشی، اتصال آب‌انبار هدف را ثابت نمی‌کند."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

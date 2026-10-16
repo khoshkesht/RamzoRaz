@@ -1,0 +1,4154 @@
+{
+  "schema_version": 1,
+  "id": 77,
+  "question": "دو تخم‌مرغ و ساختمان ۱۰۰ طبقه؛ کمترین تعداد پرتاب در بدترین حالت؟",
+  "hint": "برای انتخاب طبقه، نوار بازه را به راست بکش تا۲۰طبقهٔ بعد دیده شود. تخم‌مرغ را به ترتیب روی۱۴،۲۷،۳۹،۵۰،۶۰،۶۹،۷۷،۸۴،۹۰،۹۵،۹۹،۱۰۰ببر. اگر اولی بشکند، دومی طبقات ناشناختهٔ زیر آن را از پایین یک‌به‌یک می‌سنجد. شبیه‌ساز همهٔ۱۰۱آستانه را با همین برنامه و حد۱۴بررسی می‌کند.",
+  "answer": "۱۴",
+  "time_limit_seconds": 195,
+  "base_score": 200,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"level\": 77, \"kind\": \"eggs\", \"floors\": []}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floor1",
+      "scene": "TextObject",
+      "text": "۱",
+      "position": [
+        450,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone1",
+      "scene": "DropZone",
+      "position": [
+        450,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor2",
+      "scene": "TextObject",
+      "text": "۲",
+      "position": [
+        565,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone2",
+      "scene": "DropZone",
+      "position": [
+        565,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor3",
+      "scene": "TextObject",
+      "text": "۳",
+      "position": [
+        680,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone3",
+      "scene": "DropZone",
+      "position": [
+        680,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor4",
+      "scene": "TextObject",
+      "text": "۴",
+      "position": [
+        795,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone4",
+      "scene": "DropZone",
+      "position": [
+        795,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor5",
+      "scene": "TextObject",
+      "text": "۵",
+      "position": [
+        910,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone5",
+      "scene": "DropZone",
+      "position": [
+        910,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor6",
+      "scene": "TextObject",
+      "text": "۶",
+      "position": [
+        1025,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone6",
+      "scene": "DropZone",
+      "position": [
+        1025,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor7",
+      "scene": "TextObject",
+      "text": "۷",
+      "position": [
+        1140,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone7",
+      "scene": "DropZone",
+      "position": [
+        1140,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor8",
+      "scene": "TextObject",
+      "text": "۸",
+      "position": [
+        1255,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone8",
+      "scene": "DropZone",
+      "position": [
+        1255,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor9",
+      "scene": "TextObject",
+      "text": "۹",
+      "position": [
+        1370,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone9",
+      "scene": "DropZone",
+      "position": [
+        1370,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor10",
+      "scene": "TextObject",
+      "text": "۱۰",
+      "position": [
+        1485,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone10",
+      "scene": "DropZone",
+      "position": [
+        1485,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor11",
+      "scene": "TextObject",
+      "text": "۱۱",
+      "position": [
+        450,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone11",
+      "scene": "DropZone",
+      "position": [
+        450,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor12",
+      "scene": "TextObject",
+      "text": "۱۲",
+      "position": [
+        565,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone12",
+      "scene": "DropZone",
+      "position": [
+        565,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor13",
+      "scene": "TextObject",
+      "text": "۱۳",
+      "position": [
+        680,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone13",
+      "scene": "DropZone",
+      "position": [
+        680,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor14",
+      "scene": "TextObject",
+      "text": "۱۴",
+      "position": [
+        795,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone14",
+      "scene": "DropZone",
+      "position": [
+        795,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor15",
+      "scene": "TextObject",
+      "text": "۱۵",
+      "position": [
+        910,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone15",
+      "scene": "DropZone",
+      "position": [
+        910,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor16",
+      "scene": "TextObject",
+      "text": "۱۶",
+      "position": [
+        1025,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone16",
+      "scene": "DropZone",
+      "position": [
+        1025,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor17",
+      "scene": "TextObject",
+      "text": "۱۷",
+      "position": [
+        1140,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone17",
+      "scene": "DropZone",
+      "position": [
+        1140,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor18",
+      "scene": "TextObject",
+      "text": "۱۸",
+      "position": [
+        1255,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone18",
+      "scene": "DropZone",
+      "position": [
+        1255,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor19",
+      "scene": "TextObject",
+      "text": "۱۹",
+      "position": [
+        1370,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone19",
+      "scene": "DropZone",
+      "position": [
+        1370,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor20",
+      "scene": "TextObject",
+      "text": "۲۰",
+      "position": [
+        1485,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": true,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone20",
+      "scene": "DropZone",
+      "position": [
+        1485,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor21",
+      "scene": "TextObject",
+      "text": "۲۱",
+      "position": [
+        450,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone21",
+      "scene": "DropZone",
+      "position": [
+        450,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor22",
+      "scene": "TextObject",
+      "text": "۲۲",
+      "position": [
+        565,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone22",
+      "scene": "DropZone",
+      "position": [
+        565,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor23",
+      "scene": "TextObject",
+      "text": "۲۳",
+      "position": [
+        680,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone23",
+      "scene": "DropZone",
+      "position": [
+        680,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor24",
+      "scene": "TextObject",
+      "text": "۲۴",
+      "position": [
+        795,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone24",
+      "scene": "DropZone",
+      "position": [
+        795,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor25",
+      "scene": "TextObject",
+      "text": "۲۵",
+      "position": [
+        910,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone25",
+      "scene": "DropZone",
+      "position": [
+        910,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor26",
+      "scene": "TextObject",
+      "text": "۲۶",
+      "position": [
+        1025,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone26",
+      "scene": "DropZone",
+      "position": [
+        1025,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor27",
+      "scene": "TextObject",
+      "text": "۲۷",
+      "position": [
+        1140,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone27",
+      "scene": "DropZone",
+      "position": [
+        1140,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor28",
+      "scene": "TextObject",
+      "text": "۲۸",
+      "position": [
+        1255,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone28",
+      "scene": "DropZone",
+      "position": [
+        1255,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor29",
+      "scene": "TextObject",
+      "text": "۲۹",
+      "position": [
+        1370,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone29",
+      "scene": "DropZone",
+      "position": [
+        1370,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor30",
+      "scene": "TextObject",
+      "text": "۳۰",
+      "position": [
+        1485,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone30",
+      "scene": "DropZone",
+      "position": [
+        1485,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor31",
+      "scene": "TextObject",
+      "text": "۳۱",
+      "position": [
+        450,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone31",
+      "scene": "DropZone",
+      "position": [
+        450,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor32",
+      "scene": "TextObject",
+      "text": "۳۲",
+      "position": [
+        565,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone32",
+      "scene": "DropZone",
+      "position": [
+        565,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor33",
+      "scene": "TextObject",
+      "text": "۳۳",
+      "position": [
+        680,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone33",
+      "scene": "DropZone",
+      "position": [
+        680,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor34",
+      "scene": "TextObject",
+      "text": "۳۴",
+      "position": [
+        795,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone34",
+      "scene": "DropZone",
+      "position": [
+        795,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor35",
+      "scene": "TextObject",
+      "text": "۳۵",
+      "position": [
+        910,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone35",
+      "scene": "DropZone",
+      "position": [
+        910,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor36",
+      "scene": "TextObject",
+      "text": "۳۶",
+      "position": [
+        1025,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone36",
+      "scene": "DropZone",
+      "position": [
+        1025,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor37",
+      "scene": "TextObject",
+      "text": "۳۷",
+      "position": [
+        1140,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone37",
+      "scene": "DropZone",
+      "position": [
+        1140,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor38",
+      "scene": "TextObject",
+      "text": "۳۸",
+      "position": [
+        1255,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone38",
+      "scene": "DropZone",
+      "position": [
+        1255,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor39",
+      "scene": "TextObject",
+      "text": "۳۹",
+      "position": [
+        1370,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone39",
+      "scene": "DropZone",
+      "position": [
+        1370,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor40",
+      "scene": "TextObject",
+      "text": "۴۰",
+      "position": [
+        1485,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone40",
+      "scene": "DropZone",
+      "position": [
+        1485,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor41",
+      "scene": "TextObject",
+      "text": "۴۱",
+      "position": [
+        450,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone41",
+      "scene": "DropZone",
+      "position": [
+        450,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor42",
+      "scene": "TextObject",
+      "text": "۴۲",
+      "position": [
+        565,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone42",
+      "scene": "DropZone",
+      "position": [
+        565,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor43",
+      "scene": "TextObject",
+      "text": "۴۳",
+      "position": [
+        680,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone43",
+      "scene": "DropZone",
+      "position": [
+        680,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor44",
+      "scene": "TextObject",
+      "text": "۴۴",
+      "position": [
+        795,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone44",
+      "scene": "DropZone",
+      "position": [
+        795,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor45",
+      "scene": "TextObject",
+      "text": "۴۵",
+      "position": [
+        910,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone45",
+      "scene": "DropZone",
+      "position": [
+        910,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor46",
+      "scene": "TextObject",
+      "text": "۴۶",
+      "position": [
+        1025,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone46",
+      "scene": "DropZone",
+      "position": [
+        1025,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor47",
+      "scene": "TextObject",
+      "text": "۴۷",
+      "position": [
+        1140,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone47",
+      "scene": "DropZone",
+      "position": [
+        1140,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor48",
+      "scene": "TextObject",
+      "text": "۴۸",
+      "position": [
+        1255,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone48",
+      "scene": "DropZone",
+      "position": [
+        1255,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor49",
+      "scene": "TextObject",
+      "text": "۴۹",
+      "position": [
+        1370,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone49",
+      "scene": "DropZone",
+      "position": [
+        1370,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor50",
+      "scene": "TextObject",
+      "text": "۵۰",
+      "position": [
+        1485,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone50",
+      "scene": "DropZone",
+      "position": [
+        1485,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor51",
+      "scene": "TextObject",
+      "text": "۵۱",
+      "position": [
+        450,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone51",
+      "scene": "DropZone",
+      "position": [
+        450,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor52",
+      "scene": "TextObject",
+      "text": "۵۲",
+      "position": [
+        565,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone52",
+      "scene": "DropZone",
+      "position": [
+        565,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor53",
+      "scene": "TextObject",
+      "text": "۵۳",
+      "position": [
+        680,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone53",
+      "scene": "DropZone",
+      "position": [
+        680,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor54",
+      "scene": "TextObject",
+      "text": "۵۴",
+      "position": [
+        795,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone54",
+      "scene": "DropZone",
+      "position": [
+        795,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor55",
+      "scene": "TextObject",
+      "text": "۵۵",
+      "position": [
+        910,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone55",
+      "scene": "DropZone",
+      "position": [
+        910,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor56",
+      "scene": "TextObject",
+      "text": "۵۶",
+      "position": [
+        1025,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone56",
+      "scene": "DropZone",
+      "position": [
+        1025,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor57",
+      "scene": "TextObject",
+      "text": "۵۷",
+      "position": [
+        1140,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone57",
+      "scene": "DropZone",
+      "position": [
+        1140,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor58",
+      "scene": "TextObject",
+      "text": "۵۸",
+      "position": [
+        1255,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone58",
+      "scene": "DropZone",
+      "position": [
+        1255,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor59",
+      "scene": "TextObject",
+      "text": "۵۹",
+      "position": [
+        1370,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone59",
+      "scene": "DropZone",
+      "position": [
+        1370,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor60",
+      "scene": "TextObject",
+      "text": "۶۰",
+      "position": [
+        1485,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone60",
+      "scene": "DropZone",
+      "position": [
+        1485,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor61",
+      "scene": "TextObject",
+      "text": "۶۱",
+      "position": [
+        450,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone61",
+      "scene": "DropZone",
+      "position": [
+        450,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor62",
+      "scene": "TextObject",
+      "text": "۶۲",
+      "position": [
+        565,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone62",
+      "scene": "DropZone",
+      "position": [
+        565,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor63",
+      "scene": "TextObject",
+      "text": "۶۳",
+      "position": [
+        680,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone63",
+      "scene": "DropZone",
+      "position": [
+        680,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor64",
+      "scene": "TextObject",
+      "text": "۶۴",
+      "position": [
+        795,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone64",
+      "scene": "DropZone",
+      "position": [
+        795,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor65",
+      "scene": "TextObject",
+      "text": "۶۵",
+      "position": [
+        910,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone65",
+      "scene": "DropZone",
+      "position": [
+        910,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor66",
+      "scene": "TextObject",
+      "text": "۶۶",
+      "position": [
+        1025,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone66",
+      "scene": "DropZone",
+      "position": [
+        1025,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor67",
+      "scene": "TextObject",
+      "text": "۶۷",
+      "position": [
+        1140,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone67",
+      "scene": "DropZone",
+      "position": [
+        1140,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor68",
+      "scene": "TextObject",
+      "text": "۶۸",
+      "position": [
+        1255,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone68",
+      "scene": "DropZone",
+      "position": [
+        1255,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor69",
+      "scene": "TextObject",
+      "text": "۶۹",
+      "position": [
+        1370,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone69",
+      "scene": "DropZone",
+      "position": [
+        1370,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor70",
+      "scene": "TextObject",
+      "text": "۷۰",
+      "position": [
+        1485,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone70",
+      "scene": "DropZone",
+      "position": [
+        1485,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor71",
+      "scene": "TextObject",
+      "text": "۷۱",
+      "position": [
+        450,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone71",
+      "scene": "DropZone",
+      "position": [
+        450,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor72",
+      "scene": "TextObject",
+      "text": "۷۲",
+      "position": [
+        565,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone72",
+      "scene": "DropZone",
+      "position": [
+        565,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor73",
+      "scene": "TextObject",
+      "text": "۷۳",
+      "position": [
+        680,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone73",
+      "scene": "DropZone",
+      "position": [
+        680,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor74",
+      "scene": "TextObject",
+      "text": "۷۴",
+      "position": [
+        795,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone74",
+      "scene": "DropZone",
+      "position": [
+        795,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor75",
+      "scene": "TextObject",
+      "text": "۷۵",
+      "position": [
+        910,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone75",
+      "scene": "DropZone",
+      "position": [
+        910,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor76",
+      "scene": "TextObject",
+      "text": "۷۶",
+      "position": [
+        1025,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone76",
+      "scene": "DropZone",
+      "position": [
+        1025,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor77",
+      "scene": "TextObject",
+      "text": "۷۷",
+      "position": [
+        1140,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone77",
+      "scene": "DropZone",
+      "position": [
+        1140,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor78",
+      "scene": "TextObject",
+      "text": "۷۸",
+      "position": [
+        1255,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone78",
+      "scene": "DropZone",
+      "position": [
+        1255,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor79",
+      "scene": "TextObject",
+      "text": "۷۹",
+      "position": [
+        1370,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone79",
+      "scene": "DropZone",
+      "position": [
+        1370,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor80",
+      "scene": "TextObject",
+      "text": "۸۰",
+      "position": [
+        1485,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone80",
+      "scene": "DropZone",
+      "position": [
+        1485,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor81",
+      "scene": "TextObject",
+      "text": "۸۱",
+      "position": [
+        450,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone81",
+      "scene": "DropZone",
+      "position": [
+        450,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor82",
+      "scene": "TextObject",
+      "text": "۸۲",
+      "position": [
+        565,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone82",
+      "scene": "DropZone",
+      "position": [
+        565,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor83",
+      "scene": "TextObject",
+      "text": "۸۳",
+      "position": [
+        680,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone83",
+      "scene": "DropZone",
+      "position": [
+        680,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor84",
+      "scene": "TextObject",
+      "text": "۸۴",
+      "position": [
+        795,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone84",
+      "scene": "DropZone",
+      "position": [
+        795,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor85",
+      "scene": "TextObject",
+      "text": "۸۵",
+      "position": [
+        910,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone85",
+      "scene": "DropZone",
+      "position": [
+        910,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor86",
+      "scene": "TextObject",
+      "text": "۸۶",
+      "position": [
+        1025,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone86",
+      "scene": "DropZone",
+      "position": [
+        1025,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor87",
+      "scene": "TextObject",
+      "text": "۸۷",
+      "position": [
+        1140,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone87",
+      "scene": "DropZone",
+      "position": [
+        1140,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor88",
+      "scene": "TextObject",
+      "text": "۸۸",
+      "position": [
+        1255,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone88",
+      "scene": "DropZone",
+      "position": [
+        1255,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor89",
+      "scene": "TextObject",
+      "text": "۸۹",
+      "position": [
+        1370,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone89",
+      "scene": "DropZone",
+      "position": [
+        1370,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor90",
+      "scene": "TextObject",
+      "text": "۹۰",
+      "position": [
+        1485,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone90",
+      "scene": "DropZone",
+      "position": [
+        1485,
+        550
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor91",
+      "scene": "TextObject",
+      "text": "۹۱",
+      "position": [
+        450,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone91",
+      "scene": "DropZone",
+      "position": [
+        450,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor92",
+      "scene": "TextObject",
+      "text": "۹۲",
+      "position": [
+        565,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone92",
+      "scene": "DropZone",
+      "position": [
+        565,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor93",
+      "scene": "TextObject",
+      "text": "۹۳",
+      "position": [
+        680,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone93",
+      "scene": "DropZone",
+      "position": [
+        680,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor94",
+      "scene": "TextObject",
+      "text": "۹۴",
+      "position": [
+        795,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone94",
+      "scene": "DropZone",
+      "position": [
+        795,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor95",
+      "scene": "TextObject",
+      "text": "۹۵",
+      "position": [
+        910,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone95",
+      "scene": "DropZone",
+      "position": [
+        910,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor96",
+      "scene": "TextObject",
+      "text": "۹۶",
+      "position": [
+        1025,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone96",
+      "scene": "DropZone",
+      "position": [
+        1025,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor97",
+      "scene": "TextObject",
+      "text": "۹۷",
+      "position": [
+        1140,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone97",
+      "scene": "DropZone",
+      "position": [
+        1140,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor98",
+      "scene": "TextObject",
+      "text": "۹۸",
+      "position": [
+        1255,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone98",
+      "scene": "DropZone",
+      "position": [
+        1255,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor99",
+      "scene": "TextObject",
+      "text": "۹۹",
+      "position": [
+        1370,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone99",
+      "scene": "DropZone",
+      "position": [
+        1370,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor100",
+      "scene": "TextObject",
+      "text": "۱۰۰",
+      "position": [
+        1485,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "sprite": "res://assets/samples/final_token_100_100.svg",
+      "visible": false,
+      "z_index": 0,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "floorzone100",
+      "scene": "DropZone",
+      "position": [
+        1485,
+        730
+      ],
+      "hit_size": [
+        100,
+        100
+      ],
+      "accepted_sources": [
+        "egg"
+      ],
+      "z_index": -1,
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "floor_page",
+      "scene": "TextObject",
+      "text": "۱ تا۲۰ ↔",
+      "position": [
+        960,
+        850
+      ],
+      "hit_size": [
+        350,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "any"
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_350_70.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "egg",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/egg_assumption.svg",
+      "position": [
+        1650,
+        680
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.65,
+        0.65
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "program",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        925
+      ],
+      "hit_size": [
+        1500,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0",
+        "trap1"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "شروع۵۰",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "گام۱۰",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "بالشتک",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "اگر تخم‌مرغ اول در۵۰بشکند، آزمایش خطیِ زیر آن بیش از۱۴پرتاب می‌خواهد."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap1",
+          "position": [
+            135,
+            690
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "گام ثابت۱۰در بدترین حالت از۱۴پرتاب بیشتر می‌شود."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0002",
+      "event": "hold",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "پوشش نرم، قانون شکست و اطلاعات پرتاب را عوض نمی‌کند."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

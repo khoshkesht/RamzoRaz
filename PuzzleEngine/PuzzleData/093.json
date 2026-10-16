@@ -1,0 +1,1093 @@
+{
+  "schema_version": 1,
+  "id": 93,
+  "question": "یک مسیر روی کاشی‌های ایرانی فقط با رعایت تقارن کامل می‌شود. کدام کاشی‌ها را جابه‌جا می‌کنی؟",
+  "hint": "دو کاشی میانیِ چپ و راست جابه‌جا شده‌اند. ابتدا کاشی میانیِ راست را روی سینی موقت بگذار؛ کاشی میانیِ چپ را در جای خالی راست ببر؛ سپس کاشی سینی را در جای خالی چپ بگذار. تمام خط‌ها باید از مرزها عبور کنند و دو طرف محور عمودی بازتاب هم شوند.",
+  "answer": "دو کاشی ناسازگار با محور تقارن",
+  "time_limit_seconds": 180,
+  "base_score": 205,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"kind\": \"exchange\", \"slots\": [[800, 540], [945, 540], [1090, 540], [800, 685], [945, 685], [1090, 685], [800, 830], [945, 830], [1090, 830]], \"pieces\": [[800, 540], [945, 540], [1090, 540], [1090, 685], [945, 685], [800, 685], [800, 830], [945, 830], [1090, 830]], \"target\": [0, 1, 2, 3, 4, 5, 6, 7, 8], \"rotations\": [0, 0, 0, 0, 0, 0, 0, 0, 0], \"initial\": [0, 1, 2, 5, 4, 3, 6, 7, 8], \"clues\": [], \"tray\": [1430, 710], \"level\": 93}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "axis",
+      "scene": "TextObject",
+      "text": "محور عمودی ↓",
+      "position": [
+        945,
+        450
+      ],
+      "hit_size": [
+        450,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "workbench_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1430,
+        710
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "workbench",
+      "scene": "DropZone",
+      "position": [
+        1430,
+        710
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4",
+        "piece5",
+        "piece6",
+        "piece7",
+        "piece8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "tray_label",
+      "scene": "TextObject",
+      "text": "سینی موقت",
+      "position": [
+        1430,
+        600
+      ],
+      "hit_size": [
+        280,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "slot0_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        800,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot0",
+      "scene": "DropZone",
+      "position": [
+        800,
+        540
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4",
+        "piece5",
+        "piece6",
+        "piece7",
+        "piece8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot1_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        945,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot1",
+      "scene": "DropZone",
+      "position": [
+        945,
+        540
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4",
+        "piece5",
+        "piece6",
+        "piece7",
+        "piece8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot2_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1090,
+        540
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot2",
+      "scene": "DropZone",
+      "position": [
+        1090,
+        540
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4",
+        "piece5",
+        "piece6",
+        "piece7",
+        "piece8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot3_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        800,
+        685
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot3",
+      "scene": "DropZone",
+      "position": [
+        800,
+        685
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4",
+        "piece5",
+        "piece6",
+        "piece7",
+        "piece8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot4_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        945,
+        685
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot4",
+      "scene": "DropZone",
+      "position": [
+        945,
+        685
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4",
+        "piece5",
+        "piece6",
+        "piece7",
+        "piece8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot5_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1090,
+        685
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot5",
+      "scene": "DropZone",
+      "position": [
+        1090,
+        685
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4",
+        "piece5",
+        "piece6",
+        "piece7",
+        "piece8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot6_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        800,
+        830
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot6",
+      "scene": "DropZone",
+      "position": [
+        800,
+        830
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4",
+        "piece5",
+        "piece6",
+        "piece7",
+        "piece8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot7_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        945,
+        830
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot7",
+      "scene": "DropZone",
+      "position": [
+        945,
+        830
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4",
+        "piece5",
+        "piece6",
+        "piece7",
+        "piece8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot8_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1090,
+        830
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot8",
+      "scene": "DropZone",
+      "position": [
+        1090,
+        830
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4",
+        "piece5",
+        "piece6",
+        "piece7",
+        "piece8"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "piece0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_symmetry_0.svg",
+      "position": [
+        800,
+        540
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name0",
+      "scene": "TextObject",
+      "text": "A",
+      "position": [
+        800,
+        600
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "interactive": false
+    },
+    {
+      "id": "piece1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_symmetry_1.svg",
+      "position": [
+        945,
+        540
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name1",
+      "scene": "TextObject",
+      "text": "B",
+      "position": [
+        945,
+        600
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "interactive": false
+    },
+    {
+      "id": "piece2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_symmetry_2.svg",
+      "position": [
+        1090,
+        540
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name2",
+      "scene": "TextObject",
+      "text": "C",
+      "position": [
+        1090,
+        600
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "interactive": false
+    },
+    {
+      "id": "piece3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_symmetry_3.svg",
+      "position": [
+        1090,
+        685
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name3",
+      "scene": "TextObject",
+      "text": "D",
+      "position": [
+        1090,
+        745
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "interactive": false
+    },
+    {
+      "id": "piece4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_symmetry_4.svg",
+      "position": [
+        945,
+        685
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name4",
+      "scene": "TextObject",
+      "text": "E",
+      "position": [
+        945,
+        745
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "interactive": false
+    },
+    {
+      "id": "piece5",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_symmetry_5.svg",
+      "position": [
+        800,
+        685
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name5",
+      "scene": "TextObject",
+      "text": "F",
+      "position": [
+        800,
+        745
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "interactive": false
+    },
+    {
+      "id": "piece6",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_symmetry_6.svg",
+      "position": [
+        800,
+        830
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name6",
+      "scene": "TextObject",
+      "text": "G",
+      "position": [
+        800,
+        890
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "interactive": false
+    },
+    {
+      "id": "piece7",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_symmetry_7.svg",
+      "position": [
+        945,
+        830
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name7",
+      "scene": "TextObject",
+      "text": "H",
+      "position": [
+        945,
+        890
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "interactive": false
+    },
+    {
+      "id": "piece8",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_symmetry_8.svg",
+      "position": [
+        1090,
+        830
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name8",
+      "scene": "TextObject",
+      "text": "I",
+      "position": [
+        1090,
+        890
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "interactive": false
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ]
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0",
+        "trap1"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "کاشی هم‌رنگ",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "محور مورب",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "تقارن رنگ",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "رنگ مشابه کافی نیست؛ خطوط باید در هر مرز متصل باشند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap1",
+          "position": [
+            135,
+            690
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "محور اعلام‌شده عمودی است؛ تطابق مورب پاسخ نیست."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0002",
+      "event": "hold",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "قالب فقط رنگ‌ها را می‌سنجد و قطع مسیر را پنهان می‌کند."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

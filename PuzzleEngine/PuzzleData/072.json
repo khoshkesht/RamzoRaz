@@ -1,0 +1,896 @@
+{
+  "schema_version": 1,
+  "id": 72,
+  "question": "۱۲ سکه، یکی تقلبی و معلوم نیست سبک‌تر است یا سنگین‌تر؛ با ۳ وزن‌کشی پیدایش کن.",
+  "hint": "هر سکه را روی کفه چپ، راست یا سینی بازگشت بکش؛ فقط دکمه توزین بودجه مصرف می‌کند. ابتدا۱،۲،۳،۴ در برابر۵،۶،۷،۸؛ برابر می‌شوند. سپس۹،۱۰،۱۱ در برابر۱،۲،۳؛ چپ سنگین می‌شود. در آخر۹در برابر۱۰؛ راست سنگین است. سکه۱۰ را در جای تشخیص بگذار و حالت سنگین را لمس کن. این مشاهدات از۲۴فرض تنها۱۰سنگین را باقی می‌گذارد.",
+  "answer": "استفاده از الگوی استاندارد سه وزن‌کشی برای تفکیک ۲۴ حالت",
+  "time_limit_seconds": 200,
+  "base_score": 200,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"level\": 72, \"kind\": \"balance\", \"n\": 12, \"budget\": 3, \"masses\": [10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 10, 10]}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        1015
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "left_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        620,
+        580
+      ],
+      "interactions": [],
+      "scale": [
+        3.6666666666666665,
+        1.4166666666666667
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "left",
+      "scene": "DropZone",
+      "position": [
+        620,
+        580
+      ],
+      "hit_size": [
+        440,
+        170
+      ],
+      "accepted_sources": [
+        "coin0",
+        "coin1",
+        "coin2",
+        "coin3",
+        "coin4",
+        "coin5",
+        "coin6",
+        "coin7",
+        "coin8",
+        "coin9",
+        "coin10",
+        "coin11"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "right_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1260,
+        580
+      ],
+      "interactions": [],
+      "scale": [
+        3.6666666666666665,
+        1.4166666666666667
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "right",
+      "scene": "DropZone",
+      "position": [
+        1260,
+        580
+      ],
+      "hit_size": [
+        440,
+        170
+      ],
+      "accepted_sources": [
+        "coin0",
+        "coin1",
+        "coin2",
+        "coin3",
+        "coin4",
+        "coin5",
+        "coin6",
+        "coin7",
+        "coin8",
+        "coin9",
+        "coin10",
+        "coin11"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "tray_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        960,
+        845
+      ],
+      "interactions": [],
+      "scale": [
+        12.083333333333334,
+        1.1666666666666667
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "tray",
+      "scene": "DropZone",
+      "position": [
+        960,
+        845
+      ],
+      "hit_size": [
+        1450,
+        140
+      ],
+      "accepted_sources": [
+        "coin0",
+        "coin1",
+        "coin2",
+        "coin3",
+        "coin4",
+        "coin5",
+        "coin6",
+        "coin7",
+        "coin8",
+        "coin9",
+        "coin10",
+        "coin11"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "left_label",
+      "scene": "TextObject",
+      "text": "کفهٔ چپ",
+      "position": [
+        620,
+        465
+      ],
+      "hit_size": [
+        280,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "right_label",
+      "scene": "TextObject",
+      "text": "کفهٔ راست",
+      "position": [
+        1260,
+        465
+      ],
+      "hit_size": [
+        280,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "coin0",
+      "scene": "TextObject",
+      "text": "۱",
+      "position": [
+        280.0,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "coin1",
+      "scene": "TextObject",
+      "text": "۲",
+      "position": [
+        403.6363636363636,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "coin2",
+      "scene": "TextObject",
+      "text": "۳",
+      "position": [
+        527.2727272727273,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "coin3",
+      "scene": "TextObject",
+      "text": "۴",
+      "position": [
+        650.909090909091,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "coin4",
+      "scene": "TextObject",
+      "text": "۵",
+      "position": [
+        774.5454545454545,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "coin5",
+      "scene": "TextObject",
+      "text": "۶",
+      "position": [
+        898.1818181818182,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "coin6",
+      "scene": "TextObject",
+      "text": "۷",
+      "position": [
+        1021.8181818181819,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "coin7",
+      "scene": "TextObject",
+      "text": "۸",
+      "position": [
+        1145.4545454545455,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "coin8",
+      "scene": "TextObject",
+      "text": "۹",
+      "position": [
+        1269.090909090909,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "coin9",
+      "scene": "TextObject",
+      "text": "۱۰",
+      "position": [
+        1392.7272727272727,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "coin10",
+      "scene": "TextObject",
+      "text": "۱۱",
+      "position": [
+        1516.3636363636365,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "coin11",
+      "scene": "TextObject",
+      "text": "۱۲",
+      "position": [
+        1640.0,
+        850
+      ],
+      "hit_size": [
+        85,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            230,
+            460,
+            1460,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_85_85.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "weigh",
+      "scene": "TextObject",
+      "text": "توزین",
+      "position": [
+        1610,
+        560
+      ],
+      "hit_size": [
+        180,
+        95
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_180_95.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "identify_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1600,
+        740
+      ],
+      "interactions": [],
+      "scale": [
+        1.0833333333333333,
+        1.0833333333333333
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "identify",
+      "scene": "DropZone",
+      "position": [
+        1600,
+        740
+      ],
+      "hit_size": [
+        130,
+        130
+      ],
+      "accepted_sources": [
+        "coin0",
+        "coin1",
+        "coin2",
+        "coin3",
+        "coin4",
+        "coin5",
+        "coin6",
+        "coin7",
+        "coin8",
+        "coin9",
+        "coin10",
+        "coin11"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "heavy",
+      "scene": "TextObject",
+      "text": "سنگین",
+      "position": [
+        1490,
+        930
+      ],
+      "hit_size": [
+        160,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_160_60.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "light",
+      "scene": "TextObject",
+      "text": "سبک",
+      "position": [
+        1700,
+        930
+      ],
+      "hit_size": [
+        150,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_150_60.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap1"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "سکه تاج‌دار",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "۶ در برابر۶",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "↔",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "any",
+          "min_distance": 55
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "پیچ تراز",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "hold",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "وزن این سکه معلوم نیست؛ مرجع تضمین‌شده نداریم."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap1",
+          "position": [
+            135,
+            690
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "در شاخه نامتعادل هنوز هویت و سبک/سنگین مبهم است."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0002",
+      "event": "swipe",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "چرخاندن پیچ نمایشی، جرم کفه‌ها و نتیجه ثبت‌شده را عوض نمی‌کند."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

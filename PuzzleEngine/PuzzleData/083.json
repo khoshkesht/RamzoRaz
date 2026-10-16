@@ -1,0 +1,5310 @@
+{
+  "schema_version": 1,
+  "id": 83,
+  "question": "مکعبی رنگ‌شده به ۲۷ مکعب کوچک تقسیم شده؛ چند مکعب دقیقاً دو وجه رنگی دارند؟",
+  "hint": "در مکعب۳×۳×۳ فقط وسط۱۲لبه دو وجه رنگی دارد؛ گوشه‌ها۳ و مرکز وجه‌ها۱وجه دارند. همهٔ۱۲وسط لبه را لمس کن؛ انتخاب اشتباه را دوباره لمس کن.",
+  "answer": "۱۲",
+  "time_limit_seconds": 200,
+  "base_score": 215,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "selected": 0,
+    "wrong": 0,
+    "toggle": false,
+    "sel0": false,
+    "sel1": false,
+    "sel2": false,
+    "sel3": false,
+    "sel4": false,
+    "sel5": false,
+    "sel6": false,
+    "sel7": false,
+    "sel8": false,
+    "sel9": false,
+    "sel10": false,
+    "sel11": false,
+    "sel12": false,
+    "sel13": false,
+    "sel14": false,
+    "sel15": false,
+    "sel16": false,
+    "sel17": false,
+    "sel18": false,
+    "sel19": false,
+    "sel20": false,
+    "sel21": false,
+    "sel22": false,
+    "sel23": false,
+    "sel24": false,
+    "sel25": false,
+    "view": 0,
+    "turning": false
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_000.svg",
+      "position": [
+        380,
+        540
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark0",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        380,
+        540
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_001.svg",
+      "position": [
+        880,
+        540
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark1",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        880,
+        540
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_002.svg",
+      "position": [
+        1380,
+        540
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark2",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1380,
+        540
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_010.svg",
+      "position": [
+        380,
+        665
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark3",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        380,
+        665
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_011.svg",
+      "position": [
+        880,
+        665
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark4",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        880,
+        665
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube5",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_012.svg",
+      "position": [
+        1380,
+        665
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark5",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1380,
+        665
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube6",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_020.svg",
+      "position": [
+        380,
+        790
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark6",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        380,
+        790
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube7",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_021.svg",
+      "position": [
+        880,
+        790
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark7",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        880,
+        790
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube8",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_022.svg",
+      "position": [
+        1380,
+        790
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark8",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1380,
+        790
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube9",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_100.svg",
+      "position": [
+        505,
+        540
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark9",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        505,
+        540
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube10",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_101.svg",
+      "position": [
+        1005,
+        540
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark10",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1005,
+        540
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube11",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_102.svg",
+      "position": [
+        1505,
+        540
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark11",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1505,
+        540
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube12",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_110.svg",
+      "position": [
+        505,
+        665
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark12",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        505,
+        665
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube13",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_112.svg",
+      "position": [
+        1505,
+        665
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark13",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1505,
+        665
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube14",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_120.svg",
+      "position": [
+        505,
+        790
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark14",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        505,
+        790
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube15",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_121.svg",
+      "position": [
+        1005,
+        790
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark15",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1005,
+        790
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube16",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_122.svg",
+      "position": [
+        1505,
+        790
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark16",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1505,
+        790
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube17",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_200.svg",
+      "position": [
+        630,
+        540
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark17",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        630,
+        540
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube18",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_201.svg",
+      "position": [
+        1130,
+        540
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark18",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1130,
+        540
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube19",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_202.svg",
+      "position": [
+        1630,
+        540
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark19",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1630,
+        540
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube20",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_210.svg",
+      "position": [
+        630,
+        665
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark20",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        630,
+        665
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube21",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_211.svg",
+      "position": [
+        1130,
+        665
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark21",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1130,
+        665
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube22",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_212.svg",
+      "position": [
+        1630,
+        665
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark22",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1630,
+        665
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube23",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_220.svg",
+      "position": [
+        630,
+        790
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark23",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        630,
+        790
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube24",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_221.svg",
+      "position": [
+        1130,
+        790
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark24",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1130,
+        790
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube25",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_222.svg",
+      "position": [
+        1630,
+        790
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": true,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark25",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1630,
+        790
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "slices",
+      "scene": "TextObject",
+      "text": "سه برشِ بازشدهٔ مکعب؛ رنگ اولیه روی وجه‌هاست",
+      "position": [
+        960,
+        450
+      ],
+      "hit_size": [
+        1400,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "view",
+      "scene": "TextObject",
+      "text": "چرخش ←",
+      "position": [
+        1480,
+        920
+      ],
+      "hit_size": [
+        260,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "left"
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_260_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap1"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "۸گوشه",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "۶مرکزوجه",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "↔",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "any",
+          "min_distance": 55
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "رنگ‌پاش",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "tap",
+      "source": "cube0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel0",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark0"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel0",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0001",
+      "event": "tap",
+      "source": "cube0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel0",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark0"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel0",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "source": "cube0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "tap",
+      "source": "cube1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel1",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark1"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel1",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0004",
+      "event": "tap",
+      "source": "cube1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel1",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark1"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel1",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
+      "source": "cube1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0006",
+      "event": "tap",
+      "source": "cube2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel2",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark2"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel2",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "tap",
+      "source": "cube2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel2",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark2"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel2",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
+      "event": "tap",
+      "source": "cube2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0009",
+      "event": "tap",
+      "source": "cube3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel3",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark3"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel3",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0010",
+      "event": "tap",
+      "source": "cube3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel3",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark3"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel3",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0011",
+      "event": "tap",
+      "source": "cube3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0012",
+      "event": "tap",
+      "source": "cube4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel4",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark4"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel4",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0013",
+      "event": "tap",
+      "source": "cube4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel4",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark4"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel4",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0014",
+      "event": "tap",
+      "source": "cube4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0015",
+      "event": "tap",
+      "source": "cube5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark5"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel5",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0016",
+      "event": "tap",
+      "source": "cube5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel5",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark5"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel5",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0017",
+      "event": "tap",
+      "source": "cube5",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0018",
+      "event": "tap",
+      "source": "cube6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel6",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark6"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel6",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0019",
+      "event": "tap",
+      "source": "cube6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel6",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark6"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel6",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0020",
+      "event": "tap",
+      "source": "cube6",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0021",
+      "event": "tap",
+      "source": "cube7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel7",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark7"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel7",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0022",
+      "event": "tap",
+      "source": "cube7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel7",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark7"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel7",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0023",
+      "event": "tap",
+      "source": "cube7",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0024",
+      "event": "tap",
+      "source": "cube8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel8",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark8"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel8",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0025",
+      "event": "tap",
+      "source": "cube8",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel8",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark8"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel8",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0026",
+      "event": "tap",
+      "source": "cube8",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0027",
+      "event": "tap",
+      "source": "cube9",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel9",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark9"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel9",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0028",
+      "event": "tap",
+      "source": "cube9",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel9",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark9"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel9",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0029",
+      "event": "tap",
+      "source": "cube9",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0030",
+      "event": "tap",
+      "source": "cube10",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel10",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark10"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel10",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0031",
+      "event": "tap",
+      "source": "cube10",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel10",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark10"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel10",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0032",
+      "event": "tap",
+      "source": "cube10",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0033",
+      "event": "tap",
+      "source": "cube11",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel11",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark11"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel11",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0034",
+      "event": "tap",
+      "source": "cube11",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel11",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark11"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel11",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0035",
+      "event": "tap",
+      "source": "cube11",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0036",
+      "event": "tap",
+      "source": "cube12",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel12",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark12"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel12",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0037",
+      "event": "tap",
+      "source": "cube12",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel12",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark12"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel12",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0038",
+      "event": "tap",
+      "source": "cube12",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0039",
+      "event": "tap",
+      "source": "cube13",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel13",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark13"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel13",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0040",
+      "event": "tap",
+      "source": "cube13",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel13",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark13"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel13",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0041",
+      "event": "tap",
+      "source": "cube13",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0042",
+      "event": "tap",
+      "source": "cube14",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel14",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark14"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel14",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0043",
+      "event": "tap",
+      "source": "cube14",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel14",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark14"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel14",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0044",
+      "event": "tap",
+      "source": "cube14",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0045",
+      "event": "tap",
+      "source": "cube15",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel15",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark15"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel15",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0046",
+      "event": "tap",
+      "source": "cube15",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel15",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark15"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel15",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0047",
+      "event": "tap",
+      "source": "cube15",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0048",
+      "event": "tap",
+      "source": "cube16",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel16",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark16"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel16",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0049",
+      "event": "tap",
+      "source": "cube16",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel16",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark16"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel16",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0050",
+      "event": "tap",
+      "source": "cube16",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0051",
+      "event": "tap",
+      "source": "cube17",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel17",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark17"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel17",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0052",
+      "event": "tap",
+      "source": "cube17",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel17",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark17"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel17",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0053",
+      "event": "tap",
+      "source": "cube17",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0054",
+      "event": "tap",
+      "source": "cube18",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel18",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark18"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel18",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0055",
+      "event": "tap",
+      "source": "cube18",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel18",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark18"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel18",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0056",
+      "event": "tap",
+      "source": "cube18",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0057",
+      "event": "tap",
+      "source": "cube19",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel19",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark19"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel19",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0058",
+      "event": "tap",
+      "source": "cube19",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel19",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark19"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel19",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0059",
+      "event": "tap",
+      "source": "cube19",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0060",
+      "event": "tap",
+      "source": "cube20",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel20",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark20"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel20",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0061",
+      "event": "tap",
+      "source": "cube20",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel20",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark20"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel20",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0062",
+      "event": "tap",
+      "source": "cube20",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0063",
+      "event": "tap",
+      "source": "cube21",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel21",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark21"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel21",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0064",
+      "event": "tap",
+      "source": "cube21",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel21",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark21"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel21",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0065",
+      "event": "tap",
+      "source": "cube21",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0066",
+      "event": "tap",
+      "source": "cube22",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel22",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark22"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel22",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0067",
+      "event": "tap",
+      "source": "cube22",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel22",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark22"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel22",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0068",
+      "event": "tap",
+      "source": "cube22",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0069",
+      "event": "tap",
+      "source": "cube23",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel23",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark23"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel23",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0070",
+      "event": "tap",
+      "source": "cube23",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel23",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark23"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel23",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0071",
+      "event": "tap",
+      "source": "cube23",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0072",
+      "event": "tap",
+      "source": "cube24",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel24",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark24"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel24",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0073",
+      "event": "tap",
+      "source": "cube24",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel24",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark24"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel24",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0074",
+      "event": "tap",
+      "source": "cube24",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0075",
+      "event": "tap",
+      "source": "cube25",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel25",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark25"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel25",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0076",
+      "event": "tap",
+      "source": "cube25",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel25",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark25"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel25",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "wrong",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0077",
+      "event": "tap",
+      "source": "cube25",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0078",
+      "event": "swipe",
+      "source": "view",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "view",
+          "operator": "eq",
+          "value": 0
+        },
+        {
+          "type": "variable",
+          "name": "turning",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "turning",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "view",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cube0",
+          "position": [
+            1380,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark0",
+          "position": [
+            1380,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube0",
+          "sprite": "res://assets/samples/final_cube_002.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube1",
+          "position": [
+            1505,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark1",
+          "position": [
+            1505,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube1",
+          "sprite": "res://assets/samples/final_cube_102.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube2",
+          "position": [
+            1630,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark2",
+          "position": [
+            1630,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube2",
+          "sprite": "res://assets/samples/final_cube_202.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube3",
+          "position": [
+            1380,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark3",
+          "position": [
+            1380,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube3",
+          "sprite": "res://assets/samples/final_cube_012.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube4",
+          "position": [
+            1505,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark4",
+          "position": [
+            1505,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube4",
+          "sprite": "res://assets/samples/final_cube_112.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube5",
+          "position": [
+            1630,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark5",
+          "position": [
+            1630,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube5",
+          "sprite": "res://assets/samples/final_cube_212.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube6",
+          "position": [
+            1380,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark6",
+          "position": [
+            1380,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube6",
+          "sprite": "res://assets/samples/final_cube_022.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube7",
+          "position": [
+            1505,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark7",
+          "position": [
+            1505,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube7",
+          "sprite": "res://assets/samples/final_cube_122.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube8",
+          "position": [
+            1630,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark8",
+          "position": [
+            1630,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube8",
+          "sprite": "res://assets/samples/final_cube_222.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube9",
+          "position": [
+            880,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark9",
+          "position": [
+            880,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube9",
+          "sprite": "res://assets/samples/final_cube_001.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube10",
+          "position": [
+            1005,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark10",
+          "position": [
+            1005,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube10",
+          "sprite": "res://assets/samples/final_cube_101.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube11",
+          "position": [
+            1130,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark11",
+          "position": [
+            1130,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube11",
+          "sprite": "res://assets/samples/final_cube_201.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube12",
+          "position": [
+            880,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark12",
+          "position": [
+            880,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube12",
+          "sprite": "res://assets/samples/final_cube_011.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube13",
+          "position": [
+            1130,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark13",
+          "position": [
+            1130,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube13",
+          "sprite": "res://assets/samples/final_cube_211.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube14",
+          "position": [
+            880,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark14",
+          "position": [
+            880,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube14",
+          "sprite": "res://assets/samples/final_cube_021.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube15",
+          "position": [
+            1005,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark15",
+          "position": [
+            1005,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube15",
+          "sprite": "res://assets/samples/final_cube_121.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube16",
+          "position": [
+            1130,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark16",
+          "position": [
+            1130,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube16",
+          "sprite": "res://assets/samples/final_cube_221.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube17",
+          "position": [
+            380,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark17",
+          "position": [
+            380,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube17",
+          "sprite": "res://assets/samples/final_cube_000.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube18",
+          "position": [
+            505,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark18",
+          "position": [
+            505,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube18",
+          "sprite": "res://assets/samples/final_cube_100.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube19",
+          "position": [
+            630,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark19",
+          "position": [
+            630,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube19",
+          "sprite": "res://assets/samples/final_cube_200.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube20",
+          "position": [
+            380,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark20",
+          "position": [
+            380,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube20",
+          "sprite": "res://assets/samples/final_cube_010.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube21",
+          "position": [
+            505,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark21",
+          "position": [
+            505,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube21",
+          "sprite": "res://assets/samples/final_cube_110.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube22",
+          "position": [
+            630,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark22",
+          "position": [
+            630,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube22",
+          "sprite": "res://assets/samples/final_cube_210.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube23",
+          "position": [
+            380,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark23",
+          "position": [
+            380,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube23",
+          "sprite": "res://assets/samples/final_cube_020.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube24",
+          "position": [
+            505,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark24",
+          "position": [
+            505,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube24",
+          "sprite": "res://assets/samples/final_cube_120.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube25",
+          "position": [
+            630,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark25",
+          "position": [
+            630,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube25",
+          "sprite": "res://assets/samples/final_cube_220.svg"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0079",
+      "event": "swipe",
+      "source": "view",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "view",
+          "operator": "eq",
+          "value": 1
+        },
+        {
+          "type": "variable",
+          "name": "turning",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "turning",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "view",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cube0",
+          "position": [
+            1630,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark0",
+          "position": [
+            1630,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube0",
+          "sprite": "res://assets/samples/final_cube_202.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube1",
+          "position": [
+            1130,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark1",
+          "position": [
+            1130,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube1",
+          "sprite": "res://assets/samples/final_cube_201.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube2",
+          "position": [
+            630,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark2",
+          "position": [
+            630,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube2",
+          "sprite": "res://assets/samples/final_cube_200.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube3",
+          "position": [
+            1630,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark3",
+          "position": [
+            1630,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube3",
+          "sprite": "res://assets/samples/final_cube_212.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube4",
+          "position": [
+            1130,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark4",
+          "position": [
+            1130,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube4",
+          "sprite": "res://assets/samples/final_cube_211.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube5",
+          "position": [
+            630,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark5",
+          "position": [
+            630,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube5",
+          "sprite": "res://assets/samples/final_cube_210.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube6",
+          "position": [
+            1630,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark6",
+          "position": [
+            1630,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube6",
+          "sprite": "res://assets/samples/final_cube_222.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube7",
+          "position": [
+            1130,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark7",
+          "position": [
+            1130,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube7",
+          "sprite": "res://assets/samples/final_cube_221.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube8",
+          "position": [
+            630,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark8",
+          "position": [
+            630,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube8",
+          "sprite": "res://assets/samples/final_cube_220.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube9",
+          "position": [
+            1505,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark9",
+          "position": [
+            1505,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube9",
+          "sprite": "res://assets/samples/final_cube_102.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube10",
+          "position": [
+            1005,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark10",
+          "position": [
+            1005,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube10",
+          "sprite": "res://assets/samples/final_cube_101.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube11",
+          "position": [
+            505,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark11",
+          "position": [
+            505,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube11",
+          "sprite": "res://assets/samples/final_cube_100.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube12",
+          "position": [
+            1505,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark12",
+          "position": [
+            1505,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube12",
+          "sprite": "res://assets/samples/final_cube_112.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube13",
+          "position": [
+            505,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark13",
+          "position": [
+            505,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube13",
+          "sprite": "res://assets/samples/final_cube_110.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube14",
+          "position": [
+            1505,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark14",
+          "position": [
+            1505,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube14",
+          "sprite": "res://assets/samples/final_cube_122.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube15",
+          "position": [
+            1005,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark15",
+          "position": [
+            1005,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube15",
+          "sprite": "res://assets/samples/final_cube_121.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube16",
+          "position": [
+            505,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark16",
+          "position": [
+            505,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube16",
+          "sprite": "res://assets/samples/final_cube_120.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube17",
+          "position": [
+            1380,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark17",
+          "position": [
+            1380,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube17",
+          "sprite": "res://assets/samples/final_cube_002.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube18",
+          "position": [
+            880,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark18",
+          "position": [
+            880,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube18",
+          "sprite": "res://assets/samples/final_cube_001.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube19",
+          "position": [
+            380,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark19",
+          "position": [
+            380,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube19",
+          "sprite": "res://assets/samples/final_cube_000.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube20",
+          "position": [
+            1380,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark20",
+          "position": [
+            1380,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube20",
+          "sprite": "res://assets/samples/final_cube_012.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube21",
+          "position": [
+            880,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark21",
+          "position": [
+            880,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube21",
+          "sprite": "res://assets/samples/final_cube_011.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube22",
+          "position": [
+            380,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark22",
+          "position": [
+            380,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube22",
+          "sprite": "res://assets/samples/final_cube_010.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube23",
+          "position": [
+            1380,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark23",
+          "position": [
+            1380,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube23",
+          "sprite": "res://assets/samples/final_cube_022.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube24",
+          "position": [
+            880,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark24",
+          "position": [
+            880,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube24",
+          "sprite": "res://assets/samples/final_cube_021.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube25",
+          "position": [
+            380,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark25",
+          "position": [
+            380,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube25",
+          "sprite": "res://assets/samples/final_cube_020.svg"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0080",
+      "event": "swipe",
+      "source": "view",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "view",
+          "operator": "eq",
+          "value": 2
+        },
+        {
+          "type": "variable",
+          "name": "turning",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "turning",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "view",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "cube0",
+          "position": [
+            380,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark0",
+          "position": [
+            380,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube0",
+          "sprite": "res://assets/samples/final_cube_000.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube1",
+          "position": [
+            880,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark1",
+          "position": [
+            880,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube1",
+          "sprite": "res://assets/samples/final_cube_001.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube2",
+          "position": [
+            1380,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark2",
+          "position": [
+            1380,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube2",
+          "sprite": "res://assets/samples/final_cube_002.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube3",
+          "position": [
+            380,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark3",
+          "position": [
+            380,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube3",
+          "sprite": "res://assets/samples/final_cube_010.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube4",
+          "position": [
+            880,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark4",
+          "position": [
+            880,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube4",
+          "sprite": "res://assets/samples/final_cube_011.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube5",
+          "position": [
+            1380,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark5",
+          "position": [
+            1380,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube5",
+          "sprite": "res://assets/samples/final_cube_012.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube6",
+          "position": [
+            380,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark6",
+          "position": [
+            380,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube6",
+          "sprite": "res://assets/samples/final_cube_020.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube7",
+          "position": [
+            880,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark7",
+          "position": [
+            880,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube7",
+          "sprite": "res://assets/samples/final_cube_021.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube8",
+          "position": [
+            1380,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark8",
+          "position": [
+            1380,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube8",
+          "sprite": "res://assets/samples/final_cube_022.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube9",
+          "position": [
+            505,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark9",
+          "position": [
+            505,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube9",
+          "sprite": "res://assets/samples/final_cube_100.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube10",
+          "position": [
+            1005,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark10",
+          "position": [
+            1005,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube10",
+          "sprite": "res://assets/samples/final_cube_101.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube11",
+          "position": [
+            1505,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark11",
+          "position": [
+            1505,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube11",
+          "sprite": "res://assets/samples/final_cube_102.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube12",
+          "position": [
+            505,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark12",
+          "position": [
+            505,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube12",
+          "sprite": "res://assets/samples/final_cube_110.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube13",
+          "position": [
+            1505,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark13",
+          "position": [
+            1505,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube13",
+          "sprite": "res://assets/samples/final_cube_112.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube14",
+          "position": [
+            505,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark14",
+          "position": [
+            505,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube14",
+          "sprite": "res://assets/samples/final_cube_120.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube15",
+          "position": [
+            1005,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark15",
+          "position": [
+            1005,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube15",
+          "sprite": "res://assets/samples/final_cube_121.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube16",
+          "position": [
+            1505,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark16",
+          "position": [
+            1505,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube16",
+          "sprite": "res://assets/samples/final_cube_122.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube17",
+          "position": [
+            630,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark17",
+          "position": [
+            630,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube17",
+          "sprite": "res://assets/samples/final_cube_200.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube18",
+          "position": [
+            1130,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark18",
+          "position": [
+            1130,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube18",
+          "sprite": "res://assets/samples/final_cube_201.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube19",
+          "position": [
+            1630,
+            540
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark19",
+          "position": [
+            1630,
+            540
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube19",
+          "sprite": "res://assets/samples/final_cube_202.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube20",
+          "position": [
+            630,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark20",
+          "position": [
+            630,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube20",
+          "sprite": "res://assets/samples/final_cube_210.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube21",
+          "position": [
+            1130,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark21",
+          "position": [
+            1130,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube21",
+          "sprite": "res://assets/samples/final_cube_211.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube22",
+          "position": [
+            1630,
+            665
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark22",
+          "position": [
+            1630,
+            665
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube22",
+          "sprite": "res://assets/samples/final_cube_212.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube23",
+          "position": [
+            630,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark23",
+          "position": [
+            630,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube23",
+          "sprite": "res://assets/samples/final_cube_220.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube24",
+          "position": [
+            1130,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark24",
+          "position": [
+            1130,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube24",
+          "sprite": "res://assets/samples/final_cube_221.svg"
+        },
+        {
+          "type": "move",
+          "target": "cube25",
+          "position": [
+            1630,
+            790
+          ]
+        },
+        {
+          "type": "move",
+          "target": "mark25",
+          "position": [
+            1630,
+            790
+          ]
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cube25",
+          "sprite": "res://assets/samples/final_cube_222.svg"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0081",
+      "event": "swipe",
+      "source": "view",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "turning",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0082",
+      "event": "tap",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "هر گوشه سه وجه رنگی دارد؛ دو وجه نیست."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0083",
+      "event": "drop_on",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap1",
+          "position": [
+            135,
+            690
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "وسط هر وجه تنها یک وجه رنگی دارد."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0084",
+      "event": "swipe",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "شمارش بر اساس رنگ اولیهٔ مکعب است، نه روکش تازه."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "all",
+    "conditions": [
+      {
+        "type": "variable",
+        "name": "selected",
+        "operator": "eq",
+        "value": 12
+      },
+      {
+        "type": "variable",
+        "name": "wrong",
+        "operator": "eq",
+        "value": 0
+      }
+    ]
+  },
+  "counters": [
+    {
+      "label": "انتخاب",
+      "variable": "selected",
+      "target": 12
+    }
+  ]
+}

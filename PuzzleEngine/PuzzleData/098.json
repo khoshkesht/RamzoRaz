@@ -1,0 +1,598 @@
+{
+  "schema_version": 1,
+  "id": 98,
+  "question": "چند قطعه شکسته کاشی را طوری کنار هم بچین که هیچ خط نقشی قطع نشود.",
+  "hint": "چهار قطعه را با توجه به رنگ و مسیر خطوط روی قاب۲×۲ بچین؛ هر لمس۹۰درجه می‌چرخاند. نشان جهت باید بالا بماند. جای درست Aبالاچپ،Bبالاراست،Cپایین‌چپ،Dپایین‌راست است.",
+  "answer": "چیدمان یکتای پازل کاشی",
+  "time_limit_seconds": 215,
+  "base_score": 240,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"kind\": \"fit\", \"slots\": [[780, 570], [925, 570], [780, 715], [925, 715]], \"pieces\": [[330.0, 865], [642.5, 865], [955.0, 865], [1267.5, 865], [1580.0, 865]], \"target\": [0, 1, 2, 3], \"rotations\": [0, 0, 0, 0, 0], \"initial\": [-1, -1, -1, -1, -1], \"clues\": [], \"angles\": [90, 180, 270, 90, 0], \"level\": 98}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "slot0_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        780,
+        570
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot0",
+      "scene": "DropZone",
+      "position": [
+        780,
+        570
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot1_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        925,
+        570
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot1",
+      "scene": "DropZone",
+      "position": [
+        925,
+        570
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot2_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        780,
+        715
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot2",
+      "scene": "DropZone",
+      "position": [
+        780,
+        715
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot3_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        925,
+        715
+      ],
+      "interactions": [],
+      "scale": [
+        1.2083333333333333,
+        1.2083333333333333
+      ]
+    },
+    {
+      "id": "slot3",
+      "scene": "DropZone",
+      "position": [
+        925,
+        715
+      ],
+      "hit_size": [
+        145,
+        145
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3",
+        "piece4"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "piece0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_jigsaw_0.svg",
+      "position": [
+        330.0,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 90
+    },
+    {
+      "id": "name0",
+      "scene": "TextObject",
+      "text": "A",
+      "position": [
+        330.0,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_jigsaw_1.svg",
+      "position": [
+        642.5,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 180
+    },
+    {
+      "id": "name1",
+      "scene": "TextObject",
+      "text": "B",
+      "position": [
+        642.5,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_jigsaw_2.svg",
+      "position": [
+        955.0,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 270
+    },
+    {
+      "id": "name2",
+      "scene": "TextObject",
+      "text": "C",
+      "position": [
+        955.0,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_jigsaw_3.svg",
+      "position": [
+        1267.5,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 90
+    },
+    {
+      "id": "name3",
+      "scene": "TextObject",
+      "text": "D",
+      "position": [
+        1267.5,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_jigsaw_4.svg",
+      "position": [
+        1580.0,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.2,
+        1.2
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name4",
+      "scene": "TextObject",
+      "text": "E",
+      "position": [
+        1580.0,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "reference",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_jigsaw_0.svg",
+      "position": [
+        1660,
+        520
+      ],
+      "interactions": [],
+      "scale": [
+        1.3,
+        1.3
+      ]
+    },
+    {
+      "id": "direction",
+      "scene": "TextObject",
+      "text": "↑",
+      "position": [
+        1660,
+        430
+      ],
+      "hit_size": [
+        100,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ]
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "چسب نواری",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "چرخش کل",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "پوشاندن شکاف، اتصال منطقی مرز را برقرار نمی‌کند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0001",
+      "event": "tap",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "نشان جهت مرجع ثابت است؛ چرخاندن پیش‌نمایش پاسخ نیست."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

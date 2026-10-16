@@ -1,0 +1,455 @@
+{
+  "schema_version": 1,
+  "id": 81,
+  "question": "سه میله و چند حلقه برج هانوی؛ همه حلقه‌ها را با قوانین درست منتقل کن.",
+  "hint": "فقط حلقهٔ بالایی را بکش؛ بزرگ روی کوچک نمی‌رود. برای۴حلقه: کوچک چپ→وسط، دوم چپ→راست، کوچک وسط→راست، سوم چپ→وسط، کوچک راست→چپ، دوم راست→وسط، کوچک چپ→وسط، بزرگ چپ→راست؛ سپس سه حلقهٔ وسط را با همین قانون به راست منتقل کن.",
+  "answer": "انتقال بازگشتی حلقه‌ها بدون قرار دادن بزرگ روی کوچک",
+  "time_limit_seconds": 195,
+  "base_score": 200,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"level\": 81, \"kind\": \"hanoi\"}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "peg0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_peg.svg",
+      "position": [
+        500,
+        690
+      ],
+      "interactions": []
+    },
+    {
+      "id": "rod0",
+      "scene": "DropZone",
+      "position": [
+        500,
+        690
+      ],
+      "hit_size": [
+        300,
+        360
+      ],
+      "accepted_sources": [
+        "ring0",
+        "ring1",
+        "ring2",
+        "ring3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "peg1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_peg.svg",
+      "position": [
+        960,
+        690
+      ],
+      "interactions": []
+    },
+    {
+      "id": "rod1",
+      "scene": "DropZone",
+      "position": [
+        960,
+        690
+      ],
+      "hit_size": [
+        300,
+        360
+      ],
+      "accepted_sources": [
+        "ring0",
+        "ring1",
+        "ring2",
+        "ring3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "peg2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_peg.svg",
+      "position": [
+        1420,
+        690
+      ],
+      "interactions": []
+    },
+    {
+      "id": "rod2",
+      "scene": "DropZone",
+      "position": [
+        1420,
+        690
+      ],
+      "hit_size": [
+        300,
+        360
+      ],
+      "accepted_sources": [
+        "ring0",
+        "ring1",
+        "ring2",
+        "ring3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "ring3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_ring_3.svg",
+      "position": [
+        500,
+        840
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "ring2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_ring_2.svg",
+      "position": [
+        500,
+        785
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "ring1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_ring_1.svg",
+      "position": [
+        500,
+        730
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "ring0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_ring_0.svg",
+      "position": [
+        500,
+        675
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ]
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0",
+        "trap2"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "میله کوتاه",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "حلقه بدل",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "انتقال دسته‌ای",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "این میله مقصد قانونی برج نیست؛ حلقه به مبدأ برمی‌گردد."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0001",
+      "event": "hold",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "این حلقه عضو چهار حلقهٔ هدف نیست؛ رنگ، قطر را ثابت نمی‌کند."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap2",
+          "position": [
+            135,
+            855
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "هر حرکت فقط یک حلقهٔ بالایی را منتقل می‌کند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

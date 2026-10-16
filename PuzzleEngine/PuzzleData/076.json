@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "id": 76,
+  "question": "یک ساعت خراب روزی دو بار درست نشان می‌دهد. چه حالتی دارد؟",
+  "hint": "باتری را از ساعت بیرون بکش تا ساعت روی۱:۰۰ بایستد. کنترل چرخهٔ روز را دو بار به راست بکش؛ هر حرکت۱۲ساعت را شبیه‌سازی می‌کند. در نیمه اول ساعت۱و در نیمه دوم ساعت۱۳تطابق رخ می‌دهد؛ دو تطابق در یک شبانه‌روز.",
+  "answer": "کاملاً متوقف است",
+  "time_limit_seconds": 140,
+  "base_score": 180,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "stopped": false,
+    "hour": 0,
+    "matches": 0
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "clock",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_clock_0.svg",
+      "position": [
+        750,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        1.5,
+        1.5
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "battery",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_battery.svg",
+      "position": [
+        750,
+        850
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "battery_out_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1350,
+        830
+      ],
+      "interactions": [],
+      "scale": [
+        1.5,
+        1.0
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "battery_out",
+      "scene": "DropZone",
+      "position": [
+        1350,
+        830
+      ],
+      "hit_size": [
+        180,
+        120
+      ],
+      "accepted_sources": [
+        "battery"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "cycle",
+      "scene": "TextObject",
+      "text": "۱۲ساعت →",
+      "position": [
+        1320,
+        600
+      ],
+      "hit_size": [
+        270,
+        120
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "right"
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_270_120.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "باتری ضعیف",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↔",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "swipe",
+          "direction": "any",
+          "min_distance": 55
+        }
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "پیچ سرعت",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "قاب۲۴ساعته",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "battery",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "stopped",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "battery",
+          "position": [
+            1350,
+            830
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "ساعت متوقف شد؛ چرخهٔ۲۴ساعته را جلو ببر."
+        }
+      ],
+      "once": false,
+      "target": "battery_out"
+    },
+    {
+      "id": "r0001",
+      "event": "swipe",
+      "source": "cycle",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "stopped",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "hour",
+          "operator": "eq",
+          "value": 12
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "hour",
+          "value": 24,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "matches",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "۱۳،۱۴،۱۵،۱۶،۱۷،۱۸،۱۹،۲۰،۲۱،۲۲،۲۳،۲۴؛ فقط۱۳همان۱است."
+        },
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "swipe",
+      "source": "cycle",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "stopped",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "hour",
+          "operator": "eq",
+          "value": 0
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "hour",
+          "value": 12,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "matches",
+          "value": 1,
+          "operation": "increment"
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "۱،۲،۳،۴،۵،۶،۷،۸،۹،۱۰،۱۱،۱۲؛ فقط ساعت۱تطابق دارد."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "ساعت کند به‌تدریج عقب می‌افتد؛ دو تطابق روزانه تضمین نمی‌شود."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0004",
+      "event": "swipe",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "کندشدن با توقف کامل فرق دارد."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0005",
+      "event": "tap",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "ساعت متوقف۲۴ساعته روزی یک بار درست نشان می‌دهد."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "counters": [
+    {
+      "label": "تطابق",
+      "variable": "matches",
+      "target": 2
+    }
+  ]
+}

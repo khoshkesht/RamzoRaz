@@ -1,0 +1,599 @@
+{
+  "schema_version": 1,
+  "id": 92,
+  "question": "یک قفل ۴ رقمی داری؛ چهار سرنخ تصویری هرکدام بخشی از ترتیب را می‌دهند. رمز را پیدا کن.",
+  "hint": "سرنخ‌ها می‌گویند۴اول،۱آخر،۲قبل از۷ و مجموع۱۴. چهار مهر را از چپ فیزیکی در جایگاه‌های قفل به ترتیب۴،۲،۷،۱بگذار؛ دستگیره را لمس کن. بازخورد فقط تعداد جایگاه درست است.",
+  "answer": "رمز یکتایی که با هر چهار سرنخ سازگار است",
+  "time_limit_seconds": 185,
+  "base_score": 210,
+  "background": "res://assets/samples/puzzle_workbench_day.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "model": "{\"kind\": \"fit\", \"slots\": [[440.0, 650], [786.6666666666667, 650], [1133.3333333333335, 650], [1480.0, 650]], \"pieces\": [[330.0, 865], [746.6666666666667, 865], [1163.3333333333335, 865], [1580.0, 865]], \"target\": [2, 1, 3, 0], \"rotations\": [0, 0, 0, 0], \"initial\": [-1, -1, -1, -1], \"clues\": [], \"requires_switch\": true, \"level\": 92}"
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "clues",
+      "scene": "TextObject",
+      "text": "۴ اول   |   ۱ آخر   |   ۲ پیش از۷   |   مجموع۱۴",
+      "position": [
+        960,
+        480
+      ],
+      "hit_size": [
+        1450,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "slot0_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        440.0,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        0.9583333333333334,
+        0.9583333333333334
+      ]
+    },
+    {
+      "id": "slot0",
+      "scene": "DropZone",
+      "position": [
+        440.0,
+        650
+      ],
+      "hit_size": [
+        115,
+        115
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot1_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        786.6666666666667,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        0.9583333333333334,
+        0.9583333333333334
+      ]
+    },
+    {
+      "id": "slot1",
+      "scene": "DropZone",
+      "position": [
+        786.6666666666667,
+        650
+      ],
+      "hit_size": [
+        115,
+        115
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot2_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1133.3333333333335,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        0.9583333333333334,
+        0.9583333333333334
+      ]
+    },
+    {
+      "id": "slot2",
+      "scene": "DropZone",
+      "position": [
+        1133.3333333333335,
+        650
+      ],
+      "hit_size": [
+        115,
+        115
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "slot3_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1480.0,
+        650
+      ],
+      "interactions": [],
+      "scale": [
+        0.9583333333333334,
+        0.9583333333333334
+      ]
+    },
+    {
+      "id": "slot3",
+      "scene": "DropZone",
+      "position": [
+        1480.0,
+        650
+      ],
+      "hit_size": [
+        115,
+        115
+      ],
+      "accepted_sources": [
+        "piece0",
+        "piece1",
+        "piece2",
+        "piece3"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "piece0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cell.svg",
+      "position": [
+        330.0,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.72,
+        0.72
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name0",
+      "scene": "TextObject",
+      "text": "۱",
+      "position": [
+        330.0,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cell.svg",
+      "position": [
+        746.6666666666667,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.72,
+        0.72
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name1",
+      "scene": "TextObject",
+      "text": "۲",
+      "position": [
+        746.6666666666667,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cell.svg",
+      "position": [
+        1163.3333333333335,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.72,
+        0.72
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name2",
+      "scene": "TextObject",
+      "text": "۴",
+      "position": [
+        1163.3333333333335,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "piece3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cell.svg",
+      "position": [
+        1580.0,
+        865
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        0.72,
+        0.72
+      ],
+      "rotation_degrees": 0
+    },
+    {
+      "id": "name3",
+      "scene": "TextObject",
+      "text": "۷",
+      "position": [
+        1580.0,
+        925
+      ],
+      "hit_size": [
+        180,
+        55
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "switch",
+      "scene": "TextObject",
+      "text": "دستگیره",
+      "position": [
+        1650,
+        650
+      ],
+      "hit_size": [
+        200,
+        110
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_200_110.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ]
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap0"
+      ],
+      "z_index": -1
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "۴۷۲۱",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "tap"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "آینه سرنخ",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "مجموع۱۴",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap0",
+          "position": [
+            135,
+            525
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "۲پیش از۷نیست؛ مجموع۱۴به‌تنهایی ترتیب را تعیین نمی‌کند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0001",
+      "event": "tap",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "جهت خواندن و جایگاه اول/آخر ثابت است."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0002",
+      "event": "hold",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "هر جایگشت همین مجموع را دارد؛ سرنخ‌های ترتیب هم لازم‌اند."
+        }
+      ],
+      "once": false
+    }
+  ],
+  "win_condition": {
+    "type": "variable",
+    "name": "solved",
+    "operator": "eq",
+    "value": true
+  },
+  "custom_handler": "res://PuzzleEngine/Custom/FinalChapterHandler.gd"
+}

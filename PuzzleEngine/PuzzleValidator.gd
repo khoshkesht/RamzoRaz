@@ -112,6 +112,13 @@ func validate_level(value: Variant, file_path: String = "", expected_id: int = 0
 		if _text(handler, "custom_handler"):
 			if not handler.begins_with("res://PuzzleEngine/Custom/") or not ResourceLoader.exists(handler, "Script"):
 				_error("custom_handler", "Expected a packaged Custom handler script.")
+			else:
+				var base := load(handler) as Script
+				var handler_base := load("res://PuzzleEngine/PuzzleCustomHandler.gd") as Script
+				while base != null and base != handler_base:
+					base = base.get_base_script()
+				if base == null:
+					_error("custom_handler", "Handler must extend PuzzleCustomHandler.")
 	if data.get("win_condition") == null:
 		if not data.has("custom_handler"):
 			_error("win_condition", "A null win condition requires a custom handler.")
@@ -169,7 +176,7 @@ func _validate_object(raw: Variant, path: String) -> void:
 		_error(path, "Expected an object definition.")
 		return
 	var item: Dictionary = raw
-	_keys(item, ["id", "scene", "position", "sprite", "text", "text_color", "visible", "interactive", "rotation_degrees", "scale", "z_index", "hit_size", "state", "interactions", "accepted_sources"], ["id", "scene", "position"], path)
+	_keys(item, ["id", "scene", "position", "sprite", "text", "text_color", "tint", "visible", "interactive", "rotation_degrees", "scale", "z_index", "hit_size", "state", "interactions", "accepted_sources"], ["id", "scene", "position"], path)
 	if _text(item.get("id"), path + ".id"):
 		var object_id: String = item["id"]
 		if object_id == "$level" or object_id.validate_node_name() != object_id:
@@ -192,6 +199,11 @@ func _validate_object(raw: Variant, path: String) -> void:
 		color_pattern.compile("^#[0-9a-fA-F]{6}$")
 		if kind != "TextObject" or not item["text_color"] is String or color_pattern.search(item["text_color"]) == null:
 			_error(path + ".text_color", "Expected an opaque #RRGGBB color on a TextObject.")
+	if item.has("tint"):
+		var tint_pattern := RegEx.new()
+		tint_pattern.compile("^#[0-9a-fA-F]{6}$")
+		if not item["tint"] is String or tint_pattern.search(item["tint"])==null:
+			_error(path + ".tint", "Expected an opaque #RRGGBB instance tint.")
 	for field: String in ["visible", "interactive"]:
 		if item.has(field) and not item[field] is bool:
 			_error(path + "." + field, "Expected a boolean.")
@@ -389,7 +401,7 @@ func _validate_action(raw: Variant, path: String) -> void:
 	var type: String = item["type"]
 	var allowed: Array = ["type"]
 	var required: Array = ["type"]
-	var needs_target := type in ["show", "hide", "move", "rotate", "scale", "replace_sprite", "play_animation", "shake", "set_state"]
+	var needs_target := type in ["show", "hide", "move", "rotate", "scale", "replace_sprite", "play_animation", "shake", "set_state", "set_text", "set_lines"]
 	if needs_target:
 		allowed.append("target")
 		required.append("target")
@@ -412,6 +424,23 @@ func _validate_action(raw: Variant, path: String) -> void:
 		if not item.has("timeout_seconds"):
 			item["timeout_seconds"] = 30.0
 	match type:
+		"set_lines":
+			allowed.append_array(["segments", "color"])
+			required.append("segments")
+			var segments: Variant = item.get("segments")
+			if not segments is Array or segments.size()>64:
+				_error(path + ".segments", "Expected at most 64 line segments.")
+			else:
+				for i in range(segments.size()):
+					if not segments[i] is Array or segments[i].size()!=2:
+						_error(path + ".segments[%d]"%i, "A segment needs two points.")
+					else:
+						_vector(segments[i][0],path + ".segments[%d][0]"%i)
+						_vector(segments[i][1],path + ".segments[%d][1]"%i)
+			var color_pattern := RegEx.new()
+			color_pattern.compile("^#[0-9a-fA-F]{6}$")
+			if item.has("color") and (not item["color"] is String or color_pattern.search(item["color"])==null):
+				_error(path + ".color", "Expected #RRGGBB.")
 		"show", "hide", "complete_level", "fail_level":
 			pass
 		"move":
@@ -426,6 +455,12 @@ func _validate_action(raw: Variant, path: String) -> void:
 			allowed.append("value")
 			required.append("value")
 			_vector(item.get("value"), path + ".value", true)
+		"set_text":
+			allowed.append("text")
+			required.append("text")
+			_text(item.get("text"), path + ".text")
+			if _objects.has(item.get("target")) and _objects[item["target"]].get("scene") != "TextObject":
+				_error(path + ".target", "Expected a TextObject.")
 		"replace_sprite":
 			allowed.append("sprite")
 			required.append("sprite")

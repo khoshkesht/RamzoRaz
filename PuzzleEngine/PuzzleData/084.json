@@ -1,0 +1,2282 @@
+{
+  "schema_version": 1,
+  "id": 84,
+  "question": "مکعب ۴×۴×۴ رنگ شده؛ چند مکعب هیچ وجه رنگی ندارند؟",
+  "hint": "شش پوستهٔ بیرونی مکعب۴×۴×۴ را به سینی کنار بکش. هستهٔ۲×۲×۲ شامل۸مکعبچه بی‌رنگ است؛ هر۸مکعبچهٔ آشکار را لمس کن.",
+  "answer": "۸",
+  "time_limit_seconds": 190,
+  "base_score": 210,
+  "background": "res://assets/samples/puzzle_workbench_night.svg",
+  "success": {
+    "result_delay_seconds": 1
+  },
+  "variables": {
+    "solved": false,
+    "selected": 0,
+    "wrong": 0,
+    "toggle": false,
+    "layer0": false,
+    "layer1": false,
+    "layer2": false,
+    "layer3": false,
+    "layer4": false,
+    "layer5": false,
+    "sel0": false,
+    "sel1": false,
+    "sel2": false,
+    "sel3": false,
+    "sel4": false,
+    "sel5": false,
+    "sel6": false,
+    "sel7": false
+  },
+  "objects": [
+    {
+      "id": "feedback",
+      "scene": "TextObject",
+      "text": "—",
+      "position": [
+        960,
+        990
+      ],
+      "hit_size": [
+        1650,
+        70
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "layer0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_shell.svg",
+      "position": [
+        420,
+        560
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.3,
+        1.3
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "layer1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_shell.svg",
+      "position": [
+        630,
+        560
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.3,
+        1.3
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "layer2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_shell.svg",
+      "position": [
+        840,
+        560
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.3,
+        1.3
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "layer3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_shell.svg",
+      "position": [
+        1050,
+        560
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.3,
+        1.3
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "layer4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_shell.svg",
+      "position": [
+        1260,
+        560
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.3,
+        1.3
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "layer5",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_shell.svg",
+      "position": [
+        1470,
+        560
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            480,
+            1420,
+            420
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 5,
+      "scale": [
+        1.3,
+        1.3
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "tray_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        1600,
+        840
+      ],
+      "interactions": [],
+      "scale": [
+        1.9166666666666667,
+        1.5
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "tray",
+      "scene": "DropZone",
+      "position": [
+        1600,
+        840
+      ],
+      "hit_size": [
+        230,
+        180
+      ],
+      "accepted_sources": [
+        "layer0",
+        "layer1",
+        "layer2",
+        "layer3",
+        "layer4",
+        "layer5"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "cube0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_111.svg",
+      "position": [
+        380,
+        680
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark0",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        380,
+        680
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_111.svg",
+      "position": [
+        880,
+        680
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark1",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        880,
+        680
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_111.svg",
+      "position": [
+        380,
+        780
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark2",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        380,
+        780
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube3",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_111.svg",
+      "position": [
+        880,
+        780
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark3",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        880,
+        780
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube4",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_111.svg",
+      "position": [
+        505,
+        680
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark4",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        505,
+        680
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube5",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_111.svg",
+      "position": [
+        1005,
+        680
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark5",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1005,
+        680
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube6",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_111.svg",
+      "position": [
+        505,
+        780
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark6",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        505,
+        780
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "cube7",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/final_cube_111.svg",
+      "position": [
+        1005,
+        780
+      ],
+      "interactions": [
+        "tap"
+      ],
+      "visible": false,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "mark7",
+      "scene": "TextObject",
+      "text": "✓",
+      "position": [
+        1005,
+        780
+      ],
+      "hit_size": [
+        65,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false,
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap_lab_frame",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/final_socket.svg",
+      "position": [
+        135,
+        450
+      ],
+      "interactions": [],
+      "scale": [
+        1.2916666666666667,
+        0.6666666666666666
+      ],
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab",
+      "scene": "DropZone",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        155,
+        80
+      ],
+      "accepted_sources": [
+        "trap1",
+        "trap2"
+      ],
+      "z_index": -1,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_lab_label",
+      "scene": "TextObject",
+      "text": "آزمایش",
+      "position": [
+        135,
+        450
+      ],
+      "hit_size": [
+        140,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap0",
+      "scene": "TextObject",
+      "text": "؟",
+      "position": [
+        135,
+        525
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        "hold"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 0,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label0",
+      "scene": "TextObject",
+      "text": "قالب۳×۳×۳",
+      "position": [
+        135,
+        590
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap1",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        690
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label1",
+      "scene": "TextObject",
+      "text": "۲۴لبه",
+      "position": [
+        135,
+        755
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    },
+    {
+      "id": "trap2",
+      "scene": "TextObject",
+      "text": "↥",
+      "position": [
+        135,
+        855
+      ],
+      "hit_size": [
+        90,
+        75
+      ],
+      "text_color": "#354f54",
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            85,
+            455,
+            1640,
+            450
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "sprite": "res://assets/samples/final_token_90_75.svg",
+      "z_index": 5,
+      "tint": "#d6e1f0"
+    },
+    {
+      "id": "trap_label2",
+      "scene": "TextObject",
+      "text": "روکش سفید",
+      "position": [
+        135,
+        920
+      ],
+      "hit_size": [
+        240,
+        65
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "tint": "#d6e1f0",
+      "interactive": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r0000",
+      "event": "drop_on",
+      "source": "layer0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "layer0"
+        },
+        {
+          "type": "set_variable",
+          "name": "layer0",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "source": "layer1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "layer1"
+        },
+        {
+          "type": "set_variable",
+          "name": "layer1",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "source": "layer2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "layer2"
+        },
+        {
+          "type": "set_variable",
+          "name": "layer2",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "source": "layer3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "layer3"
+        },
+        {
+          "type": "set_variable",
+          "name": "layer3",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "source": "layer4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "layer4"
+        },
+        {
+          "type": "set_variable",
+          "name": "layer4",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0005",
+      "event": "drop_on",
+      "source": "layer5",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "layer5"
+        },
+        {
+          "type": "set_variable",
+          "name": "layer5",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "once": false,
+      "target": "tray"
+    },
+    {
+      "id": "r0006",
+      "event": "tap",
+      "source": "cube0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark0"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel0",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0007",
+      "event": "tap",
+      "source": "cube0",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel0",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark0"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel0",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0008",
+      "event": "tap",
+      "source": "cube0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0009",
+      "event": "tap",
+      "source": "cube1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark1"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel1",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0010",
+      "event": "tap",
+      "source": "cube1",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel1",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark1"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel1",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0011",
+      "event": "tap",
+      "source": "cube1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0012",
+      "event": "tap",
+      "source": "cube2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark2"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel2",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0013",
+      "event": "tap",
+      "source": "cube2",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel2",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark2"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel2",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0014",
+      "event": "tap",
+      "source": "cube2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0015",
+      "event": "tap",
+      "source": "cube3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark3"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel3",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0016",
+      "event": "tap",
+      "source": "cube3",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel3",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark3"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel3",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0017",
+      "event": "tap",
+      "source": "cube3",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0018",
+      "event": "tap",
+      "source": "cube4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark4"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel4",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0019",
+      "event": "tap",
+      "source": "cube4",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel4",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark4"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel4",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0020",
+      "event": "tap",
+      "source": "cube4",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0021",
+      "event": "tap",
+      "source": "cube5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel5",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark5"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel5",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0022",
+      "event": "tap",
+      "source": "cube5",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel5",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark5"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel5",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0023",
+      "event": "tap",
+      "source": "cube5",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0024",
+      "event": "tap",
+      "source": "cube6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel6",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark6"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel6",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0025",
+      "event": "tap",
+      "source": "cube6",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel6",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark6"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel6",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0026",
+      "event": "tap",
+      "source": "cube6",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0027",
+      "event": "tap",
+      "source": "cube7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel7",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "mark7"
+        },
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel7",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": -1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0028",
+      "event": "tap",
+      "source": "cube7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "sel7",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "toggle",
+          "operator": "eq",
+          "value": false
+        },
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "mark7"
+        },
+        {
+          "type": "set_variable",
+          "name": "sel7",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "selected",
+          "value": 1,
+          "operation": "increment"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0029",
+      "event": "tap",
+      "source": "cube7",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "toggle",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0030",
+      "event": "variable_changed",
+      "source": "$level",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "layer0",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer1",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer2",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer3",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer4",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "type": "variable",
+          "name": "layer5",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "actions": [
+        {
+          "type": "show",
+          "target": "cube0"
+        },
+        {
+          "type": "show",
+          "target": "cube1"
+        },
+        {
+          "type": "show",
+          "target": "cube2"
+        },
+        {
+          "type": "show",
+          "target": "cube3"
+        },
+        {
+          "type": "show",
+          "target": "cube4"
+        },
+        {
+          "type": "show",
+          "target": "cube5"
+        },
+        {
+          "type": "show",
+          "target": "cube6"
+        },
+        {
+          "type": "show",
+          "target": "cube7"
+        }
+      ],
+      "once": true
+    },
+    {
+      "id": "r0031",
+      "event": "hold",
+      "source": "trap0",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "این قالب هسته۱تایی دارد؛ مکعب مسئله۴×۴×۴است."
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0032",
+      "event": "drop_on",
+      "source": "trap1",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap1",
+          "position": [
+            135,
+            690
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "مکعبچه لبه دست‌کم یک وجه رنگی دارد."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    },
+    {
+      "id": "r0033",
+      "event": "drop_on",
+      "source": "trap2",
+      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "trap2",
+          "position": [
+            135,
+            855
+          ]
+        },
+        {
+          "type": "set_text",
+          "target": "feedback",
+          "text": "پوشاندن رنگ، بی‌رنگ‌بودن اولیه را ثابت نمی‌کند."
+        }
+      ],
+      "once": false,
+      "target": "trap_lab"
+    }
+  ],
+  "win_condition": {
+    "type": "all",
+    "conditions": [
+      {
+        "type": "variable",
+        "name": "selected",
+        "operator": "eq",
+        "value": 8
+      },
+      {
+        "type": "variable",
+        "name": "wrong",
+        "operator": "eq",
+        "value": 0
+      }
+    ]
+  },
+  "counters": [
+    {
+      "label": "انتخاب",
+      "variable": "selected",
+      "target": 8
+    }
+  ]
+}
