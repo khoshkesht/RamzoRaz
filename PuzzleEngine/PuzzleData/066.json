@@ -1,32 +1,31 @@
 {
   "schema_version": 1,
   "id": 66,
-  "question": "کدام طناب زنگ را به صدا درمی‌آورد؟",
-  "hint": "مسیر طناب‌ها را تا زنگ اصلی دنبال کن؛ طناب وسط را به پایین بکش.",
-  "answer": "طنابی که واقعاً به زنگ وصل است",
-  "time_limit_seconds": 130,
+  "question": "مسیر طناب زنگ را کامل کن و زنگ اصلی را به صدا درآور.",
+  "hint": "سه قطعهٔ طنابِ سمت چپ را با شکل شیارهای خالی روی مسیر زنگ تطبیق بده و هرکدام را در شیار هم‌شکل رها کن: قطعهٔ شکستهٔ زاویه‌دار بالا، منحنیِ گرد وسط و قطعهٔ پله‌ای پایین. بعد از کامل‌شدن هر سه اتصال، دستهٔ طناب وسط را به پایین بکش تا زنگ اصلی به صدا درآید.",
+  "answer": "سه اتصال مسیر زنگ ترمیم می‌شوند؛ سپس کشیدن طناب میانی زنگ اصلی را فعال می‌کند.",
+  "time_limit_seconds": 145,
   "base_score": 160,
   "background": "res://assets/samples/puzzle_workbench_day.svg",
   "success": {
     "result_delay_seconds": 1
   },
   "variables": {
-    "solved": false
+    "solved": false,
+    "joined_0": false,
+    "joined_1": false,
+    "joined_2": false
   },
   "objects": [
     {
       "id": "paths",
       "scene": "ImageObject",
-      "sprite": "res://assets/samples/bell_rope_paths.svg",
+      "sprite": "res://assets/samples/rope_repair_channels.svg",
       "position": [
         960,
-        680
+        690
       ],
-      "interactions": [],
-      "scale": [
-        0.8,
-        0.8
-      ]
+      "interactions": []
     },
     {
       "id": "main_bell",
@@ -34,7 +33,7 @@
       "sprite": "res://assets/samples/bell.svg",
       "position": [
         1120,
-        500
+        460
       ],
       "interactions": [],
       "scale": [
@@ -48,7 +47,7 @@
       "sprite": "res://assets/samples/stone.svg",
       "position": [
         800,
-        500
+        460
       ],
       "interactions": [],
       "scale": [
@@ -61,14 +60,170 @@
       "scene": "ImageObject",
       "sprite": "res://assets/samples/stone.svg",
       "position": [
-        960,
-        500
+        1240,
+        520
       ],
       "interactions": [],
       "scale": [
         0.4,
         0.4
       ]
+    },
+    {
+      "id": "link_0",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/rope_repair_0.svg",
+      "position": [
+        380,
+        530
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            430,
+            1520,
+            500
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 7
+    },
+    {
+      "id": "gap_0",
+      "scene": "DropZone",
+      "position": [
+        1000,
+        560
+      ],
+      "hit_size": [
+        110,
+        110
+      ],
+      "accepted_sources": [
+        "link_0"
+      ],
+      "z_index": -2,
+      "visible": true
+    },
+    {
+      "id": "fixed_0",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/rope_repair_0.svg",
+      "position": [
+        1000,
+        560
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": 4
+    },
+    {
+      "id": "link_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/rope_repair_1.svg",
+      "position": [
+        380,
+        700
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            430,
+            1520,
+            500
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 7
+    },
+    {
+      "id": "gap_1",
+      "scene": "DropZone",
+      "position": [
+        900,
+        690
+      ],
+      "hit_size": [
+        110,
+        110
+      ],
+      "accepted_sources": [
+        "link_1"
+      ],
+      "z_index": -2,
+      "visible": true
+    },
+    {
+      "id": "fixed_1",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/rope_repair_1.svg",
+      "position": [
+        900,
+        690
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": 4
+    },
+    {
+      "id": "link_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/rope_repair_2.svg",
+      "position": [
+        380,
+        870
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            200,
+            430,
+            1520,
+            500
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on"
+      ],
+      "z_index": 7
+    },
+    {
+      "id": "gap_2",
+      "scene": "DropZone",
+      "position": [
+        1000,
+        820
+      ],
+      "hit_size": [
+        110,
+        110
+      ],
+      "accepted_sources": [
+        "link_2"
+      ],
+      "z_index": -2,
+      "visible": true
+    },
+    {
+      "id": "fixed_2",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/rope_repair_2.svg",
+      "position": [
+        1000,
+        820
+      ],
+      "interactions": [],
+      "visible": false,
+      "z_index": 4
     },
     {
       "id": "rope_0",
@@ -81,22 +236,21 @@
       "interactions": [
         {
           "type": "drag",
+          "axis": "y",
           "bounds": [
             800,
-            870,
+            900,
             1,
-            140
+            110
           ],
-          "return_on_invalid": true,
-          "axis": "y"
-        },
-        "drop_on"
+          "return_on_invalid": false
+        }
       ],
-      "z_index": 5,
       "scale": [
         0.65,
         0.65
-      ]
+      ],
+      "z_index": 5
     },
     {
       "id": "rope_1",
@@ -109,22 +263,21 @@
       "interactions": [
         {
           "type": "drag",
+          "axis": "y",
           "bounds": [
             960,
-            870,
+            900,
             1,
-            140
+            110
           ],
-          "return_on_invalid": true,
-          "axis": "y"
-        },
-        "drop_on"
+          "return_on_invalid": false
+        }
       ],
-      "z_index": 5,
       "scale": [
         0.65,
         0.65
-      ]
+      ],
+      "z_index": 5
     },
     {
       "id": "rope_2",
@@ -137,93 +290,99 @@
       "interactions": [
         {
           "type": "drag",
+          "axis": "y",
           "bounds": [
             1120,
-            870,
+            900,
             1,
-            140
+            110
           ],
-          "return_on_invalid": true,
-          "axis": "y"
-        },
-        "drop_on"
-      ],
-      "z_index": 5,
-      "scale": [
-        0.65,
-        0.65
-      ]
-    },
-    {
-      "id": "pulley",
-      "scene": "ClickableObject",
-      "sprite": "res://assets/samples/clock_hands.svg",
-      "position": [
-        1540,
-        620
-      ],
-      "interactions": [
-        {
-          "type": "swipe",
-          "direction": "right"
+          "return_on_invalid": false
         }
       ],
       "scale": [
-        0.5,
-        0.5
-      ]
-    },
-    {
-      "id": "small_bell",
-      "scene": "ClickableObject",
-      "sprite": "res://assets/samples/bell.svg",
-      "position": [
-        370,
-        900
+        0.65,
+        0.65
       ],
-      "interactions": [
-        "tap"
-      ],
-      "scale": [
-        0.4,
-        0.4
-      ]
+      "z_index": 5
     }
   ],
   "rules": [
     {
       "id": "r0000",
-      "event": "drag_end",
-      "source": "rope_0",
-      "conditions": [],
+      "event": "drop_on",
       "actions": [
         {
-          "type": "move",
-          "target": "rope_0",
-          "position": [
-            800,
-            930
-          ]
+          "type": "hide",
+          "target": "link_0"
         },
         {
-          "type": "play_animation",
-          "target": "left_weight",
-          "animation": "chapter_two/rattle",
-          "wait": false
+          "type": "show",
+          "target": "fixed_0"
+        },
+        {
+          "type": "set_variable",
+          "name": "joined_0",
+          "value": true,
+          "operation": "assign"
         }
       ],
-      "once": false
+      "conditions": [],
+      "once": true,
+      "source": "link_0",
+      "target": "gap_0"
     },
     {
       "id": "r0001",
-      "event": "drag_end",
-      "source": "rope_1",
-      "conditions": [
+      "event": "drop_on",
+      "actions": [
         {
-          "type": "moved_distance_at_least",
-          "value": 80
+          "type": "hide",
+          "target": "link_1"
+        },
+        {
+          "type": "show",
+          "target": "fixed_1"
+        },
+        {
+          "type": "set_variable",
+          "name": "joined_1",
+          "value": true,
+          "operation": "assign"
         }
       ],
+      "conditions": [],
+      "once": true,
+      "source": "link_1",
+      "target": "gap_1"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "link_2"
+        },
+        {
+          "type": "show",
+          "target": "fixed_2"
+        },
+        {
+          "type": "set_variable",
+          "name": "joined_2",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [],
+      "once": true,
+      "source": "link_2",
+      "target": "gap_2"
+    },
+    {
+      "id": "r0003",
+      "event": "drag_end",
       "actions": [
         {
           "type": "play_animation",
@@ -243,13 +402,70 @@
           "operation": "assign"
         }
       ],
-      "once": false
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "joined_0",
+          "value": true,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "joined_1",
+          "value": true,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "joined_2",
+          "value": true,
+          "operator": "eq"
+        },
+        {
+          "type": "moved_distance_at_least",
+          "value": 60
+        }
+      ],
+      "once": false,
+      "source": "rope_1"
     },
     {
-      "id": "r0002",
+      "id": "r0004",
       "event": "drag_end",
-      "source": "rope_2",
+      "actions": [
+        {
+          "type": "move",
+          "target": "rope_0",
+          "position": [
+            800,
+            930
+          ]
+        }
+      ],
       "conditions": [],
+      "once": false,
+      "source": "rope_0"
+    },
+    {
+      "id": "r0005",
+      "event": "drag_end",
+      "actions": [
+        {
+          "type": "move",
+          "target": "rope_1",
+          "position": [
+            960,
+            930
+          ]
+        }
+      ],
+      "conditions": [],
+      "once": false,
+      "source": "rope_1"
+    },
+    {
+      "id": "r0006",
+      "event": "drag_end",
       "actions": [
         {
           "type": "move",
@@ -258,55 +474,18 @@
             1120,
             930
           ]
-        },
-        {
-          "type": "play_animation",
-          "target": "right_weight",
-          "animation": "chapter_two/rattle",
-          "wait": false
         }
       ],
-      "once": false
-    },
-    {
-      "id": "r0003",
-      "event": "swipe",
-      "source": "pulley",
       "conditions": [],
-      "actions": [
-        {
-          "type": "rotate",
-          "target": "pulley",
-          "degrees": 90
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0004",
-      "event": "tap",
-      "source": "small_bell",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "play_animation",
-          "target": "small_bell",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        },
-        {
-          "type": "play_sound",
-          "sound": "res://assets/samples/radio_chime.wav",
-          "wait": false
-        }
-      ],
-      "once": false
+      "once": false,
+      "source": "rope_2"
     }
   ],
   "win_condition": {
     "type": "variable",
     "name": "solved",
-    "operator": "eq",
-    "value": true
-  }
+    "value": true,
+    "operator": "eq"
+  },
+  "counters": []
 }

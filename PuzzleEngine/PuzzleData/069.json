@@ -1,194 +1,1025 @@
 {
   "schema_version": 1,
   "id": 69,
-  "question": "کدام فرش الگوی ناقص دارد؟",
-  "hint": "نقش پایینِ سمت راستِ فرش میانی کم است؛ جهت نقش را هم بررسی کن.",
-  "answer": "فرشی که یک نقش در تقارنش کم است",
-  "time_limit_seconds": 135,
+  "question": "نقش‌های فرش ناقص را با حفظ تقارن ترمیم کن.",
+  "hint": "فرش میانی سه نقش در نیمهٔ راست کم دارد. سه قطعهٔ پایین صفحه را با نقش‌های همان ردیف در نیمهٔ چپ مقایسه کن. لمس هر قطعه آن را ۹۰ درجه می‌چرخاند. برگ را یک بار و نقش نعلی را دو بار لمس کن؛ لوزی از ابتدا درست است. سپس برگ را در خانهٔ بالاییِ راست، لوزی را در خانهٔ وسطِ راست و نعل را در خانهٔ پایینیِ راستِ فرش میانی بگذار.",
+  "answer": "سه نقشِ درست با جهت صحیح در نیمهٔ راست فرش میانی قرار می‌گیرند.",
+  "time_limit_seconds": 145,
   "base_score": 165,
   "background": "res://assets/samples/puzzle_workbench_night.svg",
   "success": {
     "result_delay_seconds": 1
   },
   "variables": {
-    "solved": false
+    "solved": false,
+    "placed_0": false,
+    "placed_1": false,
+    "placed_2": false,
+    "angle_0": 270,
+    "angle_1": 0,
+    "angle_2": 180,
+    "turned": false
   },
   "objects": [
     {
       "id": "rug_0",
       "scene": "ImageObject",
-      "sprite": "res://assets/samples/rug_symmetric.svg",
+      "sprite": "res://assets/samples/rug_repair_complete.svg",
       "position": [
         490,
-        660
+        650
       ],
       "interactions": []
-    },
-    {
-      "id": "rug_gap_0",
-      "scene": "DropZone",
-      "position": [
-        565,
-        730
-      ],
-      "hit_size": [
-        90,
-        90
-      ],
-      "accepted_sources": [
-        "piece",
-        "false_piece"
-      ],
-      "z_index": -1
     },
     {
       "id": "rug_1",
       "scene": "ImageObject",
-      "sprite": "res://assets/samples/rug_missing.svg",
+      "sprite": "res://assets/samples/rug_repair_missing.svg",
       "position": [
         960,
-        660
+        650
       ],
       "interactions": []
-    },
-    {
-      "id": "rug_gap_1",
-      "scene": "DropZone",
-      "position": [
-        1035,
-        730
-      ],
-      "hit_size": [
-        90,
-        90
-      ],
-      "accepted_sources": [
-        "piece",
-        "false_piece"
-      ],
-      "z_index": -1
     },
     {
       "id": "rug_2",
       "scene": "ImageObject",
-      "sprite": "res://assets/samples/rug_symmetric.svg",
+      "sprite": "res://assets/samples/rug_repair_complete.svg",
       "position": [
         1430,
-        660
+        650
       ],
       "interactions": []
     },
     {
-      "id": "rug_gap_2",
-      "scene": "DropZone",
-      "position": [
-        1505,
-        730
-      ],
-      "hit_size": [
-        90,
-        90
-      ],
-      "accepted_sources": [
-        "piece",
-        "false_piece"
-      ],
-      "z_index": -1
-    },
-    {
-      "id": "piece",
+      "id": "piece_0",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/rug_motif.svg",
+      "sprite": "res://assets/samples/rug_repair_motif_0.svg",
       "position": [
-        730,
+        600,
         950
       ],
       "interactions": [
         {
           "type": "drag",
           "bounds": [
-            160,
-            460,
-            1600,
-            510
+            250,
+            450,
+            1400,
+            550
           ],
           "return_on_invalid": true
         },
-        "drop_on"
-      ],
-      "z_index": 5,
-      "scale": [
-        1.4,
-        1.4
-      ]
-    },
-    {
-      "id": "false_piece",
-      "scene": "ClickableObject",
-      "sprite": "res://assets/samples/rug_motif_reversed.svg",
-      "position": [
-        1170,
-        950
-      ],
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            160,
-            460,
-            1600,
-            510
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
-      ],
-      "z_index": 5,
-      "scale": [
-        1.4,
-        1.4
-      ]
-    },
-    {
-      "id": "axis_stencil",
-      "scene": "ClickableObject",
-      "sprite": "res://assets/samples/height_ruler.svg",
-      "position": [
-        1700,
-        900
-      ],
-      "interactions": [
+        "drop_on",
         "tap"
       ],
-      "scale": [
-        0.6,
-        0.6
+      "z_index": 7,
+      "rotation_degrees": 270,
+      "hit_size": [
+        100,
+        100
       ]
+    },
+    {
+      "id": "gap_0",
+      "scene": "DropZone",
+      "position": [
+        1035,
+        540
+      ],
+      "hit_size": [
+        95,
+        95
+      ],
+      "accepted_sources": [
+        "piece_0"
+      ],
+      "z_index": -2,
+      "visible": true
+    },
+    {
+      "id": "piece_1",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/rug_repair_motif_1.svg",
+      "position": [
+        960,
+        950
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            450,
+            1400,
+            550
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 7,
+      "rotation_degrees": 0,
+      "hit_size": [
+        100,
+        100
+      ]
+    },
+    {
+      "id": "gap_1",
+      "scene": "DropZone",
+      "position": [
+        1035,
+        650
+      ],
+      "hit_size": [
+        95,
+        95
+      ],
+      "accepted_sources": [
+        "piece_1"
+      ],
+      "z_index": -2,
+      "visible": true
+    },
+    {
+      "id": "piece_2",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/rug_repair_motif_2.svg",
+      "position": [
+        1320,
+        950
+      ],
+      "interactions": [
+        {
+          "type": "drag",
+          "bounds": [
+            250,
+            450,
+            1400,
+            550
+          ],
+          "return_on_invalid": true
+        },
+        "drop_on",
+        "tap"
+      ],
+      "z_index": 7,
+      "rotation_degrees": 180,
+      "hit_size": [
+        100,
+        100
+      ]
+    },
+    {
+      "id": "gap_2",
+      "scene": "DropZone",
+      "position": [
+        1035,
+        760
+      ],
+      "hit_size": [
+        95,
+        95
+      ],
+      "accepted_sources": [
+        "piece_2"
+      ],
+      "z_index": -2,
+      "visible": true
     }
   ],
   "rules": [
     {
       "id": "r0000",
-      "event": "drop_on",
-      "source": "piece",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "piece_0",
+          "degrees": 90
+        },
+        {
+          "type": "set_variable",
+          "name": "angle_0",
+          "value": 90,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_0",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "angle_0",
+          "value": 0,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "turned",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_0"
+    },
+    {
+      "id": "r0001",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "piece_0",
+          "degrees": 180
+        },
+        {
+          "type": "set_variable",
+          "name": "angle_0",
+          "value": 180,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_0",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "angle_0",
+          "value": 90,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "turned",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_0"
+    },
+    {
+      "id": "r0002",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "piece_0",
+          "degrees": 270
+        },
+        {
+          "type": "set_variable",
+          "name": "angle_0",
+          "value": 270,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_0",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "angle_0",
+          "value": 180,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "turned",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_0"
+    },
+    {
+      "id": "r0003",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "piece_0",
+          "degrees": 0
+        },
+        {
+          "type": "set_variable",
+          "name": "angle_0",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_0",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "angle_0",
+          "value": 270,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "turned",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_0"
+    },
+    {
+      "id": "r0004",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
       "conditions": [],
+      "once": false,
+      "source": "piece_0"
+    },
+    {
+      "id": "r0005",
+      "event": "drop_on",
       "actions": [
         {
           "type": "move",
-          "target": "piece",
+          "target": "piece_0",
           "position": [
             1035,
-            730
+            540
           ]
         },
         {
-          "type": "scale",
-          "target": "piece",
-          "value": [
-            1,
-            1
+          "type": "set_variable",
+          "name": "placed_0",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "angle_0",
+          "value": 0,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_0",
+      "target": "gap_0"
+    },
+    {
+      "id": "r0006",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "piece_0",
+          "position": [
+            600,
+            950
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "angle_0",
+          "value": 0,
+          "operator": "ne"
+        }
+      ],
+      "once": false,
+      "source": "piece_0",
+      "target": "gap_0"
+    },
+    {
+      "id": "r0007",
+      "event": "drag_end",
+      "actions": [
+        {
+          "type": "move",
+          "target": "piece_0",
+          "position": [
+            1035,
+            540
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_0",
+          "value": true,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_0"
+    },
+    {
+      "id": "r0008",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "piece_1",
+          "degrees": 90
+        },
+        {
+          "type": "set_variable",
+          "name": "angle_1",
+          "value": 90,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_1",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "angle_1",
+          "value": 0,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "turned",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_1"
+    },
+    {
+      "id": "r0009",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "piece_1",
+          "degrees": 180
+        },
+        {
+          "type": "set_variable",
+          "name": "angle_1",
+          "value": 180,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_1",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "angle_1",
+          "value": 90,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "turned",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_1"
+    },
+    {
+      "id": "r0010",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "piece_1",
+          "degrees": 270
+        },
+        {
+          "type": "set_variable",
+          "name": "angle_1",
+          "value": 270,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_1",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "angle_1",
+          "value": 180,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "turned",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_1"
+    },
+    {
+      "id": "r0011",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "piece_1",
+          "degrees": 0
+        },
+        {
+          "type": "set_variable",
+          "name": "angle_1",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_1",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "angle_1",
+          "value": 270,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "turned",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_1"
+    },
+    {
+      "id": "r0012",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [],
+      "once": false,
+      "source": "piece_1"
+    },
+    {
+      "id": "r0013",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "piece_1",
+          "position": [
+            1035,
+            650
           ]
         },
+        {
+          "type": "set_variable",
+          "name": "placed_1",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "angle_1",
+          "value": 0,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_1",
+      "target": "gap_1"
+    },
+    {
+      "id": "r0014",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "piece_1",
+          "position": [
+            960,
+            950
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "angle_1",
+          "value": 0,
+          "operator": "ne"
+        }
+      ],
+      "once": false,
+      "source": "piece_1",
+      "target": "gap_1"
+    },
+    {
+      "id": "r0015",
+      "event": "drag_end",
+      "actions": [
+        {
+          "type": "move",
+          "target": "piece_1",
+          "position": [
+            1035,
+            650
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_1",
+          "value": true,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_1"
+    },
+    {
+      "id": "r0016",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "piece_2",
+          "degrees": 90
+        },
+        {
+          "type": "set_variable",
+          "name": "angle_2",
+          "value": 90,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_2",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "angle_2",
+          "value": 0,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "turned",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_2"
+    },
+    {
+      "id": "r0017",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "piece_2",
+          "degrees": 180
+        },
+        {
+          "type": "set_variable",
+          "name": "angle_2",
+          "value": 180,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_2",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "angle_2",
+          "value": 90,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "turned",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_2"
+    },
+    {
+      "id": "r0018",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "piece_2",
+          "degrees": 270
+        },
+        {
+          "type": "set_variable",
+          "name": "angle_2",
+          "value": 270,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_2",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "angle_2",
+          "value": 180,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "turned",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_2"
+    },
+    {
+      "id": "r0019",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "rotate",
+          "target": "piece_2",
+          "degrees": 0
+        },
+        {
+          "type": "set_variable",
+          "name": "angle_2",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_2",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "angle_2",
+          "value": 270,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "turned",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_2"
+    },
+    {
+      "id": "r0020",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "turned",
+          "value": false,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [],
+      "once": false,
+      "source": "piece_2"
+    },
+    {
+      "id": "r0021",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "piece_2",
+          "position": [
+            1035,
+            760
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "placed_2",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "angle_2",
+          "value": 0,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_2",
+      "target": "gap_2"
+    },
+    {
+      "id": "r0022",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "piece_2",
+          "position": [
+            1320,
+            950
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "angle_2",
+          "value": 0,
+          "operator": "ne"
+        }
+      ],
+      "once": false,
+      "source": "piece_2",
+      "target": "gap_2"
+    },
+    {
+      "id": "r0023",
+      "event": "drag_end",
+      "actions": [
+        {
+          "type": "move",
+          "target": "piece_2",
+          "position": [
+            1035,
+            760
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "placed_2",
+          "value": true,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "piece_2"
+    },
+    {
+      "id": "r0024",
+      "event": "variable_changed",
+      "actions": [
         {
           "type": "set_variable",
           "name": "solved",
@@ -196,148 +1027,35 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "rug_gap_1"
-    },
-    {
-      "id": "r0001",
-      "event": "drop_on",
-      "source": "false_piece",
-      "conditions": [],
-      "actions": [
+      "conditions": [
         {
-          "type": "move",
-          "target": "false_piece",
-          "position": [
-            1170,
-            950
-          ]
+          "type": "variable",
+          "name": "placed_0",
+          "value": true,
+          "operator": "eq"
         },
         {
-          "type": "play_animation",
-          "target": "rug_0",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false,
-      "target": "rug_gap_0"
-    },
-    {
-      "id": "r0002",
-      "event": "drop_on",
-      "source": "piece",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "move",
-          "target": "piece",
-          "position": [
-            730,
-            950
-          ]
+          "type": "variable",
+          "name": "placed_1",
+          "value": true,
+          "operator": "eq"
         },
         {
-          "type": "play_animation",
-          "target": "rug_0",
-          "animation": "chapter_two/rattle",
-          "wait": false
+          "type": "variable",
+          "name": "placed_2",
+          "value": true,
+          "operator": "eq"
         }
       ],
       "once": false,
-      "target": "rug_gap_0"
-    },
-    {
-      "id": "r0003",
-      "event": "drop_on",
-      "source": "false_piece",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "move",
-          "target": "false_piece",
-          "position": [
-            1170,
-            950
-          ]
-        },
-        {
-          "type": "play_animation",
-          "target": "rug_1",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false,
-      "target": "rug_gap_1"
-    },
-    {
-      "id": "r0004",
-      "event": "drop_on",
-      "source": "false_piece",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "move",
-          "target": "false_piece",
-          "position": [
-            1170,
-            950
-          ]
-        },
-        {
-          "type": "play_animation",
-          "target": "rug_2",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false,
-      "target": "rug_gap_2"
-    },
-    {
-      "id": "r0005",
-      "event": "drop_on",
-      "source": "piece",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "move",
-          "target": "piece",
-          "position": [
-            730,
-            950
-          ]
-        },
-        {
-          "type": "play_animation",
-          "target": "rug_2",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false,
-      "target": "rug_gap_2"
-    },
-    {
-      "id": "r0006",
-      "event": "tap",
-      "source": "axis_stencil",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "rotate",
-          "target": "axis_stencil",
-          "degrees": 45
-        }
-      ],
-      "once": false
+      "source": "$level"
     }
   ],
   "win_condition": {
     "type": "variable",
     "name": "solved",
-    "operator": "eq",
-    "value": true
-  }
+    "value": true,
+    "operator": "eq"
+  },
+  "counters": []
 }

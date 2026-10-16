@@ -1,17 +1,20 @@
 {
   "schema_version": 1,
   "id": 67,
-  "question": "از روی سایه‌ها، کدام کوزه متعلق به شکل وسط است؟",
-  "hint": "گردن باریک و دستهٔ سمت راست باید هر دو با سایهٔ هدف منطبق باشند.",
-  "answer": "کوزه‌ای با پروفایل منطبق",
-  "time_limit_seconds": 135,
+  "question": "کوزه‌ای بساز که سایه‌اش با نمونهٔ سمت چپ یکی باشد.",
+  "hint": "بدنهٔ کوزه را از پایینِ سمت چپ روی پایهٔ خالی سمت راست بگذار. از دو گردن، گردن باریک را بالای بدنه نصب کن؛ گردن پهن با سایهٔ هدف جور نیست. دسته را روی لبهٔ راست بدنه قرار بده؛ سایهٔ هدف دستهٔ راست دارد. در آخر خودِ چراغ بالای میز را لمس کن تا سایهٔ کوزهٔ ساخته‌شده با هدف مقایسه شود. اگر گردن یا سمت دسته غلط بود، همان قطعه را جابه‌جا و دوباره چراغ را آزمایش کن.",
+  "answer": "بدنه با گردن باریک و دستهٔ سمت راست، زیر نور همان سایهٔ هدف را می‌سازد.",
+  "time_limit_seconds": 145,
   "base_score": 160,
   "background": "res://assets/samples/puzzle_workbench_day.svg",
   "success": {
     "result_delay_seconds": 1
   },
   "variables": {
-    "solved": false
+    "solved": false,
+    "body": false,
+    "neck": 0,
+    "handle": 0
   },
   "objects": [
     {
@@ -19,44 +22,30 @@
       "scene": "ImageObject",
       "sprite": "res://assets/samples/jug_shadow_target.svg",
       "position": [
-        960,
-        620
+        470,
+        610
       ],
       "interactions": []
     },
     {
-      "id": "light_position",
-      "scene": "DropZone",
+      "id": "work_base",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/puzzle_tile.svg",
       "position": [
-        960,
-        620
+        1250,
+        740
       ],
-      "hit_size": [
-        245,
-        220
-      ],
-      "accepted_sources": [
-        "jug_0",
-        "jug_1",
-        "jug_2",
-        "jug_3"
+      "interactions": [],
+      "scale": [
+        1.15,
+        0.5
       ],
       "z_index": -1
     },
     {
-      "id": "lamp",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/lamp_on.svg",
-      "position": [
-        500,
-        600
-      ],
-      "interactions": []
-    },
-    {
-      "id": "jug_0",
+      "id": "body",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/shadow_jug_0.svg",
+      "sprite": "res://assets/samples/shadow_build_body.svg",
       "position": [
         450,
         900
@@ -65,25 +54,38 @@
         {
           "type": "drag",
           "bounds": [
-            160,
-            460,
-            1600,
-            510
+            200,
+            430,
+            1520,
+            500
           ],
-          "return_on_invalid": true
+          "return_on_invalid": false
         },
         "drop_on"
       ],
-      "z_index": 5,
-      "scale": [
-        0.7,
-        0.7
-      ]
+      "z_index": 7
     },
     {
-      "id": "jug_1",
+      "id": "body_zone",
+      "scene": "DropZone",
+      "position": [
+        1250,
+        650
+      ],
+      "hit_size": [
+        260,
+        230
+      ],
+      "accepted_sources": [
+        "body"
+      ],
+      "z_index": -2,
+      "visible": true
+    },
+    {
+      "id": "neck_narrow",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/shadow_jug_1.svg",
+      "sprite": "res://assets/samples/shadow_neck_50.svg",
       "position": [
         800,
         900
@@ -92,133 +94,880 @@
         {
           "type": "drag",
           "bounds": [
-            160,
-            460,
-            1600,
-            510
+            200,
+            430,
+            1520,
+            500
           ],
-          "return_on_invalid": true
+          "return_on_invalid": false
         },
         "drop_on"
       ],
-      "z_index": 5,
-      "scale": [
-        0.7,
-        0.7
-      ]
+      "z_index": 7
     },
     {
-      "id": "jug_2",
+      "id": "neck_wide",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/shadow_jug_2.svg",
+      "sprite": "res://assets/samples/shadow_neck_85.svg",
       "position": [
-        1150,
+        1060,
         900
       ],
       "interactions": [
         {
           "type": "drag",
           "bounds": [
-            160,
-            460,
-            1600,
-            510
+            200,
+            430,
+            1520,
+            500
           ],
-          "return_on_invalid": true
+          "return_on_invalid": false
         },
         "drop_on"
       ],
-      "z_index": 5,
-      "scale": [
-        0.7,
-        0.7
-      ]
+      "z_index": 7
     },
     {
-      "id": "jug_3",
-      "scene": "ClickableObject",
-      "sprite": "res://assets/samples/shadow_jug_1.svg",
+      "id": "neck_zone",
+      "scene": "DropZone",
       "position": [
-        1500,
+        1250,
+        535
+      ],
+      "hit_size": [
+        150,
+        120
+      ],
+      "accepted_sources": [
+        "neck_narrow",
+        "neck_wide"
+      ],
+      "z_index": -2,
+      "visible": true
+    },
+    {
+      "id": "handle",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/shadow_build_handle.svg",
+      "position": [
+        1420,
         900
       ],
       "interactions": [
         {
           "type": "drag",
           "bounds": [
-            160,
-            460,
-            1600,
-            510
+            200,
+            430,
+            1520,
+            500
           ],
-          "return_on_invalid": true
+          "return_on_invalid": false
         },
         "drop_on"
       ],
-      "z_index": 5,
-      "scale": [
-        0.45,
-        0.45
-      ]
+      "z_index": 7
     },
     {
-      "id": "lever",
-      "scene": "ClickableObject",
-      "sprite": "res://assets/samples/wall_switch.svg",
+      "id": "handle_right",
+      "scene": "DropZone",
       "position": [
-        1550,
-        560
+        1390,
+        650
+      ],
+      "hit_size": [
+        130,
+        180
+      ],
+      "accepted_sources": [
+        "handle"
+      ],
+      "z_index": -2,
+      "visible": true
+    },
+    {
+      "id": "handle_left",
+      "scene": "DropZone",
+      "position": [
+        1110,
+        650
+      ],
+      "hit_size": [
+        130,
+        180
+      ],
+      "accepted_sources": [
+        "handle"
+      ],
+      "z_index": -2,
+      "visible": true
+    },
+    {
+      "id": "lamp",
+      "scene": "ClickableObject",
+      "sprite": "res://assets/samples/lamp_off.svg",
+      "position": [
+        960,
+        460
       ],
       "interactions": [
-        {
-          "type": "swipe",
-          "direction": "up"
-        }
+        "tap"
       ],
       "scale": [
-        0.5,
-        0.5
+        0.65,
+        0.65
       ]
     },
     {
-      "id": "test_shadow",
+      "id": "cast_shadow",
       "scene": "ImageObject",
       "sprite": "res://assets/samples/jug_shadow_target.svg",
       "position": [
-        1560,
-        690
+        770,
+        610
       ],
       "interactions": [],
-      "visible": false,
-      "scale": [
-        0.4,
-        0.7
-      ]
+      "visible": false
+    },
+    {
+      "id": "sample_label",
+      "scene": "TextObject",
+      "text": "نمونه",
+      "position": [
+        470,
+        780
+      ],
+      "hit_size": [
+        220,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "shadow_label",
+      "scene": "TextObject",
+      "text": "سایه",
+      "position": [
+        770,
+        780
+      ],
+      "hit_size": [
+        220,
+        60
+      ],
+      "text_color": "#354f54",
+      "interactions": []
     }
   ],
   "rules": [
     {
       "id": "r0000",
       "event": "drop_on",
-      "source": "jug_0",
-      "conditions": [],
       "actions": [
         {
           "type": "move",
-          "target": "jug_0",
+          "target": "body",
           "position": [
-            960,
-            620
+            1250,
+            650
           ]
         },
         {
-          "type": "scale",
-          "target": "jug_0",
-          "value": [
-            1,
-            1
+          "type": "set_variable",
+          "name": "body",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [],
+      "once": false,
+      "source": "body",
+      "target": "body_zone"
+    },
+    {
+      "id": "r0001",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "neck_narrow",
+          "position": [
+            1250,
+            535
           ]
         },
+        {
+          "type": "set_variable",
+          "name": "neck",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "neck_wide",
+          "position": [
+            1060,
+            900
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "cast_shadow"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "lamp",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "body",
+          "value": true,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "neck_narrow",
+      "target": "neck_zone"
+    },
+    {
+      "id": "r0002",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "neck_wide",
+          "position": [
+            1250,
+            535
+          ]
+        },
+        {
+          "type": "set_variable",
+          "name": "neck",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "move",
+          "target": "neck_narrow",
+          "position": [
+            800,
+            900
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "cast_shadow"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "lamp",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "body",
+          "value": true,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "neck_wide",
+      "target": "neck_zone"
+    },
+    {
+      "id": "r0003",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "handle",
+          "position": [
+            1390,
+            650
+          ]
+        },
+        {
+          "type": "rotate",
+          "target": "handle",
+          "degrees": 0
+        },
+        {
+          "type": "set_variable",
+          "name": "handle",
+          "value": 1,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "cast_shadow"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "lamp",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "body",
+          "value": true,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "handle",
+      "target": "handle_right"
+    },
+    {
+      "id": "r0004",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "handle",
+          "position": [
+            1110,
+            650
+          ]
+        },
+        {
+          "type": "rotate",
+          "target": "handle",
+          "degrees": 180
+        },
+        {
+          "type": "set_variable",
+          "name": "handle",
+          "value": 2,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "cast_shadow"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "lamp",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "body",
+          "value": true,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "handle",
+      "target": "handle_left"
+    },
+    {
+      "id": "r0005",
+      "event": "drag_start",
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "body",
+          "value": false,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "cast_shadow"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "lamp",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        }
+      ],
+      "conditions": [],
+      "once": false,
+      "source": "body"
+    },
+    {
+      "id": "r0006",
+      "event": "drag_start",
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "neck",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "cast_shadow"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "lamp",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "neck",
+          "value": 1,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "neck_narrow"
+    },
+    {
+      "id": "r0007",
+      "event": "drag_start",
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "neck",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "cast_shadow"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "lamp",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "neck",
+          "value": 2,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "neck_wide"
+    },
+    {
+      "id": "r0008",
+      "event": "drag_start",
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "handle",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "cast_shadow"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "lamp",
+          "sprite": "res://assets/samples/lamp_off.svg"
+        }
+      ],
+      "conditions": [],
+      "once": false,
+      "source": "handle"
+    },
+    {
+      "id": "r0009",
+      "event": "drag_end",
+      "actions": [
+        {
+          "type": "move",
+          "target": "body",
+          "position": [
+            450,
+            900
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "not",
+          "condition": {
+            "type": "inside",
+            "target": "body",
+            "zone": "body_zone"
+          }
+        }
+      ],
+      "once": false,
+      "source": "body"
+    },
+    {
+      "id": "r0010",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "neck_narrow",
+          "position": [
+            800,
+            900
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "body",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "neck_narrow",
+      "target": "neck_zone"
+    },
+    {
+      "id": "r0011",
+      "event": "drag_end",
+      "actions": [
+        {
+          "type": "move",
+          "target": "neck_narrow",
+          "position": [
+            800,
+            900
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "not",
+          "condition": {
+            "type": "inside",
+            "target": "neck_narrow",
+            "zone": "neck_zone"
+          }
+        }
+      ],
+      "once": false,
+      "source": "neck_narrow"
+    },
+    {
+      "id": "r0012",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "neck_wide",
+          "position": [
+            1060,
+            900
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "body",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "neck_wide",
+      "target": "neck_zone"
+    },
+    {
+      "id": "r0013",
+      "event": "drag_end",
+      "actions": [
+        {
+          "type": "move",
+          "target": "neck_wide",
+          "position": [
+            1060,
+            900
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "not",
+          "condition": {
+            "type": "inside",
+            "target": "neck_wide",
+            "zone": "neck_zone"
+          }
+        }
+      ],
+      "once": false,
+      "source": "neck_wide"
+    },
+    {
+      "id": "r0014",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "handle",
+          "position": [
+            1420,
+            900
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "body",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "handle",
+      "target": "handle_left"
+    },
+    {
+      "id": "r0015",
+      "event": "drop_on",
+      "actions": [
+        {
+          "type": "move",
+          "target": "handle",
+          "position": [
+            1420,
+            900
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "body",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "handle",
+      "target": "handle_right"
+    },
+    {
+      "id": "r0016",
+      "event": "drag_end",
+      "actions": [
+        {
+          "type": "move",
+          "target": "handle",
+          "position": [
+            1420,
+            900
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "not",
+          "condition": {
+            "type": "any",
+            "conditions": [
+              {
+                "type": "inside",
+                "target": "handle",
+                "zone": "handle_left"
+              },
+              {
+                "type": "inside",
+                "target": "handle",
+                "zone": "handle_right"
+              }
+            ]
+          }
+        }
+      ],
+      "once": false,
+      "source": "handle"
+    },
+    {
+      "id": "r0017",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp",
+          "sprite": "res://assets/samples/lamp_on.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cast_shadow",
+          "sprite": "res://assets/samples/jug_shadow_target.svg"
+        },
+        {
+          "type": "show",
+          "target": "cast_shadow"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "body",
+          "value": true,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "neck",
+          "value": 1,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "handle",
+          "value": 1,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "lamp"
+    },
+    {
+      "id": "r0018",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp",
+          "sprite": "res://assets/samples/lamp_on.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cast_shadow",
+          "sprite": "res://assets/samples/assembled_shadow_1_2.svg"
+        },
+        {
+          "type": "show",
+          "target": "cast_shadow"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "body",
+          "value": true,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "neck",
+          "value": 1,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "handle",
+          "value": 2,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "lamp"
+    },
+    {
+      "id": "r0019",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp",
+          "sprite": "res://assets/samples/lamp_on.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cast_shadow",
+          "sprite": "res://assets/samples/assembled_shadow_2_1.svg"
+        },
+        {
+          "type": "show",
+          "target": "cast_shadow"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "body",
+          "value": true,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "neck",
+          "value": 2,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "handle",
+          "value": 1,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "lamp"
+    },
+    {
+      "id": "r0020",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "replace_sprite",
+          "target": "lamp",
+          "sprite": "res://assets/samples/lamp_on.svg"
+        },
+        {
+          "type": "replace_sprite",
+          "target": "cast_shadow",
+          "sprite": "res://assets/samples/assembled_shadow_2_2.svg"
+        },
+        {
+          "type": "show",
+          "target": "cast_shadow"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "body",
+          "value": true,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "neck",
+          "value": 2,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "handle",
+          "value": 2,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "lamp"
+    },
+    {
+      "id": "r0021",
+      "event": "tap",
+      "actions": [
         {
           "type": "set_variable",
           "name": "solved",
@@ -226,99 +975,35 @@
           "operation": "assign"
         }
       ],
-      "once": false,
-      "target": "light_position"
-    },
-    {
-      "id": "r0001",
-      "event": "drop_on",
-      "source": "jug_1",
-      "conditions": [],
-      "actions": [
+      "conditions": [
         {
-          "type": "move",
-          "target": "jug_1",
-          "position": [
-            800,
-            900
-          ]
+          "type": "variable",
+          "name": "body",
+          "value": true,
+          "operator": "eq"
         },
         {
-          "type": "play_animation",
-          "target": "target",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false,
-      "target": "light_position"
-    },
-    {
-      "id": "r0002",
-      "event": "drop_on",
-      "source": "jug_2",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "move",
-          "target": "jug_2",
-          "position": [
-            1150,
-            900
-          ]
+          "type": "variable",
+          "name": "neck",
+          "value": 1,
+          "operator": "eq"
         },
         {
-          "type": "play_animation",
-          "target": "target",
-          "animation": "chapter_two/rattle",
-          "wait": false
+          "type": "variable",
+          "name": "handle",
+          "value": 1,
+          "operator": "eq"
         }
       ],
       "once": false,
-      "target": "light_position"
-    },
-    {
-      "id": "r0003",
-      "event": "drop_on",
-      "source": "jug_3",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "move",
-          "target": "jug_3",
-          "position": [
-            1500,
-            900
-          ]
-        },
-        {
-          "type": "play_animation",
-          "target": "target",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false,
-      "target": "light_position"
-    },
-    {
-      "id": "r0004",
-      "event": "swipe",
-      "source": "lever",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "show",
-          "target": "test_shadow"
-        }
-      ],
-      "once": false
+      "source": "lamp"
     }
   ],
   "win_condition": {
     "type": "variable",
     "name": "solved",
-    "operator": "eq",
-    "value": true
-  }
+    "value": true,
+    "operator": "eq"
+  },
+  "counters": []
 }

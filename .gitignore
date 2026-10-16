@@ -32,3 +32,4 @@ tools/android/*
 !/tools/author_chapter_five.py
 !/tests/test_chapter_five.gd
 !/tests/test_chapter_five.gd.uid
+!/tools/redesign_chapter_five.mjs

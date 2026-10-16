@@ -6,6 +6,7 @@ backgrounds have independent names; earlier chapter authors are not imported.
 import itertools
 import json
 import random
+import subprocess
 from collections import deque
 from pathlib import Path
 
@@ -659,6 +660,8 @@ def write_asset_report():
     new[P+'bridge_lantern_feedback.tres']='حرکت هم‌زمان گروه و چراغ در دو جهت با پایان مشترک و پشتیبانی مکث/لغو؛ منبع مناسب موجود نبود.'
     new[P+'cup_challenge_feedback.tres']='پنج تعویض سریع با مسیر جدا برای سه فنجان و هویت پایدار؛ انیمیشن قبلی فقط دو تعویض داشت.'
     new[P+'chapter_five_feedback.tres']='مهلت باد، حرکت برگ و دو تعویض هویتی فنجان؛ انیمیشن‌های موجود این مسیرها را نداشتند.'
+    redesign=json.loads((ROOT/'docs/chapter-five-redesign-assets.json').read_text(encoding='utf-8'))
+    new.update(redesign['new_assets'])
     def resources(value):
         if isinstance(value,str): return {value} if value.startswith('res://') else set()
         if isinstance(value,list): return set().union(*(resources(v) for v in value))
@@ -679,8 +682,9 @@ def write_asset_report():
         stages[str(number)]=dict(background=level['background'],lighting='night_lit' if 'night' in level['background'] else 'day',reused=sorted(paths-set(new)),new=sorted(paths&set(new)))
     report=dict(note='گزارش نویسندگی و منابع؛ تأیید اجرایی یا آزمون تصویری نیست. فایل‌های تصویری و صوتی قبلی تغییر نکردند.',new_assets=new,stages=stages,
                 matching=dict(tile_53=dict(order='N,E,S,W',target=[0,1,2,3],options=[dict(id=0,edges=[0,1,2,3],continuous=True),dict(id=1,edges=[0,1,2,3],continuous=False,break_edge='W'),dict(id=2,edges=[1,0,2,3],continuous=True),dict(id=3,edges=[0,3,2,1],continuous=True)]),
-                              rug_69=dict(axis='vertical',missing_rug=1,local_missing_center=[235,240],motif_direction='up',false_motif_direction='down'),
-                              shadow_67=dict(neck_width=50,handle='right',correct=0,wrong_neck_width=85,wrong_handle='absent',light_distance='fixed')))
+                              rug_69=dict(axis='vertical',missing_rug=1,rows=[540,650,760],target_angles=[0,0,0],initial_angles=[270,0,180]),
+                              shadow_67=dict(body_required=True,neck_width=50,handle='right',light_test_required=True),
+                              cards_70=dict(fronts=['A','E','D','K','4','8','7','9'],backs=['3','2','4','7','A','D','D','E'],required=[0,1,6,7],budget=4)))
     (ROOT/'docs/chapter-five-assets.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 
 
@@ -688,6 +692,7 @@ if __name__ == '__main__':
     author_assets()
     author_animations()
     author_simple_levels()
+    subprocess.run(['node',str(ROOT/'tools/redesign_chapter_five.mjs')],check=True,cwd=ROOT)
     write_asset_report()
     manifest=dict(schema_version=1,manifest_version=9,levels=[dict(id=i,path=f'res://PuzzleEngine/PuzzleData/{i:03}.json') for i in range(1,71)])
     (DATA/'manifest.json').write_text('{\n  "schema_version": 1,\n  "manifest_version": 9,\n  "levels": [\n'+',\n'.join('    { '+json.dumps(entry)[1:-1]+' }' for entry in manifest['levels'])+'\n  ]\n}\n',encoding='utf-8')

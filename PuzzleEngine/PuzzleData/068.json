@@ -2,43 +2,61 @@
   "schema_version": 1,
   "id": 68,
   "question": "در قفسه کتاب‌ها یک کتاب وارونه است؛ چرا مهم است؟",
-  "hint": "نشانِ کتاب وارونه را پیدا کن؛ همان کتاب را از قفسه بیرون بکش.",
+  "hint": "کتاب وارونهٔ وسط را به پایین بیرون بکش تا ضامن پشت آن آشکار شود. ضامن را رو به پایین آزاد کن؛ سپس خودِ قفسه را به راست بکش تا در پنهان نمایان شود. برای پایان، ورودی را لمس کن. کتاب‌های مستقیم به سازوکار قفل وصل نیستند.",
   "answer": "اهرم مخفی است",
-  "time_limit_seconds": 115,
+  "time_limit_seconds": 130,
   "base_score": 155,
   "background": "res://assets/samples/library_room_day.svg",
   "success": {
     "result_delay_seconds": 1
   },
   "variables": {
-    "solved": false
+    "solved": false,
+    "released": false,
+    "unlocked": false,
+    "opened": false
   },
   "objects": [
     {
       "id": "door",
-      "scene": "ImageObject",
+      "scene": "ClickableObject",
       "sprite": "res://assets/samples/hidden_door.svg",
       "position": [
         960,
         650
       ],
-      "interactions": [],
+      "interactions": [
+        "tap"
+      ],
       "visible": false,
-      "z_index": -3
+      "z_index": 0
     },
     {
       "id": "shelf",
-      "scene": "ImageObject",
+      "scene": "ClickableObject",
       "sprite": "res://assets/samples/bookshelf.svg",
       "position": [
         960,
         650
       ],
-      "interactions": [],
+      "interactions": [
+        {
+          "type": "drag",
+          "axis": "x",
+          "bounds": [
+            960,
+            650,
+            540,
+            1
+          ],
+          "return_on_invalid": false
+        }
+      ],
       "scale": [
         1.8,
         1.2
-      ]
+      ],
+      "z_index": 2
     },
     {
       "id": "book_0",
@@ -51,21 +69,21 @@
       "interactions": [
         {
           "type": "drag",
+          "axis": "y",
           "bounds": [
-            500,
-            550,
-            1100,
-            380
+            800,
+            650,
+            1,
+            240
           ],
-          "return_on_invalid": true
-        },
-        "drop_on"
+          "return_on_invalid": false
+        }
       ],
-      "z_index": 5,
       "scale": [
         0.7,
         0.7
-      ]
+      ],
+      "z_index": 5
     },
     {
       "id": "book_1",
@@ -78,21 +96,21 @@
       "interactions": [
         {
           "type": "drag",
+          "axis": "y",
           "bounds": [
-            500,
-            550,
-            1100,
-            380
+            960,
+            650,
+            1,
+            240
           ],
-          "return_on_invalid": true
-        },
-        "drop_on"
+          "return_on_invalid": false
+        }
       ],
-      "z_index": 5,
       "scale": [
         0.7,
         0.7
-      ]
+      ],
+      "z_index": 5
     },
     {
       "id": "book_2",
@@ -105,60 +123,78 @@
       "interactions": [
         {
           "type": "drag",
+          "axis": "y",
           "bounds": [
-            500,
-            550,
-            1100,
-            380
+            1120,
+            650,
+            1,
+            240
           ],
-          "return_on_invalid": true
-        },
-        "drop_on"
+          "return_on_invalid": false
+        }
       ],
-      "z_index": 5,
       "scale": [
         0.7,
         0.7
-      ]
+      ],
+      "z_index": 5
     },
     {
-      "id": "frame",
+      "id": "book_latch",
       "scene": "ClickableObject",
-      "sprite": "res://assets/samples/face_frame.svg",
+      "sprite": "res://assets/samples/floor_latch_closed.svg",
       "position": [
-        1500,
-        800
+        960,
+        650
       ],
       "interactions": [
-        "hold"
+        {
+          "type": "swipe",
+          "direction": "down"
+        }
       ],
-      "scale": [
-        0.65,
-        0.65
-      ]
-    },
-    {
-      "id": "door_sketch",
-      "scene": "ImageObject",
-      "sprite": "res://assets/samples/hidden_door.svg",
-      "position": [
-        1500,
-        800
-      ],
-      "interactions": [],
       "visible": false,
-      "scale": [
-        0.3,
-        0.3
-      ]
+      "z_index": 6
     }
   ],
   "rules": [
     {
       "id": "r0000",
       "event": "drag_end",
-      "source": "book_0",
-      "conditions": [],
+      "actions": [
+        {
+          "type": "hide",
+          "target": "book_1"
+        },
+        {
+          "type": "show",
+          "target": "book_latch"
+        },
+        {
+          "type": "set_variable",
+          "name": "released",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "released",
+          "value": false,
+          "operator": "eq"
+        },
+        {
+          "type": "moved_distance_at_least",
+          "value": 150
+        }
+      ],
+      "once": false,
+      "source": "book_1"
+    },
+    {
+      "id": "r0001",
+      "event": "drag_end",
       "actions": [
         {
           "type": "move",
@@ -167,66 +203,39 @@
             800,
             650
           ]
-        },
-        {
-          "type": "play_animation",
-          "target": "book_0",
-          "animation": "chapter_two/rattle",
-          "wait": false
         }
       ],
-      "once": false
-    },
-    {
-      "id": "r0001",
-      "event": "drag_end",
-      "source": "book_1",
-      "conditions": [
-        {
-          "type": "moved_distance_at_least",
-          "value": 170
-        }
-      ],
-      "actions": [
-        {
-          "type": "move",
-          "target": "shelf",
-          "position": [
-            1500,
-            680
-          ]
-        },
-        {
-          "type": "hide",
-          "target": "book_0"
-        },
-        {
-          "type": "hide",
-          "target": "book_2"
-        },
-        {
-          "type": "show",
-          "target": "door"
-        },
-        {
-          "type": "rotate",
-          "target": "shelf",
-          "degrees": 80
-        },
-        {
-          "type": "set_variable",
-          "name": "solved",
-          "value": true,
-          "operation": "assign"
-        }
-      ],
-      "once": false
+      "conditions": [],
+      "once": false,
+      "source": "book_0"
     },
     {
       "id": "r0002",
       "event": "drag_end",
-      "source": "book_2",
-      "conditions": [],
+      "actions": [
+        {
+          "type": "move",
+          "target": "book_1",
+          "position": [
+            960,
+            650
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "released",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "book_1"
+    },
+    {
+      "id": "r0003",
+      "event": "drag_end",
       "actions": [
         {
           "type": "move",
@@ -235,34 +244,169 @@
             1120,
             650
           ]
-        },
-        {
-          "type": "play_animation",
-          "target": "book_2",
-          "animation": "chapter_two/rattle",
-          "wait": false
         }
       ],
-      "once": false
+      "conditions": [],
+      "once": false,
+      "source": "book_2"
     },
     {
-      "id": "r0003",
-      "event": "hold",
-      "source": "frame",
-      "conditions": [],
+      "id": "r0004",
+      "event": "swipe",
       "actions": [
         {
-          "type": "show",
-          "target": "door_sketch"
+          "type": "replace_sprite",
+          "target": "book_latch",
+          "sprite": "res://assets/samples/floor_latch_open.svg"
+        },
+        {
+          "type": "set_variable",
+          "name": "unlocked",
+          "value": true,
+          "operation": "assign"
         }
       ],
-      "once": false
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "released",
+          "value": true,
+          "operator": "eq"
+        }
+      ],
+      "once": true,
+      "source": "book_latch"
+    },
+    {
+      "id": "r0005",
+      "event": "drag_end",
+      "actions": [
+        {
+          "type": "move",
+          "target": "shelf",
+          "position": [
+            1500,
+            650
+          ]
+        },
+        {
+          "type": "hide",
+          "target": "book_0"
+        },
+        {
+          "type": "hide",
+          "target": "book_1"
+        },
+        {
+          "type": "hide",
+          "target": "book_2"
+        },
+        {
+          "type": "hide",
+          "target": "book_latch"
+        },
+        {
+          "type": "show",
+          "target": "door"
+        },
+        {
+          "type": "set_variable",
+          "name": "opened",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "unlocked",
+          "value": true,
+          "operator": "eq"
+        },
+        {
+          "type": "moved_distance_at_least",
+          "value": 350
+        }
+      ],
+      "once": false,
+      "source": "shelf"
+    },
+    {
+      "id": "r0006",
+      "event": "drag_end",
+      "actions": [
+        {
+          "type": "move",
+          "target": "shelf",
+          "position": [
+            960,
+            650
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "opened",
+          "value": false,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "shelf"
+    },
+    {
+      "id": "r0007",
+      "event": "drag_end",
+      "actions": [
+        {
+          "type": "move",
+          "target": "shelf",
+          "position": [
+            1500,
+            650
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "opened",
+          "value": true,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "shelf"
+    },
+    {
+      "id": "r0008",
+      "event": "tap",
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "opened",
+          "value": true,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "source": "door"
     }
   ],
   "win_condition": {
     "type": "variable",
     "name": "solved",
-    "operator": "eq",
-    "value": true
-  }
+    "value": true,
+    "operator": "eq"
+  },
+  "counters": []
 }

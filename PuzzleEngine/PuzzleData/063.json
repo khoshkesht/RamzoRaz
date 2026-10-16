@@ -2,7 +2,7 @@
   "schema_version": 1,
   "id": 63,
   "question": "با دو ساعت‌شنی ۷ و ۱۱ دقیقه‌ای دقیقاً ۱۵ دقیقه بساز.",
-  "hint": "همزمان شروع کن؛ در دقیقهٔ هفت و یازده ساعت هفت‌دقیقه‌ای را برگردان.",
+  "hint": "«شروع» را لمس کن تا هر دو ساعت با هم شروع شوند. دکمهٔ تصویریِ ساعت و فلش، زمان اندازه‌گیری را تا خالی‌شدن اولین ساعت جلو می‌برد. آن را بزن تا عدد ۷ دیده شود؛ ساعت ۷دقیقه‌ای را لمس کن تا برگردد. دوباره زمان را جلو ببر تا ۱۱؛ در ساعت۷ هنوز ۳ دقیقه شن مانده است. همان ساعت را لمس کن تا ۴ دقیقه شن در بالا بماند. یک بار دیگر زمان را جلو ببر؛ در ۱۵ دقیقه ساعت۷ خالی می‌شود و مرحله خودکار حل می‌شود.",
   "answer": "شروع همزمان؛ در ۷ دقیقه ۷دقیقه‌ای را برگردان، در ۱۱ دقیقه دوباره برگردان؛ در ۱۵ تمام می‌شود",
   "time_limit_seconds": 150,
   "base_score": 170,
@@ -20,21 +20,6 @@
   },
   "objects": [
     {
-      "id": "instructions",
-      "scene": "TextObject",
-      "text": "با شروع، هر دو ساعت برمی‌گردند. «رویداد بعدی» زمان را تا خالی‌شدن یک ساعت جلو می‌برد.",
-      "position": [
-        960,
-        430
-      ],
-      "hit_size": [
-        1550,
-        90
-      ],
-      "text_color": "#354f54",
-      "interactions": []
-    },
-    {
       "id": "glass7",
       "scene": "ClickableObject",
       "sprite": "res://assets/samples/hourglass_clear.svg",
@@ -43,7 +28,7 @@
         670
       ],
       "interactions": [
-        "swipe"
+        "tap"
       ]
     },
     {
@@ -55,7 +40,7 @@
         670
       ],
       "interactions": [
-        "swipe"
+        "tap"
       ]
     },
     {
@@ -137,7 +122,7 @@
     {
       "id": "start",
       "scene": "TextObject",
-      "text": "شروع همزمان",
+      "text": "شروع",
       "position": [
         960,
         540
@@ -154,39 +139,16 @@
     },
     {
       "id": "next",
-      "scene": "TextObject",
-      "text": "تا رویداد بعدی",
+      "scene": "ClickableObject",
       "position": [
         960,
-        940
+        960
       ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
       "interactions": [
         "tap"
       ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
-    },
-    {
-      "id": "confirm",
-      "scene": "TextObject",
-      "text": "پایان اندازه‌گیری",
-      "position": [
-        1550,
-        940
-      ],
-      "hit_size": [
-        300,
-        110
-      ],
-      "text_color": "#354f54",
-      "interactions": [
-        "tap"
-      ],
-      "sprite": "res://assets/samples/puzzle_tile.svg"
+      "sprite": "res://assets/samples/clock_next_boundary.svg",
+      "visible": false
     },
     {
       "id": "remaining7_0",
@@ -509,47 +471,290 @@
       "visible": false
     },
     {
-      "id": "clock_frame",
-      "scene": "ClickableObject",
-      "sprite": "res://assets/samples/clock_face.svg",
+      "id": "elapsed_plate",
+      "scene": "ImageObject",
+      "sprite": "res://assets/samples/puzzle_tile.svg",
       "position": [
-        300,
-        650
-      ],
-      "interactions": [
-        "tap"
+        960,
+        420
       ],
       "scale": [
-        0.5,
-        0.5
-      ]
+        1.7,
+        1.2
+      ],
+      "interactions": [],
+      "z_index": -1
     },
     {
-      "id": "ruler",
-      "scene": "ClickableObject",
-      "sprite": "res://assets/samples/height_ruler.svg",
+      "id": "elapsed_label",
+      "scene": "TextObject",
+      "text": "زمان اندازه‌گیری",
       "position": [
-        1660,
-        650
+        960,
+        330
       ],
-      "interactions": [
-        {
-          "type": "drag",
-          "bounds": [
-            160,
-            460,
-            1600,
-            510
-          ],
-          "return_on_invalid": true
-        },
-        "drop_on"
+      "hit_size": [
+        550,
+        65
       ],
-      "z_index": 5,
-      "scale": [
-        0.6,
-        0.6
-      ]
+      "text_color": "#354f54",
+      "interactions": []
+    },
+    {
+      "id": "elapsed_0",
+      "scene": "TextObject",
+      "text": "۰ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": true
+    },
+    {
+      "id": "elapsed_1",
+      "scene": "TextObject",
+      "text": "۱ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_2",
+      "scene": "TextObject",
+      "text": "۲ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_3",
+      "scene": "TextObject",
+      "text": "۳ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_4",
+      "scene": "TextObject",
+      "text": "۴ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_5",
+      "scene": "TextObject",
+      "text": "۵ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_6",
+      "scene": "TextObject",
+      "text": "۶ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_7",
+      "scene": "TextObject",
+      "text": "۷ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_8",
+      "scene": "TextObject",
+      "text": "۸ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_9",
+      "scene": "TextObject",
+      "text": "۹ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_10",
+      "scene": "TextObject",
+      "text": "۱۰ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_11",
+      "scene": "TextObject",
+      "text": "۱۱ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_12",
+      "scene": "TextObject",
+      "text": "۱۲ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_13",
+      "scene": "TextObject",
+      "text": "۱۳ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_14",
+      "scene": "TextObject",
+      "text": "۱۴ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
+    },
+    {
+      "id": "elapsed_15",
+      "scene": "TextObject",
+      "text": "۱۵ دقیقه",
+      "position": [
+        960,
+        420
+      ],
+      "hit_size": [
+        450,
+        85
+      ],
+      "text_color": "#354f54",
+      "interactions": [],
+      "visible": false
     }
   ],
   "rules": [
@@ -595,13 +800,21 @@
           "name": "remaining11",
           "value": 11,
           "operation": "assign"
+        },
+        {
+          "type": "hide",
+          "target": "start"
+        },
+        {
+          "type": "show",
+          "target": "next"
         }
       ],
       "once": false
     },
     {
       "id": "r0001",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -659,7 +872,7 @@
     },
     {
       "id": "r0002",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -769,7 +982,7 @@
     },
     {
       "id": "r0004",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -827,7 +1040,7 @@
     },
     {
       "id": "r0005",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -937,7 +1150,7 @@
     },
     {
       "id": "r0007",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -995,7 +1208,7 @@
     },
     {
       "id": "r0008",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -1105,7 +1318,7 @@
     },
     {
       "id": "r0010",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -1163,7 +1376,7 @@
     },
     {
       "id": "r0011",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -1273,7 +1486,7 @@
     },
     {
       "id": "r0013",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -1331,7 +1544,7 @@
     },
     {
       "id": "r0014",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -1389,7 +1602,7 @@
     },
     {
       "id": "r0015",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -1447,7 +1660,7 @@
     },
     {
       "id": "r0016",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -1505,7 +1718,7 @@
     },
     {
       "id": "r0017",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -1563,7 +1776,7 @@
     },
     {
       "id": "r0018",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -1621,7 +1834,7 @@
     },
     {
       "id": "r0019",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -1679,7 +1892,7 @@
     },
     {
       "id": "r0020",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -1789,7 +2002,7 @@
     },
     {
       "id": "r0022",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -1847,7 +2060,7 @@
     },
     {
       "id": "r0023",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -1957,7 +2170,7 @@
     },
     {
       "id": "r0025",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -2015,7 +2228,7 @@
     },
     {
       "id": "r0026",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -2098,7 +2311,7 @@
     },
     {
       "id": "r0028",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -2156,7 +2369,7 @@
     },
     {
       "id": "r0029",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -2239,7 +2452,7 @@
     },
     {
       "id": "r0031",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -2297,7 +2510,7 @@
     },
     {
       "id": "r0032",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -2407,7 +2620,7 @@
     },
     {
       "id": "r0034",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -2465,7 +2678,7 @@
     },
     {
       "id": "r0035",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -2548,7 +2761,7 @@
     },
     {
       "id": "r0037",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -2606,7 +2819,7 @@
     },
     {
       "id": "r0038",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -2716,7 +2929,7 @@
     },
     {
       "id": "r0040",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -2774,7 +2987,7 @@
     },
     {
       "id": "r0041",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -2884,7 +3097,7 @@
     },
     {
       "id": "r0043",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -2942,7 +3155,7 @@
     },
     {
       "id": "r0044",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -3000,7 +3213,7 @@
     },
     {
       "id": "r0045",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -3058,7 +3271,7 @@
     },
     {
       "id": "r0046",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -3141,7 +3354,7 @@
     },
     {
       "id": "r0048",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -3199,7 +3412,7 @@
     },
     {
       "id": "r0049",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -3309,7 +3522,7 @@
     },
     {
       "id": "r0051",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -3367,7 +3580,7 @@
     },
     {
       "id": "r0052",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -3477,7 +3690,7 @@
     },
     {
       "id": "r0054",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -3535,7 +3748,7 @@
     },
     {
       "id": "r0055",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -3645,7 +3858,7 @@
     },
     {
       "id": "r0057",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -3703,7 +3916,7 @@
     },
     {
       "id": "r0058",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -3786,7 +3999,7 @@
     },
     {
       "id": "r0060",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -3844,7 +4057,7 @@
     },
     {
       "id": "r0061",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -3927,7 +4140,7 @@
     },
     {
       "id": "r0063",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -3985,7 +4198,7 @@
     },
     {
       "id": "r0064",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -4068,7 +4281,7 @@
     },
     {
       "id": "r0066",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -4126,7 +4339,7 @@
     },
     {
       "id": "r0067",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -4236,7 +4449,7 @@
     },
     {
       "id": "r0069",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -4294,7 +4507,7 @@
     },
     {
       "id": "r0070",
-      "event": "swipe",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -4353,34 +4566,6 @@
     {
       "id": "r0071",
       "event": "tap",
-      "source": "confirm",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "15,0,0"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "solved",
-          "value": true,
-          "operation": "assign"
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0072",
-      "event": "swipe",
       "source": "glass7",
       "conditions": [
         {
@@ -4437,8 +4622,8 @@
       "once": false
     },
     {
-      "id": "r0073",
-      "event": "swipe",
+      "id": "r0072",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -4495,7 +4680,7 @@
       "once": false
     },
     {
-      "id": "r0074",
+      "id": "r0073",
       "event": "tap",
       "source": "next",
       "conditions": [
@@ -4520,8 +4705,8 @@
       "once": false
     },
     {
-      "id": "r0075",
-      "event": "swipe",
+      "id": "r0074",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -4578,8 +4763,8 @@
       "once": false
     },
     {
-      "id": "r0076",
-      "event": "swipe",
+      "id": "r0075",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -4636,7 +4821,7 @@
       "once": false
     },
     {
-      "id": "r0077",
+      "id": "r0076",
       "event": "tap",
       "source": "next",
       "conditions": [
@@ -4661,8 +4846,8 @@
       "once": false
     },
     {
-      "id": "r0078",
-      "event": "swipe",
+      "id": "r0077",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -4712,6 +4897,64 @@
         {
           "type": "play_animation",
           "target": "glass7",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0078",
+      "event": "tap",
+      "source": "glass11",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "simulation",
+          "operator": "eq",
+          "value": "14,7,4"
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "simulation",
+          "value": "14,7,7",
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "minutes",
+          "value": 14,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "remaining7",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "remaining11",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "glass11",
           "animation": "chapter_two/rattle",
           "wait": false
         }
@@ -4720,64 +4963,6 @@
     },
     {
       "id": "r0079",
-      "event": "swipe",
-      "source": "glass11",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "14,7,4"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "transition",
-          "value": true,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "simulation",
-          "value": "14,7,7",
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "minutes",
-          "value": 14,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "remaining7",
-          "value": 7,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "remaining11",
-          "value": 7,
-          "operation": "assign"
-        },
-        {
-          "type": "play_animation",
-          "target": "glass11",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0080",
       "event": "tap",
       "source": "next",
       "conditions": [
@@ -4802,8 +4987,8 @@
       "once": false
     },
     {
-      "id": "r0081",
-      "event": "swipe",
+      "id": "r0080",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -4860,8 +5045,8 @@
       "once": false
     },
     {
-      "id": "r0082",
-      "event": "swipe",
+      "id": "r0081",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -4918,7 +5103,7 @@
       "once": false
     },
     {
-      "id": "r0083",
+      "id": "r0082",
       "event": "tap",
       "source": "next",
       "conditions": [
@@ -4943,8 +5128,8 @@
       "once": false
     },
     {
-      "id": "r0084",
-      "event": "swipe",
+      "id": "r0083",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -5001,8 +5186,8 @@
       "once": false
     },
     {
-      "id": "r0085",
-      "event": "swipe",
+      "id": "r0084",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -5059,7 +5244,7 @@
       "once": false
     },
     {
-      "id": "r0086",
+      "id": "r0085",
       "event": "tap",
       "source": "next",
       "conditions": [
@@ -5084,36 +5269,8 @@
       "once": false
     },
     {
-      "id": "r0087",
+      "id": "r0086",
       "event": "tap",
-      "source": "confirm",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "15,0,7"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "solved",
-          "value": true,
-          "operation": "assign"
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0088",
-      "event": "swipe",
       "source": "glass7",
       "conditions": [
         {
@@ -5170,8 +5327,8 @@
       "once": false
     },
     {
-      "id": "r0089",
-      "event": "swipe",
+      "id": "r0087",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -5221,6 +5378,89 @@
         {
           "type": "play_animation",
           "target": "glass11",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0088",
+      "event": "tap",
+      "source": "next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "simulation",
+          "operator": "eq",
+          "value": "15,7,0"
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0089",
+      "event": "tap",
+      "source": "glass7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "simulation",
+          "operator": "eq",
+          "value": "15,0,11"
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "simulation",
+          "value": "15,7,11",
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "minutes",
+          "value": 15,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "remaining7",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "remaining11",
+          "value": 11,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "glass7",
           "animation": "chapter_two/rattle",
           "wait": false
         }
@@ -5230,89 +5470,6 @@
     {
       "id": "r0090",
       "event": "tap",
-      "source": "next",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "15,7,0"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "fail_level"
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0091",
-      "event": "swipe",
-      "source": "glass7",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "15,0,11"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "transition",
-          "value": true,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "simulation",
-          "value": "15,7,11",
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "minutes",
-          "value": 15,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "remaining7",
-          "value": 7,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "remaining11",
-          "value": 11,
-          "operation": "assign"
-        },
-        {
-          "type": "play_animation",
-          "target": "glass7",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0092",
-      "event": "swipe",
       "source": "glass11",
       "conditions": [
         {
@@ -5369,7 +5526,7 @@
       "once": false
     },
     {
-      "id": "r0093",
+      "id": "r0091",
       "event": "tap",
       "source": "next",
       "conditions": [
@@ -5394,36 +5551,8 @@
       "once": false
     },
     {
-      "id": "r0094",
+      "id": "r0092",
       "event": "tap",
-      "source": "confirm",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "15,0,11"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "solved",
-          "value": true,
-          "operation": "assign"
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0095",
-      "event": "swipe",
       "source": "glass7",
       "conditions": [
         {
@@ -5480,8 +5609,8 @@
       "once": false
     },
     {
-      "id": "r0096",
-      "event": "swipe",
+      "id": "r0093",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -5526,6 +5655,147 @@
           "type": "set_variable",
           "name": "remaining11",
           "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "glass11",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0094",
+      "event": "tap",
+      "source": "next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "simulation",
+          "operator": "eq",
+          "value": "14,7,8"
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0095",
+      "event": "tap",
+      "source": "glass7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "simulation",
+          "operator": "eq",
+          "value": "14,0,3"
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "simulation",
+          "value": "14,7,3",
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "minutes",
+          "value": 14,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "remaining7",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "remaining11",
+          "value": 3,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "glass7",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0096",
+      "event": "tap",
+      "source": "glass11",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "simulation",
+          "operator": "eq",
+          "value": "14,0,3"
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "simulation",
+          "value": "14,0,8",
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "minutes",
+          "value": 14,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "remaining7",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "remaining11",
+          "value": 8,
           "operation": "assign"
         },
         {
@@ -5546,7 +5816,7 @@
           "type": "variable",
           "name": "simulation",
           "operator": "eq",
-          "value": "14,7,8"
+          "value": "14,0,3"
         },
         {
           "type": "variable",
@@ -5564,148 +5834,7 @@
     },
     {
       "id": "r0098",
-      "event": "swipe",
-      "source": "glass7",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "14,0,3"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "transition",
-          "value": true,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "simulation",
-          "value": "14,7,3",
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "minutes",
-          "value": 14,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "remaining7",
-          "value": 7,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "remaining11",
-          "value": 3,
-          "operation": "assign"
-        },
-        {
-          "type": "play_animation",
-          "target": "glass7",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0099",
-      "event": "swipe",
-      "source": "glass11",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "14,0,3"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "transition",
-          "value": true,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "simulation",
-          "value": "14,0,8",
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "minutes",
-          "value": 14,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "remaining7",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "remaining11",
-          "value": 8,
-          "operation": "assign"
-        },
-        {
-          "type": "play_animation",
-          "target": "glass11",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0100",
       "event": "tap",
-      "source": "next",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "14,0,3"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "fail_level"
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0101",
-      "event": "swipe",
       "source": "glass7",
       "conditions": [
         {
@@ -5762,8 +5891,8 @@
       "once": false
     },
     {
-      "id": "r0102",
-      "event": "swipe",
+      "id": "r0099",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -5820,7 +5949,7 @@
       "once": false
     },
     {
-      "id": "r0103",
+      "id": "r0100",
       "event": "tap",
       "source": "next",
       "conditions": [
@@ -5845,8 +5974,8 @@
       "once": false
     },
     {
-      "id": "r0104",
-      "event": "swipe",
+      "id": "r0101",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -5903,8 +6032,8 @@
       "once": false
     },
     {
-      "id": "r0105",
-      "event": "swipe",
+      "id": "r0102",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -5949,6 +6078,147 @@
           "type": "set_variable",
           "name": "remaining11",
           "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "glass11",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0103",
+      "event": "tap",
+      "source": "next",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "simulation",
+          "operator": "eq",
+          "value": "15,7,7"
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "fail_level"
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0104",
+      "event": "tap",
+      "source": "glass7",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "simulation",
+          "operator": "eq",
+          "value": "15,0,4"
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "simulation",
+          "value": "15,7,4",
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "minutes",
+          "value": 15,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "remaining7",
+          "value": 7,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "remaining11",
+          "value": 4,
+          "operation": "assign"
+        },
+        {
+          "type": "play_animation",
+          "target": "glass7",
+          "animation": "chapter_two/rattle",
+          "wait": false
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "r0105",
+      "event": "tap",
+      "source": "glass11",
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "simulation",
+          "operator": "eq",
+          "value": "15,0,4"
+        },
+        {
+          "type": "variable",
+          "name": "transition",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "transition",
+          "value": true,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "simulation",
+          "value": "15,0,7",
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "minutes",
+          "value": 15,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "remaining7",
+          "value": 0,
+          "operation": "assign"
+        },
+        {
+          "type": "set_variable",
+          "name": "remaining11",
+          "value": 7,
           "operation": "assign"
         },
         {
@@ -5969,7 +6239,7 @@
           "type": "variable",
           "name": "simulation",
           "operator": "eq",
-          "value": "15,7,7"
+          "value": "15,0,4"
         },
         {
           "type": "variable",
@@ -5987,176 +6257,7 @@
     },
     {
       "id": "r0107",
-      "event": "swipe",
-      "source": "glass7",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "15,0,4"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "transition",
-          "value": true,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "simulation",
-          "value": "15,7,4",
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "minutes",
-          "value": 15,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "remaining7",
-          "value": 7,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "remaining11",
-          "value": 4,
-          "operation": "assign"
-        },
-        {
-          "type": "play_animation",
-          "target": "glass7",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0108",
-      "event": "swipe",
-      "source": "glass11",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "15,0,4"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "transition",
-          "value": true,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "simulation",
-          "value": "15,0,7",
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "minutes",
-          "value": 15,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "remaining7",
-          "value": 0,
-          "operation": "assign"
-        },
-        {
-          "type": "set_variable",
-          "name": "remaining11",
-          "value": 7,
-          "operation": "assign"
-        },
-        {
-          "type": "play_animation",
-          "target": "glass11",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0109",
       "event": "tap",
-      "source": "next",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "15,0,4"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "fail_level"
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0110",
-      "event": "tap",
-      "source": "confirm",
-      "conditions": [
-        {
-          "type": "variable",
-          "name": "simulation",
-          "operator": "eq",
-          "value": "15,0,4"
-        },
-        {
-          "type": "variable",
-          "name": "transition",
-          "operator": "eq",
-          "value": false
-        }
-      ],
-      "actions": [
-        {
-          "type": "set_variable",
-          "name": "solved",
-          "value": true,
-          "operation": "assign"
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0111",
-      "event": "swipe",
       "source": "glass7",
       "conditions": [
         {
@@ -6213,8 +6314,8 @@
       "once": false
     },
     {
-      "id": "r0112",
-      "event": "swipe",
+      "id": "r0108",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -6271,7 +6372,7 @@
       "once": false
     },
     {
-      "id": "r0113",
+      "id": "r0109",
       "event": "tap",
       "source": "next",
       "conditions": [
@@ -6296,8 +6397,8 @@
       "once": false
     },
     {
-      "id": "r0114",
-      "event": "swipe",
+      "id": "r0110",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -6354,8 +6455,8 @@
       "once": false
     },
     {
-      "id": "r0115",
-      "event": "swipe",
+      "id": "r0111",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -6412,7 +6513,7 @@
       "once": false
     },
     {
-      "id": "r0116",
+      "id": "r0112",
       "event": "tap",
       "source": "next",
       "conditions": [
@@ -6437,8 +6538,8 @@
       "once": false
     },
     {
-      "id": "r0117",
-      "event": "swipe",
+      "id": "r0113",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -6495,8 +6596,8 @@
       "once": false
     },
     {
-      "id": "r0118",
-      "event": "swipe",
+      "id": "r0114",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -6553,7 +6654,7 @@
       "once": false
     },
     {
-      "id": "r0119",
+      "id": "r0115",
       "event": "tap",
       "source": "next",
       "conditions": [
@@ -6578,7 +6679,7 @@
       "once": false
     },
     {
-      "id": "r0120",
+      "id": "r0116",
       "event": "tap",
       "source": "start",
       "conditions": [
@@ -6600,7 +6701,7 @@
       "once": false
     },
     {
-      "id": "r0121",
+      "id": "r0117",
       "event": "tap",
       "source": "next",
       "conditions": [
@@ -6622,8 +6723,8 @@
       "once": false
     },
     {
-      "id": "r0122",
-      "event": "swipe",
+      "id": "r0118",
+      "event": "tap",
       "source": "glass7",
       "conditions": [
         {
@@ -6644,8 +6745,8 @@
       "once": false
     },
     {
-      "id": "r0123",
-      "event": "swipe",
+      "id": "r0119",
+      "event": "tap",
       "source": "glass11",
       "conditions": [
         {
@@ -6666,7 +6767,7 @@
       "once": false
     },
     {
-      "id": "r0124",
+      "id": "r0120",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -6727,14 +6828,14 @@
           "target": "lower7",
           "value": [
             1,
-            1.0
+            1
           ]
         }
       ],
       "once": false
     },
     {
-      "id": "r0125",
+      "id": "r0121",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -6810,7 +6911,7 @@
       "once": false
     },
     {
-      "id": "r0126",
+      "id": "r0122",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -6886,7 +6987,7 @@
       "once": false
     },
     {
-      "id": "r0127",
+      "id": "r0123",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -6962,7 +7063,7 @@
       "once": false
     },
     {
-      "id": "r0128",
+      "id": "r0124",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -7038,7 +7139,7 @@
       "once": false
     },
     {
-      "id": "r0129",
+      "id": "r0125",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -7114,7 +7215,7 @@
       "once": false
     },
     {
-      "id": "r0130",
+      "id": "r0126",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -7190,7 +7291,7 @@
       "once": false
     },
     {
-      "id": "r0131",
+      "id": "r0127",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -7247,7 +7348,7 @@
           "target": "upper7",
           "value": [
             1,
-            1.0
+            1
           ]
         },
         {
@@ -7258,7 +7359,7 @@
       "once": false
     },
     {
-      "id": "r0132",
+      "id": "r0128",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -7335,14 +7436,14 @@
           "target": "lower11",
           "value": [
             1,
-            1.0
+            1
           ]
         }
       ],
       "once": false
     },
     {
-      "id": "r0133",
+      "id": "r0129",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -7434,7 +7535,7 @@
       "once": false
     },
     {
-      "id": "r0134",
+      "id": "r0130",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -7526,7 +7627,7 @@
       "once": false
     },
     {
-      "id": "r0135",
+      "id": "r0131",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -7618,7 +7719,7 @@
       "once": false
     },
     {
-      "id": "r0136",
+      "id": "r0132",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -7710,7 +7811,7 @@
       "once": false
     },
     {
-      "id": "r0137",
+      "id": "r0133",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -7802,7 +7903,7 @@
       "once": false
     },
     {
-      "id": "r0138",
+      "id": "r0134",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -7894,7 +7995,7 @@
       "once": false
     },
     {
-      "id": "r0139",
+      "id": "r0135",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -7986,7 +8087,7 @@
       "once": false
     },
     {
-      "id": "r0140",
+      "id": "r0136",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -8078,7 +8179,7 @@
       "once": false
     },
     {
-      "id": "r0141",
+      "id": "r0137",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -8170,7 +8271,7 @@
       "once": false
     },
     {
-      "id": "r0142",
+      "id": "r0138",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -8262,7 +8363,7 @@
       "once": false
     },
     {
-      "id": "r0143",
+      "id": "r0139",
       "event": "variable_changed",
       "source": "$level",
       "conditions": [
@@ -8335,7 +8436,7 @@
           "target": "upper11",
           "value": [
             1,
-            1.0
+            1
           ]
         },
         {
@@ -8346,42 +8447,1312 @@
       "once": false
     },
     {
-      "id": "r0144",
-      "event": "tap",
-      "source": "clock_frame",
-      "conditions": [],
+      "event": "variable_changed",
+      "source": "$level",
       "actions": [
         {
-          "type": "play_animation",
-          "target": "clock_frame",
-          "animation": "chapter_two/rattle",
-          "wait": false
-        }
-      ],
-      "once": false
-    },
-    {
-      "id": "r0145",
-      "event": "drag_end",
-      "source": "ruler",
-      "conditions": [],
-      "actions": [
-        {
-          "type": "move",
-          "target": "ruler",
-          "position": [
-            1660,
-            650
-          ]
+          "type": "show",
+          "target": "elapsed_0"
         },
         {
-          "type": "play_animation",
-          "target": "ruler",
-          "animation": "chapter_two/rattle",
-          "wait": false
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
         }
       ],
-      "once": false
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 0,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0140"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 1,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0141"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 2,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0142"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 3,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0143"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 4,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0144"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 5,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0145"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 6,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0146"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 7,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0147"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 8,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0148"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 9,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0149"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 10,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0150"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 11,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0151"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 12,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0152"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 13,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0153"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 14,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0154"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "hide",
+          "target": "elapsed_0"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_1"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_2"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_3"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_4"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_5"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_6"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_7"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_8"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_9"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_10"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_11"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_12"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_13"
+        },
+        {
+          "type": "hide",
+          "target": "elapsed_14"
+        },
+        {
+          "type": "show",
+          "target": "elapsed_15"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 15,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0155"
+    },
+    {
+      "event": "variable_changed",
+      "source": "$level",
+      "actions": [
+        {
+          "type": "set_variable",
+          "name": "solved",
+          "value": true,
+          "operation": "assign"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "variable",
+          "name": "minutes",
+          "value": 15,
+          "operator": "eq"
+        },
+        {
+          "type": "variable",
+          "name": "remaining7",
+          "value": 0,
+          "operator": "eq"
+        }
+      ],
+      "once": false,
+      "id": "r0156"
     }
   ],
   "win_condition": {

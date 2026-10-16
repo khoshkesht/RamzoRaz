@@ -71,7 +71,28 @@
     "res://assets/samples/floor_latch_closed.svg": "ضامن کف با دستگیره و جهت کشیدن در دو حالت بسته و آزاد؛ دارایی ضامن مناسب موجود نبود.",
     "res://assets/samples/floor_latch_open.svg": "ضامن کف با دستگیره و جهت کشیدن در دو حالت بسته و آزاد؛ دارایی ضامن مناسب موجود نبود.",
     "res://assets/samples/bridge_lantern_lit.svg": "فانوس روشن قابل حمل و همراه گروه؛ چراغ‌های موجود خاموش یا رومیزی بودند.",
-    "res://assets/samples/bridge_lantern_feedback.tres": "حرکت هم‌زمان گروه و چراغ در دو جهت با پایان مشترک و پشتیبانی مکث/لغو؛ منبع مناسب موجود نبود."
+    "res://assets/samples/bridge_lantern_feedback.tres": "حرکت هم‌زمان گروه و چراغ در دو جهت با پایان مشترک و پشتیبانی مکث/لغو؛ منبع مناسب موجود نبود.",
+    "res://assets/samples/coin_return_mat.svg": "سینی بازگشت با نه جای سکه هم‌مکان با محل اولیه؛ مقصد قبلی تصویر و وسعت کافی نداشت.",
+    "res://assets/samples/lion_service_hatch.svg": "دریچهٔ کشویی کوچک برای دسترسی به کلید، بدون تغییر دارایی درِ شیر.",
+    "res://assets/samples/door_keyhole_plate.svg": "قفل طلایی دارای سوراخ کلید برای مقصد قابل تشخیص کلید.",
+    "res://assets/samples/clock_next_boundary.svg": "کنترل تصویری جلو بردن زمان تا رویداد بعدی، مستقل از Countdown مرحله.",
+    "res://assets/samples/wall_dust_cover.svg": "گردِ سطح دیوار برای پاک‌کردن واقعی با برس و آشکارشدن درز آجر.",
+    "res://assets/samples/rope_repair_0.svg": "سه قطعهٔ طناب با مسیر متفاوت برای تطبیق با شیار و اتصال فیزیکی زنگ.",
+    "res://assets/samples/rope_repair_1.svg": "سه قطعهٔ طناب با مسیر متفاوت برای تطبیق با شیار و اتصال فیزیکی زنگ.",
+    "res://assets/samples/rope_repair_2.svg": "سه قطعهٔ طناب با مسیر متفاوت برای تطبیق با شیار و اتصال فیزیکی زنگ.",
+    "res://assets/samples/rope_repair_channels.svg": "مسیر زنگ با سه شیار خالیِ متفاوت و دو طناب فرعی متصل به وزنه؛ مسیر پیوستهٔ قبلی مناسب تعمیر نبود.",
+    "res://assets/samples/shadow_build_body.svg": "بدنهٔ جدا از گردن و دسته برای ساخت فیزیکی کوزه.",
+    "res://assets/samples/shadow_neck_50.svg": "گردن‌های باریک و پهن مستقل برای تطبیق شکل سایه.",
+    "res://assets/samples/shadow_neck_85.svg": "گردن‌های باریک و پهن مستقل برای تطبیق شکل سایه.",
+    "res://assets/samples/shadow_build_handle.svg": "دستهٔ جدا برای نصب در سمت چپ یا راست کوزه.",
+    "res://assets/samples/assembled_shadow_1_2.svg": "سایهٔ واقعی گردن پهن یا دستهٔ چپ برای بازخورد آزمایش ساخت اشتباه.",
+    "res://assets/samples/assembled_shadow_2_1.svg": "سایهٔ واقعی گردن پهن یا دستهٔ چپ برای بازخورد آزمایش ساخت اشتباه.",
+    "res://assets/samples/assembled_shadow_2_2.svg": "سایهٔ واقعی گردن پهن یا دستهٔ چپ برای بازخورد آزمایش ساخت اشتباه.",
+    "res://assets/samples/rug_repair_motif_0.svg": "نقش‌های متفاوت و جهت‌دار برای ترمیم سه ردیف و تشخیص جهت.",
+    "res://assets/samples/rug_repair_motif_1.svg": "نقش‌های متفاوت و جهت‌دار برای ترمیم سه ردیف و تشخیص جهت.",
+    "res://assets/samples/rug_repair_motif_2.svg": "نقش‌های متفاوت و جهت‌دار برای ترمیم سه ردیف و تشخیص جهت.",
+    "res://assets/samples/rug_repair_complete.svg": "فرش با سه ردیف نقش و سه جای خالیِ قرینه؛ فرش قبلی فقط یک نقش کم داشت.",
+    "res://assets/samples/rug_repair_missing.svg": "فرش با سه ردیف نقش و سه جای خالیِ قرینه؛ فرش قبلی فقط یک نقش کم داشت."
   },
   "stages": {
     "51": {
@@ -276,6 +297,7 @@
         "res://assets/ui/score.png"
       ],
       "new": [
+        "res://assets/samples/coin_return_mat.svg",
         "res://assets/samples/magnifying_glass.svg",
         "res://assets/samples/puzzle_workbench_night.svg"
       ]
@@ -285,16 +307,13 @@
       "lighting": "day",
       "reused": [
         "res://PuzzleEngine/Objects/ClickableObject.tscn",
-        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
         "res://PuzzleEngine/Objects/PuzzleObject.tscn",
-        "res://PuzzleEngine/Objects/TextObject.tscn",
-        "res://assets/samples/bush.svg",
-        "res://assets/samples/chapter_two_feedback.tres",
-        "res://assets/samples/puzzle_tile.svg"
+        "res://assets/samples/left_arrow.svg",
+        "res://assets/samples/selection_check.svg"
       ],
       "new": [
         "res://assets/samples/boat_empty.svg",
-        "res://assets/samples/bridge_broken.svg",
         "res://assets/samples/cabbage.svg",
         "res://assets/samples/goat.svg",
         "res://assets/samples/river_crossing_day.svg",
@@ -311,17 +330,15 @@
         "res://PuzzleEngine/Objects/PuzzleObject.tscn",
         "res://PuzzleEngine/Objects/TextObject.tscn",
         "res://assets/samples/caravanserai_night_lit.svg",
-        "res://assets/samples/chapter_two_feedback.tres",
-        "res://assets/samples/steam_plume.svg",
-        "res://assets/samples/water_bowl.svg"
+        "res://assets/samples/toothed_key_b.svg"
       ],
       "new": [
         "res://assets/samples/door_fire.svg",
+        "res://assets/samples/door_keyhole_plate.svg",
         "res://assets/samples/door_killer.svg",
         "res://assets/samples/door_lion.svg",
         "res://assets/samples/hidden_door.svg",
-        "res://assets/samples/shield_crack.svg",
-        "res://assets/samples/wooden_shield.svg"
+        "res://assets/samples/lion_service_hatch.svg"
       ]
     },
     "63": {
@@ -333,11 +350,10 @@
         "res://PuzzleEngine/Objects/PuzzleObject.tscn",
         "res://PuzzleEngine/Objects/TextObject.tscn",
         "res://assets/samples/chapter_two_feedback.tres",
-        "res://assets/samples/clock_face.svg",
-        "res://assets/samples/height_ruler.svg",
         "res://assets/samples/puzzle_tile.svg"
       ],
       "new": [
+        "res://assets/samples/clock_next_boundary.svg",
         "res://assets/samples/hourglass_clear.svg",
         "res://assets/samples/puzzle_workbench_night.svg",
         "res://assets/samples/sand_lower.svg",
@@ -349,17 +365,19 @@
       "lighting": "night_lit",
       "reused": [
         "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
         "res://PuzzleEngine/Objects/ImageObject.tscn",
         "res://PuzzleEngine/Objects/PuzzleObject.tscn",
         "res://assets/samples/broom.svg",
-        "res://assets/samples/caravanserai_night_lit.svg",
-        "res://assets/samples/chapter_two_feedback.tres",
-        "res://assets/samples/dust_motes.svg"
+        "res://assets/samples/caravanserai_night_lit.svg"
       ],
       "new": [
         "res://assets/samples/fixed_brick.svg",
+        "res://assets/samples/floor_latch_closed.svg",
+        "res://assets/samples/floor_latch_open.svg",
         "res://assets/samples/hidden_door.svg",
-        "res://assets/samples/loose_brick.svg"
+        "res://assets/samples/loose_brick.svg",
+        "res://assets/samples/wall_dust_cover.svg"
       ]
     },
     "65": {
@@ -382,18 +400,21 @@
       "lighting": "day",
       "reused": [
         "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
         "res://PuzzleEngine/Objects/ImageObject.tscn",
         "res://PuzzleEngine/Objects/PuzzleObject.tscn",
         "res://assets/samples/bell.svg",
         "res://assets/samples/chapter_two_feedback.tres",
-        "res://assets/samples/clock_hands.svg",
         "res://assets/samples/radio_chime.wav",
         "res://assets/samples/stone.svg"
       ],
       "new": [
-        "res://assets/samples/bell_rope_paths.svg",
         "res://assets/samples/puzzle_workbench_day.svg",
-        "res://assets/samples/rope_pull.svg"
+        "res://assets/samples/rope_pull.svg",
+        "res://assets/samples/rope_repair_0.svg",
+        "res://assets/samples/rope_repair_1.svg",
+        "res://assets/samples/rope_repair_2.svg",
+        "res://assets/samples/rope_repair_channels.svg"
       ]
     },
     "67": {
@@ -404,16 +425,21 @@
         "res://PuzzleEngine/Objects/DropZone.tscn",
         "res://PuzzleEngine/Objects/ImageObject.tscn",
         "res://PuzzleEngine/Objects/PuzzleObject.tscn",
-        "res://assets/samples/chapter_two_feedback.tres",
+        "res://PuzzleEngine/Objects/TextObject.tscn",
+        "res://assets/samples/lamp_off.svg",
         "res://assets/samples/lamp_on.svg",
-        "res://assets/samples/wall_switch.svg"
+        "res://assets/samples/puzzle_tile.svg"
       ],
       "new": [
+        "res://assets/samples/assembled_shadow_1_2.svg",
+        "res://assets/samples/assembled_shadow_2_1.svg",
+        "res://assets/samples/assembled_shadow_2_2.svg",
         "res://assets/samples/jug_shadow_target.svg",
         "res://assets/samples/puzzle_workbench_day.svg",
-        "res://assets/samples/shadow_jug_0.svg",
-        "res://assets/samples/shadow_jug_1.svg",
-        "res://assets/samples/shadow_jug_2.svg"
+        "res://assets/samples/shadow_build_body.svg",
+        "res://assets/samples/shadow_build_handle.svg",
+        "res://assets/samples/shadow_neck_50.svg",
+        "res://assets/samples/shadow_neck_85.svg"
       ]
     },
     "68": {
@@ -421,13 +447,12 @@
       "lighting": "day",
       "reused": [
         "res://PuzzleEngine/Objects/ClickableObject.tscn",
-        "res://PuzzleEngine/Objects/ImageObject.tscn",
-        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
-        "res://assets/samples/chapter_two_feedback.tres",
-        "res://assets/samples/face_frame.svg"
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn"
       ],
       "new": [
         "res://assets/samples/bookshelf.svg",
+        "res://assets/samples/floor_latch_closed.svg",
+        "res://assets/samples/floor_latch_open.svg",
         "res://assets/samples/hidden_door.svg",
         "res://assets/samples/inverted_book.svg",
         "res://assets/samples/library_room_day.svg",
@@ -441,30 +466,30 @@
         "res://PuzzleEngine/Objects/ClickableObject.tscn",
         "res://PuzzleEngine/Objects/DropZone.tscn",
         "res://PuzzleEngine/Objects/ImageObject.tscn",
-        "res://PuzzleEngine/Objects/PuzzleObject.tscn",
-        "res://assets/samples/chapter_two_feedback.tres",
-        "res://assets/samples/height_ruler.svg"
+        "res://PuzzleEngine/Objects/PuzzleObject.tscn"
       ],
       "new": [
         "res://assets/samples/puzzle_workbench_night.svg",
-        "res://assets/samples/rug_missing.svg",
-        "res://assets/samples/rug_motif.svg",
-        "res://assets/samples/rug_motif_reversed.svg",
-        "res://assets/samples/rug_symmetric.svg"
+        "res://assets/samples/rug_repair_complete.svg",
+        "res://assets/samples/rug_repair_missing.svg",
+        "res://assets/samples/rug_repair_motif_0.svg",
+        "res://assets/samples/rug_repair_motif_1.svg",
+        "res://assets/samples/rug_repair_motif_2.svg"
       ]
     },
     "70": {
       "background": "res://assets/samples/puzzle_workbench_day.svg",
       "lighting": "day",
       "reused": [
-        "res://PuzzleEngine/Objects/ClickableObject.tscn",
+        "res://PuzzleEngine/Objects/DropZone.tscn",
+        "res://PuzzleEngine/Objects/ImageObject.tscn",
         "res://PuzzleEngine/Objects/PuzzleObject.tscn",
         "res://PuzzleEngine/Objects/TextObject.tscn",
-        "res://assets/samples/chapter_two_feedback.tres",
-        "res://assets/samples/postal_seal.svg",
-        "res://assets/samples/puzzle_tile.svg"
+        "res://assets/samples/puzzle_tile.svg",
+        "res://assets/samples/selection_check.svg"
       ],
       "new": [
+        "res://assets/samples/magnifying_glass.svg",
         "res://assets/samples/puzzle_workbench_day.svg"
       ]
     }
@@ -525,20 +550,56 @@
     "rug_69": {
       "axis": "vertical",
       "missing_rug": 1,
-      "local_missing_center": [
-        235,
-        240
+      "rows": [
+        540,
+        650,
+        760
       ],
-      "motif_direction": "up",
-      "false_motif_direction": "down"
+      "target_angles": [
+        0,
+        0,
+        0
+      ],
+      "initial_angles": [
+        270,
+        0,
+        180
+      ]
     },
     "shadow_67": {
+      "body_required": true,
       "neck_width": 50,
       "handle": "right",
-      "correct": 0,
-      "wrong_neck_width": 85,
-      "wrong_handle": "absent",
-      "light_distance": "fixed"
+      "light_test_required": true
+    },
+    "cards_70": {
+      "fronts": [
+        "A",
+        "E",
+        "D",
+        "K",
+        "4",
+        "8",
+        "7",
+        "9"
+      ],
+      "backs": [
+        "3",
+        "2",
+        "4",
+        "7",
+        "A",
+        "D",
+        "D",
+        "E"
+      ],
+      "required": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "budget": 4
     }
   }
 }
